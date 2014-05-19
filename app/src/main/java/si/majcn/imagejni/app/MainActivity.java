@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
 
@@ -21,7 +20,7 @@ public class MainActivity extends Activity {
     private Bitmap original;
 
     private ImageView imageView;
-    private TextView loaderView;
+//    private TextView loaderView;
 
     private int effectNumber;
 
@@ -36,7 +35,7 @@ public class MainActivity extends Activity {
         imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setImageBitmap(original);
 
-        loaderView = (TextView) findViewById(R.id.loaderView);
+//        loaderView = (TextView) findViewById(R.id.loaderView);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +51,6 @@ public class MainActivity extends Activity {
 
     private class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
         private final WeakReference<ImageView> imageViewReference;
-        private int data = 0;
 
         public BitmapWorkerTask(ImageView imageView) {
             // Use a WeakReference to ensure the ImageView can be garbage collected
@@ -70,7 +68,7 @@ public class MainActivity extends Activity {
         // Once complete, see if ImageView is still around and set bitmap.
         @Override
         protected void onPostExecute(Bitmap bitmap) {
-            if (imageViewReference != null && bitmap != null) {
+            if (bitmap != null) {
                 final ImageView imageView = imageViewReference.get();
                 if (imageView != null) {
                     imageView.setImageBitmap(bitmap);
