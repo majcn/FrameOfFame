@@ -20,7 +20,6 @@ public class MainActivity extends Activity {
     private Bitmap original;
 
     private ImageView imageView;
-//    private TextView loaderView;
 
     private int effectNumber;
 
@@ -35,17 +34,8 @@ public class MainActivity extends Activity {
         imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setImageBitmap(original);
 
-//        loaderView = (TextView) findViewById(R.id.loaderView);
-
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                effectTask.execute();
-//                Bitmap bitmap = original.copy(Bitmap.Config.ARGB_8888, true);
-                new BitmapWorkerTask(imageView).execute(effectNumber++);
-//                applyEffect(bitmap, effectNumber++);
-//                imageView.setImageBitmap(bitmap);
-            }
+        imageView.setOnClickListener((view) -> {
+            new BitmapWorkerTask(imageView).execute(effectNumber++);
         });
     }
 
@@ -54,10 +44,9 @@ public class MainActivity extends Activity {
 
         public BitmapWorkerTask(ImageView imageView) {
             // Use a WeakReference to ensure the ImageView can be garbage collected
-            imageViewReference = new WeakReference<ImageView>(imageView);
+            imageViewReference = new WeakReference<>(imageView);
         }
 
-        // Decode image in background.
         @Override
         protected Bitmap doInBackground(Integer... params) {
             Bitmap image = original.copy(Bitmap.Config.ARGB_8888, true);
@@ -65,7 +54,6 @@ public class MainActivity extends Activity {
             return image;
         }
 
-        // Once complete, see if ImageView is still around and set bitmap.
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             if (bitmap != null) {

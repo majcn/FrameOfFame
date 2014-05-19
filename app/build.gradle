@@ -1,4 +1,5 @@
 apply plugin: 'android'
+apply plugin: 'retrolambda'
 
 android {
     compileSdkVersion 19
@@ -13,7 +14,6 @@ android {
         ndk {
             moduleName "imageprocessing"
             ldLibs "m", "log", "jnigraphics"
-//            cFlags "--allow-multiple-definition"
         }
     }
     buildTypes {
@@ -21,6 +21,11 @@ android {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
