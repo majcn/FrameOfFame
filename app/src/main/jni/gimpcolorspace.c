@@ -1,10 +1,10 @@
 /* LIBGIMP - The GIMP Library
  * Copyright (C) 1995-1997 Peter Mattis and Spencer Kimball
  *
- * This library is free software; you can redistribute it and/or
+ * This library is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
+ * version 3 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -12,9 +12,8 @@
  * Library General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * License along with this library.  If not, see
+ * <http://www.gnu.org/licenses/>.
  */
 
 #include "gimpcolorspace.h"
@@ -39,60 +38,60 @@ gimp_rgb_to_hsl_int (int *red,
                      int *green,
                      int *blue)
 {
-  int    r, g, b;
-  double h, s, l;
-  int    min, max;
-  int    delta;
+    int    r, g, b;
+    double h, s, l;
+    int    min, max;
+    int    delta;
 
-  r = *red;
-  g = *green;
-  b = *blue;
+    r = *red;
+    g = *green;
+    b = *blue;
 
-  if (r > g)
+    if (r > g)
     {
-      max = MAX (r, b);
-      min = MIN (g, b);
+        max = MAX (r, b);
+        min = MIN (g, b);
     }
-  else
+    else
     {
-      max = MAX (g, b);
-      min = MIN (r, b);
-    }
-
-  l = (max + min) / 2.0;
-
-  if (max == min)
-    {
-      s = 0.0;
-      h = 0.0;
-    }
-  else
-    {
-      delta = (max - min);
-
-      if (l < 128)
-        s = 255 * (double) delta / (double) (max + min);
-      else
-        s = 255 * (double) delta / (double) (511 - max - min);
-
-      if (r == max)
-        h = (g - b) / (double) delta;
-      else if (g == max)
-        h = 2 + (b - r) / (double) delta;
-      else
-        h = 4 + (r - g) / (double) delta;
-
-      h = h * 42.5;
-
-      if (h < 0)
-        h += 255;
-      else if (h > 255)
-        h -= 255;
+        max = MAX (g, b);
+        min = MIN (r, b);
     }
 
-  *red   = ROUND (h);
-  *green = ROUND (s);
-  *blue  = ROUND (l);
+    l = (max + min) / 2.0;
+
+    if (max == min)
+    {
+        s = 0.0;
+        h = 0.0;
+    }
+    else
+    {
+        delta = (max - min);
+
+        if (l < 128)
+            s = 255 * (double) delta / (double) (max + min);
+        else
+            s = 255 * (double) delta / (double) (511 - max - min);
+
+        if (r == max)
+            h = (g - b) / (double) delta;
+        else if (g == max)
+            h = 2 + (b - r) / (double) delta;
+        else
+            h = 4 + (r - g) / (double) delta;
+
+        h = h * 42.5;
+
+        if (h < 0)
+            h += 255;
+        else if (h > 255)
+            h -= 255;
+    }
+
+    *red   = ROUND (h);
+    *green = ROUND (s);
+    *blue  = ROUND (l);
 }
 
 /**
@@ -111,20 +110,20 @@ gimp_rgb_to_l_int (int red,
                    int green,
                    int blue)
 {
-  int min, max;
+    int min, max;
 
-  if (red > green)
+    if (red > green)
     {
-      max = MAX (red,   blue);
-      min = MIN (green, blue);
+        max = MAX (red,   blue);
+        min = MIN (green, blue);
     }
-  else
+    else
     {
-      max = MAX (green, blue);
-      min = MIN (red,   blue);
+        max = MAX (green, blue);
+        min = MIN (red,   blue);
     }
 
-  return ROUND ((max + min) / 2.0);
+    return ROUND ((max + min) / 2.0);
 }
 
 static inline int
@@ -132,23 +131,23 @@ gimp_hsl_value_int (double n1,
                     double n2,
                     double hue)
 {
-  double value;
+    double value;
 
-  if (hue > 255)
-    hue -= 255;
-  else if (hue < 0)
-    hue += 255;
+    if (hue > 255)
+        hue -= 255;
+    else if (hue < 0)
+        hue += 255;
 
-  if (hue < 42.5)
-    value = n1 + (n2 - n1) * (hue / 42.5);
-  else if (hue < 127.5)
-    value = n2;
-  else if (hue < 170)
-    value = n1 + (n2 - n1) * ((170 - hue) / 42.5);
-  else
-    value = n1;
+    if (hue < 42.5)
+        value = n1 + (n2 - n1) * (hue / 42.5);
+    else if (hue < 127.5)
+        value = n2;
+    else if (hue < 170)
+        value = n1 + (n2 - n1) * ((170 - hue) / 42.5);
+    else
+        value = n1;
 
-  return ROUND (value * 255.0);
+    return ROUND (value * 255.0);
 }
 
 /**
@@ -168,33 +167,33 @@ gimp_hsl_to_rgb_int (int *hue,
                      int *saturation,
                      int *lightness)
 {
-  double h, s, l;
+    double h, s, l;
 
-  h = *hue;
-  s = *saturation;
-  l = *lightness;
+    h = *hue;
+    s = *saturation;
+    l = *lightness;
 
-  if (s == 0)
+    if (s == 0)
     {
-      /*  achromatic case  */
-      *hue        = l;
-      *lightness  = l;
-      *saturation = l;
+        /*  achromatic case  */
+        *hue        = l;
+        *lightness  = l;
+        *saturation = l;
     }
-  else
+    else
     {
-      double m1, m2;
+        double m1, m2;
 
-      if (l < 128)
-        m2 = (l * (255 + s)) / 65025.0;
-      else
-        m2 = (l + s - (l * s) / 255.0) / 255.0;
+        if (l < 128)
+            m2 = (l * (255 + s)) / 65025.0;
+        else
+            m2 = (l + s - (l * s) / 255.0) / 255.0;
 
-      m1 = (l / 127.5) - m2;
+        m1 = (l / 127.5) - m2;
 
-      /*  chromatic case  */
-      *hue        = gimp_hsl_value_int (m1, m2, h + 85);
-      *saturation = gimp_hsl_value_int (m1, m2, h);
-      *lightness  = gimp_hsl_value_int (m1, m2, h - 85);
+        /*  chromatic case  */
+        *hue        = gimp_hsl_value_int (m1, m2, h + 85);
+        *saturation = gimp_hsl_value_int (m1, m2, h);
+        *lightness  = gimp_hsl_value_int (m1, m2, h - 85);
     }
 }
