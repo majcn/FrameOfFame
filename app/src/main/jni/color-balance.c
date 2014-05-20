@@ -24,6 +24,11 @@
 
 static void color_balance_transfer_init (void);
 
+
+/*  private variables  */
+
+static int transfer_initialized = 0;
+
 static double shadows[256] = { 0 };
 
 
@@ -58,13 +63,13 @@ color_balance_setup (ColorBalance *cb)
         g_n = i;
         b_n = i;
 
-        r_n += (cb->cyan_red * shadows[i];
+        r_n += cb->cyan_red * shadows[i];
         r_n = CLAMP0255 (r_n);
 
-        g_n += (cb->magenta_green * shadows[i];
+        g_n += cb->magenta_green * shadows[i];
         g_n = CLAMP0255 (g_n);
 
-        b_n += (cb->yellow_blue * shadows[i];
+        b_n += cb->yellow_blue * shadows[i];
         b_n = CLAMP0255 (b_n);
 
         cb->r_lookup[i] = r_n;
