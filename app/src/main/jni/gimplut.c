@@ -22,13 +22,6 @@
 #include <math.h>
 
 
-static float
-posterize_lut_func (int    levels,
-                    float  value)
-{
-    return floor ((value * (levels - 1.0)) + 0.5) / (levels - 1.0);
-}
-
 void
 gimp_lut_init (GimpLut *lut,
                int      levels)
@@ -42,10 +35,9 @@ gimp_lut_setup (GimpLut *lut)
     int i;
     double val;
 
-    i = 256;
-    while (i--)
+    for (i = 0; i < 256; i++)
     {
-        val = 255.0 * posterize_lut_func(lut->levels, i / 255.0) + 0.5;
+        val = 255.0 * floor (((i / 255.0) * (lut->levels - 1.0)) + 0.5) / (lut->levels - 1.0) + 0.5;
         lut->luts[i] = CLAMP0255 (val);
     }
 }
