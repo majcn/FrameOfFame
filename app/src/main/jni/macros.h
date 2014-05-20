@@ -1,6 +1,6 @@
 #ifndef CLAMP
-#define CLAMP(x, low, high) (((x) > (high)) ? (high) : (((x) < (low)) ? (low) : (x)))
-#define CLAMP0255(x) CLAMP(x, 0, 255)
+#define CLAMP(x,l,u) ((x)<(l)?(l):((x)>(u)?(u):(x)))
+#define CLAMP0255(x) CLAMP(x,0,255)
 #endif /* CLAMP */
 
 #ifndef SQR
