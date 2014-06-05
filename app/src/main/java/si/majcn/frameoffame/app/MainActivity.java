@@ -33,11 +33,19 @@ public class MainActivity extends Activity {
         mImageView = (ImageView) findViewById(R.id.imageView);
         mImageView.setImageBitmap(original);
         mImageView.setOnClickListener((view) -> {
-            new BitmapWorkerTask(mImageView).execute(effectNumber++);
+            nextEffect();
         });
 
         mImageViewGL = (FilterGLSurfaceView) findViewById(R.id.imageViewGL);
         mImageViewGL.loadTexture(original);
+        mImageViewGL.setOnClickListener((view) -> {
+            nextEffect();
+        });
+    }
+
+    private void nextEffect() {
+        new BitmapWorkerTask(mImageView).execute(effectNumber);
+        effectNumber++;
     }
 
     private class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
