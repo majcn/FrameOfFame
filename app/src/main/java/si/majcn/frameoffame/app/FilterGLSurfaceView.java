@@ -6,6 +6,7 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -17,73 +18,110 @@ import javax.microedition.khronos.opengles.GL10;
 import utils.GLToolbox;
 
 public class FilterGLSurfaceView extends GLSurfaceView implements GLSurfaceView.Renderer {
-
     private int[] mTextures;
 
     private FloatBuffer mTexVertices;
     private FloatBuffer mPosVertices;
 
-    private boolean mInitialized = false;
+    private boolean mIsCreated;
+
+    private Bitmap mImage;
 
     private int mProgram;
     private int mTexSamplerHandle;
     private int mTexCoordHandle;
     private int mPosCoordHandle;
 
+    private static final String VERTEX_SHADER =
+            "attribute vec4 a_position;\n" +
+                    "attribute vec2 a_texcoord;\n" +
+                    "varying vec2 v_texcoord;\n" +
+                    "void main() {\n" +
+                    "  gl_Position = a_position;\n" +
+                    "  v_texcoord = a_texcoord;\n" +
+                    "}\n";
+
+    private static final String FRAGMENT_SHADER =
+            "precision mediump float;\n" +
+                    "uniform sampler2D tex_sampler;\n" +
+                    "varying vec2 v_texcoord;\n" +
+                    "void main() {\n" +
+                    "  gl_FragColor = texture2D(tex_sampler, v_texcoord);\n" +
+                    "}\n";
+
     public FilterGLSurfaceView(Context context) {
         super(context);
+        init();
     }
 
     public FilterGLSurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init();
     }
 
-    public void init(Bitmap image) {
-        if(!mInitialized) {
-            mTextures = new int[1];
+    private void init() {
+        mTextures = new int[]{0};
+        mIsCreated = false;
 
-            setEGLContextClientVersion(2);
-            setRenderer(this);
-            setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+        setEGLContextClientVersion(2);
+        setEGLConfigChooser(8 , 8, 8, 8, 16, 0);
+        setRenderer(this);
+        setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+    }
 
-            mProgram = GLToolbox.createProgram("", "");
-            mTexSamplerHandle = GLES20.glGetUniformLocation(mProgram, "tex_sampler");
-            mTexCoordHandle = GLES20.glGetAttribLocation(mProgram, "a_texcoord");
-            mPosCoordHandle = GLES20.glGetAttribLocation(mProgram, "a_position");
-
-            final float[] TEX_VERTICES = {0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f};
-            final float[] POS_VERTICES = {-1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 1.0f};
-            mTexVertices = ByteBuffer.allocateDirect(TEX_VERTICES.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-            mTexVertices.put(TEX_VERTICES).position(0);
-            mPosVertices = ByteBuffer.allocateDirect(POS_VERTICES.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-            mPosVertices.put(POS_VERTICES).position(0);
-
-            loadTexture(image);
-
-            mInitialized = true;
+    public void setImage(Bitmap image) {
+        mImage = image;
+        if (mIsCreated) {
+            initTexture();
         }
     }
 
-    private void loadTexture(Bitmap image) {
+    private void initTexture() {
+        Log.d("majcn", "initTexture");
         GLES20.glGenTextures(1, mTextures, 0);
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, mTextures[0]);
-        GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, image, 0);
+        GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, mImage, 0);
         GLToolbox.initTexParams();
     }
 
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
+        Log.d("majcn", "onSurfaceCreated");
+        if(mImage != null) {
+            initTexture();
+        }
+        mIsCreated = true;
+
         GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+        final float[] TEX_VERTICES = {0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f};
+        final float[] POS_VERTICES = {-1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 1.0f};
+        mTexVertices = ByteBuffer.allocateDirect(TEX_VERTICES.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+        mTexVertices.put(TEX_VERTICES).position(0);
+        mPosVertices = ByteBuffer.allocateDirect(POS_VERTICES.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+        mPosVertices.put(POS_VERTICES).position(0);
+
+        mProgram = GLToolbox.createProgram(VERTEX_SHADER, FRAGMENT_SHADER);
+        mTexSamplerHandle = GLES20.glGetUniformLocation(mProgram, "tex_sampler");
+        mTexCoordHandle = GLES20.glGetAttribLocation(mProgram, "a_texcoord");
+        mPosCoordHandle = GLES20.glGetAttribLocation(mProgram, "a_position");
     }
 
     @Override
     public void onSurfaceChanged(GL10 gl10, int width, int height) {
+        Log.d("majcn", "onSurfaceChanged");
         GLES20.glViewport(0, 0, width, height);
         GLToolbox.checkGlError("glViewport");
     }
 
     @Override
     public void onDrawFrame(GL10 gl10) {
+        Log.d("majcn", "onDrawFrame");
+        if(mTextures[0] == 0) {
+            Log.e("majcn", "No texture, no draw!");
+            return;
+        }
+
         // Use our shader program
         GLES20.glUseProgram(mProgram);
         GLToolbox.checkGlError("glUseProgram");

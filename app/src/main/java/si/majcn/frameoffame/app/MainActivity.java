@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
         });
 
         mImageViewGL = (FilterGLSurfaceView) findViewById(R.id.imageViewGL);
-        mImageViewGL.init(original);
+        mImageViewGL.setImage(original);
         mImageViewGL.setOnClickListener((view) -> {
             nextEffect();
         });
