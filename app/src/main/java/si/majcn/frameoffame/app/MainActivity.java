@@ -48,6 +48,18 @@ public class MainActivity extends Activity {
         effectNumber++;
     }
 
+    @Override
+    protected void onPause() {
+        mImageViewGL.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        mImageViewGL.onResume();
+        super.onResume();
+    }
+
     private class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
         private final WeakReference<ImageView> imageViewReference;
 
