@@ -40,7 +40,7 @@ public class FilterGLSurfaceView extends GLSurfaceView implements GLSurfaceView.
 
     public void init(Bitmap image) {
         if(!mInitialized) {
-            mTextures = new int[2];
+            mTextures = new int[1];
 
             setEGLContextClientVersion(2);
             setRenderer(this);
@@ -65,7 +65,7 @@ public class FilterGLSurfaceView extends GLSurfaceView implements GLSurfaceView.
     }
 
     private void loadTexture(Bitmap image) {
-        GLES20.glGenTextures(2, mTextures, 0);
+        GLES20.glGenTextures(1, mTextures, 0);
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, mTextures[0]);
         GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, image, 0);
         GLToolbox.initTexParams();
@@ -73,13 +73,40 @@ public class FilterGLSurfaceView extends GLSurfaceView implements GLSurfaceView.
 
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
+        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     }
 
     @Override
-    public void onSurfaceChanged(GL10 gl10, int i, int i2) {
+    public void onSurfaceChanged(GL10 gl10, int width, int height) {
+        GLES20.glViewport(0, 0, width, height);
+        GLToolbox.checkGlError("glViewport");
     }
 
     @Override
     public void onDrawFrame(GL10 gl10) {
+        // Use our shader program
+        GLES20.glUseProgram(mProgram);
+        GLToolbox.checkGlError("glUseProgram");
+
+        // Disable blending
+        GLES20.glDisable(GLES20.GL_BLEND);
+
+        // Set the vertex attributes
+        GLES20.glVertexAttribPointer(mTexCoordHandle, 2, GLES20.GL_FLOAT, false, 0, mTexVertices);
+        GLES20.glEnableVertexAttribArray(mTexCoordHandle);
+        GLES20.glVertexAttribPointer(mPosCoordHandle, 2, GLES20.GL_FLOAT, false, 0, mPosVertices);
+        GLES20.glEnableVertexAttribArray(mPosCoordHandle);
+        GLToolbox.checkGlError("vertex attribute setup");
+
+        // Set the input texture
+        GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
+        GLToolbox.checkGlError("glActiveTexture");
+        GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, mTextures[0]);
+        GLToolbox.checkGlError("glBindTexture");
+        GLES20.glUniform1i(mTexSamplerHandle, 0);
+
+        // Draw
+        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
+        GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
     }
 }
