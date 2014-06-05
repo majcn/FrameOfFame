@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
@@ -18,9 +17,8 @@ public class MainActivity extends Activity {
     }
 
     private Bitmap original;
-
-    private ImageView imageView;
-
+    private ImageView mImageView;
+    private FilterGLSurfaceView mImageViewGL;
     private int effectNumber;
 
     @Override
@@ -31,12 +29,15 @@ public class MainActivity extends Activity {
         original = BitmapFactory.decodeResource(getResources(), R.drawable.lena);
 
         effectNumber = 0;
-        imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setImageBitmap(original);
 
-        imageView.setOnClickListener((view) -> {
-            new BitmapWorkerTask(imageView).execute(effectNumber++);
+        mImageView = (ImageView) findViewById(R.id.imageView);
+        mImageView.setImageBitmap(original);
+        mImageView.setOnClickListener((view) -> {
+            new BitmapWorkerTask(mImageView).execute(effectNumber++);
         });
+
+        mImageViewGL = (FilterGLSurfaceView) findViewById(R.id.imageViewGL);
+        mImageViewGL.loadTexture(original);
     }
 
     private class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {

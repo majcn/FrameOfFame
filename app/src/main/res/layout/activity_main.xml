@@ -10,7 +10,8 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
     
-    <TextView
+    <si.majcn.frameoffame.app.FilterGLSurfaceView
+        android:id="@+id/imageViewGL"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
