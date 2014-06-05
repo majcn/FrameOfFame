@@ -10,6 +10,8 @@ import android.util.AttributeSet;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import utils.GLToolbox;
+
 public class FilterGLSurfaceView extends GLSurfaceView implements GLSurfaceView.Renderer {
 
     private int[] mTextures;
@@ -36,10 +38,7 @@ public class FilterGLSurfaceView extends GLSurfaceView implements GLSurfaceView.
         GLES20.glGenTextures(2, mTextures, 0);
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, mTextures[0]);
         GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, image, 0);
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MAG_FILTER, GLES20.GL_LINEAR);
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_MIN_FILTER, GLES20.GL_LINEAR);
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_S, GLES20.GL_CLAMP_TO_EDGE);
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE);
+        GLToolbox.initTexParams();
     }
 
     @Override
