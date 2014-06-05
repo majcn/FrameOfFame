@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package utils;
+package si.majcn.frameoffame.utils;
 
 import android.opengl.GLES20;
 
 public class GLToolbox {
+
     public static int loadShader(int shaderType, String source) {
         int shader = GLES20.glCreateShader(shaderType);
         if (shader != 0) {
