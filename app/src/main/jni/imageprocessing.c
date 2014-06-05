@@ -378,7 +378,7 @@ applyEffect(AndroidBitmapInfo *info,
 
 
 JNIEXPORT void JNICALL
-Java_si_majcn_imagejni_app_MainActivity_applyEffect(JNIEnv  *env,
+Java_si_majcn_frameoffame_app_MainActivity_applyEffect(JNIEnv  *env,
                                                     jobject  obj,
                                                     jobject  bitmap,
                                                     jint     effectNumber)

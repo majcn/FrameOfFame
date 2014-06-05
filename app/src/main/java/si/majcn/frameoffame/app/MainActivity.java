@@ -1,4 +1,4 @@
-package si.majcn.imagejni.app;
+package si.majcn.frameoffame.app;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
