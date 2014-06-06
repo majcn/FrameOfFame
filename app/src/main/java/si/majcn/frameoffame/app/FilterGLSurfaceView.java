@@ -16,6 +16,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import si.majcn.frameoffame.utils.GLToolbox;
+import si.majcn.frameoffame.utils.RawResourceReader;
 
 public class FilterGLSurfaceView extends GLSurfaceView implements GLSurfaceView.Renderer {
     private int[] mTextures;
@@ -26,40 +27,28 @@ public class FilterGLSurfaceView extends GLSurfaceView implements GLSurfaceView.
     private boolean mIsCreated;
 
     private Bitmap mImage;
+    private int mEffectNumber;
+    private Context mContext;
 
     private int mProgram;
     private int mTexSamplerHandle;
     private int mTexCoordHandle;
     private int mPosCoordHandle;
-
-    private static final String VERTEX_SHADER =
-            "attribute vec4 a_position;\n" +
-                    "attribute vec2 a_texcoord;\n" +
-                    "varying vec2 v_texcoord;\n" +
-                    "void main() {\n" +
-                    "  gl_Position = a_position;\n" +
-                    "  v_texcoord = a_texcoord;\n" +
-                    "}\n";
-
-    private static final String FRAGMENT_SHADER =
-            "precision mediump float;\n" +
-                    "uniform sampler2D tex_sampler;\n" +
-                    "varying vec2 v_texcoord;\n" +
-                    "void main() {\n" +
-                    "  gl_FragColor = texture2D(tex_sampler, v_texcoord);\n" +
-                    "}\n";
+    private int mFilterIndexHandle;
 
     public FilterGLSurfaceView(Context context) {
         super(context);
-        init();
+        init(context);
     }
 
     public FilterGLSurfaceView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(context);
     }
 
-    private void init() {
+    private void init(Context context) {
+        mContext = context;
+
         mTextures = new int[]{0};
         mIsCreated = false;
 
@@ -74,6 +63,11 @@ public class FilterGLSurfaceView extends GLSurfaceView implements GLSurfaceView.
         if (mIsCreated) {
             initTexture();
         }
+    }
+
+    public void setEffect(int i) {
+        mEffectNumber = i;
+        requestRender();
     }
 
     private void initTexture() {
@@ -101,10 +95,11 @@ public class FilterGLSurfaceView extends GLSurfaceView implements GLSurfaceView.
         mPosVertices = ByteBuffer.allocateDirect(POS_VERTICES.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
         mPosVertices.put(POS_VERTICES).position(0);
 
-        mProgram = GLToolbox.createProgram(VERTEX_SHADER, FRAGMENT_SHADER);
+        mProgram = GLToolbox.createProgram(RawResourceReader.readTextFileFromRawResource(mContext, R.raw.vertex_shader), RawResourceReader.readTextFileFromRawResource(mContext, R.raw.fragment_shader));
         mTexSamplerHandle = GLES20.glGetUniformLocation(mProgram, "tex_sampler");
         mTexCoordHandle = GLES20.glGetAttribLocation(mProgram, "a_texcoord");
         mPosCoordHandle = GLES20.glGetAttribLocation(mProgram, "a_position");
+        mFilterIndexHandle = GLES20.glGetUniformLocation(mProgram, "filter_index");
     }
 
     @Override
@@ -112,6 +107,26 @@ public class FilterGLSurfaceView extends GLSurfaceView implements GLSurfaceView.
         Log.d("majcn", "onSurfaceChanged");
         GLES20.glViewport(0, 0, width, height);
         GLToolbox.checkGlError("glViewport");
+
+        if (mPosVertices != null) {
+            float imgAspectRatio = mImage.getWidth() / (float) mImage.getHeight();
+            float viewAspectRatio = width / (float)height;
+            float relativeAspectRatio = viewAspectRatio / imgAspectRatio;
+            float x0, y0, x1, y1;
+            if (relativeAspectRatio > 1.0f) {
+                x0 = -1.0f / relativeAspectRatio;
+                y0 = -1.0f;
+                x1 = 1.0f / relativeAspectRatio;
+                y1 = 1.0f;
+            } else {
+                x0 = -1.0f;
+                y0 = -relativeAspectRatio;
+                x1 = 1.0f;
+                y1 = relativeAspectRatio;
+            }
+            float[] coords = new float[] { x0, y0, x1, y0, x0, y1, x1, y1 };
+            mPosVertices.put(coords).position(0);
+        }
     }
 
     @Override
@@ -142,6 +157,8 @@ public class FilterGLSurfaceView extends GLSurfaceView implements GLSurfaceView.
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, mTextures[0]);
         GLToolbox.checkGlError("glBindTexture");
         GLES20.glUniform1i(mTexSamplerHandle, 0);
+
+        GLES20.glUniform1i(mFilterIndexHandle, mEffectNumber);
 
         // Draw
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);

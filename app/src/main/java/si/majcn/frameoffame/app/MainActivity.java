@@ -45,7 +45,8 @@ public class MainActivity extends Activity {
 
     private void nextEffect() {
         new BitmapWorkerTask(mImageView).execute(effectNumber);
-        effectNumber++;
+        mImageViewGL.setEffect(effectNumber);
+        effectNumber = (effectNumber + 1) % 34;
     }
 
     @Override
