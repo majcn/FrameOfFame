@@ -1,4 +1,4 @@
-package si.majcn.frameoffame.app;
+package si.majcn.frameoffame;
 
 import android.content.Context;
 import android.graphics.Bitmap;

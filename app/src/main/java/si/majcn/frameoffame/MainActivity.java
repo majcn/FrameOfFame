@@ -1,10 +1,11 @@
-package si.majcn.frameoffame.app;
+package si.majcn.frameoffame;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import java.lang.ref.WeakReference;
@@ -30,23 +31,22 @@ public class MainActivity extends Activity {
 
         effectNumber = 0;
 
+        View.OnClickListener onClickNextEffect = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new BitmapWorkerTask(mImageView).execute(effectNumber);
+                mImageViewGL.setEffect(effectNumber);
+                effectNumber = (effectNumber + 1) % 34;
+            }
+        };
+
         mImageView = (ImageView) findViewById(R.id.imageView);
         mImageView.setImageBitmap(original);
-        mImageView.setOnClickListener((view) -> {
-            nextEffect();
-        });
+        mImageView.setOnClickListener(onClickNextEffect);
 
         mImageViewGL = (FilterGLSurfaceView) findViewById(R.id.imageViewGL);
         mImageViewGL.setImage(original);
-        mImageViewGL.setOnClickListener((view) -> {
-            nextEffect();
-        });
-    }
-
-    private void nextEffect() {
-        new BitmapWorkerTask(mImageView).execute(effectNumber);
-        mImageViewGL.setEffect(effectNumber);
-        effectNumber = (effectNumber + 1) % 34;
+        mImageViewGL.setOnClickListener(onClickNextEffect);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
 
         public BitmapWorkerTask(ImageView imageView) {
             // Use a WeakReference to ensure the ImageView can be garbage collected
-            imageViewReference = new WeakReference<>(imageView);
+            imageViewReference = new WeakReference<ImageView>(imageView);
         }
 
         @Override
