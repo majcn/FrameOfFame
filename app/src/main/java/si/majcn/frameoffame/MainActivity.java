@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
 
@@ -19,7 +20,8 @@ public class MainActivity extends Activity {
 
     private Bitmap original;
     private ImageView mImageView;
-    private FilterGLSurfaceView mImageViewGL;
+    private ImageView mImageViewGL;
+    private TextView mTextView;
     private int effectNumber;
 
     @Override
@@ -29,35 +31,40 @@ public class MainActivity extends Activity {
 
         original = BitmapFactory.decodeResource(getResources(), R.drawable.lena);
 
+
         effectNumber = 0;
 
         View.OnClickListener onClickNextEffect = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new BitmapWorkerTask(mImageView).execute(effectNumber);
-                mImageViewGL.setEffect(effectNumber);
-                effectNumber = (effectNumber + 1) % 34;
+                int resID = getResources().getIdentifier("lena" + effectNumber, "drawable", getPackageName());
+                mImageViewGL.setImageBitmap(BitmapFactory.decodeResource(getResources(), resID));
+                mTextView.setText("Efekt: " + effectNumber);
+                effectNumber = (effectNumber + 1) % 14;
             }
         };
+
+        mTextView = (TextView) findViewById(R.id.counter);
 
         mImageView = (ImageView) findViewById(R.id.imageView);
         mImageView.setImageBitmap(original);
         mImageView.setOnClickListener(onClickNextEffect);
 
-        mImageViewGL = (FilterGLSurfaceView) findViewById(R.id.imageViewGL);
-        mImageViewGL.setImage(original);
+        mImageViewGL = (ImageView) findViewById(R.id.imageViewGL);
+        mImageViewGL.setImageBitmap(original);
         mImageViewGL.setOnClickListener(onClickNextEffect);
     }
 
     @Override
     protected void onPause() {
-        mImageViewGL.onPause();
+        // mImageViewGL.onPause();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        mImageViewGL.onResume();
+        // mImageViewGL.onResume();
         super.onResume();
     }
 
