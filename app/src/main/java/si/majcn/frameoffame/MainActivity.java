@@ -3,16 +3,27 @@ package si.majcn.frameoffame;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.YuvImage;
+import android.hardware.Camera;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Surface;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements SurfaceHolder.Callback, Camera.PreviewCallback{
 
     static {
         System.loadLibrary("imageprocessing");
@@ -23,6 +34,38 @@ public class MainActivity extends Activity {
     private ImageView mImageViewGL;
     private TextView mTextView;
     private int effectNumber;
+
+    private Camera mCamera;
+    private SurfaceView mView;
+
+    private Camera.FaceDetectionListener faceDetectionListener = new Camera.FaceDetectionListener() {
+        @Override
+        public void onFaceDetection(final Camera.Face[] faces, Camera camera) {
+            Log.d("onFaceDetection", "Number of Faces:" + faces.length);
+
+            if (faces.length > 0) {
+                mCamera.takePicture(null, null, new Camera.PictureCallback() {
+                    @Override
+                    public void onPictureTaken(byte[] bytes, Camera camera) {
+                        original = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                        Rect r = faces[0].rect;
+                        Log.e("majcn", String.format("%d %d", original.getWidth(), original.getHeight()));
+                        Log.d("majcn", String.format("left: %d, right: %d, bottom %d, top %d, height %d, width %d", r.left, r.right, r.bottom, r.top, r.height(), r.width()));
+                        original = Bitmap.createBitmap(original, r.left, r.top, original.getWidth()-r.left, original.getHeight()-r.top);
+                        mImageView.setImageBitmap(original);
+
+                        Bitmap image = original.copy(Bitmap.Config.ARGB_8888, true);
+                        applyEffect(image, 10);
+                        mImageViewGL.setImageBitmap(image);
+                    }
+                });
+            }
+
+            mCamera.stopFaceDetection();
+            // Update the view now!
+//            mFaceView.setFaces(faces);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +88,9 @@ public class MainActivity extends Activity {
             }
         };
 
+        mView = new SurfaceView(this);
+        addContentView(mView, new ViewGroup.LayoutParams(10, 10));
+
         mTextView = (TextView) findViewById(R.id.counter);
 
         mImageView = (ImageView) findViewById(R.id.imageView);
@@ -57,6 +103,14 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+
+        SurfaceHolder holder = mView.getHolder();
+        holder.addCallback(this);
+    }
+
+    @Override
     protected void onPause() {
         // mImageViewGL.onPause();
         super.onPause();
@@ -66,6 +120,73 @@ public class MainActivity extends Activity {
     protected void onResume() {
         // mImageViewGL.onResume();
         super.onResume();
+    }
+
+    @Override
+    public void surfaceCreated(SurfaceHolder surfaceHolder) {
+        Log.d("majcn", "surfaceCreated");
+        mCamera = Camera.open();
+        try {
+            mCamera.setPreviewDisplay(surfaceHolder);
+            mCamera.setPreviewCallback(this);
+        } catch (IOException e) {
+            Log.e("majcn", "WTF", e);
+        }
+        mCamera.setFaceDetectionListener(faceDetectionListener);
+    }
+
+    @Override
+    public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i2, int i3) {
+        Camera.Parameters parameters = mCamera.getParameters();
+        List<Camera.Size> previewSizes = parameters.getSupportedPreviewSizes();
+        Camera.Size previewSize = previewSizes.get(0);
+        // And set them:
+        parameters.setPreviewSize(previewSize.width, previewSize.height);
+
+        int mDisplayRotation = getDisplayRotation(this);
+        int mDisplayOrientation = getDisplayOrientation(mDisplayRotation, 0);
+        mCamera.setDisplayOrientation(mDisplayOrientation);
+
+        Log.d("majcn", "surfaceChanged");
+        mCamera.startPreview();
+        mCamera.startFaceDetection();
+    }
+
+    public static int getDisplayRotation(Activity activity) {
+        int rotation = activity.getWindowManager().getDefaultDisplay()
+                .getRotation();
+        switch (rotation) {
+            case Surface.ROTATION_0: return 0;
+            case Surface.ROTATION_90: return 90;
+            case Surface.ROTATION_180: return 180;
+            case Surface.ROTATION_270: return 270;
+        }
+        return 0;
+    }
+
+    public static int getDisplayOrientation(int degrees, int cameraId) {
+        // See android.hardware.Camera.setDisplayOrientation for
+        // documentation.
+        Camera.CameraInfo info = new Camera.CameraInfo();
+        Camera.getCameraInfo(cameraId, info);
+        int result;
+        if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+            result = (info.orientation + degrees) % 360;
+            result = (360 - result) % 360;  // compensate the mirror
+        } else {  // back-facing
+            result = (info.orientation - degrees + 360) % 360;
+        }
+        return result;
+    }
+
+    @Override
+    public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
+        mCamera.release();
+    }
+
+    @Override
+    public void onPreviewFrame(byte[] bytes, Camera camera) {
+
     }
 
     private class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
