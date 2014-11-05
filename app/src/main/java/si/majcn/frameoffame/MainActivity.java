@@ -3,6 +3,7 @@ package si.majcn.frameoffame;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.YuvImage;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -38,30 +40,38 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
     private Camera mCamera;
     private SurfaceView mView;
 
+    private Camera.Face foundFace;
+    private boolean faceLock = false;
+
     private Camera.FaceDetectionListener faceDetectionListener = new Camera.FaceDetectionListener() {
         @Override
         public void onFaceDetection(final Camera.Face[] faces, Camera camera) {
-            Log.d("onFaceDetection", "Number of Faces:" + faces.length);
+            Log.w("onFaceDetection", "Number of Faces:" + faces.length);
 
             if (faces.length > 0) {
-                mCamera.takePicture(null, null, new Camera.PictureCallback() {
-                    @Override
-                    public void onPictureTaken(byte[] bytes, Camera camera) {
-                        original = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                        Rect r = faces[0].rect;
-                        Log.e("majcn", String.format("%d %d", original.getWidth(), original.getHeight()));
-                        Log.d("majcn", String.format("left: %d, right: %d, bottom %d, top %d, height %d, width %d", r.left, r.right, r.bottom, r.top, r.height(), r.width()));
-                        original = Bitmap.createBitmap(original, r.left, r.top, original.getWidth()-r.left, original.getHeight()-r.top);
-                        mImageView.setImageBitmap(original);
-
-                        Bitmap image = original.copy(Bitmap.Config.ARGB_8888, true);
-                        applyEffect(image, 10);
-                        mImageViewGL.setImageBitmap(image);
-                    }
-                });
+                foundFace  = faces[0];
+            } else {
+                foundFace = null;
             }
 
-            mCamera.stopFaceDetection();
+//                mCamera.takePicture(null, null, new Camera.PictureCallback() {
+//                    @Override
+//                    public void onPictureTaken(byte[] bytes, Camera camera) {
+//                        original = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+//                        Rect r = faces[0].rect;
+//                        Log.e("majcn", String.format("%d %d", original.getWidth(), original.getHeight()));
+//                        Log.d("majcn", String.format("left: %d, right: %d, bottom %d, top %d, height %d, width %d", r.left, r.right, r.bottom, r.top, r.height(), r.width()));
+//                        original = Bitmap.createBitmap(original, r.left, r.top, original.getWidth()-r.left, original.getHeight()-r.top);
+//                        mImageView.setImageBitmap(original);
+//
+//                        Bitmap image = original.copy(Bitmap.Config.ARGB_8888, true);
+//                        applyEffect(image, 10);
+//                        mImageViewGL.setImageBitmap(image);
+//                    }
+//                });
+//            }
+
+//            mCamera.stopFaceDetection();
             // Update the view now!
 //            mFaceView.setFaces(faces);
         }
@@ -89,7 +99,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
         };
 
         mView = new SurfaceView(this);
-        addContentView(mView, new ViewGroup.LayoutParams(10, 10));
+        addContentView(mView, new ViewGroup.LayoutParams(1, 1));
 
         mTextView = (TextView) findViewById(R.id.counter);
 
@@ -186,7 +196,30 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
 
     @Override
     public void onPreviewFrame(byte[] bytes, Camera camera) {
+        if (foundFace != null) {
+            Log.w("majcn", "Found face");
+            Camera.Parameters parameters = camera.getParameters();
+            Camera.Size size = parameters.getPreviewSize();
+            YuvImage yuvImage = new YuvImage(bytes, parameters.getPreviewFormat(), size.width, size.height, null);
 
+            Matrix matrix = new Matrix();
+            matrix.postScale(size.width / 2000f, size.height / 2000f);
+            matrix.postTranslate(size.width / 2f, size.height / 2f);
+
+            Log.w("majcn", foundFace.rect.left + "");
+            Log.w("majcn", foundFace.rect.top + "");
+            int x = (foundFace.rect.left + 1000) * size.width / 2000;
+            int y = (foundFace.rect.top + 1000) * size.height / 2000;
+
+            x = 0;
+            y = 0;
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            yuvImage.compressToJpeg(new Rect(x, y, size.width-x, size.height-y), 50, out);
+            byte[] imageBytes = out.toByteArray();
+            Bitmap image = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+//            applyEffect(image, 12);
+            mImageView.setImageBitmap(image);
+        }
     }
 
     private class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
