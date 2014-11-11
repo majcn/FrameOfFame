@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -44,6 +45,9 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
         public void onManagerConnected(int status) {
             if (status == LoaderCallbackInterface.SUCCESS) {
                 Log.i(TAG, "OpenCV loaded successfully");
+
+                System.loadLibrary("image_processing");
+
                 mJavaDetector = OpenCVFactory.getClassifier(MainActivity.this, R.raw.haarcascade_profileface);
                 mOpenCvCameraView.enableView();
             } else {
@@ -55,6 +59,8 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         setContentView(R.layout.activity_main);
 
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.fd_activity_surface_view);
@@ -125,10 +131,17 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
                 Mat intermediateMat = mRgba.submat(face);
                 Imgproc.resize(intermediateMat, mRealView, mRgba.size());
                 intermediateMat.release();
+                applyEffect(mRealView.getNativeObjAddr(), 0);
                 return mRealView;
             }
         }
 
-        return mRgba;
+        if (mRealView.empty()) {
+            return mRgba;
+        } else {
+            return mRealView;
+        }
     }
+
+    public native void applyEffect(long matAddrRgba, int effectNumber);
 }
