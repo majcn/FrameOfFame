@@ -39,6 +39,7 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
     private float mRelativeFaceSize = 0.2f;
 
     private boolean DEBUG_MODE = false;
+    private int cameraId = 0;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -64,12 +65,22 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
         setContentView(R.layout.activity_main);
 
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.fd_activity_surface_view);
-        mOpenCvCameraView.setCameraIndex(1);
+        mOpenCvCameraView.setCameraIndex(cameraId);
         mOpenCvCameraView.setCvCameraViewListener(this);
         mOpenCvCameraView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DEBUG_MODE = !DEBUG_MODE;
+            }
+        });
+        mOpenCvCameraView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                cameraId = (cameraId + 1) % 2;
+                mOpenCvCameraView.setCameraIndex(cameraId);
+                mOpenCvCameraView.disableView();
+                mOpenCvCameraView.enableView();
+                return false;
             }
         });
     }
@@ -127,6 +138,7 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
             Rect face = facesArray[0];
             if (DEBUG_MODE) {
                 Core.rectangle(mRgba, face.tl(), face.br(), FACE_RECT_COLOR, 3);
+                mRealView.release();
             } else {
                 Mat intermediateMat = mRgba.submat(face);
                 Imgproc.resize(intermediateMat, mRealView, mRgba.size());
