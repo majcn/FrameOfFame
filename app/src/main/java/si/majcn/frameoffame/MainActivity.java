@@ -49,7 +49,7 @@ public class MainActivity extends Activity implements CameraBridgeViewBase.CvCam
 
                 System.loadLibrary("image_processing");
 
-                mJavaDetector = OpenCVFactory.getClassifier(MainActivity.this, R.raw.haarcascade_profileface);
+                mJavaDetector = OpenCVFactory.getClassifier(MainActivity.this, R.raw.haarcascade_frontalface_default);
                 mOpenCvCameraView.enableView();
             } else {
                 super.onManagerConnected(status);
