@@ -17,24 +17,36 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GIMP_LUT_H__
-#define __GIMP_LUT_H__
+#include "gimplut.h"
+#include "macros.h"
+#include <math.h>
 
-#include <opencv2/core/core.hpp>
 
-
-typedef struct
+void
+gimp_lut_init (GimpLut *lut,
+               int      levels)
 {
-    int levels;
+    lut->levels = levels;
+}
 
-    unsigned char luts[256];
-} GimpLut;
+void
+gimp_lut_setup (GimpLut *lut)
+{
+    int i;
+    double val;
 
+    for (i = 0; i < 256; i++)
+    {
+        val = 255.0 * floor (((i / 255.0) * (lut->levels - 1.0)) + 0.5) / (lut->levels - 1.0) + 0.5;
+        lut->luts[i] = CLAMP0255 (val);
+    }
+}
 
-void   gimp_lut_init    (GimpLut           *lut,
-                         int                levels);
-void   gimp_lut_setup   (GimpLut           *lut);
-void   gimp_lut_process (GimpLut *lut, cv::Mat& rgba);
-
-
-#endif /* __GIMP_LUT_H__ */
+void
+gimp_lut_process (GimpLut           *lut,
+                  RGBA              *rgba)
+{
+    rgba->r = lut->luts[rgba->r];
+    rgba->g = lut->luts[rgba->g];
+    rgba->b = lut->luts[rgba->b];
+}
