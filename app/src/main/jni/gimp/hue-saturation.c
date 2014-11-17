@@ -17,6 +17,7 @@
 
 #include "hue-saturation.h"
 #include "macros.h"
+#include "gimpcolorspace.h"
 
 
 void

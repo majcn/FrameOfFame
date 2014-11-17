@@ -3,15 +3,16 @@
 #include <opencv2/core/core.hpp>
 
 #include "gimp/rgba.h"
-#include "gimp/color-balance.h"
-#include "gimp/gimplut.h"
-#include "gimp/hue-saturation.h"
+#include "gimp/gimpcolorspace.c"
+#include "gimp/color-balance.c"
+#include "gimp/gimplut.c"
+#include "gimp/hue-saturation.c"
 
 static void apply_color_balance(ColorBalance *cb, cv::Mat& rgbaMat) {
     for(int y = 0; y < rgbaMat.rows; y++) {
         for(int x = 0; x < rgbaMat.cols; x++) {
             RGBA& cur = rgbaMat.ptr<RGBA>(y)[x];
-            color_balance_process(cb, cur);
+            color_balance_process(cb, &cur);
         }
     }
 }
@@ -20,7 +21,7 @@ static void apply_lut(GimpLut *lut, cv::Mat& rgbaMat) {
     for(int y = 0; y < rgbaMat.rows; y++) {
         for(int x = 0; x < rgbaMat.cols; x++) {
             RGBA& cur = rgbaMat.ptr<RGBA>(y)[x];
-            gimp_lut_process(lut, cur);
+            gimp_lut_process(lut, &cur);
         }
     }
 }
@@ -29,7 +30,7 @@ static void apply_hue_saturation(HueSaturation *hs, cv::Mat& rgbaMat) {
     for(int y = 0; y < rgbaMat.rows; y++) {
         for(int x = 0; x < rgbaMat.cols; x++) {
             RGBA& cur = rgbaMat.ptr<RGBA>(y)[x];
-            hue_saturation_process(hs, cur);
+            hue_saturation_process(hs, &cur);
         }
     }
 }
