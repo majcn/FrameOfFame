@@ -1,8 +1,6 @@
-package si.majcn.frameoffame;
+package si.majcn.frameoffame.fragment;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Camera;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -20,9 +18,13 @@ import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.mod.android.CameraBridgeViewBase;
+import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.objdetect.Objdetect;
+
+import si.majcn.frameoffame.MainActivity;
+import si.majcn.frameoffame.OpenCVFactory;
+import si.majcn.frameoffame.R;
 
 /**
  * Created by majcn on 19.11.2014.
@@ -70,6 +72,13 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
         super.onAttach(activity);
 
         context = (MainActivity)activity;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+        context = null;
     }
 
     @Override

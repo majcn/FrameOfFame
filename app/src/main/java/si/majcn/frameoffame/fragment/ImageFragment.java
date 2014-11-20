@@ -1,12 +1,8 @@
-package si.majcn.frameoffame;
+package si.majcn.frameoffame.fragment;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -17,9 +13,8 @@ import android.widget.ImageView;
 
 import org.opencv.android.Utils;
 import org.opencv.core.Mat;
-import org.opencv.mod.android.CameraBridgeViewBase;
 
-import java.util.ResourceBundle;
+import si.majcn.frameoffame.R;
 
 /**
  * Created by majcn on 19.11.2014.
