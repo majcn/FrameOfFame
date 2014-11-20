@@ -56,8 +56,6 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
             if (status == LoaderCallbackInterface.SUCCESS) {
                 Log.i(TAG, "OpenCV loaded successfully");
 
-//                System.loadLibrary("image_processing");
-
                 mJavaDetector = OpenCVFactory.getClassifier(context, R.raw.haarcascade_frontalface_default);
                 mOpenCvCameraView.enableView();
             } else {
@@ -65,8 +63,6 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
             }
         }
     };
-
-    public CameraFragment() {}
 
     @Override
     public void onAttach(Activity activity) {

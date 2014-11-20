@@ -1,5 +1,6 @@
 package si.majcn.frameoffame;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,6 +15,12 @@ import si.majcn.frameoffame.fragment.ImageFragment;
 
 
 public class MainActivity extends FragmentActivity {
+
+    static {
+        System.loadLibrary("imageprocessing");
+    }
+
+    public static native void applyEffect(Bitmap bmp, int i);
 
     private CustomContext customContext;
 
