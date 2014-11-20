@@ -22,8 +22,9 @@ import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.objdetect.Objdetect;
 
+import si.majcn.frameoffame.CustomContext;
 import si.majcn.frameoffame.MainActivity;
-import si.majcn.frameoffame.OpenCVFactory;
+import si.majcn.frameoffame.opencv.OpenCVFactory;
 import si.majcn.frameoffame.R;
 
 /**
@@ -55,7 +56,7 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
             if (status == LoaderCallbackInterface.SUCCESS) {
                 Log.i(TAG, "OpenCV loaded successfully");
 
-                System.loadLibrary("image_processing");
+//                System.loadLibrary("image_processing");
 
                 mJavaDetector = OpenCVFactory.getClassifier(context, R.raw.haarcascade_frontalface_default);
                 mOpenCvCameraView.enableView();
@@ -144,10 +145,11 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
             Rect face = facesArray[0];
             curFace = getResizedRect(face, mRgba.width(), mRgba.height());
 
+            CustomContext cc = context.getCustomContext();
             Mat intermediateMat = mRgba.submat(curFace);
-            Imgproc.resize(intermediateMat, mRealView, mRgba.size());
+            Imgproc.resize(intermediateMat, mRealView, new Size(cc.getImageSize(), cc.getImageSize()));
             intermediateMat.release();
-            context.fillBitmap(mRealView);
+            cc.fillBitmap(mRealView);
         }
 
         if (curFace != null) {

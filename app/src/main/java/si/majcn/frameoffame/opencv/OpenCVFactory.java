@@ -1,4 +1,4 @@
-package si.majcn.frameoffame;
+package si.majcn.frameoffame.opencv;
 
 import android.content.Context;
 import android.util.Log;

@@ -1,6 +1,8 @@
 /* GIMP - The GNU Image Manipulation Program
  * Copyright (C) 1995 Spencer Kimball and Peter Mattis
  *
+ * gimplut.c: Copyright (C) 1999 Jay Cox <jaycox@gimp.org>
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
@@ -15,32 +17,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __HUE_SATURATION_H__
-#define __HUE_SATURATION_H__
+#ifndef __GIMP_LUT_H__
+#define __GIMP_LUT_H__
 
-#include "rgba.h"
+#include <android/bitmap.h>
 
 
 
 typedef struct
 {
-    double hue;
-    double lightness;
-    double saturation;
+    int levels;
 
-    int hue_transfer[256];
-    int lightness_transfer[256];
-    int saturation_transfer[256];
-} HueSaturation;
+    unsigned char luts[256];
+} GimpLut;
 
 
-void   hue_saturation_init    (HueSaturation     *cb,
-                               double             hue,
-                               double             lightness,
-                               double             saturation);
-void   hue_saturation_setup   (HueSaturation     *hs);
-void   hue_saturation_process (HueSaturation     *hs,
-                               RGBA              *rgba);
+void   gimp_lut_init    (GimpLut           *lut,
+                         int                levels);
+void   gimp_lut_setup   (GimpLut           *lut);
+void   gimp_lut_process (GimpLut           *lut,
+                         AndroidBitmapInfo *info,
+                         void              *pixels);
 
 
-#endif  /*  __HUE_SATURATION_H__  */
+#endif /* __GIMP_LUT_H__ */

@@ -17,7 +17,6 @@
 
 #include "hue-saturation.h"
 #include "macros.h"
-#include "gimpcolorspace.h"
 
 
 void
@@ -76,21 +75,29 @@ hue_saturation_setup (HueSaturation *hs)
 
 void
 hue_saturation_process (HueSaturation     *hs,
-                        RGBA              *rgba)
+                        AndroidBitmapInfo *info,
+                        void              *pixels)
 {
-    int r, g, b, r_n, g_n, b_n;
+    int xx, yy, r, g, b, r_n, g_n, b_n;
+    uint32_t *line;
 
-    r = rgba->r;
-    g = rgba->g;
-    b = rgba->b;
+    for (yy = 0; yy < info->height; yy++)
+    {
+        line = (uint32_t *)pixels;
+        for (xx = 0; xx < info->width; xx++)
+        {
+            r = (int) ((line[xx] & 0x00FF0000) >> 16);
+            g = (int) ((line[xx] & 0x0000FF00) >> 8);
+            b = (int) (line[xx] & 0x00000FF );
 
-    gimp_rgb_to_hsl_int (&r, &g, &b);
-    r_n = hs->hue_transfer[r];
-    g_n = hs->saturation_transfer[g];
-    b_n = hs->lightness_transfer[b];
-    gimp_hsl_to_rgb_int (&r_n, &g_n, &b_n);
+            gimp_rgb_to_hsl_int (&r, &g, &b);
+            r_n = hs->hue_transfer[r];
+            g_n = hs->saturation_transfer[g];
+            b_n = hs->lightness_transfer[b];
+            gimp_hsl_to_rgb_int (&r_n, &g_n, &b_n);
 
-    rgba->r = CLAMP0255 (r_n);
-    rgba->g = CLAMP0255 (g_n);
-    rgba->b = CLAMP0255 (b_n);
+            line[xx] = ((r_n << 16) & 0x00FF0000) | ((g_n << 8) & 0x0000FF00) | (b_n & 0x000000FF);
+        }
+        pixels = (char *)pixels + info->stride;
+    }
 }

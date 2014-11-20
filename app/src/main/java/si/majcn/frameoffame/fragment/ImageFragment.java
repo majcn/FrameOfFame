@@ -1,5 +1,6 @@
 package si.majcn.frameoffame.fragment;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
@@ -14,6 +15,8 @@ import android.widget.ImageView;
 import org.opencv.android.Utils;
 import org.opencv.core.Mat;
 
+import si.majcn.frameoffame.CustomContext;
+import si.majcn.frameoffame.MainActivity;
 import si.majcn.frameoffame.R;
 
 /**
@@ -21,12 +24,17 @@ import si.majcn.frameoffame.R;
  */
 public class ImageFragment extends Fragment {
 
-    private ImageView imageView;
-    private Bitmap[] bitmaps;
-    private AnimationDrawable anim;
-    private int i = 0;
+    private CustomContext cc;
 
-    public ImageFragment() {}
+    private ImageView imageView;
+    private AnimationDrawable anim;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        cc = ((MainActivity)activity).getCustomContext();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,23 +43,11 @@ public class ImageFragment extends Fragment {
         anim = new AnimationDrawable();
         anim.setOneShot(false);
         imageView = (ImageView) w.findViewById(R.id.image123);
-        bitmaps = new Bitmap[15];
-        for(int i=0; i<15; i++) {
-            bitmaps[i] = Bitmap.createBitmap(1280, 960, Bitmap.Config.ARGB_8888);
-            anim.addFrame(new BitmapDrawable(getResources(), bitmaps[i]), 1000);
+        for (Bitmap bmp : cc.getBitmaps()) {
+            anim.addFrame(new BitmapDrawable(getResources(), bmp), 1000);
         }
         imageView.setImageDrawable(anim);
 
         return w;
-    }
-
-    public boolean setNextImage(Mat image) {
-        Utils.matToBitmap(image, bitmaps[i]);
-//            anim.addFrame(new BitmapDrawable(mainActivity.getResources(), bitmaps[i]), 1000);
-            i = (i + 1) % 15;
-        Log.e("majcn", ""+i);
-//        }
-        anim.start();
-        return i == 0;
     }
 }

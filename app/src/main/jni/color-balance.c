@@ -80,21 +80,33 @@ color_balance_setup (ColorBalance *cb)
 
 void
 color_balance_process (ColorBalance      *cb,
-                       RGBA              *rgba)
+                       AndroidBitmapInfo *info,
+                       void              *pixels)
 {
-    int r_n, g_n, b_n;
+    int xx, yy, r, g, b, r_n, g_n, b_n;
+    uint32_t *line;
 
-    r_n = cb->r_lookup[rgba->r];
-    g_n = cb->g_lookup[rgba->g];
-    b_n = cb->b_lookup[rgba->b];
+    for (yy = 0; yy < info->height; yy++)
+    {
+        line = (uint32_t *)pixels;
+        for (xx = 0; xx < info->width; xx++)
+        {
+            r = (int) ((line[xx] & 0x00FF0000) >> 16);
+            g = (int) ((line[xx] & 0x0000FF00) >> 8);
+            b = (int) (line[xx] & 0x00000FF );
 
-    gimp_rgb_to_hsl_int (&r_n, &g_n, &b_n);
-    b_n = gimp_rgb_to_l_int (rgba->r, rgba->g, rgba->b);
-    gimp_hsl_to_rgb_int (&r_n, &g_n, &b_n);
+            r_n = cb->r_lookup[r];
+            g_n = cb->g_lookup[g];
+            b_n = cb->b_lookup[b];
 
-    rgba->r = CLAMP0255 (r_n);
-    rgba->g = CLAMP0255 (g_n);
-    rgba->b = CLAMP0255 (b_n);
+            gimp_rgb_to_hsl_int (&r_n, &g_n, &b_n);
+            b_n = gimp_rgb_to_l_int (r, g, b);
+            gimp_hsl_to_rgb_int (&r_n, &g_n, &b_n);
+
+            line[xx] = ((r_n << 16) & 0x00FF0000) | ((g_n << 8) & 0x0000FF00) | (b_n & 0x000000FF);
+        }
+        pixels = (char *)pixels + info->stride;
+    }
 }
 
 

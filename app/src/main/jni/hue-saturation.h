@@ -15,32 +15,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __COLOR_BALANCE_H__
-#define __COLOR_BALANCE_H__
+#ifndef __HUE_SATURATION_H__
+#define __HUE_SATURATION_H__
 
-#include "rgba.h"
+#include <android/bitmap.h>
 
 
 
 typedef struct
 {
-    double cyan_red;
-    double magenta_green;
-    double yellow_blue;
+    double hue;
+    double lightness;
+    double saturation;
 
-    unsigned char r_lookup[256];
-    unsigned char g_lookup[256];
-    unsigned char b_lookup[256];
-} ColorBalance;
-
-
-void   color_balance_init    (ColorBalance      *cb,
-                              double             c_r,
-                              double             m_g,
-                              double             y_b);
-void   color_balance_setup   (ColorBalance      *cb);
-void   color_balance_process (ColorBalance      *cb,
-                              RGBA              *rgba);
+    int hue_transfer[256];
+    int lightness_transfer[256];
+    int saturation_transfer[256];
+} HueSaturation;
 
 
-#endif  /*  __COLOR_BALANCE_H__  */
+void   hue_saturation_init    (HueSaturation     *cb,
+                               double             hue,
+                               double             lightness,
+                               double             saturation);
+void   hue_saturation_setup   (HueSaturation     *hs);
+void   hue_saturation_process (HueSaturation     *hs,
+                               AndroidBitmapInfo *info,
+                               void              *pixels);
+
+
+#endif  /*  __HUE_SATURATION_H__  */

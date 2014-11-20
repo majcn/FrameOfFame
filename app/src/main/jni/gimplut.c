@@ -44,9 +44,27 @@ gimp_lut_setup (GimpLut *lut)
 
 void
 gimp_lut_process (GimpLut           *lut,
-                  RGBA              *rgba)
+                  AndroidBitmapInfo *info,
+                  void              *pixels)
 {
-    rgba->r = lut->luts[rgba->r];
-    rgba->g = lut->luts[rgba->g];
-    rgba->b = lut->luts[rgba->b];
+    int xx, yy, r, g, b, r_n, g_n, b_n;
+    uint32_t *line;
+
+    for (yy = 0; yy < info->height; yy++)
+    {
+        line = (uint32_t *)pixels;
+        for (xx = 0; xx < info->width; xx++)
+        {
+            r = (int) ((line[xx] & 0x00FF0000) >> 16);
+            g = (int) ((line[xx] & 0x0000FF00) >> 8);
+            b = (int) (line[xx] & 0x00000FF );
+
+            r_n = lut->luts[r];
+            g_n = lut->luts[g];
+            b_n = lut->luts[b];
+
+            line[xx] = ((r_n << 16) & 0x00FF0000) | ((g_n << 8) & 0x0000FF00) | (b_n & 0x000000FF);
+        }
+        pixels = (char *)pixels + info->stride;
+    }
 }

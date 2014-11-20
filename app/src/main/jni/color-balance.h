@@ -1,8 +1,6 @@
 /* GIMP - The GNU Image Manipulation Program
  * Copyright (C) 1995 Spencer Kimball and Peter Mattis
  *
- * gimplut.c: Copyright (C) 1999 Jay Cox <jaycox@gimp.org>
- *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
@@ -17,26 +15,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GIMP_LUT_H__
-#define __GIMP_LUT_H__
+#ifndef __COLOR_BALANCE_H__
+#define __COLOR_BALANCE_H__
 
-#include "rgba.h"
-
+#include <android/bitmap.h>
 
 
 typedef struct
 {
-    int levels;
+    double cyan_red;
+    double magenta_green;
+    double yellow_blue;
 
-    unsigned char luts[256];
-} GimpLut;
-
-
-void   gimp_lut_init    (GimpLut           *lut,
-                         int                levels);
-void   gimp_lut_setup   (GimpLut           *lut);
-void   gimp_lut_process (GimpLut           *lut,
-                         RGBA              *rgba);
+    unsigned char r_lookup[256];
+    unsigned char g_lookup[256];
+    unsigned char b_lookup[256];
+} ColorBalance;
 
 
-#endif /* __GIMP_LUT_H__ */
+void   color_balance_init    (ColorBalance      *cb,
+                              double             c_r,
+                              double             m_g,
+                              double             y_b);
+void   color_balance_setup   (ColorBalance      *cb);
+void   color_balance_process (ColorBalance      *cb,
+                              AndroidBitmapInfo *info,
+                              void              *pixels);
+
+
+#endif  /*  __COLOR_BALANCE_H__  */
