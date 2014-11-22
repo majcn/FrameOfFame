@@ -19,9 +19,6 @@ import si.majcn.frameoffame.CustomContext;
 import si.majcn.frameoffame.MainActivity;
 import si.majcn.frameoffame.R;
 
-/**
- * Created by majcn on 19.11.2014.
- */
 public class ImageFragment extends Fragment {
 
     private CustomContext cc;

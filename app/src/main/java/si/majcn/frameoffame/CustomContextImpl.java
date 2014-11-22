@@ -5,9 +5,6 @@ import android.graphics.Bitmap;
 import org.opencv.android.Utils;
 import org.opencv.core.Mat;
 
-/**
- * Created by majcn on 20.11.2014.
- */
 public class CustomContextImpl implements CustomContext {
 
     private static final int BITMAP_NR = 15;

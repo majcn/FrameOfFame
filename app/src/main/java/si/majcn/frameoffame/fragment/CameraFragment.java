@@ -23,10 +23,8 @@ import si.majcn.frameoffame.CustomContext;
 import si.majcn.frameoffame.MainActivity;
 import si.majcn.frameoffame.R;
 import si.majcn.frameoffame.opencv.FaceDetector;
+import si.majcn.frameoffame.opencv.FaceDetectorImpl;
 
-/**
- * Created by majcn on 19.11.2014.
- */
 public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvCameraViewListener2 {
 
     private Context mContext;
@@ -45,7 +43,7 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
         @Override
         public void onManagerConnected(int status) {
             if (status == LoaderCallbackInterface.SUCCESS) {
-                mJavaDetector = new FaceDetector(mContext);
+                mJavaDetector = new FaceDetectorImpl(mContext);
                 mJavaDetector.start();
                 mOpenCvCameraView.enableView();
             } else {

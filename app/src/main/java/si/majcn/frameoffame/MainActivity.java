@@ -13,7 +13,6 @@ import org.opencv.core.Mat;
 import si.majcn.frameoffame.fragment.CameraFragment;
 import si.majcn.frameoffame.fragment.ImageFragment;
 
-
 public class MainActivity extends FragmentActivity {
 
     static {
