@@ -29,7 +29,6 @@ public class FaceDetector {
     private float mRelativeFaceSizeMax = 0.5f;
 
     private CascadeClassifier mFaceDetector;
-//    private CascadeClassifier eyeDetector;
 
     public FaceDetector(Context context) {
         mFaceDetector = OpenCVFactory.getClassifier(context, R.raw.haarcascade_frontalface_default);
