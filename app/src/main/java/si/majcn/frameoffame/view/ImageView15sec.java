@@ -1,6 +1,7 @@
 package si.majcn.frameoffame.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import si.majcn.frameoffame.CustomContext;
+import si.majcn.frameoffame.MainActivity;
 
 public class ImageView15sec extends ImageView {
 
@@ -38,6 +40,10 @@ public class ImageView15sec extends ImageView {
         init();
     }
 
+    private static int getEffectNr() {
+        return (int)Math.round(Math.random() * MainActivity.getNumberOfEffects());
+    }
+
     private void init() {
         setRefreshTimer(DEFAULT_TIMEOUT);
 
@@ -46,7 +52,9 @@ public class ImageView15sec extends ImageView {
             public void handleMessage(Message msg) {
                 synchronized (ImageView15sec.this) {
                     if (refreshing) {
-                        ImageView15sec.this.setImageBitmap(mCustomContext.getImage());
+                        Bitmap image = mCustomContext.getImage();
+                        MainActivity.applyEffect(image, getEffectNr());
+                        ImageView15sec.this.setImageBitmap(image);
                         ImageView15sec.this.invalidate();
                         Log.d(TAG, "image refreshed");
                         sendMessageDelayed(obtainMessage(MSG), refreshTimeMillis);

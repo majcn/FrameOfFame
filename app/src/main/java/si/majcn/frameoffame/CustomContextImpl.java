@@ -15,15 +15,10 @@ public class CustomContextImpl implements CustomContext {
         image = Bitmap.createBitmap(imageSize, imageSize, Bitmap.Config.ARGB_8888);
     }
 
-    private static int getEffectNr() {
-        return (int)Math.round(Math.random() * MainActivity.getNumberOfEffects());
-    }
-
     @Override
     public void doFace(Mat orig) {
         synchronized (image) {
             Utils.matToBitmap(orig, image);
-            MainActivity.applyEffect(image, getEffectNr());
         }
     }
 
