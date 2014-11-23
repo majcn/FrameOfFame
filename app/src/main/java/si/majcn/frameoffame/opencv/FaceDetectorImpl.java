@@ -6,7 +6,6 @@ import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Rect;
 import org.opencv.core.Size;
-import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.objdetect.Objdetect;
 
@@ -27,19 +26,9 @@ public class FaceDetectorImpl implements FaceDetector {
     private Size mFaceSizeMax;
 
     private CascadeClassifier mFaceDetector;
-    private CascadeClassifier mEyeDetector;
-
-    private MatOfRect faces;
-    private MatOfRect eyes;
-    private Mat resizedFaceMat;
 
     public FaceDetectorImpl(Context context) {
         mFaceDetector = OpenCVFactory.getClassifier(context, R.raw.haarcascade_frontalface_default);
-        mEyeDetector = OpenCVFactory.getClassifier(context, R.raw.haarcascade_eye);
-
-        faces = new MatOfRect();
-        eyes = new MatOfRect();
-        resizedFaceMat = new Mat();
     }
 
     @Override
@@ -54,30 +43,17 @@ public class FaceDetectorImpl implements FaceDetector {
             mFaceSizeMax = new Size(max, max);
         }
 
-        faces.release();
+        MatOfRect faces = new MatOfRect();
         mFaceDetector.detectMultiScale(image, faces, SCALE_FACTOR, MIN_NEIGHBORS, FACE_DETECT_FLAGS_ONE, mFaceSizeMin, mFaceSizeMax);
 
         Rect[] facesArray = faces.toArray();
+        Rect curFace = null;
         if (facesArray.length > 0) {
-            Rect curFace = getResizedRect(facesArray[0], image.width(), image.height());
-            Mat intermediateMat = image.submat(curFace);
-            Imgproc.resize(intermediateMat, resizedFaceMat, new Size(300, 300));
-            intermediateMat.release();
-
-            if (detectTwoEyes(resizedFaceMat)) {
-                return curFace;
-            }
+            curFace = getResizedRect(facesArray[0], image.width(), image.height());
         }
+        faces.release();
 
-        return null;
-    }
-
-    private boolean detectTwoEyes(Mat faceMat) {
-        int maxSize = Math.round(faceMat.height() * 0.3f);
-
-        eyes.release();
-        mEyeDetector.detectMultiScale(faceMat, eyes, SCALE_FACTOR, MIN_NEIGHBORS, Objdetect.CASCADE_SCALE_IMAGE, new Size(30, 30), new Size(maxSize, maxSize));
-        return eyes.toArray().length == 2;
+        return curFace;
     }
 
     private Rect getResizedRect(Rect orig, int maxWidth, int maxHeight) {
