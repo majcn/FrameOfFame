@@ -14,7 +14,7 @@ import si.majcn.frameoffame.view.ImageView15sec;
 
 public class ImageFragment extends Fragment {
 
-    private CustomContext cc;
+    private CustomContext mCustomContext;
 
     private ImageView15sec imageView;
 
@@ -22,7 +22,7 @@ public class ImageFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
-        cc = ((MainActivity)activity).getCustomContext();
+        mCustomContext = ((MainActivity)activity).getCustomContext();
     }
 
     @Override
@@ -30,7 +30,7 @@ public class ImageFragment extends Fragment {
         View w = inflater.inflate(R.layout.image_frag, container, false);
 
         imageView = (ImageView15sec) w.findViewById(R.id.faceimg);
-        imageView.setImageBitmap(cc.getImage());
+        imageView.setCustomContext(mCustomContext);
 
         return w;
     }

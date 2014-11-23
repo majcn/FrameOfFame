@@ -1,15 +1,22 @@
 package si.majcn.frameoffame.view;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
 
+import si.majcn.frameoffame.CustomContext;
+
 public class ImageView15sec extends ImageView {
 
     private static final String TAG = "View::ImageView15sec";
+
+    private static final int DEFAULT_TIMEOUT = 15000;
+
+    private CustomContext mCustomContext;
 
     private Handler mHandler;
     private static final int MSG = 1;
@@ -33,13 +40,14 @@ public class ImageView15sec extends ImageView {
     }
 
     private void init() {
-        setRefreshTimer(15000);
+        setRefreshTimer(DEFAULT_TIMEOUT);
 
         mHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 synchronized (ImageView15sec.this) {
                     if (refreshing) {
+                        ImageView15sec.this.setImageBitmap(mCustomContext.getImage());
                         ImageView15sec.this.invalidate();
                         Log.d(TAG, "image refreshed");
                         sendMessageDelayed(obtainMessage(MSG), refreshTimeMillis);
@@ -47,6 +55,10 @@ public class ImageView15sec extends ImageView {
                 }
             }
         };
+    }
+
+    public void setCustomContext(CustomContext cc) {
+        mCustomContext = cc;
     }
 
     public void setRefreshTimer(int millis) {

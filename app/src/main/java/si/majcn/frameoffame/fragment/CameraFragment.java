@@ -27,6 +27,8 @@ import si.majcn.frameoffame.opencv.FaceDetectorImpl;
 
 public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvCameraViewListener2 {
 
+    private static final int CAMERA_ID = 0;
+
     private Context mContext;
     private CustomContext mCustomContext;
     private static final Scalar FACE_RECT_COLOR = new Scalar(0, 255, 0, 255);
@@ -64,7 +66,7 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
         View w = inflater.inflate(R.layout.camera_frag, container, false);
 
         mOpenCvCameraView = (CameraBridgeViewBase) w.findViewById(R.id.fd_activity_surface_view);
-        mOpenCvCameraView.setCameraIndex(1);
+        mOpenCvCameraView.setCameraIndex(CAMERA_ID);
         mOpenCvCameraView.setCvCameraViewListener(this);
 
         return w;
