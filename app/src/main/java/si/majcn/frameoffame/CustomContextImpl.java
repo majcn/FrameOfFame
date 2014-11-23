@@ -23,7 +23,7 @@ public class CustomContextImpl implements CustomContext {
     }
 
     @Override
-    public void fillBitmap(Mat orig) {
+    public void doFace(Mat orig) {
         if (bitmapIndex < BITMAP_NR) {
             Utils.matToBitmap(orig, bitmaps[bitmapIndex]);
             MainActivity.applyEffect(bitmaps[bitmapIndex], effectNr);

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import org.opencv.core.Mat;
 
 public interface CustomContext {
-    void fillBitmap(Mat orig);
+    void doFace(Mat orig);
 
     Bitmap[] getBitmaps();
     int  getImageSize();

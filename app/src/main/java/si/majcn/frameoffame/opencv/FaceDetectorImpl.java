@@ -16,7 +16,7 @@ public class FaceDetectorImpl implements FaceDetector {
     private static final double SCALE_FACTOR = 1.05;
     private static final int MIN_NEIGHBORS = 3;
 
-    private float mRelativeFaceSizeMin = 0.2f;
+    private float mRelativeFaceSizeMin = 0.3f;
     private Size mFaceSizeMin;
 
     private float mRelativeFaceSizeMax = 0.5f;

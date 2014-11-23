@@ -123,7 +123,7 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
             Mat intermediateMat = mRgba.submat(curFace);
             Imgproc.resize(intermediateMat, mRealView, new Size(mCustomContext.getImageSize(), mCustomContext.getImageSize()));
             intermediateMat.release();
-            mCustomContext.fillBitmap(mRealView);
+            mCustomContext.doFace(mRealView);
         }
 
         if (curFace != null) {
