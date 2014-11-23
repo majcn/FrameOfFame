@@ -17,6 +17,7 @@ public class MainActivity extends FragmentActivity {
         System.loadLibrary("imageprocessing");
     }
 
+    public static native int getNumberOfEffects();
     public static native void applyEffect(Bitmap bmp, int i);
 
     private CustomContext customContext;

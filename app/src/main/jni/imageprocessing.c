@@ -189,3 +189,10 @@ Java_si_majcn_frameoffame_MainActivity_applyEffect(JNIEnv  *env,
 
     AndroidBitmap_unlockPixels(env, bitmap);
 }
+
+JNIEXPORT int JNICALL
+Java_si_majcn_frameoffame_MainActivity_getNumberOfEffects(JNIEnv  *env,
+                                                          jobject  obj)
+{
+    return 14;
+}

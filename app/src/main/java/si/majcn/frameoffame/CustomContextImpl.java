@@ -11,10 +11,6 @@ public class CustomContextImpl implements CustomContext {
     private Bitmap[] bitmaps = new Bitmap[BITMAP_NR];
     private int imageSize;
 
-    private int bitmapIndex = 0;
-
-    private int effectNr = 0;
-
     public CustomContextImpl(int imageSize) {
         this.imageSize = imageSize;
         for(int i=0; i<BITMAP_NR; i++) {
@@ -22,12 +18,15 @@ public class CustomContextImpl implements CustomContext {
         }
     }
 
+    private static int getEffectNr() {
+        return (int)Math.round(Math.random() * MainActivity.getNumberOfEffects());
+    }
+
     @Override
     public void doFace(Mat orig) {
-        if (bitmapIndex < BITMAP_NR) {
-            Utils.matToBitmap(orig, bitmaps[bitmapIndex]);
-            MainActivity.applyEffect(bitmaps[bitmapIndex], effectNr);
-//            bitmapIndex++;
+        synchronized (this) {
+            Utils.matToBitmap(orig, bitmaps[0]);
+            MainActivity.applyEffect(bitmaps[0], getEffectNr());
         }
     }
 

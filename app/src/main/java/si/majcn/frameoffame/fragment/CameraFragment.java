@@ -61,14 +61,6 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-
-        mContext = null;
-	mCustomContext = null;
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View w = inflater.inflate(R.layout.camera_frag, container, false);
 
