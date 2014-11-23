@@ -27,7 +27,10 @@ import si.majcn.frameoffame.opencv.FaceDetectorImpl;
 
 public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvCameraViewListener2 {
 
-    private static final int CAMERA_ID = 1;
+    private static final int CAMERA_ID_BACK = 0;
+    private static final int CAMERA_ID_FRONT = 1;
+
+    private int cameraId = CAMERA_ID_BACK;
 
     private Context mContext;
     private CustomContext mCustomContext;
@@ -66,8 +69,28 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
         View w = inflater.inflate(R.layout.camera_frag, container, false);
 
         mOpenCvCameraView = (CameraBridgeViewBase) w.findViewById(R.id.fd_activity_surface_view);
-        mOpenCvCameraView.setCameraIndex(CAMERA_ID);
+        mOpenCvCameraView.setCameraIndex(cameraId);
+        mOpenCvCameraView.enableFpsMeter();
         mOpenCvCameraView.setCvCameraViewListener(this);
+
+        w.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                switch (cameraId) {
+                    case CAMERA_ID_BACK:
+                        cameraId = CAMERA_ID_FRONT;
+                        break;
+                    case CAMERA_ID_FRONT:
+                        cameraId = CAMERA_ID_BACK;
+                        break;
+                }
+
+                mOpenCvCameraView.disableView();
+                mOpenCvCameraView.setCameraIndex(cameraId);
+                mOpenCvCameraView.enableView();
+                return true;
+            }
+        });
 
         return w;
     }
