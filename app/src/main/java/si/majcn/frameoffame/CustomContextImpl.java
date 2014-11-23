@@ -29,7 +29,9 @@ public class CustomContextImpl implements CustomContext {
 
     @Override
     public Bitmap getImage() {
-        return image;
+        synchronized (image) {
+            return image;
+        }
     }
 
     @Override
