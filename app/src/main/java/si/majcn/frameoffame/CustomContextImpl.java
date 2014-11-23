@@ -7,15 +7,12 @@ import org.opencv.core.Mat;
 
 public class CustomContextImpl implements CustomContext {
 
-    private static final int BITMAP_NR = 1;
-    private Bitmap[] bitmaps = new Bitmap[BITMAP_NR];
+    private Bitmap image;
     private int imageSize;
 
     public CustomContextImpl(int imageSize) {
         this.imageSize = imageSize;
-        for(int i=0; i<BITMAP_NR; i++) {
-            bitmaps[i] = Bitmap.createBitmap(imageSize, imageSize, Bitmap.Config.ARGB_8888);
-        }
+        image = Bitmap.createBitmap(imageSize, imageSize, Bitmap.Config.ARGB_8888);
     }
 
     private static int getEffectNr() {
@@ -24,15 +21,15 @@ public class CustomContextImpl implements CustomContext {
 
     @Override
     public void doFace(Mat orig) {
-        synchronized (this) {
-            Utils.matToBitmap(orig, bitmaps[0]);
-            MainActivity.applyEffect(bitmaps[0], getEffectNr());
+        synchronized (image) {
+            Utils.matToBitmap(orig, image);
+            MainActivity.applyEffect(image, getEffectNr());
         }
     }
 
     @Override
-    public Bitmap[] getBitmaps() {
-        return bitmaps;
+    public Bitmap getImage() {
+        return image;
     }
 
     @Override

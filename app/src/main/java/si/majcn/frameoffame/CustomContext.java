@@ -7,6 +7,6 @@ import org.opencv.core.Mat;
 public interface CustomContext {
     void doFace(Mat orig);
 
-    Bitmap[] getBitmaps();
+    Bitmap getImage();
     int  getImageSize();
 }

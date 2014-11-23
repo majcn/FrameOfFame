@@ -30,7 +30,7 @@ public class ImageFragment extends Fragment {
         View w = inflater.inflate(R.layout.image_frag, container, false);
 
         imageView = (ImageView15sec) w.findViewById(R.id.faceimg);
-        imageView.setImageBitmap(cc.getBitmaps()[0]);
+        imageView.setImageBitmap(cc.getImage());
 
         return w;
     }

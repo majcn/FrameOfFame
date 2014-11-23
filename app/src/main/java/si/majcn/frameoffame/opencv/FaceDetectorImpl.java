@@ -47,13 +47,11 @@ public class FaceDetectorImpl implements FaceDetector {
         mFaceDetector.detectMultiScale(image, faces, SCALE_FACTOR, MIN_NEIGHBORS, FACE_DETECT_FLAGS_ONE, mFaceSizeMin, mFaceSizeMax);
 
         Rect[] facesArray = faces.toArray();
-        Rect curFace = null;
         if (facesArray.length > 0) {
-            curFace = getResizedRect(facesArray[0], image.width(), image.height());
+            return getResizedRect(facesArray[0], image.width(), image.height());
         }
-        faces.release();
 
-        return curFace;
+        return null;
     }
 
     private Rect getResizedRect(Rect orig, int maxWidth, int maxHeight) {
