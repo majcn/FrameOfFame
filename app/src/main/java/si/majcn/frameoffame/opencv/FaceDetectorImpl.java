@@ -12,6 +12,9 @@ import org.opencv.objdetect.Objdetect;
 import si.majcn.frameoffame.R;
 
 public class FaceDetectorImpl implements FaceDetector {
+
+    private static final String TAG = "OpenCV::FaceDetector";
+
     private static final int FACE_DETECT_FLAGS_ONE = Objdetect.CASCADE_FIND_BIGGEST_OBJECT | Objdetect.CASCADE_DO_ROUGH_SEARCH;
     private static final double SCALE_FACTOR = 1.05;
     private static final int MIN_NEIGHBORS = 3;
@@ -26,16 +29,6 @@ public class FaceDetectorImpl implements FaceDetector {
 
     public FaceDetectorImpl(Context context) {
         mFaceDetector = OpenCVFactory.getClassifier(context, R.raw.haarcascade_frontalface_default);
-    }
-
-    @Override
-    public void start() {
-
-    }
-
-    @Override
-    public void stop() {
-
     }
 
     @Override

@@ -5,8 +5,5 @@ import org.opencv.core.Rect;
 
 public interface FaceDetector {
 
-    public void start();
-    public void stop();
-
     public Rect detectOne(Mat image);
 }

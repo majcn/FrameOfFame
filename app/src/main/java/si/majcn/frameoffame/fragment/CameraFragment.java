@@ -44,7 +44,6 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
         public void onManagerConnected(int status) {
             if (status == LoaderCallbackInterface.SUCCESS) {
                 mJavaDetector = new FaceDetectorImpl(mContext);
-                mJavaDetector.start();
                 mOpenCvCameraView.enableView();
             } else {
                 super.onManagerConnected(status);
@@ -80,14 +79,12 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
     @Override
     public void onPause() {
         super.onPause();
-        mJavaDetector.stop();
         mOpenCvCameraView.disableView();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mJavaDetector.stop();
         mOpenCvCameraView.disableView();
     }
 
