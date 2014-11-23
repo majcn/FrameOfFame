@@ -30,7 +30,7 @@ public class CustomContextImpl implements CustomContext {
     @Override
     public Bitmap getImage() {
         synchronized (image) {
-            return image;
+            return image.copy(image.getConfig(), true);
         }
     }
 

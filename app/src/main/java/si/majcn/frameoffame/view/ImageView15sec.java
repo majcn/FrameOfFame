@@ -1,7 +1,6 @@
 package si.majcn.frameoffame.view;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;

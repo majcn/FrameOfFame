@@ -27,7 +27,7 @@ import si.majcn.frameoffame.opencv.FaceDetectorImpl;
 
 public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvCameraViewListener2 {
 
-    private static final int CAMERA_ID = 0;
+    private static final int CAMERA_ID = 1;
 
     private Context mContext;
     private CustomContext mCustomContext;
@@ -118,8 +118,8 @@ public class CameraFragment extends Fragment implements CameraBridgeViewBase.CvC
         }
 
         if (curFace != null) {
-            Core.rectangle(mGray, curFace.tl(), curFace.br(), FACE_RECT_COLOR, 3);
+            Core.rectangle(mRgba, curFace.tl(), curFace.br(), FACE_RECT_COLOR, 3);
         }
-        return mGray;
+        return mRgba;
     }
 }
