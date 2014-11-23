@@ -16,11 +16,11 @@ public class FaceDetectorImpl implements FaceDetector {
     private static final double SCALE_FACTOR = 1.05;
     private static final int MIN_NEIGHBORS = 3;
 
-    private int mAbsoluteFaceSizeMin = 0;
     private float mRelativeFaceSizeMin = 0.2f;
+    private Size mFaceSizeMin;
 
-    private int mAbsoluteFaceSizeMax = 0;
     private float mRelativeFaceSizeMax = 0.5f;
+    private Size mFaceSizeMax;
 
     private CascadeClassifier mFaceDetector;
 
@@ -40,23 +40,18 @@ public class FaceDetectorImpl implements FaceDetector {
 
     @Override
     public Rect detectOne(Mat image) {
-        if (mAbsoluteFaceSizeMin == 0) {
-            int height = image.height();
-            if (Math.round(height * mRelativeFaceSizeMin) > 0) {
-                mAbsoluteFaceSizeMin = Math.round(height * mRelativeFaceSizeMin);
-            }
+        if (mFaceSizeMin == null) {
+            int min = Math.round(image.height() * mRelativeFaceSizeMin);
+            mFaceSizeMin = new Size(min, min);
         }
 
-
-        if (mAbsoluteFaceSizeMax == 0) {
-            int height = image.height();
-            if (Math.round(height * mRelativeFaceSizeMax) > 0) {
-                mAbsoluteFaceSizeMax = Math.round(height * mRelativeFaceSizeMax);
-            }
+        if (mFaceSizeMax == null) {
+            int max = Math.round(image.height() * mRelativeFaceSizeMax);
+            mFaceSizeMax = new Size(max, max);
         }
 
         MatOfRect faces = new MatOfRect();
-        mFaceDetector.detectMultiScale(image, faces, SCALE_FACTOR, MIN_NEIGHBORS, FACE_DETECT_FLAGS_ONE, new Size(mAbsoluteFaceSizeMin, mAbsoluteFaceSizeMin), new Size(mAbsoluteFaceSizeMax, mAbsoluteFaceSizeMax));
+        mFaceDetector.detectMultiScale(image, faces, SCALE_FACTOR, MIN_NEIGHBORS, FACE_DETECT_FLAGS_ONE, mFaceSizeMin, mFaceSizeMax);
 
         Rect[] facesArray = faces.toArray();
         Rect curFace = null;
