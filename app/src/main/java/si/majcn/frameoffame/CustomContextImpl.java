@@ -7,7 +7,7 @@ import org.opencv.core.Mat;
 
 public class CustomContextImpl implements CustomContext {
 
-    private static final int BITMAP_NR = 15;
+    private static final int BITMAP_NR = 1;
     private Bitmap[] bitmaps = new Bitmap[BITMAP_NR];
     private int imageSize;
 
@@ -27,7 +27,7 @@ public class CustomContextImpl implements CustomContext {
         if (bitmapIndex < BITMAP_NR) {
             Utils.matToBitmap(orig, bitmaps[bitmapIndex]);
             MainActivity.applyEffect(bitmaps[bitmapIndex], effectNr);
-            bitmapIndex++;
+//            bitmapIndex++;
         }
     }
 

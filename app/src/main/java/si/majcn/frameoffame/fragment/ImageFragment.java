@@ -1,30 +1,22 @@
 package si.majcn.frameoffame.fragment;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import org.opencv.android.Utils;
-import org.opencv.core.Mat;
 
 import si.majcn.frameoffame.CustomContext;
 import si.majcn.frameoffame.MainActivity;
 import si.majcn.frameoffame.R;
+import si.majcn.frameoffame.view.ImageView15sec;
 
 public class ImageFragment extends Fragment {
 
     private CustomContext cc;
 
-    private ImageView imageView;
-    private AnimationDrawable anim;
+    private ImageView15sec imageView;
 
     @Override
     public void onAttach(Activity activity) {
@@ -37,14 +29,27 @@ public class ImageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View w = inflater.inflate(R.layout.image_frag, container, false);
 
-        anim = new AnimationDrawable();
-        anim.setOneShot(false);
-        imageView = (ImageView) w.findViewById(R.id.image123);
-        for (Bitmap bmp : cc.getBitmaps()) {
-            anim.addFrame(new BitmapDrawable(getResources(), bmp), 1000);
-        }
-        imageView.setImageDrawable(anim);
+        imageView = (ImageView15sec) w.findViewById(R.id.faceimg);
+        imageView.setImageBitmap(cc.getBitmaps()[0]);
 
         return w;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        imageView.startRefreshTimer();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        imageView.stopRefreshTimer();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        imageView.stopRefreshTimer();
     }
 }
