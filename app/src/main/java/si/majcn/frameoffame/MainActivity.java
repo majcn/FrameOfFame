@@ -20,6 +20,7 @@ public class MainActivity extends FragmentActivity {
     public static native int getNumberOfEffects();
     public static native void applyEffect(Bitmap bmp, int i);
 
+    private static final int IMAGE_SIZE = 500;
     private CustomContext customContext;
 
     @Override
@@ -41,7 +42,7 @@ public class MainActivity extends FragmentActivity {
         };
         ((ViewPager) findViewById(R.id.pager)).setAdapter(mSectionsPagerAdapter);
 
-        customContext = new CustomContextImpl(500);
+        customContext = new CustomContextImpl(IMAGE_SIZE);
     }
 
     public CustomContext getCustomContext() {
