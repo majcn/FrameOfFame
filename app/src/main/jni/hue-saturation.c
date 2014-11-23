@@ -86,9 +86,9 @@ hue_saturation_process (HueSaturation     *hs,
         line = (uint32_t *)pixels;
         for (xx = 0; xx < info->width; xx++)
         {
-            r = (int) ((line[xx] & 0x00FF0000) >> 16);
+            b = (int) ((line[xx] & 0x00FF0000) >> 16);
             g = (int) ((line[xx] & 0x0000FF00) >> 8);
-            b = (int) (line[xx] & 0x00000FF );
+            r = (int) (line[xx] & 0x00000FF );
 
             gimp_rgb_to_hsl_int (&r, &g, &b);
             r_n = hs->hue_transfer[r];
@@ -96,7 +96,7 @@ hue_saturation_process (HueSaturation     *hs,
             b_n = hs->lightness_transfer[b];
             gimp_hsl_to_rgb_int (&r_n, &g_n, &b_n);
 
-            line[xx] = ((r_n << 16) & 0x00FF0000) | ((g_n << 8) & 0x0000FF00) | (b_n & 0x000000FF);
+            line[xx] = ((255 << 24) & 0xFF000000) | ((b_n << 16) & 0x00FF0000) | ((g_n << 8) & 0x0000FF00) | (r_n & 0x000000FF);
         }
         pixels = (char *)pixels + info->stride;
     }

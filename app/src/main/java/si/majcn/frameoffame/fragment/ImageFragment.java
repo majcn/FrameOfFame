@@ -1,11 +1,16 @@
 package si.majcn.frameoffame.fragment;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import si.majcn.frameoffame.CustomContext;
 import si.majcn.frameoffame.MainActivity;
@@ -27,12 +32,16 @@ public class ImageFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View w = inflater.inflate(R.layout.image_frag, container, false);
+        RelativeLayout relativeLayout = (RelativeLayout)inflater.inflate(R.layout.image_frag, container, false);
+        Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+        BitmapDrawable bmpDrawable = new BitmapDrawable(getResources(), bmp);
+        bmpDrawable.setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+        relativeLayout.setBackgroundDrawable(bmpDrawable);
 
-        imageView = (ImageView15sec) w.findViewById(R.id.faceimg);
+        imageView = (ImageView15sec) relativeLayout.findViewById(R.id.faceimg);
         imageView.setCustomContext(mCustomContext);
 
-        return w;
+        return relativeLayout;
     }
 
     @Override
