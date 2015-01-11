@@ -1,20 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 21
     buildToolsVersion "21.1.0"
 
     defaultConfig {
-        applicationId "majcn.si.frameoffame"
+        applicationId "si.majcn.frameoffame"
         minSdkVersion 19
-        targetSdkVersion 19
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
-
-        ndk {
-            moduleName "imageprocessing"
-            ldLibs "m", "log", "jnigraphics"
-        }
     }
     buildTypes {
         release {
