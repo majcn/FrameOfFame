@@ -1,10 +1,6 @@
 package si.majcn.frameoffame.fragment;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Shader;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,14 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import si.majcn.frameoffame.CustomContext;
-import si.majcn.frameoffame.MainActivity;
 import si.majcn.frameoffame.R;
 import si.majcn.frameoffame.view.ImageView15sec;
 
 public class ImageFragment extends Fragment {
 
-    private CustomContext mCustomContext;
+//    private CustomContext mCustomContext;
 
     private ImageView15sec imageView;
 
@@ -27,7 +21,7 @@ public class ImageFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
-        mCustomContext = ((MainActivity)activity).getCustomContext();
+//        mCustomContext = ((MainActivity)activity).getCustomContext();
     }
 
     @Override
@@ -39,7 +33,7 @@ public class ImageFragment extends Fragment {
 //        relativeLayout.setBackgroundDrawable(bmpDrawable);
 
         imageView = (ImageView15sec) relativeLayout.findViewById(R.id.faceimg);
-        imageView.setCustomContext(mCustomContext);
+//        imageView.setCustomContext(mCustomContext);
 
         return relativeLayout;
     }
