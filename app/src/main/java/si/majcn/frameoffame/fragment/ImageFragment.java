@@ -33,10 +33,10 @@ public class ImageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RelativeLayout relativeLayout = (RelativeLayout)inflater.inflate(R.layout.image_frag, container, false);
-        Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.background);
-        BitmapDrawable bmpDrawable = new BitmapDrawable(getResources(), bmp);
-        bmpDrawable.setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-        relativeLayout.setBackgroundDrawable(bmpDrawable);
+//        Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+//        BitmapDrawable bmpDrawable = new BitmapDrawable(getResources(), bmp);
+//        bmpDrawable.setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+//        relativeLayout.setBackgroundDrawable(bmpDrawable);
 
         imageView = (ImageView15sec) relativeLayout.findViewById(R.id.faceimg);
         imageView.setCustomContext(mCustomContext);
