@@ -42,14 +42,21 @@ public class CameraFragment extends Fragment {
 
         mCameraPreviewContainer = (FrameLayout) w.findViewById(R.id.camera_preview_container);
         mCameraPreviewContainer.setOnClickListener(new View.OnClickListener() {
+
+            private boolean inProgress = false;
+
             @Override
             public void onClick(View v) {
-                if (mCamera != null) {
+                // TODO: check for better solution -> inProgress
+                if (mCamera != null && !inProgress) {
+                    inProgress = true;
                     mCamera.takePicture(null, null, new Camera.PictureCallback() {
                         @Override
                         public void onPictureTaken(byte[] data, Camera camera) {
                             Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
                             mOnImageTaken.onImageTaken(pic);
+                            initCamera();
+                            inProgress = false;
                         }
                     });
                 }
