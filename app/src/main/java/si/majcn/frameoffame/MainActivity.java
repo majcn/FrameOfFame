@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import si.majcn.frameoffame.fragment.CameraFragment;
 import si.majcn.frameoffame.fragment.ImageFragment;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements OnImageTaken {
 
     static {
         System.loadLibrary("imageprocessing");
@@ -19,6 +19,9 @@ public class MainActivity extends FragmentActivity {
 
     public static native int getNumberOfEffects();
     public static native void applyEffect(Bitmap bmp, int i);
+
+    private CameraFragment mCameraFragment;
+    private ImageFragment mImageFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,14 @@ public class MainActivity extends FragmentActivity {
         FragmentPagerAdapter mSectionsPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
-                return i == 0 ? new ImageFragment() : new CameraFragment();
+                switch (i) {
+                    case 0:
+                        return mImageFragment = new ImageFragment();
+                    case 1:
+                        return mCameraFragment = new CameraFragment();
+                    default:
+                        return null;
+                }
             }
 
             @Override
@@ -38,5 +48,10 @@ public class MainActivity extends FragmentActivity {
             }
         };
         ((ViewPager) findViewById(R.id.pager)).setAdapter(mSectionsPagerAdapter);
+    }
+
+    @Override
+    public void onImageTaken(Bitmap image) {
+
     }
 }
