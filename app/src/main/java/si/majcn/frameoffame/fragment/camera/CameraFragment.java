@@ -74,13 +74,6 @@ public class CameraFragment extends Fragment {
             }
         });
 
-        final Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
-            @Override
-            public void onPictureTaken(byte[] data, Camera camera) {
-                pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-            }
-        };
-
         return w;
     }
 
