@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <FrameLayout
-        android:id="@+id/camera_preview"
+        android:id="@+id/camera_preview_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -16,12 +16,14 @@
         android:background="@color/black_overlay">
 
         <Button style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/camera_front"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/front_camera" />
 
         <Button style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/camera_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

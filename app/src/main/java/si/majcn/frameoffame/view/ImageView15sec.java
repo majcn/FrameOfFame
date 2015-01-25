@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
 
-import si.majcn.frameoffame.CustomContext;
 import si.majcn.frameoffame.MainActivity;
 
 public class ImageView15sec extends ImageView {
@@ -17,7 +16,7 @@ public class ImageView15sec extends ImageView {
 
     private static final int DEFAULT_TIMEOUT = 15000;
 
-    private CustomContext mCustomContext;
+//    private CustomContext mCustomContext;
 
     private Handler mHandler;
     private static final int MSG = 1;
@@ -52,7 +51,7 @@ public class ImageView15sec extends ImageView {
             public void handleMessage(Message msg) {
                 synchronized (ImageView15sec.this) {
                     if (refreshing) {
-                        Bitmap image = mCustomContext.getImage();
+                        Bitmap image = null; //mCustomContext.getImage();
                         MainActivity.applyEffect(image, getEffectNr());
                         ImageView15sec.this.setImageBitmap(image);
                         ImageView15sec.this.invalidate();
@@ -64,9 +63,9 @@ public class ImageView15sec extends ImageView {
         };
     }
 
-    public void setCustomContext(CustomContext cc) {
-        mCustomContext = cc;
-    }
+//    public void setCustomContext(CustomContext cc) {
+//        mCustomContext = cc;
+//    }
 
     public void setRefreshTimer(int millis) {
         refreshTimeMillis = millis;
