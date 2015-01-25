@@ -1,4 +1,4 @@
-package si.majcn.frameoffame.view;
+package si.majcn.frameoffame.fragment.camera.view;
 
 import android.content.Context;
 import android.hardware.Camera;

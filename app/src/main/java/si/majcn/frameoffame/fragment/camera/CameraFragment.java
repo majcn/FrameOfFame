@@ -1,4 +1,4 @@
-package si.majcn.frameoffame.fragment;
+package si.majcn.frameoffame.fragment.camera;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,10 +14,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
-import si.majcn.frameoffame.OnImageTaken;
 import si.majcn.frameoffame.R;
-import si.majcn.frameoffame.util.CameraUtil;
-import si.majcn.frameoffame.view.CameraPreview;
+import si.majcn.frameoffame.fragment.camera.util.CameraUtil;
+import si.majcn.frameoffame.fragment.camera.view.CameraPreview;
 
 public class CameraFragment extends Fragment {
 

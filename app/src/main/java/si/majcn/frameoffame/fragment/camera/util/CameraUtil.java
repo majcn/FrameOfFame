@@ -1,4 +1,4 @@
-package si.majcn.frameoffame.util;
+package si.majcn.frameoffame.fragment.camera.util;
 
 import android.hardware.Camera;
 

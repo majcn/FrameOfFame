@@ -1,4 +1,4 @@
-package si.majcn.frameoffame.fragment;
+package si.majcn.frameoffame.fragment.image;
 
 import android.app.Activity;
 import android.os.Bundle;

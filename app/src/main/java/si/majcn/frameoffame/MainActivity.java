@@ -8,8 +8,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.WindowManager;
 
-import si.majcn.frameoffame.fragment.CameraFragment;
-import si.majcn.frameoffame.fragment.ImageFragment;
+import si.majcn.frameoffame.fragment.camera.CameraFragment;
+import si.majcn.frameoffame.fragment.image.ImageFragment;
+import si.majcn.frameoffame.fragment.camera.OnImageTaken;
 
 public class MainActivity extends FragmentActivity implements OnImageTaken {
 

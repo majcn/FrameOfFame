@@ -1,4 +1,4 @@
-package si.majcn.frameoffame;
+package si.majcn.frameoffame.fragment.camera;
 
 import android.graphics.Bitmap;
 
