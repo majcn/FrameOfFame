@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
 
-    private static final String TAG = "CameraPreview";
+    private static final String TAG = "FrameOfFame::CameraPreview";
 
     private SurfaceHolder mHolder;
     private Camera mCamera;
@@ -54,7 +54,6 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         try {
             mCamera.setPreviewDisplay(mHolder);
             mCamera.startPreview();
-
         } catch (Exception e){
             Log.d(TAG, "Error starting camera preview: " + e.getMessage());
         }
