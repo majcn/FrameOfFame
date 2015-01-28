@@ -26,18 +26,30 @@ public class CameraFragment extends Fragment {
     private OnImageTaken mOnImageTaken;
 
     private Camera mCamera;
-    private int mCameraIndex = -1;
+    private int mCameraIndex = Camera.CameraInfo.CAMERA_FACING_BACK;
 
     private FrameLayout mCameraPreviewContainer;
 
-    public Bitmap pic;
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        mContext = activity;
+        mOnImageTaken = (OnImageTaken) activity;
+        initCamera();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+        releaseCamera();
+        mContext = null;
+        mOnImageTaken = null;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Activity activity = getActivity();
-        mContext = activity;
-        mOnImageTaken = (OnImageTaken) activity;
-
         View w = inflater.inflate(R.layout.camera_frag, container, false);
 
         mCameraPreviewContainer = (FrameLayout) w.findViewById(R.id.camera_preview_container);
