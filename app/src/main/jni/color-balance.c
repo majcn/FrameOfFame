@@ -83,17 +83,17 @@ color_balance_process (ColorBalance      *cb,
                        AndroidBitmapInfo *info,
                        void              *pixels)
 {
-    int xx, yy, r, g, b, r_n, g_n, b_n;
-    uint32_t *line;
+    int xx, yy, r, g, b, r_n, g_n, b_n, pixel;
+    unsigned short* picbuf = pixels;
 
     for (yy = 0; yy < info->height; yy++)
     {
-        line = (uint32_t *)pixels;
         for (xx = 0; xx < info->width; xx++)
         {
-            b = (int) ((line[xx] & 0x00FF0000) >> 16);
-            g = (int) ((line[xx] & 0x0000FF00) >> 8);
-            r = (int) (line[xx] & 0x00000FF );
+            pixel = picbuf[yy * info->width + xx];
+            r = RGB565_R(pixel);
+            g = RGB565_G(pixel);
+            b = RGB565_B(pixel);
 
             r_n = cb->r_lookup[r];
             g_n = cb->g_lookup[g];
@@ -103,9 +103,8 @@ color_balance_process (ColorBalance      *cb,
             b_n = gimp_rgb_to_l_int (r, g, b);
             gimp_hsl_to_rgb_int (&r_n, &g_n, &b_n);
 
-            line[xx] = ((255 << 24) & 0xFF000000) | ((b_n << 16) & 0x00FF0000) | ((g_n << 8) & 0x0000FF00) | (r_n & 0x000000FF);
+            picbuf[yy * info->width + xx] = MAKE_RGB565(r_n, g_n, b_n);
         }
-        pixels = (char *)pixels + info->stride;
     }
 }
 

@@ -161,9 +161,9 @@ applyEffect(AndroidBitmapInfo *info,
 
 JNIEXPORT void JNICALL
 Java_si_majcn_frameoffame_MainActivity_applyEffect(JNIEnv  *env,
-                                                    jobject  obj,
-                                                    jobject  bitmap,
-                                                    jint     effectNumber)
+                                                   jobject  obj,
+                                                   jobject  bitmap,
+                                                   jint     effectNumber)
 {
     AndroidBitmapInfo  info;
     int ret;
@@ -174,9 +174,9 @@ Java_si_majcn_frameoffame_MainActivity_applyEffect(JNIEnv  *env,
         LOGE("AndroidBitmap_getInfo() failed ! error=%d", ret);
         return;
     }
-    if (info.format != ANDROID_BITMAP_FORMAT_RGBA_8888)
+    if (info.format != ANDROID_BITMAP_FORMAT_RGB_565)
     {
-        LOGE("Bitmap format is not RGBA_8888 !");
+        LOGE("Bitmap format is not RGBA_565 !");
         return;
     }
 

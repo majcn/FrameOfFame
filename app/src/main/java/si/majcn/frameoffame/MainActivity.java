@@ -64,6 +64,6 @@ public class MainActivity extends FragmentActivity implements OnImageTaken {
     public void onImageTaken(Bitmap image) {
         Bitmap result = mCropper.getCroppedImage(image);
         applyEffect(result, mRandomGenerator.nextInt(getNumberOfEffects()));
-        mImageFragment.setImage(image);
+        mImageFragment.setImage(result);
     }
 }
