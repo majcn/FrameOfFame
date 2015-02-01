@@ -8,9 +8,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.WindowManager;
 
+import java.util.Random;
+
+import cat.lafosca.facecropper.FaceCropper;
 import si.majcn.frameoffame.fragment.camera.CameraFragment;
-import si.majcn.frameoffame.fragment.image.ImageFragment;
 import si.majcn.frameoffame.fragment.camera.OnImageTaken;
+import si.majcn.frameoffame.fragment.image.ImageFragment;
 
 public class MainActivity extends FragmentActivity implements OnImageTaken {
 
@@ -23,6 +26,9 @@ public class MainActivity extends FragmentActivity implements OnImageTaken {
 
     private CameraFragment mCameraFragment;
     private ImageFragment mImageFragment;
+
+    private FaceCropper mCropper;
+    private Random mRandomGenerator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +55,15 @@ public class MainActivity extends FragmentActivity implements OnImageTaken {
             }
         };
         ((ViewPager) findViewById(R.id.pager)).setAdapter(mSectionsPagerAdapter);
+
+        mCropper = new FaceCropper();
+        mRandomGenerator = new Random();
     }
 
     @Override
     public void onImageTaken(Bitmap image) {
+        Bitmap result = mCropper.getCroppedImage(image);
+        applyEffect(result, mRandomGenerator.nextInt(getNumberOfEffects()));
         mImageFragment.setImage(image);
     }
 }
