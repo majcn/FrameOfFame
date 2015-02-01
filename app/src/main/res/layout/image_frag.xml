@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <si.majcn.frameoffame.view.ImageView15sec
+    <ImageView
         android:id="@+id/faceimg"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

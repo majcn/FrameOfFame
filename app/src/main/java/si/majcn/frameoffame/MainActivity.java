@@ -53,6 +53,6 @@ public class MainActivity extends FragmentActivity implements OnImageTaken {
 
     @Override
     public void onImageTaken(Bitmap image) {
-
+        mImageFragment.setImage(image);
     }
 }

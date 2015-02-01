@@ -93,18 +93,27 @@ public class CameraFragment extends Fragment {
             }
         });
 
+        initCamera();
         return w;
+    }
+
+    private boolean isAttached() {
+        return isAdded() && mCameraPreviewContainer != null;
     }
 
     private boolean initCamera() {
         Log.d(TAG, "initCamera()");
         releaseCamera();
+        if (!isAttached()) {
+            return false;
+        }
+
         if (CameraUtil.checkCameraIndex(mCameraIndex)) {
             try {
                 mCamera = Camera.open(mCameraIndex);
                 mCameraPreviewContainer.addView(new CameraPreview(mContext, mCamera));
                 return true;
-            } catch (Exception e) {
+            } catch (RuntimeException e) {
                 Log.e(TAG, String.format("Camera with index %d is not available", mCameraIndex));
             }
         }
@@ -113,11 +122,13 @@ public class CameraFragment extends Fragment {
 
     private void releaseCamera() {
         Log.d(TAG, "releaseCamera()");
-        mCameraPreviewContainer.removeAllViews();
         if (mCamera != null) {
-
             mCamera.release();
             mCamera = null;
+        }
+
+        if (isAttached()) {
+            mCameraPreviewContainer.removeAllViews();
         }
     }
 
