@@ -21,7 +21,7 @@
 
 
 
-// source: https://code.csdn.net/snippets/336693/master/blog_20140509_1_6553357/raws
+// source: https://code.csdn.net/snippets/336693/master/blog_20140509_1_6553357/raw
 
 #ifndef MAKE_RGB565
 #define RGB565_R(p) ((((p) & 0xF800) >> 11) << 3)
