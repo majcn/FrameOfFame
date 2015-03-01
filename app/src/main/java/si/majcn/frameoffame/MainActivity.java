@@ -10,10 +10,11 @@ import android.view.WindowManager;
 
 import java.util.Random;
 
-import cat.lafosca.facecropper.FaceCropper;
+import si.majcn.frameoffame.facecropper.FaceCropper;
 import si.majcn.frameoffame.fragment.camera.CameraFragment;
 import si.majcn.frameoffame.fragment.camera.OnImageTaken;
 import si.majcn.frameoffame.fragment.image.ImageFragment;
+import si.majcn.frameoffame.util.Util;
 
 public class MainActivity extends FragmentActivity implements OnImageTaken {
 
@@ -62,8 +63,11 @@ public class MainActivity extends FragmentActivity implements OnImageTaken {
 
     @Override
     public void onImageTaken(Bitmap image) {
-        Bitmap result = mCropper.getCroppedImage(image);
-        applyEffect(result, mRandomGenerator.nextInt(getNumberOfEffects()));
-        mImageFragment.setImage(result);
+        Bitmap[] result = mCropper.getCroppedImages(image);
+        if (!Util.isNullOrEmpty(result)) {
+            Bitmap r = result[0];
+            applyEffect(r, mRandomGenerator.nextInt(getNumberOfEffects()));
+            mImageFragment.setImage(r);
+        }
     }
 }
