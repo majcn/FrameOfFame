@@ -64,10 +64,9 @@ public class MainActivity extends FragmentActivity implements OnImageTaken {
     @Override
     public void onImageTaken(Bitmap image) {
         Bitmap[] result = mCropper.getCroppedImages(image);
-        if (!Util.isNullOrEmpty(result)) {
-            Bitmap r = result[0];
-            applyEffect(r, mRandomGenerator.nextInt(getNumberOfEffects()));
-            mImageFragment.setImage(r);
+        for (int i=0; i<result.length; i++) {
+            applyEffect(result[i], mRandomGenerator.nextInt(getNumberOfEffects()));
         }
+        mImageFragment.addImages(result);
     }
 }

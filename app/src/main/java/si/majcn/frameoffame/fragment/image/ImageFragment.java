@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import si.majcn.frameoffame.R;
+import si.majcn.frameoffame.util.Util;
 
 public class ImageFragment extends Fragment {
 
@@ -24,7 +25,9 @@ public class ImageFragment extends Fragment {
         return w;
     }
 
-    public void setImage(Bitmap image) {
-        mImage.setImageBitmap(image);
+    public void addImages(Bitmap[] images) {
+        if (!Util.isNullOrEmpty(images)) {
+            mImage.setImageBitmap(images[0]);
+        }
     }
 }
