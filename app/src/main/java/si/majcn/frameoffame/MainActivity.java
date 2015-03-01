@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.view.WindowManager;
 
 import java.util.Random;
@@ -56,6 +57,14 @@ public class MainActivity extends FragmentActivity implements OnImageTaken {
             }
         };
         ((ViewPager) findViewById(R.id.pager)).setAdapter(mSectionsPagerAdapter);
+
+        mImageFragment.getView().setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mCameraFragment.takeImage(MainActivity.this);
+                return false;
+            }
+        });
 
         mCropper = new FaceCropper();
         mRandomGenerator = new Random();

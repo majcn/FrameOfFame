@@ -22,8 +22,9 @@ public class CameraFragment extends Fragment {
 
     private static final String TAG = "FrameOfFame::CameraFragment";
 
+    private final Object lock = new Object();
+
     private Context mContext;
-    private OnImageTaken mOnImageTaken;
 
     private Camera mCamera;
     private int mCameraIndex = Camera.CameraInfo.CAMERA_FACING_BACK;
@@ -35,7 +36,6 @@ public class CameraFragment extends Fragment {
         super.onAttach(activity);
 
         mContext = activity;
-        mOnImageTaken = (OnImageTaken) activity;
         initCamera();
     }
 
@@ -45,7 +45,21 @@ public class CameraFragment extends Fragment {
 
         releaseCamera();
         mContext = null;
-        mOnImageTaken = null;
+    }
+
+    public void takeImage(final OnImageTaken callback) {
+        if (mCamera != null) {
+            mCamera.takePicture(null, null, new Camera.PictureCallback() {
+                @Override
+                public void onPictureTaken(byte[] data, Camera camera) {
+                    synchronized (lock) {
+                        Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
+                        callback.onImageTaken(pic);
+                        initCamera();
+                    }
+                }
+            });
+        }
     }
 
     @Override
@@ -53,27 +67,6 @@ public class CameraFragment extends Fragment {
         View w = inflater.inflate(R.layout.camera_frag, container, false);
 
         mCameraPreviewContainer = (FrameLayout) w.findViewById(R.id.camera_preview_container);
-        mCameraPreviewContainer.setOnClickListener(new View.OnClickListener() {
-
-            private boolean inProgress = false;
-
-            @Override
-            public void onClick(View v) {
-                // TODO: check for better solution -> inProgress
-                if (mCamera != null && !inProgress) {
-                    inProgress = true;
-                    mCamera.takePicture(null, null, new Camera.PictureCallback() {
-                        @Override
-                        public void onPictureTaken(byte[] data, Camera camera) {
-                            Bitmap pic = BitmapFactory.decodeByteArray(data, 0, data.length);
-                            mOnImageTaken.onImageTaken(pic);
-                            initCamera();
-                            inProgress = false;
-                        }
-                    });
-                }
-            }
-        });
 
         Button backCameraButton = (Button) w.findViewById(R.id.camera_back);
         backCameraButton.setOnClickListener(new View.OnClickListener() {
