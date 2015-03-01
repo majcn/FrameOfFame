@@ -58,14 +58,6 @@ public class MainActivity extends FragmentActivity implements OnImageTaken {
         };
         ((ViewPager) findViewById(R.id.pager)).setAdapter(mSectionsPagerAdapter);
 
-        mImageFragment.getView().setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                mCameraFragment.takeImage(MainActivity.this);
-                return false;
-            }
-        });
-
         mCropper = new FaceCropper();
         mRandomGenerator = new Random();
     }

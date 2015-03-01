@@ -67,6 +67,13 @@ public class CameraFragment extends Fragment {
         View w = inflater.inflate(R.layout.camera_frag, container, false);
 
         mCameraPreviewContainer = (FrameLayout) w.findViewById(R.id.camera_preview_container);
+        mCameraPreviewContainer.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                takeImage((OnImageTaken)mContext);
+                return false;
+            }
+        });
 
         Button backCameraButton = (Button) w.findViewById(R.id.camera_back);
         backCameraButton.setOnClickListener(new View.OnClickListener() {
