@@ -9,7 +9,7 @@ import cat.lafosca.facecropper.BitmapUtils;
 
 public class FaceCropper extends cat.lafosca.facecropper.FaceCropper {
 
-    public CropResult[] cropFaces(Bitmap original) {
+    protected CropResult[] cropFaces(Bitmap original) {
         Bitmap fixedBitmap = BitmapUtils.forceEvenBitmapSize(original);
         fixedBitmap = BitmapUtils.forceConfig565(fixedBitmap);
         Bitmap mutableBitmap = fixedBitmap.copy(Bitmap.Config.RGB_565, true);
