@@ -68,8 +68,10 @@ public class FaceCropper extends cat.lafosca.facecropper.FaceCropper {
                 sizeY = mutableBitmap.getHeight() - tInitY;
             }
 
+            int size = Math.max(sizeX, sizeY);
+
             Point init = new Point(tInitX, tInitY);
-            Point end = new Point(tInitX + sizeX, tInitY + sizeY);
+            Point end = new Point(tInitX + size, tInitY + size);
             results[i] = new CropResult(mutableBitmap, init, end);
         }
 
@@ -85,13 +87,13 @@ public class FaceCropper extends cat.lafosca.facecropper.FaceCropper {
         for (int i=0; i<results.length; i++) {
             CropResult result = results[i];
 
-            Bitmap croppedBitmap = Bitmap.createBitmap(result.getBitmap(),
+            croppedImages[i] = Bitmap.createBitmap(result.getBitmap(),
                 result.getInit().x,
                 result.getInit().y,
                 result.getEnd().x - result.getInit().x,
                 result.getEnd().y - result.getInit().y);
 
-            if (result.getBitmap() == croppedBitmap) {
+            if (result.getBitmap() == croppedImages[i]) {
                 canRecycle = false;
             }
         }
