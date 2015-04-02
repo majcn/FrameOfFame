@@ -68,7 +68,7 @@ public class FaceCropper extends cat.lafosca.facecropper.FaceCropper {
                 sizeY = mutableBitmap.getHeight() - tInitY;
             }
 
-            int size = Math.max(sizeX, sizeY);
+            int size = Math.min(sizeX, sizeY);
 
             Point init = new Point(tInitX, tInitY);
             Point end = new Point(tInitX + size, tInitY + size);
