@@ -19,7 +19,7 @@ import si.majcn.frameoffame.fragment.image.view.ImageImageView;
 
 public class ImageFragment extends Fragment {
 
-    private static final String TAG = "FrameOfFame::ImageFragment";
+    private static final String TAG = "FoF::ImageFragment";
 
     private static final int NUM_IMAGES = 40;
 

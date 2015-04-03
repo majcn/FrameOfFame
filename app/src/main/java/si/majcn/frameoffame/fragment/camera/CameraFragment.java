@@ -20,7 +20,7 @@ import si.majcn.frameoffame.fragment.camera.view.CameraPreview;
 
 public class CameraFragment extends Fragment {
 
-    private static final String TAG = "FrameOfFame::CameraFragment";
+    private static final String TAG = "FoF::CameraFragment";
 
     private final Object lock = new Object();
 

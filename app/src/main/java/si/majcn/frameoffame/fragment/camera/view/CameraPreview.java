@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
 
-    private static final String TAG = "FrameOfFame::CameraPreview";
+    private static final String TAG = "FoF::CameraPreview";
 
     private SurfaceHolder mHolder;
     private Camera mCamera;
