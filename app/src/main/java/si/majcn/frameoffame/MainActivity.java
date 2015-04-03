@@ -36,7 +36,7 @@ public class MainActivity extends FragmentActivity implements OnImageTaken {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_main);
 
-        FragmentPagerAdapter mSectionsPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+        ((ViewPager) findViewById(R.id.pager)).setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
                 switch (i) {
@@ -53,11 +53,20 @@ public class MainActivity extends FragmentActivity implements OnImageTaken {
             public int getCount() {
                 return 2;
             }
-        };
-        ((ViewPager) findViewById(R.id.pager)).setAdapter(mSectionsPagerAdapter);
+        });
 
         mCropper = new FaceCropper();
         mRandomGenerator = new Random();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
     @Override
