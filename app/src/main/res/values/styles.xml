@@ -4,4 +4,8 @@
     <style name="AppTheme" parent="android:Theme.Holo.NoActionBar.Fullscreen">
         <item name="android:background">@drawable/app_background</item>
     </style>
+
+    <style name="BigTextStyle" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">50dp</item>
+    </style>
 </resources>
