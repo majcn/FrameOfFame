@@ -1,7 +1,7 @@
 package si.majcn.frameoffame.fragment.image.view;
 
 import android.content.Context;
-import android.util.AttributeSet;
+import android.graphics.Color;
 import android.widget.ImageView;
 
 /**
@@ -11,14 +11,8 @@ public class ImageImageView extends ImageView {
 
     public ImageImageView(Context context) {
         super(context);
-    }
 
-    public ImageImageView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public ImageImageView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
+        setScaleType(ImageView.ScaleType.CENTER_CROP);
     }
 
     @Override
