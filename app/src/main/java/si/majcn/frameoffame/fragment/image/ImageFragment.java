@@ -2,11 +2,9 @@ package si.majcn.frameoffame.fragment.image;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +15,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 import si.majcn.frameoffame.R;
-import si.majcn.frameoffame.util.Util;
+import si.majcn.frameoffame.fragment.image.view.ImageImageView;
 
 public class ImageFragment extends Fragment {
 
@@ -38,6 +36,7 @@ GridView gridview;
 
         gridview = (GridView) w.findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(getActivity()));
+        gridview.setNumColumns(NUM_IMAGES);
 //        mImage = (ImageView) w.findViewById(R.id.faceimg);
         return w;
     }
@@ -74,7 +73,7 @@ GridView gridview;
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imageView;
             if (convertView == null) {  // if it's not recycled, initialize some attributes
-                imageView = new GridImageView(mContext);
+                imageView = new ImageImageView(mContext);
 //                imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
 //                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 //                imageView.setPadding(8, 8, 8, 8);

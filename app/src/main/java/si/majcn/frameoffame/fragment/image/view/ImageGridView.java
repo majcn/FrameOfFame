@@ -1,22 +1,23 @@
-package si.majcn.frameoffame.fragment.image;
+package si.majcn.frameoffame.fragment.image.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.GridView;
 
 /**
- * Created by majcn on 2015-04-02.
+ * Created by majcn on 2015-04-03.
  */
-public class MyGridView extends GridView {
-    public MyGridView(Context context) {
+public class ImageGridView extends GridView {
+
+    public ImageGridView(Context context) {
         super(context);
     }
 
-    public MyGridView(Context context, AttributeSet attrs) {
+    public ImageGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public MyGridView(Context context, AttributeSet attrs, int defStyle) {
+    public ImageGridView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 

@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.view.WindowManager;
 
 import java.util.Random;
@@ -15,7 +14,6 @@ import si.majcn.frameoffame.facecropper.FaceCropper;
 import si.majcn.frameoffame.fragment.camera.CameraFragment;
 import si.majcn.frameoffame.fragment.camera.OnImageTaken;
 import si.majcn.frameoffame.fragment.image.ImageFragment;
-import si.majcn.frameoffame.util.Util;
 
 public class MainActivity extends FragmentActivity implements OnImageTaken {
 
