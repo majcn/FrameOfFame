@@ -54,11 +54,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	INFO O MAGISTRSKI NALOGI: ustrezno zamenjaj
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\ttitle}{Vzorec magistrskega dela}
-\newcommand{\ttitleEn}{Masters thesis sample}
+\newcommand{\ttitle}{Interaktivne računalniške umetniške instalacije v času hitrega tehnološkega razvoja}
+\newcommand{\ttitleEn}{Interactive computer-based art installations in times of rapid technological advances}
 \newcommand{\tsubject}{\ttitle}
 \newcommand{\tsubjectEn}{\ttitleEn}
-\newcommand{\tauthor}{Gašper Fijavž}
+\newcommand{\tauthor}{Gregor Majcen}
+\newcommand{\tmentor}{prof.\ dr. Franc Solina}
 \newcommand{\tkeywords}{računalnik, računalnik, računalnik}
 \newcommand{\tkeywordsEn}{computer, computer, computer}
 
@@ -70,7 +71,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{pdftitle={\ttitle}}
 \hypersetup{pdfsubject=\ttitleEn}
-\hypersetup{pdfauthor={\tauthor, gasper.fijavz@fri.uni-lj.si}}
+\hypersetup{pdfauthor={\tauthor}}
 \hypersetup{pdfkeywords=\tkeywordsEn}
 
 
@@ -82,7 +83,7 @@
 % define medatata: ustrezno popravi e-mail
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\Title{\ttitle}
-\def\Author{\tauthor, gasper.fijavz@fri.uni-lj.si}
+\def\Author{\tauthor}
 \def\Subject{\ttitleEn}
 \def\Keywords{\tkeywordsEn}
 
@@ -129,7 +130,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pdfinfo{%
     /Title    (\ttitle)
-    /Author   (\tauthor, damjan@cvetan.si)
+    /Author   (\tauthor)
     /Subject  (\ttitleEn)
     /Keywords (\tkeywordsEn)
     /ModDate  (\pdfcreationdate)
@@ -155,14 +156,13 @@
     {\large\sc Univerza v Ljubljani\\%
       Fakulteta za računalništvo in informatiko}%
     \vskip 10em%
-    {\autfont Matjaž Kralj\par}%
-    {\titfont Vzorec magistrskega dela \par}%
+    {\autfont \tauthor \par}%
+    {\titfont \ttitle \par}%
     {\vskip 2em \textsc{MAGISTRSKO DELO\\[2mm]
     ŠTUDIJSKI PROGRAM DRUGE STOPNJE\\ RAČUNALNIŠTVO IN INFORMATIKA}\par}%
     \vfill\null%
-    {\large \textsc{Mentor}: doc.\ dr.  Peter Klepec\par}%
-   {\large \textsc{Somentor}:  izr.\ prof.\ dr. Martin Krpan \par}%
-    {\vskip 2em \large Ljubljana, 2014 \par}%
+    {\large \textsc{Mentor}: \tmentor \par}%
+    {\vskip 2em \large Ljubljana, 2015 \par}%
 \end{center}
 % prazna stran
 \clearemptydoublepage
@@ -174,7 +174,7 @@
 {\small \noindent
 Rezultati magistrskega dela so intelektualna lastnina avtorja in Fakultete za ra\-ču\-nal\-niš\-tvo in informatiko Univerze v Ljubljani.
 Za objavljanje ali izkoriščanje rezultatov ma\-gi\-str\-ske\-ga dela je potrebno pisno soglasje avtorja, Fakultete za ra\-ču\-nal\-niš\-tvo in
-informatiko ter mentorja\footnote{V dogovorju z mentorjem lahko kandidat magistrsko delo s pripadajočo izvorno kodo izda tudi pod drugo licenco, ki ponuja določen del pravic vsem: npr. Creative Commons, GNU GPL. V tem primeru na to mesto vstavite opis licence, na primer tekst \cite{licence}.}.}
+informatiko ter mentorja}
 
 
 
@@ -192,16 +192,16 @@ informatiko ter mentorja\footnote{V dogovorju z mentorjem lahko kandidat magistr
 \end{center}
 
 \vspace{1cm}
-\noindent Spodaj podpisani Matjaž Kralj sem avtor magistrskega dela z naslovom:
+\noindent Spodaj podpisani \tauthor{} sem avtor magistrskega dela z naslovom:
 
 \vspace{0.5cm}
-\emph{Vzorec magistrskega dela}
+\emph{\ttitle}
 
 \vspace{1.5cm}
 \noindent S svojim podpisom zagotavljam, da:
 \begin{itemize}
 	\item sem magistrsko delo izdelal samostojno pod mentorstvom
-		doc.\ dr.\ Petra Klepca in somentorstvom izr.\ prof.\ dr.\ Martina Krpana,
+		\tmentor,
 
 	\item so elektronska oblika magistrskega dela, naslov (slov., angl.), povzetek (slov., angl.) ter ključne besede (slov., angl.) identični s tiskano obliko magistrskega dela,
 	\item soglašam z javno objavo elektronske oblike magistrskega dela v zbirki ''Dela FRI''.
@@ -387,4 +387,3 @@ Dostopno na: \url{http://ftp.univie.ac.at/packages/tex/biblio/bibtex/contrib/doc
 \bibitem{licence} licence-cc.pdf. Dostopno na: \url{https://ucilnica.fri.uni-lj.si/course/view.php?id=274}
 \end{thebibliography}
 \end{document}
-
