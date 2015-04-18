@@ -1,3 +1,4 @@
+# pdflatex
 *.aux
 *.log
 *.out
@@ -5,6 +6,7 @@
 *.pdf
 *.synctex.gz
 
+# biblatex
 *.bbl
 *.blg
 *.run.xml
