@@ -10,8 +10,9 @@
 
 \documentclass[a4paper, 12pt]{book}
 
-\usepackage[utf8x]{inputenc}   % omogoča uporabo slovenskih črk kodiranih v formatu UTF-8
+\usepackage[utf8]{inputenc}   % omogoča uporabo slovenskih črk kodiranih v formatu UTF-8
 \usepackage[slovene,english]{babel}    % naloži, med drugim, slovenske delilne vzorce
+\usepackage[style=ieee, backend=bibtex, language=slovene]{biblatex} % slovenski izpis referenc v IEEE
 \usepackage[pdftex]{graphicx}  % omogoča vlaganje slik različnih formatov
 \usepackage{fancyhdr}          % poskrbi, na primer, za glave strani
 \usepackage{amssymb}           % dodatni simboli
@@ -138,6 +139,7 @@
 }
 
 \graphicspath{{./figures/}}
+\addbibresource{literatura}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -372,18 +374,11 @@ Tudi njo lahko vključimo v dokument. Toda ne kot plovko.
 Kot smo omenili že v uvodu, je pravi način za citiranje literature uporaba \BibTeX{}a~\cite{bib}.
 Programski paket \LaTeX je prvotno predstavljen v priročniku~\cite{lat} in je v resnici nadgradnja sistema \TeX\ avtorja Donalda Knutha, znanega po denimo, če izpustim njegovo umetnost programiranja, Knuth-Bendixovem algoritmu~\cite{dk1}.
 
-Vsem raziskovalcem s področja računalništva pa svetujem v branje mnenje L.\ Fortnowa~\cite{lf}.
+Vsem raziskovalcem s področja računalništva pa svetujem v branje mnenje L.\ Fortnowa~\cite{lf}~\cite{trifonova}.
 
 \chapter{Sklepne ugotovitve}
 Izbira \LaTeX\ ali ne \LaTeX\ je seveda prepuščena vam samim. Res je, da so prvi koraki v \LaTeX{}u težavni. Ta dokument naj vam služi kot začetna opora pri hoji.
 
-\begin{thebibliography}{99}
-\bibitem{lf} L.\ Fortnow, ``Viewpoint: Time for computer science to grow up'',
-{\it Communications of the ACM}, št.\ 52, zv.\ 8, str.\ 33--35, 2009.
-\bibitem{dk1} D.\ E.\ Knuth, P. Bendix. ``Simple word problems in universal algebras'', v zborniku: Computational Problems in Abstract Algebra (ur. J. Leech), 1970, str. 263--297.
-\bibitem{lat} L.\ Lamport. {\it LaTEX: A Document Preparation System}. Addison-Wesley, 1986.
-\bibitem{bib} O.\ Patashnik (1998) \BibTeX{}ing.
-Dostopno na: \url{http://ftp.univie.ac.at/packages/tex/biblio/bibtex/contrib/doc/btxdoc.pdf}
-\bibitem{licence} licence-cc.pdf. Dostopno na: \url{https://ucilnica.fri.uni-lj.si/course/view.php?id=274}
-\end{thebibliography}
+\printbibliography
+
 \end{document}
