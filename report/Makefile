@@ -1,6 +1,6 @@
 # original source: http://stuff.mit.edu/people/jcrost/latexmake.html
 
-latexfile = magistrska_naloga
+latexfile = master
 
 all: pdf
 
