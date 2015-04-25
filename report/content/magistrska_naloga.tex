@@ -6,11 +6,31 @@ V magistrski nalogi najprej preučite splošne probleme pri vzdrževanju umetni�
 
 
 
-\chapter{Filtri}
+\chapter{Obdelava slik}
+Instalacija ``15 sekund slave'' vsebuje 17 različnih filtrov~\cite[Poglavje~5]{diplomskaSamoJuvan} za obdelavo prejetih slik v pop-art slike. Filtri so bili izdelani s pomočjo grafičnega programa GIMP.
 
-Instalacija ``15 sekund slave'' vsebuje 14 različnih filtrov~\cite[Poglavje~5]{diplomskaSamoJuvan}. 
+\section{GIMP}
+GIMP je odprto-kodno programsko orodje za obdelavo slik.
 
-Že prvotna implementacija filtrov je izhajala iz programskega orodja za predelavo slik GIMP. Ker se GIMP uspešno še naprej razvija, se je posledično tudi implementacija teh filtrov rahlo spremenila. 
+\subsection{Zgodovina}
+Začetek projekta sega v leto 1995, kot semestrski projekt v Univerzi Kalifornije, Berkeley. Kot prva avtorja, Spencer Kimball in Peter Mattis sta projekt poimenovala \textit{angl. General Image Manipulation Program}. Malo kasneje, ko je univerzo obiskal Richard Stallman sta ga prosila, če lahko zamenjata besedo ``General'' v ``GNU''. Od takrat naprej se program imenuje \textit{angl. GNU Image Manipulation Program} ali na kratko še vedno GIMP.
+
+\section{Izbira filtrov}
+Že prvotna izbira filtrov je izhajala iz programskega orodja za predelavo slik GIMP. Zaradi lažjega dela se je najprej grafičnega vmesnika izbralo zaporedje različnih filtrov z različnimi parametri. Izbrani so bili naslednji filtri:
+\begin{itemize}
+	\item \textbf{uravnovešenje barv} \textit{angl. color balance} \hfill \\ Prekrije celotno sliko z barvo v izbranem odtenku.
+	\item \textbf{posteriziranje} \textit{angl. posterize} \hfill \\ Zmanjšuje število barv na sliki.
+	\item \textbf{uravnovešanje barv v HSL prostoru} \textit{angl. hue saturation balance} \hfill \\ Spreminja odtenke barv, svetlost in intenzivnost na sliki.%
+\end{itemize}
+
+\section{Implementacija filtrov}
+Ker je GIMP odprto-koden smo imeli tudi dostop do implementacije filtrov. Implementacije filtrov so napisani v programskem jeziku C. Na prvi pogled kot nalašč za enostaven prenos na Android platformo preko JNI. Vendar pa so se pokazale težave, saj so bili filtri močno povezani z GIMP objekti ter nekoliko bolj kompleksni, kot smo mi potrebovali. Zato smo se odločili, da vzamemo samo algoritem oziroma idejo za tem, ter implementiramo po naših potrebah. 
+
+
+
+\subsection{Uravnovešenje barv}
+
+Ker se GIMP uspešno še naprej razvija, se je posledično tudi implementacija teh filtrov rahlo spremenila. 
 
 Zato smo se odločili, da tudi tukaj naredimo rahlo spremembo. 
 
