@@ -1,51 +1,124 @@
 \chapter{Uvod}
-Diplomska naloga je ponovna implementacija in nadgradnja interaktivne umetniške instalacije ``15 sekund slave''~\cite{15secLeonardo}. Motivacija za instalacijo je umetniško delovanje ameriškega pop-art umetnika Andyja Warhola. ``15 sekund slave'' izgleda kot klasična slika, a je dejansko računalniški zaslon, okvirjen kot umetniška slika. Nad zaslonom je v okviru vgrajen digitalni fotoaparat, ki je povezan z računalnikom v ozadju. Vsakih 15 sekund fotoaparat slika obiskovalce galerije, ki stojijo pred sliko. Na sliki računalniški program poišče vse obraze in nato naključno izbere enega izmed njih. Ta obraz nato z grafičnimi filtri program obdela tako, da pridobi tako imenovani ``pop-art'' videz z manjšim številom živih barv, ki spominjajo na slike slavnih osebnosti, ki jih je iz fotografij delal Andy Warhol. Ker je prvotna instalacija nastala pred več kot 10 leti in se je strojna oprema v tem času že zelo spremenila, se je pokazala potreba po prilagoditvi aplikacije novemu stanju tehnologije \cite{trifonova}.
+Diplomska naloga je ponovna implementacija in nadgradnja interaktivne
+umetniške instalacije ``15 sekund slave''~\cite{15secLeonardo}. Motivacija za
+instalacijo je umetniško delovanje ameriškega pop-art umetnika Andyja Warhola.
+``15 sekund slave'' izgleda kot klasična slika, a je dejansko računalniški
+zaslon, okvirjen kot umetniška slika. Nad zaslonom je v okviru vgrajen
+digitalni fotoaparat, ki je povezan z računalnikom v ozadju. Vsakih 15 sekund
+fotoaparat slika obiskovalce galerije, ki stojijo pred sliko. Na sliki
+računalniški program poišče vse obraze in nato naključno izbere enega izmed
+njih. Ta obraz nato z grafičnimi filtri program obdela tako, da pridobi tako
+imenovani ``pop-art'' videz z manjšim številom živih barv, ki spominjajo na
+slike slavnih osebnosti, ki jih je iz fotografij delal Andy Warhol. Ker je
+prvotna instalacija nastala pred več kot 10 leti in se je strojna oprema v tem
+času že zelo spremenila, se je pokazala potreba po prilagoditvi aplikacije
+novemu stanju tehnologije \cite{trifonova}.
 
-V magistrski nalogi najprej preučite splošne probleme pri vzdrževanju umetniških instalacij, ki temeljijo na računalniški tehnologiji \cite{miller1,miller2,digitalartconservation}. Zaradi hitrega napredka računalniške tehnologije je potrebno take aplikacije po eni strani prilagajati novi strojni in sistemski programski opremi, pa tudi novim funkcionalnim možnostim, ki jih nove tehnologije nudijo. Po drugi strani, pa z umetniškega vidika običajno želimo, da se zunanja pojava umetniškega dela ne spremeni. V konkretnem primeru instalacije ``15 sekund slave'' namesto računalnika in digitalnega fotoaparata uporabite mobilni telefon z vgrajeno kamero ter možnostjo brezžičnega prenosa podatkov. V enem načinu delovanja nove implementacije instalacije, se naj zunanji izgled, način uporabe in generirane slike ne razlikujejo od prvotne instalacije. V drugem načinu delovanja nove implementacije pa poiščite nove, kreativne načine funkcioniranja, ki jih omogoča novejša tehnologija. Tu je mišljena predvsem uporaba videa namesto statične slike in povezovanje s socialnimi omrežji.
-
-
+V magistrski nalogi najprej preučite splošne probleme pri vzdrževanju
+umetniških instalacij, ki temeljijo na računalniški tehnologiji
+\cite{miller1,miller2,digitalartconservation}. Zaradi hitrega napredka
+računalniške tehnologije je potrebno take aplikacije po eni strani prilagajati
+novi strojni in sistemski programski opremi, pa tudi novim funkcionalnim
+možnostim, ki jih nove tehnologije nudijo. Po drugi strani, pa z umetniškega
+vidika običajno želimo, da se zunanja pojava umetniškega dela ne spremeni. V
+konkretnem primeru instalacije ``15 sekund slave'' namesto računalnika in
+digitalnega fotoaparata uporabite mobilni telefon z vgrajeno kamero ter
+možnostjo brezžičnega prenosa podatkov. V enem načinu delovanja nove
+implementacije instalacije, se naj zunanji izgled, način uporabe in generirane
+slike ne razlikujejo od prvotne instalacije. V drugem načinu delovanja nove
+implementacije pa poiščite nove, kreativne načine funkcioniranja, ki jih
+omogoča novejša tehnologija. Tu je mišljena predvsem uporaba videa namesto
+statične slike in povezovanje s socialnimi omrežji.
 
 
 \chapter{Obdelava slik}
-Instalacija ``15 sekund slave'' vsebuje 17 različnih filtrov~\cite[Poglavje~5]{diplomskaSamoJuvan} za obdelavo prejetih slik v pop-art slike. Filtri so bili izdelani s pomočjo grafičnega programa GIMP.
+Instalacija ``15 sekund slave'' vsebuje 17 različnih
+filtrov~\cite[Poglavje~5]{diplomskaSamoJuvan} za obdelavo prejetih slik v pop-
+art slike. Filtri so bili izdelani s pomočjo grafičnega programa GIMP.
+
 
 \section{GIMP}
 GIMP je odprto-kodno programsko orodje za obdelavo slik.
 
+
 \subsection{Zgodovina}
-Začetek projekta sega v leto 1995, kot semestrski projekt v Univerzi Kalifornije, Berkeley. Kot prva avtorja, Spencer Kimball in Peter Mattis sta projekt poimenovala \textit{angl. General Image Manipulation Program}. Malo kasneje, ko je univerzo obiskal Richard Stallman sta ga prosila, če lahko zamenjata besedo ``General'' v ``GNU''. Od takrat naprej se program imenuje \textit{angl. GNU Image Manipulation Program} ali na kratko še vedno GIMP~\cite{wiki:GIMP}.
+Začetek projekta sega v leto 1995, kot semestrski projekt v Univerzi
+Kalifornije, Berkeley. Kot prva avtorja, Spencer Kimball in Peter Mattis sta
+projekt poimenovala \textit{angl. General Image Manipulation Program}. Malo
+kasneje, ko je univerzo obiskal Richard Stallman sta ga prosila, če lahko
+zamenjata besedo ``General'' v ``GNU''. Od takrat naprej se program imenuje
+\textit{angl. GNU Image Manipulation Program} ali na kratko še vedno
+GIMP~\cite{wiki:GIMP}.
+
 
 \section{Izbira filtrov}
-Že prvotna izbira filtrov je izhajala iz programskega orodja za predelavo slik GIMP. Zaradi lažjega dela se je najprej grafičnega vmesnika izbralo zaporedje različnih filtrov z različnimi parametri. Izbrani so bili naslednji filtri:
+Že prvotna izbira filtrov je izhajala iz programskega orodja za predelavo slik
+GIMP. Zaradi lažjega dela se je najprej grafičnega vmesnika izbralo zaporedje
+različnih filtrov z različnimi parametri. Izbrani so bili naslednji filtri:
 \begin{itemize}
-	\item \textbf{uravnovešenje barv} \textit{angl. color balance} \hfill \\ Prekrije celotno sliko z barvo v izbranem odtenku.
-	\item \textbf{posteriziranje} \textit{angl. posterize} \hfill \\ Zmanjšuje število barv na sliki.
-	\item \textbf{uravnovešanje barv v HSL prostoru} \textit{angl. hue saturation balance} \hfill \\ Spreminja odtenke barv, svetlost in intenzivnost na sliki.%
+    \item \textbf{uravnovešenje barv} \textit{angl. color balance} \hfill \\
+        Prekrije celotno sliko z barvo v izbranem odtenku.
+    \item \textbf{posteriziranje} \textit{angl. posterize} \hfill \\
+        Zmanjšuje število barv na sliki.
+    \item \textbf{uravnovešanje barv v HSL prostoru} \textit{angl. hue saturation balance} \hfill \\
+        Spreminja odtenke barv, svetlost in intenzivnost na sliki.%
 \end{itemize}
 
+
 \section{Implementacija filtrov}
-Ker je GIMP odprto-koden smo imeli tudi dostop do implementacije filtrov. Implementacije filtrov so napisani v programskem jeziku C. Na prvi pogled kot nalašč za enostaven prenos na Android platformo preko JNI. Vendar pa so se pokazale težave, saj so bili filtri močno povezani z GIMP objekti ter nekoliko bolj kompleksni, kot smo mi potrebovali. Zato smo se odločili, da vzamemo samo algoritem oziroma idejo za tem, ter implementiramo po naših potrebah. Naredili smo tri različne implementacije in jih med seboj primerjali.
+Ker je GIMP odprto-koden smo imeli tudi dostop do implementacije filtrov.
+Implementacije filtrov so napisani v programskem jeziku C. Na prvi pogled kot
+nalašč za enostaven prenos na Android platformo preko JNI. Vendar pa so se
+pokazale težave, saj so bili filtri močno povezani z GIMP objekti ter nekoliko
+bolj kompleksni, kot smo mi potrebovali. Zato smo se odločili, da vzamemo samo
+algoritem oziroma idejo za tem, ter implementiramo po naših potrebah. Naredili
+smo tri različne implementacije in jih med seboj primerjali.
 
-Prva implementacija je napisana v programskem jeziku java. Izkazalo se je kot zelo počasno. Orodje za sproščanje pomnilnika GC \textit{(angl. garbage collector)} se je klical velikokrat, kar je posledično porabilo več kot nekaj sekund za filter. Tega si nismo mogli privoščiti, zato smo iskali alternative. 
+Prva implementacija je napisana v programskem jeziku java. Izkazalo se je kot
+zelo počasno. Orodje za sproščanje pomnilnika GC \textit{(angl. garbage
+collector)} se je klical velikokrat, kar je posledično porabilo več kot nekaj
+sekund za filter. Tega si nismo mogli privoščiti, zato smo iskali alternative.
 
-Naslednja implementacija je napisana s pomočjo grafične kartice in sicer z orodjem OPENGL ES, verzije 2.0. Čas porabe pri izvajanju se je občutno zmanjšal. Ko so bile teksture zapisane na grafični kartici so se filtri izvajali v manj kot sekundi. Ta rešitev je bila že dovolj dobra, vendar pa se nam je zdelo, da je uporaba grafične kartice za tako lahke operacije potrata energije.  
+Naslednja implementacija je napisana s pomočjo grafične kartice in sicer z
+orodjem OPENGL ES, verzije 2.0. Čas porabe pri izvajanju se je občutno
+zmanjšal. Ko so bile teksture zapisane na grafični kartici so se filtri
+izvajali v manj kot sekundi. Ta rešitev je bila že dovolj dobra, vendar pa se
+nam je zdelo, da je uporaba grafične kartice za tako lahke operacije potrata
+energije.
 
-Čeprav so bili rezultati že dovolj dobri, smo se odločili še za implementacijo v programskem jeziku C. Rezultati so pokazali, da je ta rešitev malo bolj počasna kot prejšnja, vendar pa za to nismo potrebovali grafične kartice na telefonu. Čas porabe je bil manj kot sekundo za filter.
+Čeprav so bili rezultati že dovolj dobri, smo se odločili še za implementacijo
+v programskem jeziku C. Rezultati so pokazali, da je ta rešitev malo bolj
+počasna kot prejšnja, vendar pa za to nismo potrebovali grafične kartice na
+telefonu. Čas porabe je bil manj kot sekundo za filter.
+
 
 \subsection{Uravnovešenje barv}
+Ker se GIMP uspešno še naprej razvija, se je posledično tudi implementacija
+teh filtrov rahlo spremenila.
 
-Ker se GIMP uspešno še naprej razvija, se je posledično tudi implementacija teh filtrov rahlo spremenila. 
-
-Zato smo se odločili, da tudi tukaj naredimo rahlo spremembo. 
+Zato smo se odločili, da tudi tukaj naredimo rahlo spremembo.
 
 
 \chapter{TODO}
-Datoteka {\tt magistrska\_naloga.tex} na kratko opisuje, kako se pisanja magistrskega dela lotimo z uporabo programskega pateka \LaTeX. V tem dokumentu bomo predstavili nekaj njegovih prednosti in hib. Kar se slednjih tiče, mi pride na misel ena sama. Ko se srečamo z njim, nam izgleda kot kislo jabolko, nismo prepričani, da bi želeli vanj ugrizniti. Lahko pa z njim pripravimo odličen zavitek ali pa pridemo na okus.
+Datoteka {\tt magistrska\_naloga.tex} na kratko opisuje, kako se pisanja
+magistrskega dela lotimo z uporabo programskega pateka \LaTeX. V tem dokumentu
+bomo predstavili nekaj njegovih prednosti in hib. Kar se slednjih tiče, mi
+pride na misel ena sama. Ko se srečamo z njim, nam izgleda kot kislo jabolko,
+nismo prepričani, da bi želeli vanj ugrizniti. Lahko pa z njim pripravimo
+odličen zavitek ali pa pridemo na okus.
 
-Česa od tega dokumenta ne pričakujte? Izkušeni uporabniki \LaTeX{}a bi vse skupaj zastavili
-drugače. Morda bi napisali posebno razredno datoteko (\emph{class file}) --- v resnici priredili katero od obstoječih ---, v datoteki {\tt magistrska\_naloga.tex} ohranili samo najbolj grobo strukturo in vanjo vključevali  posamezna po\-glav\-ja. Hkrati s pisanjem teksta bi poskrbeli tudi za stvarno kazalo ({\tt makeindex}), literaturo pa bi citirali z uporabo {\BibTeX}{a}. Tega, skratka, v tem dokumentu ne boste našli.
+Česa od tega dokumenta ne pričakujte? Izkušeni uporabniki \LaTeX{}a bi vse
+skupaj zastavili drugače. Morda bi napisali posebno razredno datoteko
+(\emph{class file}) --- v resnici priredili katero od obstoječih ---, v
+datoteki {\tt magistrska\_naloga.tex} ohranili samo najbolj grobo strukturo in
+vanjo vključevali  posamezna po\-glav\-ja. Hkrati s pisanjem teksta bi
+poskrbeli tudi za stvarno kazalo ({\tt makeindex}), literaturo pa bi citirali
+z uporabo {\BibTeX}{a}. Tega, skratka, v tem dokumentu ne boste našli.
 
-Kaj vseeno najdemo. V Poglavju~\ref{ch1} bomo na hitro spoznali besedilne konstrukte kot so izreki, enačbe in dokazi. Naučili se bomo, kako se na njih sklicujemo. Poglavje~\ref{ch2} bo predstavilo vključevanje plovk: slik in tabel. V Poglavju~\ref{ch3} se bomo srečali s sklicevanjem na literaturo.
+Kaj vseeno najdemo. V Poglavju~\ref{ch1} bomo na hitro spoznali besedilne
+konstrukte kot so izreki, enačbe in dokazi. Naučili se bomo, kako se na njih
+sklicujemo. Poglavje~\ref{ch2} bo predstavilo vključevanje plovk: slik in
+tabel. V Poglavju~\ref{ch3} se bomo srečali s sklicevanjem na literaturo.
 Sledil bo samo še zaključek.
 
 \chapter{Sklicevanje na besedilne konstrukte}
