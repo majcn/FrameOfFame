@@ -16,4 +16,4 @@ $(latexfile).pdf: $(latexfile).tex $(latexfile).bbl
 	while ( pdflatex $(latexfile); grep -q "Rerun to get cross" $(latexfile).log ) do true ; done
 
 clean:
-	rm -f $(latexfile).blg $(latexfile).aux $(latexfile).bbl $(latexfile).log $(latexfile).out
+	rm -f $(latexfile).blg $(latexfile).aux $(latexfile).bbl $(latexfile).log $(latexfile).out $(latexfile)-blx.bib $(latexfile).run.xml $(latexfile).toc
