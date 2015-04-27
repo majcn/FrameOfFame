@@ -91,8 +91,59 @@ v programskem jeziku C. Rezultati so pokazali, da je ta rešitev malo bolj
 počasna kot prejšnja, vendar pa za to nismo potrebovali grafične kartice na
 telefonu. Čas porabe je bil manj kot sekundo za filter.
 
+\subsection{HSL barvni prostor}
+
+\begin{align}
+Cmax &= max(R, G, B) \\
+Cmin &= min(R, G, B)
+\end{align}
+
+\begin{equation}
+L = (max + min) / 2
+\end{equation}
+
+\begin{equation}
+S =
+\begin{cases}
+    0 \text{,}& \Delta = 0 \\
+    255 * \Delta / (Cmax + Cmin) \text{,}& L < 128 \\
+    255 * \Delta / (511 - Cmax - Cmin) \text{,}& \text{ostalo} \\
+\end{cases}
+\end{equation}
+
+\begin{equation}
+H' =
+\begin{cases}
+    0 \text{,}& \Delta = 0 \\
+    0 + 42.5 * (G - B) / \Delta \text{,}& R = Cmax \\
+    85 + 42.5 * (B - R) / \Delta \text{,}& G = Cmax \\
+    170 + 42.5 * (R - G) / \Delta \text{,}& B = Cmax \\
+\end{cases}
+\end{equation}
+
+\begin{equation}
+H =
+\begin{cases}
+    H' + 255 \text{,}& H' < 0 \\
+    H' - 255 \text{,}& H' > 255 \\
+    H' \text{,}& \text{ostalo} \\
+\end{cases}
+\end{equation}
+
+\begin{lstlisting}[caption=algoritem]
+Cmax = max(R, G, B)
+
+\end{lstlisting}
 
 \subsection{Uravnovešenje barv}
+
+\begin{lstlisting}[caption=color\_balance.glsl (fragment shader)]
+const float a = 0.25;
+const float b = 0.333;
+const float scale = 0.7;
+float shadow = clamp((L - b) / -a + 0.5, 0.0, 1.0) * scale;
+\end{lstlisting}
+
 Ker se GIMP uspešno še naprej razvija, se je posledično tudi implementacija
 teh filtrov rahlo spremenila.
 
