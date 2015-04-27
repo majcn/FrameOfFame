@@ -92,6 +92,7 @@ počasna kot prejšnja, vendar pa za to nismo potrebovali grafične kartice na
 telefonu. Čas porabe je bil manj kot sekundo za filter.
 
 \subsection{HSL barvni prostor}
+\label{sec:hsl}
 
 \begin{align}
 Cmax &= max(R, G, B) \\
@@ -137,13 +138,29 @@ Cmax = max(R, G, B)
 
 \subsection{Uravnovešenje barv}
 
-\begin{lstlisting}[caption=color\_balance.glsl (fragment shader)]
-const float a = 0.25;
-const float b = 0.333;
-const float scale = 0.7;
-float shadow = clamp((L - b) / -a + 0.5, 0.0, 1.0) * scale;
-\end{lstlisting}
+\begin{equation}
+clamp_{min}^{max}(x) = 
+\begin{cases}
+    min \text{,}& x < min \\
+    max \text{,}& x > max \\
+    x \text{,}& \text{ostalo}
+\end{cases}
+\end{equation}
 
+\begin{align}
+shadows(x) &= clamp_{0}^{1}(\frac{117 - x}{64}) * 1.785 \\
+color\_balance(x, x') &= clamp_{0}^{255}(x + x' * shadows(x)) \label{eq:color_balance}
+\end{align}
+
+Uravnovešenje barv se računa v barvnem prostoru RGB. Računamo jo za vsako
+barvo posebej, in sicer z enačbo~\eqref{eq:color_balance}, kjer je $x$ enak
+originalni barvi, $x'$ pa barvi, s katero želimo uravnovesiti originalno barvo
+$x$. $x$ in $x'$ sta pozitivni celi števili med 0 in 255.
+
+Po izračunanih vrednosti dane rezultate v RGB prostoru prenesemo v HSL
+prostor.
+
+Od tukaj naprej se način računanja za barvo malo spremeni.
 
 Ker se GIMP uspešno še naprej razvija, se je posledično tudi implementacija
 teh filtrov rahlo spremenila.
