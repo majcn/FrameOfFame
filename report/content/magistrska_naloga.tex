@@ -107,7 +107,7 @@ S =
 \begin{cases}
     0 \text{,}& \Delta = 0 \\
     255 * \Delta / (Cmax + Cmin) \text{,}& L < 128 \\
-    255 * \Delta / (511 - Cmax - Cmin) \text{,}& \text{ostalo} \\
+    255 * \Delta / (511 - Cmax - Cmin) \text{,}& \text{ostalo}
 \end{cases}
 \end{equation}
 
@@ -117,7 +117,7 @@ H' =
     0 \text{,}& \Delta = 0 \\
     0 + 42.5 * (G - B) / \Delta \text{,}& R = Cmax \\
     85 + 42.5 * (B - R) / \Delta \text{,}& G = Cmax \\
-    170 + 42.5 * (R - G) / \Delta \text{,}& B = Cmax \\
+    170 + 42.5 * (R - G) / \Delta \text{,}& B = Cmax
 \end{cases}
 \end{equation}
 
@@ -126,7 +126,7 @@ H =
 \begin{cases}
     H' + 255 \text{,}& H' < 0 \\
     H' - 255 \text{,}& H' > 255 \\
-    H' \text{,}& \text{ostalo} \\
+    H' \text{,}& \text{ostalo}
 \end{cases}
 \end{equation}
 
@@ -143,6 +143,7 @@ const float b = 0.333;
 const float scale = 0.7;
 float shadow = clamp((L - b) / -a + 0.5, 0.0, 1.0) * scale;
 \end{lstlisting}
+
 
 Ker se GIMP uspešno še naprej razvija, se je posledično tudi implementacija
 teh filtrov rahlo spremenila.
