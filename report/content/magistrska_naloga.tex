@@ -95,12 +95,14 @@ telefonu. Čas porabe je bil manj kot sekundo za filter.
 \label{sec:hsl}
 
 \begin{align}
+R, G, B &\in [0,255] \nonumber \\
 Cmax &= max(R, G, B) \\
-Cmin &= min(R, G, B)
+Cmin &= min(R, G, B) \\
+\Delta &= (Cmax - Cmin)
 \end{align}
 
 \begin{equation}
-L = (max + min) / 2
+L = (max + min) / 2 \label{eq:hsl_l}
 \end{equation}
 
 \begin{equation}
@@ -157,15 +159,11 @@ barvo posebej, in sicer z enačbo~\eqref{eq:color_balance}, kjer je $x$ enak
 originalni barvi, $x'$ pa barvi, s katero želimo uravnovesiti originalno barvo
 $x$. $x$ in $x'$ sta pozitivni celi števili med 0 in 255.
 
-Po izračunanih vrednosti dane rezultate v RGB prostoru prenesemo v HSL
-prostor.
-
-Od tukaj naprej se način računanja za barvo malo spremeni.
-
-Ker se GIMP uspešno še naprej razvija, se je posledično tudi implementacija
-teh filtrov rahlo spremenila.
-
-Zato smo se odločili, da tudi tukaj naredimo rahlo spremembo.
+Po izračunanih vrednosti dane rezultate v RGB prostoru prenesemo v HSL prostor
+s pomočjo enačb, napisnih v poglavju~\ref{sec:hsl}. Tako dobimo $H$, $S$ in
+$L$. Iz originalnih vrednosti, to je vrednost barve na sliki, izračunamo
+$L$~\ref{eq:hsl_l} in ga nadomestimo s prejšnjim, zato da ohranimo podobno
+svetlost. $H$, $S$ in novo pridobljeni $L$ spremenimo nazaj v RGB prostor.
 
 
 \chapter{TODO}
