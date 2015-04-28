@@ -56,7 +56,7 @@ GIMP~\cite{wiki:GIMP}.
 GIMP. Zaradi lažjega dela se je najprej grafičnega vmesnika izbralo zaporedje
 različnih filtrov z različnimi parametri. Izbrani so bili naslednji filtri:
 \begin{itemize}
-    \item \textbf{uravnovešenje barv} \textit{angl. color balance} \hfill \\
+    \item \textbf{uravnovešanje barv v RGB prostoru} \textit{angl. color balance} \hfill \\
         Prekrije celotno sliko z barvo v izbranem odtenku.
     \item \textbf{posteriziranje} \textit{angl. posterize} \hfill \\
         Zmanjšuje število barv na sliki.
@@ -138,7 +138,7 @@ Cmax = max(R, G, B)
 
 \end{lstlisting}
 
-\subsection{Uravnovešenje barv}
+\subsection{uravnovešanje barv v RGB prostoru}
 
 \begin{equation}
 clamp_{min}^{max}(x) = 
@@ -154,7 +154,7 @@ shadows(x) &= clamp_{0}^{1}(\frac{117 - x}{64}) * 1.785 \\
 color\_balance(x, x') &= clamp_{0}^{255}(x + x' * shadows(x)) \label{eq:color_balance}
 \end{align}
 
-Uravnovešenje barv se računa v barvnem prostoru RGB. Računamo jo za vsako
+Uravnovešanje barv se računa v barvnem prostoru RGB. Računamo jo za vsako
 barvo posebej, in sicer z enačbo~\eqref{eq:color_balance}, kjer je $x$ enak
 originalni barvi, $x'$ pa barvi, s katero želimo uravnovesiti originalno barvo
 $x$. $x$ in $x'$ sta pozitivni celi števili med 0 in 255.
@@ -165,6 +165,39 @@ $L$. Iz originalnih vrednosti, to je vrednost barve na sliki, izračunamo
 $L$~\ref{eq:hsl_l} in ga nadomestimo s prejšnjim, zato da ohranimo podobno
 svetlost. $H$, $S$ in novo pridobljeni $L$ spremenimo nazaj v RGB prostor.
 
+\subsection{Posteriziranje}
+
+\begin{equation}
+luts(x, levels) = 255 * \frac{\left \lfloor{\frac{x}{255} * (levels - 1) + 0.5}\right \rfloor}{levels - 1} + 0.5
+\end{equation}
+
+Posteriziranje se računa v barvnem prostoru RGB...
+
+\subsection{Uravnovešanje barv v HSL prostoru}
+
+\begin{align}
+htv(x, x') &= x + 255 * \frac{x'}{360} \nonumber \\
+hue\_transfer(x, x') &=
+\begin{cases}
+    htv(x, x') + 255 \text{,}& htv(x, x') < 0 \\
+    htv(x, x') - 255 \text{,}& htv(x, x') > 255 \\
+    htv(x, x') \text{,}& \text{ostalo}
+\end{cases}
+\end{align}
+
+\begin{align}
+ltv(x, x') &= clamp_{-255}^{255}(1.27 * x') \nonumber \\
+lightness\_transfer(x, x') &=
+\begin{cases}
+	x * \frac{255 + ltv(x, x')}{255} \text{,}& ltv(x, x') < 0 \\
+	x + \frac{(255 - x) * ltv(x, x')}{255} \text{,}& ltv(x, x') \geq 0
+\end{cases}
+\end{align}
+
+\begin{align}
+stv(x, x') &= clamp_{-255}^{255}(2.25 * x') \nonumber \\
+saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
+\end{align}
 
 \chapter{TODO}
 Datoteka {\tt magistrska\_naloga.tex} na kratko opisuje, kako se pisanja
