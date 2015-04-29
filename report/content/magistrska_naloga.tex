@@ -189,8 +189,8 @@ hue\_transfer(x, x') &=
 ltv(x, x') &= clamp_{-255}^{255}(1.27 * x') \nonumber \\
 lightness\_transfer(x, x') &=
 \begin{cases}
-	x * \frac{255 + ltv(x, x')}{255} \text{,}& ltv(x, x') < 0 \\
-	x + \frac{(255 - x) * ltv(x, x')}{255} \text{,}& ltv(x, x') \geq 0
+    x * \frac{255 + ltv(x, x')}{255} \text{,}& ltv(x, x') < 0 \\
+    x + \frac{(255 - x) * ltv(x, x')}{255} \text{,}& ltv(x, x') \geq 0
 \end{cases}
 \end{align}
 
@@ -204,11 +204,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_1}
+        \caption{Prvi filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_1}
 \end{figure}
 
@@ -218,11 +220,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_2}
+        \caption{Drugi filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_2}
 \end{figure}
 
@@ -232,11 +236,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_3}
+        \caption{Tretji filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_3}
 \end{figure}
 
@@ -246,11 +252,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_4}
+        \caption{Četrti filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_4}
 \end{figure}
 
@@ -260,11 +268,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_5}
+        \caption{Peti filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_5}
 \end{figure}
 
@@ -274,11 +284,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_6}
+        \caption{Šesti filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_6}
 \end{figure}
 
@@ -288,11 +300,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_7}
+        \caption{Sedmi filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_7}
 \end{figure}
 
@@ -302,11 +316,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_8}
+        \caption{Osmi filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_8}
 \end{figure}
 
@@ -316,11 +332,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_9}
+        \caption{Deveti filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_9}
 \end{figure}
 
@@ -330,11 +348,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_10}
+        \caption{Deseti filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_10}
 \end{figure}
 
@@ -344,11 +364,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_11}
+        \caption{Enajsti filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_11}
 \end{figure}
 
@@ -358,11 +380,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_12}
+        \caption{Dvanajsti filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_12}
 \end{figure}
 
@@ -372,11 +396,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_13}
+        \caption{Trinajsti filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_13}
 \end{figure}
 
@@ -386,11 +412,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_14}
+        \caption{Štirinajsti filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_14}
 \end{figure}
 
@@ -400,11 +428,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_15}
+        \caption{Petnajsti filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_15}
 \end{figure}
 
@@ -414,11 +444,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_16}
+        \caption{Šestnajsti filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_16}
 \end{figure}
 
@@ -428,11 +460,13 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
     \end{subfigure}
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{lena_filter_17}
+        \caption{Sedemnajsti filter}
     \end{subfigure}
-    \caption{Različne implementacije mobilne platforme}
+    \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_17}
 \end{figure}
 
