@@ -35,17 +35,47 @@ statične slike in povezovanje s socialnimi omrežji.
 izbranega obiskovalca galerije povzdigne v umetniški objekt za petnajst
 sekund. Instalacija je bila navdahnjena s slavnim citatom Andyja Warhola: ``V
 prihodnosti bodo vsi ljudje doživeli svojih petnajst minut
-slave''~\footnote{Originalno v angleščini: \textit{``In the future everybody
+slave''\footnote{Originalno v angleščini: \textit{``In the future everybody
 will be world famous for fifteen minutes''}} kot tudi z njegovim načinom
 predelave obrazov v slogu pop-art~\cite{15secSlo}.
 
-\begin{figure}[ht]
+\begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{15sec}
+    \includegraphics[width=0.7\textwidth]{15sec}
     \caption{Prikaz delovanja instalacije}
+    \label{fig:15sec}
 \end{figure}
 
+Če pogledamo sliko~\ref{fig:15sec} vidimo le ``mojstrovino'', uokvirjeno v
+dragocen okvir. Vendar pa je še veliko v ozadju, očem obiskovalcem nevidno.
+
+Črna luknja nad notranjo sliko je prostor za digitalni fotoaparat, ki enkrat
+na vsake petnajst sekund slika okolico ter sliko pošlje računalniku, ki je
+tudi skrit v ozadju. Fotoaparat ima širokokoten objektiv, da lahko zajamemo
+čim širšo okolico.
+
+Kot že prej omenjeno, se slika pošlje računalniku. Na računalniku se najprej
+izvede algoritem za iskanje obrazov. V primeru več najdenih zadetkov uporabimo
+naključnega. Ta obraz izrežemo iz slike ter ga pošljemo naprej.
+
+Dobljen obraz se obdala z enim izmed vnaprej določenimi barvnimi filtri. Ti
+filtri so sestavljeni iz različnih barvnih transformacij, da vrnejo sliko v
+slogu pop-art. Pop-art filtri so bolj podrobno opisani v
+poglavju~\ref{ch:obdelavaSlik}, primer pop-art transformacije pa lahko tudi
+vidimo na sliki~\ref{fig:lena_filter_5}.
+
+Slika obraza v slogu pop-art, je končni rezultat, ki je prikazan takoj, ko
+prejšnjemu obrazu poteče njegovih petnajst sekund. Prikazan kako? Notranja
+slika obraza je v bistvu računalniški zaslon LCD, priklopljen na že prej
+omenjeni računalnik.
+
+Ta postopek se ponavlja v neskončnost, najboljše pa je, da se vse dogaja v
+živo. Če bo nekdo dovolj dolgo gledal v okvir, ima veliko možnosti da bo kmalu
+zagledal samega sebe kot ``mojstrovino'' v galeriji.
+
+
 \chapter{Obdelava slik}
+\label{ch:obdelavaSlik}
 Instalacija ``15 sekund slave'' vsebuje 17 različnih
 filtrov~\cite[Poglavje~5]{thesisSamoJuvan} za obdelavo prejetih slik v
 pop-art slike. Filtri so bili izdelani s pomočjo grafičnega programa GIMP.
