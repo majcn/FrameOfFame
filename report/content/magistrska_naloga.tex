@@ -31,9 +31,10 @@ omogoča novejša tehnologija. Tu je mišljena predvsem uporaba videa namesto
 statične slike in povezovanje s socialnimi omrežji.
 
 \chapter{Andy Warhol}
+\section{Pop-art umetnost}
 
 
-\chapter{15 sekund slave}
+\chapter{Prvotna izvedba: 15 sekund slave}
 ``15 sekund slave'' je interaktivna umetniška instalacija, ki obraz naključno
 izbranega obiskovalca galerije povzdigne v umetniški objekt za petnajst
 sekund. Instalacija je bila navdahnjena s slavnim citatom Andyja Warhola: ``V
@@ -42,15 +43,17 @@ slave''\footnote{Originalno v angleščini: \textit{``In the future everybody
 will be world famous for fifteen minutes''}} kot tudi z njegovim načinom
 predelave obrazov v slogu pop-art~\cite{15secSlo}.
 
+
+\section{Strojna in programska oprema}
+Če pogledamo sliko~\ref{fig:15sec} vidimo le ``mojstrovino'', uokvirjeno v
+dragocen okvir. Vendar pa je še veliko v ozadju, očem obiskovalcem nevidno.
+
 \begin{figure}
     \centering
     \includegraphics[width=0.7\textwidth]{15sec}
     \caption{Prikaz delovanja instalacije}
     \label{fig:15sec}
 \end{figure}
-
-Če pogledamo sliko~\ref{fig:15sec} vidimo le ``mojstrovino'', uokvirjeno v
-dragocen okvir. Vendar pa je še veliko v ozadju, očem obiskovalcem nevidno.
 
 Črna luknja nad notranjo sliko je prostor za digitalni fotoaparat, ki enkrat
 na vsake petnajst sekund slika okolico ter sliko pošlje računalniku, ki je
@@ -76,6 +79,9 @@ Ta postopek se ponavlja v neskončnost, najboljše pa je, da se vse dogaja v
 živo. Če bo nekdo dovolj dolgo gledal v okvir, ima veliko možnosti da bo kmalu
 zagledal samega sebe kot ``mojstrovino'' v galeriji.
 
+\chapter{Nadgradnja: Naprava in pripomočki}
+
+\chapter{Nadgradnja: Zaznavanje obrazov}
 
 \chapter{Nadgradnja: Obdelava slik}
 \label{ch:obdelavaSlik}
@@ -245,6 +251,8 @@ lightness\_transfer(x, x') &=
 stv(x, x') &= clamp_{-255}^{255}(2.25 * x') \nonumber \\
 saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
 \end{align}
+
+\subsection{Sestavljanje pop-art filtrov}
 
 \subsubsection*{Filter 1}
 Prvi filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
@@ -607,6 +615,15 @@ vidimo na sliki~\ref{fig:lena_filter_17}.
     \caption{Primerjava originalne slike z obdelano sliko}
     \label{fig:lena_filter_17}
 \end{figure}
+
+
+\chapter{Nove funkcionalne možnosti}
+
+
+\chapter{Povezovanje s socialnimi omrežji}
+\section{Možnosti}
+\section{Omejitve}
+
 
 % \chapter{TODO}
 % Datoteka {\tt magistrska\_naloga.tex} na kratko opisuje, kako se pisanja
