@@ -115,34 +115,100 @@ Vse kar za to potrebujemo je Android SDK in prevajalnik Java.
 
 
 \section{Android}
-Android je odprtokodni sistem za pametne telefone, ki ga je izdelal {\tt Open
-Handset Alliance} pod vodstvom {\tt Google}-a leta 2007. Projekt se imenuje
-AOSP (Android Open Source Project) in se še danes hitro razvija.
+Android je odprtokodni sistem za pametne telefone, ki ga je izdelal Open
+Handset Alliance pod vodstvom podjetja Google, leta 2007. Projekt se imenuje
+AOSP~\footnote{Celotno ime je Android Open Source Project} in se še danes
+hitro razvija.
 
 Vse skupaj temelji na jedru Linux, najbolj bistven del arhitekture pa je
-navidezni stroj (ang. virtual machine). Bolj podrobna zgradba sistema je
-prikazana na sliki~\ref{picAndroid}. Navidezni stroj, imenovan {\tt Dalvik
-virtual machine}, vsebuje prevajalnik JIT, ki je zadolžen za zaganjanje {\tt Java}nske že prevedene kode. Prevedena koda je
-zapakirana v datoteke s končnico .apk in tej datotekam pravimo aplikacija, izdelana za sistem Android.
+navidezni stroj (\textit{angl. virtual machine}). Bolj podrobna zgradba
+sistema je prikazana na sliki~\ref{picAndroid}. Navidezni stroj, imenovan
+Dalvik virtual machine, vsebuje prevajalnik JIT, ki je zadolžen za zaganjanje
+že prevedene programske kode Java. Prevedena koda je zapakirana v datoteke s
+končnico .apk in tej datotekam pravimo aplikacija, izdelana za sistem Android.
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{android}
-    \caption{Struktura operacijskega sistema Android}~\cite{wiki:Android}
+    \caption{Struktura operacijskega sistema Android~\cite{wiki:Android}}
     \label{picAndroid}
 \end{figure}
 
-Za izdelavo aplikacije Android potrebujemo znanje programskega jezika {\tt
-Java}, {\tt Android SDK}, ki je brezplačno na voljo na uradni spletni
+Za izdelavo aplikacije Android potrebujemo znanje programskega jezika Java,
+Android SDK, ki je brezplačno na voljo na uradni spletni
 strani\footnote{Uradna spletna stran je dostopna na {\tt
-http://developer.android.com/}}, priporočljivo je tudi branje {\tt SDK
-dokumentacije}, ki je na voljo na spletu\footnote{SDK dokumentacija je
-dostopna na {\tt http://developer.android.com/sdk/}}. Dokumentacija je
-napisana razločno, tako da se lahko znajdejo tudi začetniki. S pomočjo Android
-SDK na koncu nastane datoteka .apk.
-
+http://developer.android.com/}}, priporočljivo je tudi branje {\tt SDK}
+dokumentacije, ki je na voljo na spletu\footnote{SDK dokumentacija je dostopna
+na {\tt http://developer.android.com/sdk/}}. Dokumentacija je napisana
+razločno, tako da se lahko znajdejo tudi začetniki. S pomočjo Android SDK na
+koncu nastane datoteka .apk.
 
 \chapter{Nadgradnja: Zaznavanje obrazov}
+Operacijski sistem Android nam preko vmesnika JNI tudi omogoča vključevanje programskega jezika C. To nam omogoča uporabo splošnih knjižnic in programskih ogrodij (\textit{angl. framework}).
+
+Ker smo v naši nadgradnji želeli, da bi se obrazi zaznavali v realnem času, smo se odločili za uporabo programskega ogrodja OpenCV.
+
+\section{OpenCV}
+OpenCV je programsko ogrodje, ki nam omogoča razne operacije nad slikami.
+Napisana je v programskem jeziku C, za potrebe operacijskega sistema Android
+pa so napisani povezovalni Java razredi (\textit{angl. class}), ki nam
+omogočajo uporabo OpenCV operacij kar preko programskega jezika Java.
+
+Najbolj pomembna funkcionalnost programskega ogrodja OpenCV nam je bila
+implementacija zaznavanja obrazov. Uporablja algoritem kaskadnega
+klasificiranja (\textit{angl. cascade classifier}), ki nam omogoča
+klasifikacijo različnih lastnosti.
+
+Lastnosti so zapisane v datoteki XML. Ta datoteka vsebuje več sto ali tisoč
+različnih lastnosti, ki opisujejo določen predmet, kar v našem primeru pomeni
+oblika obraz.
+
+Obstajajo več različnih tipov, kako so te lastnosti opisane. Za zaznavanje
+obrazov sta najpomembnejša tipa ``HAAR'' in ``LBP''. Tipa se razlikujeta po
+točnosti in hitrosti.
+
+``HAAR'' opisi so procesorsko bolj potratni in potrebujejo relativno veliko
+časa za prepoznavo obraza, vendar pa je zato veliko manj napačnih detekcij
+(\textit{angl. false positive}).
+
+``LBP'' pa, čeprav z malo več napakah pri klasifikaciji, še vedno dovolj
+točen. Vendar pa je časovno kar nekaj krat hitrejši od opisov ``HAAR'' in zato
+zelo uporaben pri detekciji obrazov v živo.
+
+Ker pa so obrazi med seboj zelo različni, je nemogoče da je vsak obraz najden,
+hočemo pa, da je število zgrešenih čim manjše. Vendar pa zgrešen obraz ni
+največja težava, saj gledalci tega ne bi opazili. Veliko večja težava je, če
+najdemo obraz kjer ga ni. Na primer, kakšen predmet v okolici.
+
+Testirali smo oba tipa, z različnimi tipi lastnosti. Uporabili smo le
+lastnosti, ki opisujejo sprednji del obraza. Vendar pa se je pri uporabi
+``LBP'' opisov še vedno pokazalo preveč lažnih obrazov. Zato smo se odločili
+za uporabo lastnosti tipa ``HAAR''. Veliko bolj nam je pomembno, da ima
+petnajst sekund slave obraz in ne kakšen predmet v okolici.
+
+Vendar pa tudi tipi ``HAAR'' opisi obrazov niso vedno dosegli našega
+pričakovanja. Zato smo se odločili, da naredimo dvojno klasifikacijo.
+
+Najprej smo klasificirali z lastnostmi sprednjega dela obraza, opisanimi v
+datoteki \textit{harrcascade\_frontalface\_default.xml}, s katero smo dobili
+rezultate obrazov. Ker je že sama klasifikacija obraza porabila kar nekaj
+dragocenega časa, smo se odločili, da iskanje prekinemo po prvem kandidatu
+obraza, ki je velik vsaj ena desetina celotne slike.
+
+Kandidat obraza smo testirali še s klasifikacijo očesa. Vsak obraz ima dve
+očesi. Zavedali smo se, da v primeru očal tega ne bomo našli, vendar pa se je
+izkazalo da je problem le pri zasenčenih očalih. Za to klasifikacijo smo
+uporabili lastnosti, zapisane v datoteki \textit{harrcascade\_eye.xml}. V
+primeru, če smo našli točno dva rezultata smo vrnili prejšnji rezultat, v
+nasprotnem primeru pa, da obraz ni najden.
+
+S temi nastavitvami in omejitvami smo dosegli pričakovane rezultate. Najden
+rezultat smo povečali še za približno eno tretjino, tako da je bil rezultat
+kvadratne oblike. Zakaj eno tretjino? Iskali smo prednji del obraza in ga tudi
+našli. Vendar v okvirju si želimo videti celotno glavo in ne samo obraza.
+Povečava za eno tretjino se je izkazala kot ravno pravšnja za večino
+testiranih primerov.
+
 
 \chapter{Nadgradnja: Obdelava slik}
 \label{ch:obdelavaSlik}
