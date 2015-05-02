@@ -148,7 +148,7 @@ Operacijski sistem Android nam preko vmesnika JNI tudi omogoča vključevanje pr
 
 Ker smo v naši nadgradnji želeli, da bi se obrazi zaznavali v realnem času, smo se odločili za uporabo programskega ogrodja OpenCV.
 
-\section{OpenCV}
+\section{Zaznavanje obrazov z uporabo OpenCV}
 OpenCV je programsko ogrodje, ki nam omogoča razne operacije nad slikami.
 Napisana je v programskem jeziku C, za potrebe operacijskega sistema Android
 pa so napisani povezovalni Java razredi (\textit{angl. class}), ki nam
@@ -255,6 +255,22 @@ kvadratne oblike. Zakaj eno tretjino? Iskali smo prednji del obraza in ga tudi
 našli. Vendar v okvirju si želimo videti celotno glavo in ne samo obraza.
 Povečava za eno tretjino se je izkazala kot ravno pravšnja za večino
 testiranih primerov.
+
+Detekcija obrazov z programskim ogrodjem OpenCV je le ena izmed možnosti, ki
+smo si jih podrobneje ogledali. Kot prva implementacija je bila izbrana zaradi
+velike kontrole nad vsakim korakom, kot so: detekcija obraza, določanje regije
+kje iskati, detekcija oči v določeni regiji in še bi lahko naštevali.
+
+Kljub zadovoljivimi rezultati iskanja obrazov, se je izkazalo, da slike
+velikokrat niso ostre. Prej smo omenili, da imamo veliko kontrolo nad
+različnimi algoritmi za detekcijo, kar pa ne pomeni za uporabo kamere, ki je v
+pametnem telefonu. OpenCV uporablja sliko iz kamere tako kot je, brez
+predhodne izostritve. Z drugimi besedami povedano, to uporablja kot kamero in
+ne kot digitalni fotoaparat.
+
+
+\section{Zaznavanje obrazov z uporabo Android SDK}
+
 
 
 \chapter{Nadgradnja: Obdelava slik}
