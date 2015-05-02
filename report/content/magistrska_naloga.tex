@@ -189,18 +189,65 @@ petnajst sekund slave obraz in ne kakšen predmet v okolici.
 Vendar pa tudi tipi ``HAAR'' opisi obrazov niso vedno dosegli našega
 pričakovanja. Zato smo se odločili, da naredimo dvojno klasifikacijo.
 
-Najprej smo klasificirali z lastnostmi sprednjega dela obraza, opisanimi v
-datoteki \textit{harrcascade\_frontalface\_default.xml}, s katero smo dobili
-rezultate obrazov. Ker je že sama klasifikacija obraza porabila kar nekaj
-dragocenega časa, smo se odločili, da iskanje prekinemo po prvem kandidatu
-obraza, ki je velik vsaj ena desetina celotne slike.
+Najprej smo klasificirali z lastnostmi sprednjega dela obraza, opisanimi v datoteki
+\textit{harrcascade\_frontalface\_default.xml}~\ref{fig:haar_frontal_face}, s
+katero smo dobili rezultate obrazov. Ker je že sama klasifikacija obraza
+porabila kar nekaj dragocenega časa, smo se odločili, da iskanje prekinemo po
+prvem kandidatu obraza, ki je velik vsaj ena desetina celotne slike.
+
+\begin{lstlisting}[label=fig:haar_frontal_face, caption=Izsek iz datoteke harrcascade\_frontalface\_default.xml]
+<maxWeakCount>9</maxWeakCount>
+<stageThreshold>-5.0425500869750977e+00</stageThreshold>
+<weakClassifiers>
+  <_>
+    <internalNodes>
+      0 -1 0 -3.1511999666690826e-02
+    </internalNodes>
+    <leafValues>
+      2.0875380039215088e+00 -2.2172100543975830e+00
+    </leafValues>
+  </_>
+  <_>
+    <internalNodes>
+      0 -1 1 1.2396000325679779e-02
+    </internalNodes>
+    <leafValues>
+      -1.8633940219879150e+00 1.3272049427032471e+00
+    </leafValues>
+  </_>
+  ...
+\end{lstlisting}
 
 Kandidat obraza smo testirali še s klasifikacijo očesa. Vsak obraz ima dve
 očesi. Zavedali smo se, da v primeru očal tega ne bomo našli, vendar pa se je
 izkazalo da je problem le pri zasenčenih očalih. Za to klasifikacijo smo
-uporabili lastnosti, zapisane v datoteki \textit{harrcascade\_eye.xml}. V
-primeru, če smo našli točno dva rezultata smo vrnili prejšnji rezultat, v
-nasprotnem primeru pa, da obraz ni najden.
+uporabili lastnosti, zapisane v datoteki
+\textit{harrcascade\_eye.xml}~\ref{fig:haar_frontal_face}. V primeru, če smo
+našli točno dva rezultata smo vrnili prejšnji rezultat, v nasprotnem primeru
+pa, da obraz ni najden.
+
+\begin{lstlisting}[label=fig:haar_eye, caption=Izsek iz datoteke harrcascade\_eye.xml]
+<maxWeakCount>6</maxWeakCount>
+<stageThreshold>-1.4562760591506958e+00</stageThreshold>
+<weakClassifiers>
+  <_>
+    <internalNodes>
+      0 -1 0 1.2963959574699402e-01
+    </internalNodes>
+    <leafValues>
+      -7.7304208278656006e-01 6.8350148200988770e-01
+    </leafValues>
+  </_>
+  <_>
+    <internalNodes>
+      0 -1 1 -4.6326808631420135e-02
+    </internalNodes>
+    <leafValues>
+      5.7352751493453979e-01 -4.9097689986228943e-01
+    </leafValues>
+  </_>
+  ...
+\end{lstlisting}
 
 S temi nastavitvami in omejitvami smo dosegli pričakovane rezultate. Najden
 rezultat smo povečali še za približno eno tretjino, tako da je bil rezultat
