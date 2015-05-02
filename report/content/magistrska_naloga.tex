@@ -190,12 +190,12 @@ Vendar pa tudi tipi ``HAAR'' opisi obrazov niso vedno dosegli našega
 pričakovanja. Zato smo se odločili, da naredimo dvojno klasifikacijo.
 
 Najprej smo klasificirali z lastnostmi sprednjega dela obraza, opisanimi v datoteki
-\textit{harrcascade\_frontalface\_default.xml}~\ref{fig:haar_frontal_face}, s
+\textit{harrcascade\_frontalface\_default.xml}~\ref{lst:haar_frontal_face}, s
 katero smo dobili rezultate obrazov. Ker je že sama klasifikacija obraza
 porabila kar nekaj dragocenega časa, smo se odločili, da iskanje prekinemo po
 prvem kandidatu obraza, ki je velik vsaj ena desetina celotne slike.
 
-\begin{lstlisting}[label=fig:haar_frontal_face, caption=Izsek iz datoteke harrcascade\_frontalface\_default.xml]
+\begin{lstlisting}[label=lst:haar_frontal_face, caption=Izsek iz datoteke harrcascade\_frontalface\_default.xml]
 <maxWeakCount>9</maxWeakCount>
 <stageThreshold>-5.0425500869750977e+00</stageThreshold>
 <weakClassifiers>
@@ -222,11 +222,11 @@ Kandidat obraza smo testirali še s klasifikacijo očesa. Vsak obraz ima dve
 očesi. Zavedali smo se, da v primeru očal tega ne bomo našli, vendar pa se je
 izkazalo da je problem le pri zasenčenih očalih. Za to klasifikacijo smo
 uporabili lastnosti, zapisane v datoteki
-\textit{harrcascade\_eye.xml}~\ref{fig:haar_frontal_face}. V primeru, če smo
+\textit{harrcascade\_eye.xml}~\ref{lst:haar_eye}. V primeru, če smo
 našli točno dva rezultata smo vrnili prejšnji rezultat, v nasprotnem primeru
 pa, da obraz ni najden.
 
-\begin{lstlisting}[label=fig:haar_eye, caption=Izsek iz datoteke harrcascade\_eye.xml]
+\begin{lstlisting}[label=lst:haar_eye, caption=Izsek iz datoteke harrcascade\_eye.xml]
 <maxWeakCount>6</maxWeakCount>
 <stageThreshold>-1.4562760591506958e+00</stageThreshold>
 <weakClassifiers>
