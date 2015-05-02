@@ -104,8 +104,42 @@ operacijskem sistem Android verzije 4.4.4, imenovan tudi Android Kitkat.
 Trenutno najnovejši operacijski sistem Android je verzija 5.0, poimenovan
 Lizika (\textit{angl. Lolipop}).
 
+TODO: opis naprave
+
 Glavni razlog, da smo se odločili za to napravo je kvalitetna kamera, zmogljiv
-procesor ARM in možnost priključka zunanje naprave prek priključka HDMI.
+procesor ARM in možnost priključka zunanje naprave prek priključka HDMI. 
+
+Pomembna lastnost je tudi operacijski sistem Android, za katerega je mogoče
+napisati programsko opremo, imenovano aplikacija, v programskem jeziku Java.
+Vse kar za to potrebujemo je Android SDK in prevajalnik Java.
+
+
+\section{Android}
+Android je odprtokodni sistem za pametne telefone, ki ga je izdelal {\tt Open
+Handset Alliance} pod vodstvom {\tt Google}-a leta 2007. Projekt se imenuje
+AOSP (Android Open Source Project) in se še danes hitro razvija.
+
+Vse skupaj temelji na jedru Linux, najbolj bistven del arhitekture pa je
+navidezni stroj (ang. virtual machine). Bolj podrobna zgradba sistema je
+prikazana na sliki~\ref{picAndroid}. Navidezni stroj, imenovan {\tt Dalvik
+virtual machine}, vsebuje prevajalnik JIT, ki je zadolžen za zaganjanje {\tt Java}nske že prevedene kode. Prevedena koda je
+zapakirana v datoteke s končnico .apk in tej datotekam pravimo aplikacija, izdelana za sistem Android.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{android}
+    \caption{Struktura operacijskega sistema Android}~\cite{wiki:Android}
+    \label{picAndroid}
+\end{figure}
+
+Za izdelavo aplikacije Android potrebujemo znanje programskega jezika {\tt
+Java}, {\tt Android SDK}, ki je brezplačno na voljo na uradni spletni
+strani\footnote{Uradna spletna stran je dostopna na {\tt
+http://developer.android.com/}}, priporočljivo je tudi branje {\tt SDK
+dokumentacije}, ki je na voljo na spletu\footnote{SDK dokumentacija je
+dostopna na {\tt http://developer.android.com/sdk/}}. Dokumentacija je
+napisana razločno, tako da se lahko znajdejo tudi začetniki. S pomočjo Android
+SDK na koncu nastane datoteka .apk.
 
 
 \chapter{Nadgradnja: Zaznavanje obrazov}
