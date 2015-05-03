@@ -270,7 +270,30 @@ ne kot digitalni fotoaparat.
 
 
 \section{Zaznavanje obrazov z uporabo Android SDK}
+Android SDK je popolnoma druga zgodba kot pa OpenCV. Tukaj ni nobene kontrole in raznih parametrov, le v naprej določen algoritem.
 
+Algoritem bazira na algoritmu NV1-NORM~\cite{nevenFaceRecognition}, ki ga je
+izdelalo podjetje Neven Vision~\ref{fig:neven_vision}. Leta 2006 je Neven
+Vision postalo last podjetja Google in se uporablja za zaznavo obraza v
+različnih programih, ki jih je izdelalo podjetje Google, na primer program za
+prikaz slik Google Picassa.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.3\textwidth]{neven_vision}
+    \caption{Vizualizacija zaznavanja obraza, Neven Vision}
+    \label{fig:neven_vision}
+\end{figure}
+
+Natančnejša implementacija algoritma za zaznavo obraza je zaprto-kodna. Tudi,
+če si ogledamo dokumentacijo Android SDK-ja, je opisan samo primer uporabe:
+\begin{lstlisting}[caption="Primer uporabe zaznavanja obraza z orodjem Android SDK"]
+FaceDetector fc = new FaceDetector(
+    sirina_slike,
+    visina_slike,
+    maksimalno_stevilo_obrazov
+).findFaces(slika, obrazi);
+\end{lstlisting}
 
 
 \chapter{Nadgradnja: Obdelava slik}
