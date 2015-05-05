@@ -10,9 +10,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="si.majcn.frameoffame.MainActivity"
-            android:screenOrientation="landscape"
-            android:configChanges="keyboardHidden|orientation">
+            android:name="si.majcn.frameoffame.MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

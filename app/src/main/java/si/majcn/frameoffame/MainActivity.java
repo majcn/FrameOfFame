@@ -1,21 +1,21 @@
 package si.majcn.frameoffame;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.WindowManager;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.Random;
 
 import si.majcn.frameoffame.facecropper.FaceCropper;
-import si.majcn.frameoffame.fragment.camera.CameraFragment;
-import si.majcn.frameoffame.fragment.camera.OnImageTaken;
-import si.majcn.frameoffame.fragment.image.ImageFragment;
+import si.majcn.frameoffame.fragment.image.view.ImageGridView;
+import si.majcn.frameoffame.fragment.image.view.ImageGridViewAdapter;
 
-public class MainActivity extends FragmentActivity implements OnImageTaken {
+public class MainActivity extends Activity {
 
     static {
         System.loadLibrary("imageprocessing");
@@ -24,57 +24,52 @@ public class MainActivity extends FragmentActivity implements OnImageTaken {
     public static native int getNumberOfEffects();
     public static native void applyEffect(Bitmap bmp, int i);
 
-    private CameraFragment mCameraFragment;
-    private ImageFragment mImageFragment;
+    public static int TAKE_PICTURE = 1;
 
     private FaceCropper mCropper;
     private Random mRandomGenerator;
 
+    private ImageButton mCameraButton;
+
+    private ImageGridView mGridView;
+    private ImageGridViewAdapter mGridViewAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_main);
 
-        ((ViewPager) findViewById(R.id.pager)).setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int i) {
-                switch (i) {
-                    case 0:
-                        return mImageFragment = new ImageFragment();
-                    case 1:
-                        return mCameraFragment = new CameraFragment();
-                    default:
-                        return null;
-                }
-            }
+        mGridViewAdapter = new ImageGridViewAdapter(this);
 
+        mCameraButton = (ImageButton) findViewById(R.id.cameraButton);
+        mCameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public int getCount() {
-                return 2;
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                startActivityForResult(intent, TAKE_PICTURE);
             }
         });
+
+        mGridView = (ImageGridView) findViewById(R.id.gridview);
+        mGridView.setNumColumns(40);
+        mGridView.setAdapter(mGridViewAdapter);
 
         mCropper = new FaceCropper();
         mRandomGenerator = new Random();
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == TAKE_PICTURE && resultCode == RESULT_OK) {
+            Bitmap image = (Bitmap) data.getExtras().get("data");
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    public void onImageTaken(Bitmap image) {
-        Bitmap[] result = mCropper.getCroppedImages(image);
-        for (int i=0; i<result.length; i++) {
-            applyEffect(result[i], mRandomGenerator.nextInt(getNumberOfEffects()));
+            Bitmap[] result = mCropper.getCroppedImages(image);
+            Toast.makeText(this, "Detected faces: " + (result.length - 1), Toast.LENGTH_SHORT).show();
+            int imageIndex = result.length > 1 ? 1 : 0;
+            applyEffect(result[imageIndex], mRandomGenerator.nextInt(getNumberOfEffects()));
+            mGridViewAdapter.setImage(result[imageIndex]);
+            mGridView.invalidateViews();
         }
-        mImageFragment.addImages(result);
     }
 }
