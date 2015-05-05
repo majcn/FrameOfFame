@@ -25,7 +25,7 @@ class ImageGridViewAdapter extends BaseAdapter {
     private final int TINT_ALPHA;
 
     private ArrayList<Bitmap> images = new ArrayList<>();
-    private ArrayList<Bitmap> smallImages = new ArrayList<>();
+    private Bitmap smallImage;
 
     private Context mContext;
 
@@ -45,12 +45,12 @@ class ImageGridViewAdapter extends BaseAdapter {
             imageGridView = (ImageImageView) convertView;
         }
 
-        int imageIndex = mRandomGenerator.nextInt(5);
+        int imageIndex = mRandomGenerator.nextInt(images.size());
 
         final Bitmap bitmap = images.get(imageIndex);
         imageGridView.setImageBitmap(bitmap);
 
-        int c = smallImages.get(imageIndex).getPixel(position % NUM_IMAGES, position / NUM_IMAGES);
+        int c = smallImage.getPixel(position % NUM_IMAGES, position / NUM_IMAGES);
         int red = Color.red(c);
         int green = Color.green(c);
         int blue = Color.blue(c);
@@ -96,12 +96,12 @@ class ImageGridViewAdapter extends BaseAdapter {
 
     public void setImages(Bitmap... bitmaps) {
         images.clear();
-        smallImages.clear();
 
         for (int i = 0; i < bitmaps.length; i++) {
             Bitmap bmp = bitmaps[i];
             images.add(bmp);
-            smallImages.add(0, Bitmap.createScaledBitmap(bmp, NUM_IMAGES, NUM_IMAGES, true));
         }
+
+        smallImage = Bitmap.createScaledBitmap(bitmaps[mRandomGenerator.nextInt(bitmaps.length)], NUM_IMAGES, NUM_IMAGES, true);
     }
 }
