@@ -64,11 +64,30 @@ public class MainActivity extends Activity {
         if (requestCode == TAKE_PICTURE && resultCode == RESULT_OK) {
             Bitmap image = (Bitmap) data.getExtras().get("data");
 
-            Bitmap[] result = mCropper.getCroppedImages(image);
-            Toast.makeText(this, "Detected faces: " + (result.length - 1), Toast.LENGTH_SHORT).show();
-            int imageIndex = result.length > 1 ? 1 : 0;
-            applyEffect(result[imageIndex], mRandomGenerator.nextInt(getNumberOfEffects()));
-            mGridViewAdapter.setImage(result[imageIndex]);
+            Bitmap srcBmp = mCropper.getCroppedImage(image);
+            Bitmap dstBmp;
+
+            if (srcBmp.getWidth() >= srcBmp.getHeight()) {
+                dstBmp = Bitmap.createBitmap(
+                        srcBmp,
+                        srcBmp.getWidth() / 2 - srcBmp.getHeight() / 2,
+                        0,
+                        srcBmp.getHeight(),
+                        srcBmp.getHeight()
+                );
+
+            } else {
+                dstBmp = Bitmap.createBitmap(
+                        srcBmp,
+                        0,
+                        srcBmp.getHeight() / 2 - srcBmp.getWidth() / 2,
+                        srcBmp.getWidth(),
+                        srcBmp.getWidth()
+                );
+            }
+
+            applyEffect(dstBmp, mRandomGenerator.nextInt(getNumberOfEffects()));
+            mGridViewAdapter.setImage(dstBmp);
             mGridView.invalidateViews();
         }
     }
