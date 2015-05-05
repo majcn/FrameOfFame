@@ -12,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import si.majcn.frameoffame.R;
 
@@ -19,6 +20,8 @@ import si.majcn.frameoffame.R;
  * Created by majcn on 2015-05-05.
  */
 public class ImageGridViewAdapter extends BaseAdapter {
+
+    private Random mRandomGenerator = new Random();
 
     private static int NUM_IMAGES = 40;
     private static int TINT_ALPHA = 50;
@@ -41,10 +44,12 @@ public class ImageGridViewAdapter extends BaseAdapter {
             imageGridView = (ImageImageView) convertView;
         }
 
-        final Bitmap bitmap = images.get(0);
+        int imageIndex = mRandomGenerator.nextInt(5);
+
+        final Bitmap bitmap = images.get(imageIndex);
         imageGridView.setImageBitmap(bitmap);
 
-        int c = smallImages.get(0).getPixel(position % NUM_IMAGES, position / NUM_IMAGES);
+        int c = smallImages.get(imageIndex).getPixel(position % NUM_IMAGES, position / NUM_IMAGES);
         int red = Color.red(c);
         int green = Color.green(c);
         int blue = Color.blue(c);
@@ -88,8 +93,14 @@ public class ImageGridViewAdapter extends BaseAdapter {
         return images.isEmpty() ? 0 : NUM_IMAGES * NUM_IMAGES;
     }
 
-    public void setImage(Bitmap bitmap) {
-        images.add(0, bitmap);
-        smallImages.add(0, Bitmap.createScaledBitmap(bitmap, NUM_IMAGES, NUM_IMAGES, true));
+    public void setImages(Bitmap... bitmaps) {
+        images.clear();
+        smallImages.clear();
+
+        for (int i = 0; i < bitmaps.length; i++) {
+            Bitmap bmp = bitmaps[i];
+            images.add(bmp);
+            smallImages.add(0, Bitmap.createScaledBitmap(bmp, NUM_IMAGES, NUM_IMAGES, true));
+        }
     }
 }

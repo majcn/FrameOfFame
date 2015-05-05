@@ -86,8 +86,13 @@ public class MainActivity extends Activity {
                 );
             }
 
-            applyEffect(dstBmp, mRandomGenerator.nextInt(getNumberOfEffects()));
-            mGridViewAdapter.setImage(dstBmp);
+            Bitmap[] result = new Bitmap[5];
+            for (int i = 0; i < result.length; i++) {
+                result[i] = Bitmap.createBitmap(dstBmp);
+                applyEffect(result[i], mRandomGenerator.nextInt(getNumberOfEffects()));
+            }
+
+            mGridViewAdapter.setImages(result);
             mGridView.invalidateViews();
         }
     }
