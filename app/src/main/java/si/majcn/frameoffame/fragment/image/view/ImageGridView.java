@@ -31,8 +31,8 @@ public class ImageGridView extends GridView {
         super.onMeasure(size, size);
     }
 
-    public void init(int numColumns) {
-        mImageGridAdapter = new ImageGridViewAdapter(getContext(), numColumns, 50);
+    public void init(int numColumns, int alpha) {
+        mImageGridAdapter = new ImageGridViewAdapter(getContext(), numColumns, alpha);
 
         setNumColumns(numColumns);
         setAdapter(mImageGridAdapter);

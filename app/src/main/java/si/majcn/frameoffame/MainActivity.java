@@ -8,8 +8,6 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageButton;
 
-import java.util.Random;
-
 import si.majcn.frameoffame.facecropper.FaceCropper;
 import si.majcn.frameoffame.fragment.image.view.ImageGridView;
 
@@ -25,7 +23,6 @@ public class MainActivity extends Activity {
     public static int TAKE_PICTURE = 1;
 
     private FaceCropper mCropper;
-    private Random mRandomGenerator;
 
     private ImageButton mCameraButton;
 
@@ -47,10 +44,9 @@ public class MainActivity extends Activity {
         });
 
         mGridView = (ImageGridView) findViewById(R.id.gridview);
-        mGridView.init(40);
+        mGridView.init(40, 100);
 
         mCropper = new FaceCropper();
-        mRandomGenerator = new Random();
     }
 
     @Override
@@ -80,10 +76,10 @@ public class MainActivity extends Activity {
                 );
             }
 
-            Bitmap[] result = new Bitmap[5];
+            Bitmap[] result = new Bitmap[getNumberOfEffects()];
             for (int i = 0; i < result.length; i++) {
                 result[i] = Bitmap.createBitmap(dstBmp);
-                applyEffect(result[i], mRandomGenerator.nextInt(getNumberOfEffects()));
+                applyEffect(result[i], i);
             }
 
             mGridView.setImages(result);
