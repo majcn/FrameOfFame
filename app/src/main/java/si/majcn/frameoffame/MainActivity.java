@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
         });
 
         mGridView = (ImageGridView) findViewById(R.id.gridview);
-        mGridView.init(40, 100);
+        mGridView.init(60, 100);
 
         mCropper = new FaceCropper();
     }
