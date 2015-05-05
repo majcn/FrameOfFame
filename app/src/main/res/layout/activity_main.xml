@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true">
 
-    <si.majcn.frameoffame.fragment.image.view.ImageGridView
+    <si.majcn.frameoffame.image.view.ImageGridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

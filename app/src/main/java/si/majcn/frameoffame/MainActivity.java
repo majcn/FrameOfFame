@@ -8,8 +8,8 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageButton;
 
-import si.majcn.frameoffame.facecropper.FaceCropper;
-import si.majcn.frameoffame.fragment.image.view.ImageGridView;
+import cat.lafosca.facecropper.FaceCropper;
+import si.majcn.frameoffame.image.view.ImageGridView;
 
 public class MainActivity extends Activity {
 
