@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import java.util.Random;
 
 import si.majcn.frameoffame.facecropper.FaceCropper;
 import si.majcn.frameoffame.fragment.image.view.ImageGridView;
-import si.majcn.frameoffame.fragment.image.view.ImageGridViewAdapter;
 
 public class MainActivity extends Activity {
 
@@ -32,14 +30,11 @@ public class MainActivity extends Activity {
     private ImageButton mCameraButton;
 
     private ImageGridView mGridView;
-    private ImageGridViewAdapter mGridViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mGridViewAdapter = new ImageGridViewAdapter(this);
 
         mCameraButton = (ImageButton) findViewById(R.id.cameraButton);
         mCameraButton.setOnClickListener(new View.OnClickListener() {
@@ -52,8 +47,7 @@ public class MainActivity extends Activity {
         });
 
         mGridView = (ImageGridView) findViewById(R.id.gridview);
-        mGridView.setNumColumns(40);
-        mGridView.setAdapter(mGridViewAdapter);
+        mGridView.init(40);
 
         mCropper = new FaceCropper();
         mRandomGenerator = new Random();
@@ -92,8 +86,7 @@ public class MainActivity extends Activity {
                 applyEffect(result[i], mRandomGenerator.nextInt(getNumberOfEffects()));
             }
 
-            mGridViewAdapter.setImages(result);
-            mGridView.invalidateViews();
+            mGridView.setImages(result);
         }
     }
 }

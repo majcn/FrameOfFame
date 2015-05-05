@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.media.Image;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -19,20 +17,23 @@ import si.majcn.frameoffame.R;
 /**
  * Created by majcn on 2015-05-05.
  */
-public class ImageGridViewAdapter extends BaseAdapter {
+class ImageGridViewAdapter extends BaseAdapter {
 
     private Random mRandomGenerator = new Random();
 
-    private static int NUM_IMAGES = 40;
-    private static int TINT_ALPHA = 50;
+    private final int NUM_IMAGES;
+    private final int TINT_ALPHA;
 
     private ArrayList<Bitmap> images = new ArrayList<>();
     private ArrayList<Bitmap> smallImages = new ArrayList<>();
 
     private Context mContext;
 
-    public ImageGridViewAdapter(Context c) {
+    public ImageGridViewAdapter(Context c, int numImages, int tintAlpha) {
         mContext = c;
+
+        NUM_IMAGES = numImages;
+        TINT_ALPHA = tintAlpha;
     }
 
     @Override
