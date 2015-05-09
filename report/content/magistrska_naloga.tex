@@ -287,10 +287,30 @@ našli. Vendar v okvirju si želimo videti celotno glavo in ne samo obraza.
 Povečava za eno tretjino se je izkazala kot ravno pravšnja za večino
 testiranih primerov.
 
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{lena_opencv_face}
+        \caption{Zaznavanje obraza}
+        \label{fig:lena_opencv_face}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{lena_opencv_face_eye}
+        \caption{Zaznavanje oči}
+        \label{fig:lena_opencv_face_eye}
+    \end{subfigure}
+    \caption{Prikaz zaznavanja obraza in oči s programskim ogrodjem OpenCV}
+\end{figure}
+
 Detekcija obrazov z programskim ogrodjem OpenCV je le ena izmed možnosti, ki
 smo si jih podrobneje ogledali. Kot prva implementacija je bila izbrana zaradi
-velike kontrole nad vsakim korakom, kot so: detekcija obraza, določanje regije
-kje iskati, detekcija oči v določeni regiji in še bi lahko naštevali.
+velike kontrole nad vsakim korakom, kot so: detekcija
+obraza~\ref{fig:lena_opencv_face}, določanje regije kje iskati, detekcija oči
+v določeni regiji~\ref{fig:lena_opencv_face_eye} in še bi lahko naštevali.
 
 Kljub zadovoljivimi rezultati iskanja obrazov, se je izkazalo, da slike
 velikokrat niso ostre. Prej smo omenili, da imamo veliko kontrolo nad
