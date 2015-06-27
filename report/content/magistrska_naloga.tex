@@ -961,9 +961,29 @@ s starim zaslonom LCD. Ko pa je to že bila nujna posodobitev smo razmišljali
 širino, starega formata 4:3 skorajda ni več. Naš cilj pa je kvadratna slika.
 Najprej smo želeli najti čim bolj kvadraten zaslon. Vendar pa se je kmalu
 rodila ideja o še širšem zaslon-u in sicer da je širina malo več kot enkrat
-daljša od višine. S tem smo si omogočili možnost prikazovanja dveh slik. Kot
+daljša od višine~\ref{fig:frame2}. S tem smo si omogočili možnost prikazovanja dveh slik. Kot
 da bi naenkrat imeli razstavljeni dve različici instalacije. Seveda ima vsaka
 slika drug obraz, če le ta obstaja.
+
+Zaradi prejšnjega razloga o zamenjavi zaslona je bilo potrebno zamenjati tudi
+okvir. Kot že pri prejšnji posodobitvi okvirja bo tudi tokrat ostal bogate
+okrasitve, le na sredini bo združen, kot je prikazano na
+sliki~\ref{fig:frame2}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.33\textwidth}
+        \includegraphics[width=\textwidth]{frame1}
+        \caption{Originalni okvir}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.6\textwidth}
+        \includegraphics[width=\textwidth]{frame2}
+        \caption{Novi razširjeni okvir}
+        \label{fig:frame2}
+    \end{subfigure}
+    \caption{Prikaz razširitve okvirja zaradi menjave širšega zaslona LCD}
+\end{figure}
+
 
 \chapter{Povezovanje s socialnimi omrežji}
 \label{ch:social_network}
