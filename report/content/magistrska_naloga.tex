@@ -137,21 +137,15 @@ Druga strategija je, da nadgradimo strojno in programsko opremo. Pri tem moramo 
 
 \chapter{Nadgradnja: Naprava in pripomočki}
 Kot prvo nadgradnjo, ki smo si jo zamislili, je čimbolj učinkovito zmanjšati
-porabljen prostor za instalacijo in s tem povečati njeno prenosljivost in
-enostavno postavitev.
+porabljen prostor za instalacijo in s tem olajšati njeno prenosljivost in povečati enostavnost postavitve.
 
 Prvotna instalacija potrebuje osebni ali prenosni računalnik, zaslon LCD,
 digitalni fotoaparat, mrežno opremo in dostop do interneta.
 
-Kot najboljša zamenjava se je izkazala naprava ``pametni telefon'', saj
-vsebuje vse prej naštete naprave. Ima vgrajeno kamero, ki služi tudi kot
-fotoaparat, dostop do interneta preko kartice SIM ter operacijski sistem, ki
-omogoča izdelavo programske opreme s katero lahko dostopamo do prej naštetih
-funkcij.
+Kot najboljša zamenjava se je izkazala naprava ``pametni telefon'', saj ima vse prej naštete naprave združene v eno. Ima vgrajeno kamero, ki služi kot fotoaparat, dostop do interneta preko kartice SIM ter operacijski sistem, ki
+omogoča izdelavo programske opreme s katero lahko dostopamo do prej naštetih funkcij.
 
-Pametni telefoni dražjega ranga omogočajo tudi, da lahko sliko v živo
-predvajamo na večji ekran. Zato smo se odločili, da kot testno napravo vzamemo
-pametni telefon Samsung Galaxy S5.
+Pametni telefoni dražje stopnje omogočajo tudi, da lahko sliko v živo predvajamo na večjem ekranu. Zato smo se odločili, da kot testno napravo vzamemo pametni telefon Samsung Galaxy S5.
 
 \section{Testna naprava: Samsung Galaxy S5}
 
@@ -168,41 +162,26 @@ pametni telefon Samsung Galaxy S5.
     \label{fig:sgs5}
 \end{figure}
 
-Samsung Galaxy S5 je pametni telefon, narejen v podjetju Samsung. Deluje na
-operacijskem sistem Android verzije 4.4.4, imenovan tudi Android Kitkat.
-Trenutno najnovejši operacijski sistem Android je verzija 5.0, poimenovan
-Lizika (\textit{angl. Lolipop}).
+Samsung Galaxy S5 je pametni telefon, narejen v podjetju Samsung. Deluje na operacijskem sistem Android verzije 4.4.4, imenovanem tudi Android Kitkat.
+Trenutno najnovejši obstoječi operacijski sistem Androida je verzija 5.0, poimenovan Lizika (\textit{angl. Lolipop}).
 
-Samsnug Galaxy S5 se ponaša s štiri-jedrnim procesorjem 2.5GHz Krait 400 na
-čipovju Qualcomm MSM8974AC Snapdragon 801. Ta procesor je dovolj močan za
-računanje vseh filtrov v zadovoljivem hitrem času.
+Samsnug Galaxy S5 se ponaša s štiri-jedrnim procesorjem 2.5GHz Krait 400 na čipu Qualcomm MSM8974AC Snapdragon 801. Ta procesor je dovolj močan za preračunavanje vseh filtrov v zadovoljivo hitrem času.
 
-Grafična enota, Adreno 330, omogoča možnost prikazovanja v resoluciji
-1080~x~1920 pikslov. Ena izmed pomembnih lastnosti je tudi možnost povezave
-zunanje naprave preko priključka HDMI.
+Grafična enota, Adreno 330, omogoča možnost prikazovanja v resoluciji 1080~x~1920 pikslov. Ena izmed pomembnih lastnosti je tudi možnost povezave zunanje naprave preko priključka HDMI.
 
-Tu je tudi kvalitetna kamera, ki je tipa 1/2.6''. Svetlobno tipalo ima
-šestnajst mega pikslov, kar lahko naredi sliko v velikosti 5312~x~2988
-pikslov. Velikost in obliko lahko vidimo kot majhen črn kvadrat, viden na
+Tudi kamera je  izjemno kvalitetna, je namreč tipa 1/2.6''. Svetlobno tipalo ima šestnajst mega pikslov, kar lahko naredi sliko v velikosti 5312~x~2988 pikslov. Velikost in obliko kamere lahko vidimo kot majhen črn kvadrat, viden na
 desni sliki~\ref{fig:sgs5}.
 
-Pomembna lastnost je tudi operacijski sistem Android, za katerega je mogoče
-napisati programsko opremo, imenovano aplikacija, v programskem jeziku Java.
-Vse kar za to potrebujemo je Android SDK in prevajalnik Java.
+Pomembna lastnost je tudi operacijski sistem Android, za katerega je v programskem jeziku Java mogoče napisati programsko opremo imenovano aplikacija. Vse kar za to potrebujemo, je Android SDK in prevajalnik Java.
 
 
 \section{Android}
-Android je odprtokodni sistem za pametne telefone, ki ga je izdelal Open
-Handset Alliance pod vodstvom podjetja Google, leta 2007. Projekt se imenuje
-AOSP~\footnote{Celotno ime je Android Open Source Project} in se še danes
+Android je odprtokodni sistem za pametne telefone, ki ga je leta 2007 izdelal Open Handset Alliance pod vodstvom podjetja Google. Projekt se imenuje AOSP~\footnote{Celotno ime je Android Open Source Project} in se še danes zelo
 hitro razvija.
 
-Vse skupaj temelji na jedru Linux, najbolj bistven del arhitekture pa je
-navidezni stroj (\textit{angl. virtual machine}). Bolj podrobna zgradba
-sistema je prikazana na sliki~\ref{picAndroid}. Navidezni stroj, imenovan
-Dalvik virtual machine, vsebuje prevajalnik JIT, ki je zadolžen za zaganjanje
-že prevedene programske kode Java. Prevedena koda je zapakirana v datoteke s
-končnico .apk in tej datotekam pravimo aplikacija, izdelana za sistem Android.
+Temelji na jedru Linux, najbolj bistven del arhitekture pa je navidezni stroj (\textit{angl. virtual machine}). Bolj podrobna zgradba sistema je prikazana na sliki~\ref{picAndroid}. Navidezni stroj, imenovan
+Dalvik virtual machine, vsebuje prevajalnik JIT, ki je zadolžen za zaganjanje že prevedene programske kode Java. Prevedena koda je zapakirana v datoteke s
+končnico .apk. Tem datotekam pravimo aplikacije, izdelane za sistem Android.
 
 \begin{figure}
     \centering
@@ -211,13 +190,10 @@ končnico .apk in tej datotekam pravimo aplikacija, izdelana za sistem Android.
     \label{picAndroid}
 \end{figure}
 
-Za izdelavo aplikacije Android potrebujemo znanje programskega jezika Java,
-Android SDK, ki je brezplačno na voljo na uradni spletni
-strani\footnote{Uradna spletna stran je dostopna na {\tt
-http://developer.android.com/}}, priporočljivo je tudi branje dokumentacije
+Za izdelavo aplikacije Android potrebujemo znanje programskega jezika Java, Android SDK, ki je brezplačno na voljo na uradni spletni strani\footnote{Uradna spletna stran je dostopna na {\tt
+http://developer.android.com/}}. Priporočljivo je tudi branje dokumentacije
 SDK, ki je na voljo na spletu\footnote{Dokumentacija SDK je dostopna na {\tt
-http://developer.android.com/sdk/}}. Dokumentacija je napisana razločno, tako
-da se lahko znajdejo tudi začetniki. S pomočjo Android SDK na koncu nastane
+http://developer.android.com/sdk/}}. Dokumentacija je napisana zelo razumljivo, tako da se lahko znajdejo tudi začetniki. S pomočjo Android SDK na koncu nastane
 datoteka .apk.
 
 \chapter{Nadgradnja: Zaznavanje obrazov}
