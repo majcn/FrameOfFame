@@ -197,56 +197,37 @@ http://developer.android.com/sdk/}}. Dokumentacija je napisana zelo razumljivo, 
 datoteka .apk.
 
 \chapter{Nadgradnja: Zaznavanje obrazov}
-Operacijski sistem Android nam preko vmesnika JNI tudi omogoča vključevanje programskega jezika C. To nam omogoča uporabo splošnih knjižnic in programskih ogrodij (\textit{angl. framework}).
+Operacijski sistem Android nam preko vmesnika JNI omogoča vključevanje programskega jezika C. Posledično lahko uporabljamo splošne knjižnice in programska ogrodja (\textit{angl. framework}).
 
 Ker smo v naši nadgradnji želeli, da bi se obrazi zaznavali v realnem času, smo se odločili za uporabo programskega ogrodja OpenCV.
 
 \section{Zaznavanje obrazov z uporabo OpenCV}
-OpenCV je programsko ogrodje, ki nam omogoča razne operacije nad slikami.
-Napisana je v programskem jeziku C, za potrebe operacijskega sistema Android
-pa so napisani povezovalni Java razredi (\textit{angl. class}), ki nam
+OpenCV je programsko ogrodje, ki nam omogoča izvedbo raznih operacij, izvedenih nad slikami.
+Napisana je v programskem jeziku C, za potrebe operacijskega sistema Android pa so napisani tudi povezovalni Java razredi (\textit{angl. class}), ki nam
 omogočajo uporabo OpenCV operacij kar preko programskega jezika Java.
 
-Najbolj pomembna funkcionalnost programskega ogrodja OpenCV nam je bila
-implementacija zaznavanja obrazov. Uporablja algoritem kaskadnega
-klasificiranja (\textit{angl. cascade classifier}), ki nam omogoča
+Najpomembnejša funkcionalnost programskega ogrodja OpenCV za nas je bila implementacija zaznavanja obrazov. Ta uporablja algoritem kaskadnega klasificiranja (\textit{angl. cascade classifier}), ki nam omogoča
 klasifikacijo različnih lastnosti.
 
-Lastnosti so zapisane v datoteki XML. Ta datoteka vsebuje več sto ali tisoč
-različnih lastnosti, ki opisujejo določen predmet, kar v našem primeru pomeni
-oblika obraz.
+Lastnosti so zapisane v datoteki XML. Ta datoteka vsebuje več sto ali tisoč različnih lastnosti, ki opisujejo določen predmet, kar v našem primeru pomeni obliko obraza.
 
-Obstajajo več različnih tipov, kako so te lastnosti opisane. Za zaznavanje
-obrazov sta najpomembnejša tipa ``HAAR'' in ``LBP''. Tipa se razlikujeta po
-točnosti in hitrosti.
+Obstaja več različnih tipov, preko katerih so te lastnosti opisane. Za zaznavanje obrazov sta najpomembnejša tipa ``HAAR'' in ``LBP''. Tipa se razlikujeta po točnosti in hitrosti.
 
-``HAAR'' opisi so procesorsko bolj potratni in potrebujejo relativno veliko
-časa za prepoznavo obraza, vendar pa je zato veliko manj napačnih detekcij
-(\textit{angl. false positive}).
+``HAAR'' opisi so procesorsko bolj potratni in potrebujejo relativno veliko časa za prepoznavo obraza, vendar pa je zato veliko manj napačnih detekcij (\textit{angl. false positive}).
 
-``LBP'' pa, čeprav z malo več napakah pri klasifikaciji, še vedno dovolj
-točen. Vendar pa je časovno kar nekaj krat hitrejši od opisov ``HAAR'' in zato
-zelo uporaben pri detekciji obrazov v živo.
+``LBP'' pa je, čeprav z nekaj več napakami pri klasifikaciji kot ``HAAR'' , za naše potrebe še vedno dovolj točen. Njegova glavna prednost pred prej opisanim je  njegova hitrost, kar je pri detekciji obrazov v živo zelo pomembno, če želimo doseči zadovoljstvo uporabnika.
 
-Ker pa so obrazi med seboj zelo različni, je nemogoče da je vsak obraz najden,
-hočemo pa, da je število zgrešenih čim manjše. Vendar pa zgrešen obraz ni
-največja težava, saj gledalci tega ne bi opazili. Veliko večja težava je, če
-najdemo obraz kjer ga ni. Na primer, kakšen predmet v okolici.
+Ker so si obrazi med seboj zelo različni, je nemogoče, da bi bil najden prav vsak obraz, vseeno pa želimo, da je število zgrešenih obrazov čim manjše. Vendar pa zgrešen obraz ni največja težava, saj uporabnik tega najbrž ne bi opazil. Veliko bolj neprijetna težava je, če najdemo obraz tam, kjer ga ni, na primer nek predmet v okolici, ki ga zaznamo in obdelamo kot obraz.
 
-Testirali smo oba tipa, z različnimi tipi lastnosti. Uporabili smo le
-lastnosti, ki opisujejo sprednji del obraza. Vendar pa se je pri uporabi
-``LBP'' opisov še vedno pokazalo preveč lažnih obrazov. Zato smo se odločili
-za uporabo lastnosti tipa ``HAAR''. Veliko bolj nam je pomembno, da ima
-petnajst sekund slave obraz in ne kakšen predmet v okolici.
+Testirali smo oba tipa z različnimi tipi lastnosti. Pri tem smo uporabili le lastnosti, ki opisujejo sprednji del obraza. Vendar pa se je pri uporabi ``LBP'' opisov še vedno pokazalo preveč lažnih obrazov. Zato smo se odločili
+za uporabo lastnosti tipa ``HAAR''. Veliko bolj se nam zdi namreč pomembno, da ima petnajst sekund slave obraz uporabnika, in ne kakšen predmet v okolici, pa čeprav je za to potrebno nekoliko več časa.
 
-Vendar pa tudi tipi ``HAAR'' opisi obrazov niso vedno dosegli našega
-pričakovanja. Zato smo se odločili, da naredimo dvojno klasifikacijo.
+Vendar pa tudi tipi ``HAAR'' opisi obrazov niso vedno dosegli našega pričakovanja. Zato smo se odločili, da naredimo dvojno klasifikacijo.
 
 Najprej smo klasificirali z lastnostmi sprednjega dela obraza, opisanimi v datoteki
 \textit{harrcascade\_frontalface\_default.xml}~\ref{lst:haar_frontal_face}, s
-katero smo dobili rezultate obrazov. Ker je že sama klasifikacija obraza
-porabila kar nekaj dragocenega časa, smo se odločili, da iskanje prekinemo po
-prvem kandidatu obraza, ki je velik vsaj ena desetina celotne slike.
+katerimi smo dobili rezultate obrazov. Ker se je že za samo klasifikacijo obraza porabilo kar nekaj časa, smo se odločili, da iskanje prekinemo takoj po najdenem prvem obrazu, ki je velik vsaj eno desetino celotne slike.
+
 
 \begin{lstlisting}[label=lst:haar_frontal_face, caption=Izsek iz datoteke harrcascade\_frontalface\_default.xml]
 <maxWeakCount>9</maxWeakCount>
@@ -271,13 +252,8 @@ prvem kandidatu obraza, ki je velik vsaj ena desetina celotne slike.
   ...
 \end{lstlisting}
 
-Kandidat obraza smo testirali še s klasifikacijo očesa. Vsak obraz ima dve
-očesi. Zavedali smo se, da v primeru očal tega ne bomo našli, vendar pa se je
-izkazalo da je problem le pri zasenčenih očalih. Za to klasifikacijo smo
-uporabili lastnosti, zapisane v datoteki
-\textit{harrcascade\_eye.xml}~\ref{lst:haar_eye}. V primeru, če smo
-našli točno dva rezultata smo vrnili prejšnji rezultat, v nasprotnem primeru
-pa, da obraz ni najden.
+Kandidata obraza smo testirali še s klasifikacijo očesa. Vsak obraz ima dve očesi. Zavedali smo se, da v primeru očal tega ne bomo našli, vendar pa se je izkazalo da težave nastopijo le pri zasenčenih očalih. Za to klasifikacijo smo
+uporabili lastnosti, zapisane v datoteki \textit{harrcascade\_eye.xml}~\ref{lst:haar_eye}. V primeru, da smo našli točno dva rezultata, smo vrnili prejšnji rezultat, v nasprotnem primeru pa javili, da obraz ni najden.
 
 \begin{lstlisting}[label=lst:haar_eye, caption=Izsek iz datoteke harrcascade\_eye.xml]
 <maxWeakCount>6</maxWeakCount>
@@ -302,12 +278,7 @@ pa, da obraz ni najden.
   ...
 \end{lstlisting}
 
-S temi nastavitvami in omejitvami smo dosegli pričakovane rezultate. Najden
-rezultat smo povečali še za približno eno tretjino, tako da je bil rezultat
-kvadratne oblike. Zakaj eno tretjino? Iskali smo prednji del obraza in ga tudi
-našli. Vendar v okvirju si želimo videti celotno glavo in ne samo obraza.
-Povečava za eno tretjino se je izkazala kot ravno pravšnja za večino
-testiranih primerov.
+S temi nastavitvami in omejitvami smo dosegli pričakovane rezultate. Polje z najdenim rezultatom smo povečali še za približno eno tretjino, tako da je končni produkt zajemal nekoliko večji predel osnovne slike in je bil kvadratne oblike. Zakaj ravno eno tretjino? Iskali smo prednji del obraza in ga tudi našli. Vendar si v okvirju želimo videti sliko celotne glave in ne samo obraza. Povečava polja za eno tretjino se je izkazala kot ravno pravšnja za večino testiranih primerov.
 
 \begin{figure}[!ht]
     \centering
@@ -331,25 +302,20 @@ testiranih primerov.
 Detekcija obrazov z programskim ogrodjem OpenCV je le ena izmed možnosti, ki
 smo si jih podrobneje ogledali. Kot prva implementacija je bila izbrana zaradi
 velike kontrole nad vsakim korakom, kot so: detekcija
-obraza~\ref{fig:lena_opencv_face}, določanje regije kje iskati, detekcija oči
+obraza~\ref{fig:lena_opencv_face}, določitev regije kje je potrebno iskati, detekcija oči
 v določeni regiji~\ref{fig:lena_opencv_face_eye} in še bi lahko naštevali.
 
-Kljub zadovoljivimi rezultati iskanja obrazov, se je izkazalo, da slike
-velikokrat niso ostre. Prej smo omenili, da imamo veliko kontrolo nad
-različnimi algoritmi za detekcijo, kar pa ne pomeni za uporabo kamere, ki je v
-pametnem telefonu. OpenCV uporablja sliko iz kamere tako kot je, brez
-predhodne izostritve. Z drugimi besedami povedano, to uporablja kot kamero in
-ne kot digitalni fotoaparat.
+Kljub zadovoljivim rezultatom iskanja obrazov se je izkazalo, da slike velikokrat niso ostre. Prej smo omenili, da imamo veliko kontrolo nad različnimi algoritmi za detekcijo, kar pa ne vključuje uporabe kamere, ki je v
+pametnem telefonu. OpenCV uporablja sliko iz kamere tako kot je, brez predhodne izostritve. Povedano z drugimi besedami, uporablja jo kot kamero in ne kot digitalni fotoaparat.
 
 
 \section{Zaznavanje obrazov z uporabo Android SDK}
-Android SDK je popolnoma druga zgodba kot pa OpenCV. Tukaj ni nobene kontrole in raznih parametrov, le v naprej določen algoritem.
+Android SDK deluje povsem drugače kot OpenCV. Ne omogoča nobene kontrole in parametrov, možna je uporaba le v naprej določenega algoritma.
 
-Algoritem bazira na algoritmu NV1-NORM~\cite{nevenFaceRecognition}, ki ga je
+Ta algoritem bazira na algoritmu NV1-NORM~\cite{nevenFaceRecognition}, ki ga je
 izdelalo podjetje Neven Vision~\ref{fig:neven_vision}. Leta 2006 je Neven
-Vision postalo last podjetja Google in se uporablja za zaznavo obraza v
-različnih programih, ki jih je izdelalo podjetje Google, na primer program za
-prikaz slik Google Picassa.
+Vision postalo last podjetja Google in od takrat se uporablja za zaznavo obrazov v
+mnogih programih, ki jih je izdelalo podjetje Google. Lep  primer je program za prikaz slik Google Picassa.
 
 \begin{figure}[!ht]
     \centering
@@ -358,8 +324,8 @@ prikaz slik Google Picassa.
     \label{fig:neven_vision}
 \end{figure}
 
-Natančnejša implementacija algoritma za zaznavo obraza je zaprto-kodna. Tudi,
-če si ogledamo dokumentacijo Android SDK-ja, je opisan samo primer uporabe:
+Natančnejša implementacija algoritma za zaznavo obraza je zaprto-kodna. Če si ogledamo dokumentacijo Android SDK-ja, je opisan samo primer uporabe:
+\pagebreak % TODO: zbriši
 \begin{lstlisting}[caption="Primer uporabe zaznavanja obraza z orodjem Android SDK"]
 FaceDetector fc = new FaceDetector(
     sirina_slike,
@@ -368,18 +334,12 @@ FaceDetector fc = new FaceDetector(
 ).findFaces(slika, obrazi);
 \end{lstlisting}
 
-Vendar pa kljub zaprtosti in nezmožnosti prilagajanja detektorja prinaša zelo
-dobre rezultate. In ker je vse skupaj že vključeno v operacijski sistem zato
-tudi ne potrebujemo dodatnih programskih ogrodij. S tem smo si prihranili
-nekaj časa in prostora.
+Vendar pa kljub zaprtosti in nezmožnosti prilagajanja detektorja prinaša zelo dobre rezultate. Ker so vse funkcije že vključeno v operacijski sistem, tudi ne potrebujemo dodatnih programskih ogrodij. S tem smo si prihranili kar nekaj časa in prostora.
 
-Rezultat zaznavanja obraza pa tokrat ni obraz sam. Kot rezultat dobimo
-razdaljo med očmi in točko, rotacijo obraza ter točko med očmi. Na podlagi teh
-podatkov lahko določimo regijo obraza v sliki.
+Rezultat zaznavanja obraza pa tokrat ni obraz sam. Kot rezultat dobimo razdaljo med očmi, rotacijo obraza ter točko med očmi. Na podlagi teh
+podatkov lahko določimo regijo, na kateri je obraz na sliki.
 
-Testirali smo razlike med rezultati obeh algoritmov ter se na koncu odločili
-za uporabo Android SDK. Kot že opisano, poleg dobrih rezultatov pridobimo še
-na velikosti končne aplikacije ter kompleksnosti celotnega programa.
+Testirali smo razlike med rezultati obeh algoritmov in se na koncu odločili za uporabo Android SDK. Kot že opisano, poleg dobrih rezultatov pridobimo še na velikosti končne aplikacije in kompleksnosti celotnega programa.
 
 
 \chapter{Nadgradnja: Obdelava slik}
