@@ -82,7 +82,8 @@ lahko zajame čim širšo okolico.
 
 Vsako novo fotografijo nato pošljemo računalniku, ki izvede algoritem za
 iskanje obrazov. Če je le teh več, enega izberemo po principu naključnega
-izbora. Ta obraz izrežemo iz fotografije in ga pošljemo naprej. (KAM?????)
+izbora. Ta obraz izrežemo iz fotografije in ga pošljemo kot vhod
+naslednjemu algoritmu.
 
 Izbran obraz se obdela z enim izmed v naprej določenih barvnih filtrov. Ti
 filtri so sestavljeni iz različnih barvnih transformacij, da preoblikujejo
@@ -492,11 +493,10 @@ GIMP~\cite{wiki:GIMP}.
 
 
 \section{Izbira filtrov}
-Že naša prvotna izbira filtrov je izhajala iz programskega orodja za
-predelavo slik GIMP. Zaradi lažjega dela se je najprej grafičnega vmesnika
-izbralo zaporedje različnih filtrov z različnimi parametri
-.?????????????????????????????????????????????????????????????????????????????
-???????????? Izbrani so bili naslednji filtri:
+Že naša prvotna izbira filtrov je izhajala iz programskega orodja za predelavo
+slik GIMP. Zaradi lažjega dela se je najprej, s pomočjo grafičnega vmesnika,
+izbralo zaporedje različnih filtrov in njihove parametre.  Izbrani so bili
+naslednji filtri:
 \begin{itemize}
     \item \textbf{uravnovešanje barv} \textit{angl. color balance} \hfill \\
         Prekrije celotno sliko z barvo v izbranem odtenku.
@@ -513,9 +513,8 @@ Implementacije filtrov so napisane v programskem jeziku C. Na prvi pogled kot
 nalašč za enostaven prenos na Android platformo preko JNI. Vendar pa so se
 pokazale težave, saj so bili filtri močno povezani z GIMP objekti in nekoliko
 bolj kompleksni, kot bi bilo potrebno za naš projekt. Zato smo se odločili, da
-vzamemo samo algoritem oziroma idejo za tem in implementiramo (KOGA ALI
-KAJ??????????????????????????) po naših potrebah. Naredili smo tri različne
-implementacije in jih med seboj primerjali.
+filtre ponovno implementiramo, ter zavržemo vse funkcionalnosti, ki za nas niso
+pomembne. Naredili smo tri različne implementacije in jih med seboj primerjali.
 
 Prva implementacija je napisana v programskem jeziku java. Izkazala se je za
 zelo počasno. Orodje za sproščanje pomnilnika GC \textit{(angl. garbage
