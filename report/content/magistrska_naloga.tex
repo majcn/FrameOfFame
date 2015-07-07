@@ -38,9 +38,8 @@ Pensilvaniji staršema Slovakoma. Njegovo otroštvo je bilo zelo težko, saj je 
 tehnologijo v Pittsburgu. Pri 21-ih letih se je preselil v New York, kjer je
 izdal serijo ilustracij za čevlje. Kmalu je postal uspešen in dobro plačan
 slikar, vendar pa je hrepenel po umetniški slavi. Po številnih neuspehih se mu
-je leta 1964 pri razstavi Ameriški Supermarket le odprlo. Ta razstava je bila
-ena izmed prvih, ki je javnost soočala s pop artom. Nato je šlo samo še
-navzgor.
+je leta 1964 pri razstavi Ameriški Supermarket le posrečilo. Ta razstava je bila
+ena izmed prvih, ki je javnost seznanila s pop artom. Nato se je njegova kariera le še vzpenjala.
 
 Njegove najbolj znane slike so Dick Tracy, Plesna shema (tango), Coca-Cola,
 Pločevinka juhe Campbell, Zvitek bankovcev, Marilyn Monroe (prikazana na
@@ -368,19 +367,18 @@ GIMP je odprto-kodno programsko orodje za obdelavo slik.
 
 
 \subsection{Zgodovina}
-Začetek projekta sega v leto 1995, kot semestrski projekt v Univerzi
-Kalifornije, Berkeley. Kot prva avtorja, Spencer Kimball in Peter Mattis sta
-projekt poimenovala \textit{angl. General Image Manipulation Program}. Malo
-kasneje, ko je univerzo obiskal Richard Stallman sta ga prosila, če lahko
-zamenjata besedo ``General'' v ``GNU''. Od takrat naprej se program imenuje
+Začetek projekta sega v leto 1995, kjer se je vse skupaj začelo kot semestrski projekt na Univerzi
+Kalifornije, Berkeley. Avtorja Spencer Kimball in Peter Mattis sta
+projekt poimenovala \textit{angl. General Image Manipulation Program}, čez nekaj časa pa sta si premislila in Richarda Stallmana, ki je ravno takrat obiskal univerzo, prosila, če lahko
+spremenita besedo ``General'' v ``GNU''. Od takrat naprej se program imenuje
 \textit{angl. GNU Image Manipulation Program} ali na kratko še vedno
 GIMP~\cite{wiki:GIMP}.
 
 
 \section{Izbira filtrov}
-Že prvotna izbira filtrov je izhajala iz programskega orodja za predelavo slik
+Že naša prvotna izbira filtrov je izhajala iz programskega orodja za predelavo slik
 GIMP. Zaradi lažjega dela se je najprej grafičnega vmesnika izbralo zaporedje
-različnih filtrov z različnimi parametri. Izbrani so bili naslednji filtri:
+različnih filtrov z različnimi parametri.????????????????????????????????????????????????????????????????????????????????????????? Izbrani so bili naslednji filtri:
 \begin{itemize}
     \item \textbf{uravnovešanje barv} \textit{angl. color balance} \hfill \\
         Prekrije celotno sliko z barvo v izbranem odtenku.
@@ -393,29 +391,28 @@ različnih filtrov z različnimi parametri. Izbrani so bili naslednji filtri:
 
 \section{Implementacija filtrov}
 Ker je GIMP odprto-koden smo imeli tudi dostop do implementacije filtrov.
-Implementacije filtrov so napisani v programskem jeziku C. Na prvi pogled kot
+Implementacije filtrov so napisane v programskem jeziku C. Na prvi pogled kot
 nalašč za enostaven prenos na Android platformo preko JNI. Vendar pa so se
-pokazale težave, saj so bili filtri močno povezani z GIMP objekti ter nekoliko
-bolj kompleksni, kot smo mi potrebovali. Zato smo se odločili, da vzamemo samo
-algoritem oziroma idejo za tem, ter implementiramo po naših potrebah. Naredili
+pokazale težave, saj so bili filtri močno povezani z GIMP objekti in nekoliko
+bolj kompleksni, kot bi bilo potrebno za naš projekt. Zato smo se odločili, da vzamemo samo
+algoritem oziroma idejo za tem in implementiramo (KOGA ALI KAJ??????????????????????????) po naših potrebah. Naredili
 smo tri različne implementacije in jih med seboj primerjali.
 
-Prva implementacija je napisana v programskem jeziku java. Izkazalo se je kot
+Prva implementacija je napisana v programskem jeziku java. Izkazala se je za
 zelo počasno. Orodje za sproščanje pomnilnika GC \textit{(angl. garbage
-collector)} se je klical velikokrat, kar je posledično porabilo več kot nekaj
+collector)} se je klicalo prepogosto, kar je posledično porabilo več kot nekaj
 sekund za filter. Tega si nismo mogli privoščiti, zato smo iskali alternative.
 
 Naslednja implementacija je napisana s pomočjo grafične kartice in sicer z
 orodjem OPENGL ES, verzije 2.0. Čas porabe pri izvajanju se je občutno
-zmanjšal. Ko so bile teksture zapisane na grafični kartici so se filtri
+zmanjšal. Ko so bile teksture zapisane na grafični kartici, so se filtri
 izvajali v manj kot sekundi. Ta rešitev je bila že dovolj dobra, vendar pa se
 nam je zdelo, da je uporaba grafične kartice za tako lahke operacije potrata
 energije.
 
 Čeprav so bili rezultati že dovolj dobri, smo se odločili še za implementacijo
-v programskem jeziku C. Rezultati so pokazali, da je ta rešitev malo bolj
-počasna kot prejšnja, vendar pa za to nismo potrebovali grafične kartice na
-telefonu. Čas porabe je bil manj kot sekundo za filter.
+v programskem jeziku C. Rezultati so pokazali, da je ta rešitev nekoliko počasnejša kot prejšnja, vendar pa za to nismo potrebovali grafične kartice na
+telefonu. Porabljen čas je bil manj kot sekundo za filter.
 
 \subsection{HSL barvni prostor}
 \label{sec:hsl}
@@ -485,11 +482,11 @@ barvo posebej, in sicer z enačbo~\eqref{eq:color_balance}, kjer je $x$ enak
 originalni barvi, $x'$ pa barvi, s katero želimo uravnovesiti originalno barvo
 $x$. $x$ in $x'$ sta pozitivni celi števili med 0 in 255.
 
-Po izračunanih vrednosti dane rezultate v RGB prostoru prenesemo v HSL prostor
+Po izračunanih vrednostih dane rezultate iz RGB prostora prenesemo v HSL prostor
 s pomočjo enačb, napisnih v poglavju~\ref{sec:hsl}. Tako dobimo $H$, $S$ in
 $L$. Iz originalnih vrednosti, to je vrednost barve na sliki, izračunamo
 $L$~\ref{eq:hsl_l} in ga nadomestimo s prejšnjim, zato da ohranimo podobno
-svetlost. $H$, $S$ in novo pridobljeni $L$ spremenimo nazaj v RGB prostor.
+svetlost. $H$, $S$ in novo pridobljeni $L$ prenesemo nazaj v RGB prostor.
 
 \subsection{Posteriziranje}
 
@@ -897,11 +894,11 @@ pa kakšna manjša po tako dolgem času lahko le popestri uporabniško izkušnjo
 
 Najpomembnejša posodobitev, ki bi to umetniško instalacijo naredilo veliko
 bolj popularno je integracija s socialnimi omrežji\ref{ch:social_network}.
-Dan danes je to medij, preko katerega se izve veliko ustvarjalnih idej.
+Dan danes je to medij, preko katerega se srečamo z veliko ustvarjalnimi idejami.
 
 Naslednja posodobitev, ki prvotno niti ni bila v načrtu, je zamenjava zaslona
 LCD. Ta posodobitev se je zgodila zaradi nekompatibilnosti mobilnega telefona
-s starim zaslonom LCD. Ko pa je to že bila nujna posodobitev smo razmišljali
+s starim zaslonom LCD. Ko pa je to že bila nujna posodobitev, smo razmišljali
 še širše. Večina današnjih zaslonov LCD je formata 16:9 ali pa še več v
 širino, starega formata 4:3 skorajda ni več. Naš cilj pa je kvadratna slika.
 Najprej smo želeli najti čim bolj kvadraten zaslon. Vendar pa se je kmalu
@@ -911,8 +908,8 @@ da bi naenkrat imeli razstavljeni dve različici instalacije. Seveda ima vsaka
 slika drug obraz, če le ta obstaja.
 
 Zaradi prejšnjega razloga o zamenjavi zaslona je bilo potrebno zamenjati tudi
-okvir. Kot že pri prejšnji posodobitvi okvirja bo tudi tokrat ostal bogate
-okrasitve, le na sredini bo združen, kot je prikazano na
+okvir. Kot že pri prejšnji posodobitvi okvirja bo tudi tokrat ostal bogato
+okrašen, le na sredini bo združen, kot je prikazano na
 sliki~\ref{fig:frame2}.
 
 \begin{figure}[!ht]
@@ -933,18 +930,18 @@ sliki~\ref{fig:frame2}.
 \chapter{Povezovanje s socialnimi omrežji}
 \label{ch:social_network}
 Ena izmed pomembnejših posodobitev je povezava s socialnimi omrežji, ki so
-vsak dan bolj popularni. Vsak dan se na različnih socialnih omrežjih doda na
+vsak dan bolj popularna. Vsak dan se na različnih socialnih omrežjih doda na
 tisoče žargonsko imenovanih ``selfijev''\footnote{Slika, ko oseba fotografira
 samega sebe pri različnih dejavnostih.}. Da pa ta ``selfi'' še bolj pade v
 oči, se jim lahko doda kakšen že vnaprej določen filter. Ti so pri pametnih
-telefonih, ki je danes eden izmed najpogostejših naprav za fotografiranje
-``selfijev'', na voljo samo en dotik stran. Obstajajo pa tudi že socialna
+telefonih, ki so danes ena izmed najpogostejših naprav za fotografiranje
+``selfijev'', na voljo samo en dotik stran. Obstajajo pa tudi socialna
 omrežja, ki ponujajo osnovne filtre že pri nalaganju slike.
 
 Naša instalacija se lahko interpretira kot generator ``selfijev''. Oseba, ki stoji pred
 instalacijo, ve, da bo kmalu njenih petnajst sekund. Pred njo se bo pokazala
 pop-art slika, ki je njen umetniški ``selfi'', in če želi, je ta pop-art slika
-lahko kmalu javna na enem izmed socialnih omrežij.
+lahko kmalu javno objavljena na enem izmed socialnih omrežij.
 
 
 \section{Možnosti}
@@ -960,13 +957,13 @@ Najpogosteje so uporabljena naslednja socialna omrežja:
 
 \section{Omejitve}
 Ena izmed največjih omejitev je nenadzorovano pošiljanje slik na socialno
-omrežje. Na slikah so lahko osebe, ki si ne želijo biti objavljeni na
+omrežje. Na slikah so lahko osebe, ki si ne želijo biti objavljene na
 socialnem omrežju, saj je javno. Še več, na slikah so lahko otroci, katerih
-objavljanje slik na socialnem omrežju je prepovedano brez dovoljenja staršev.
-Res je, da smo želeli slike izbrisati petnajst sekund po pojavi, vendar pa
+objavljanje slik na socialnem omrežju je brez dovoljenja staršev prepovedano.
+Res je, da smo želeli slike izbrisati petnajst sekund po objavi, vendar pa
 večina socialnih omrežjih te slike še vedno hrani, čeprav jih ne vidimo več.
-In če se podamo v najhujšo skrajnost, napisati program, ki vse slike shranjuje
-na nek strežnik.
+In če se podamo še v najhujšo skrajnost, nekdo bi lahko napisal program, ki vse slike shranjuje
+na nek strežnik in nato z njimi razpolagal po svoji volji.
 
 
 % \chapter{TODO}
