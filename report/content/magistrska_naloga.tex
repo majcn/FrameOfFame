@@ -1,36 +1,68 @@
 \chapter{Uvod}
-Magistrska naloga je ponovna implementacija in nadgradnja interaktivne
-umetniške instalacije ``15 sekund slave''~\cite{leonardo}. Motivacija za
-instalacijo je umetniško delovanje ameriškega pop-art umetnika Andyja Warhola.
-``15 sekund slave'' izgleda kot klasična slika, a je dejansko računalniški
-zaslon, okvirjen kot umetniška slika. Nad zaslonom je v okviru vgrajen
-digitalni fotoaparat, ki je povezan z računalnikom v ozadju. Vsakih petnajst
-sekund fotoaparat slika obiskovalce galerije, ki stojijo pred sliko. Na sliki
-računalniški program poišče vse obraze in nato naključno izbere enega izmed
-njih. Ta obraz nato z grafičnimi filtri program obdela tako, da pridobi tako
-imenovani ``pop-art'' videz z manjšim številom živih barv, ki spominjajo na
-slike slavnih osebnosti, ki jih je iz fotografij delal Andy Warhol. Ker je
-prvotna instalacija nastala pred več kot 10 leti in se je strojna oprema v tem
-času že zelo spremenila, se je pokazala potreba po prilagoditvi aplikacije
-novemu stanju tehnologije \cite{trifonova}.
+Kot prvi korak pri novi instalaciji je dobro poznavanje trenutne instalacije
+``15 sekund slave''. Kratek opis le tega je opisan v
+poglavju~\ref{ch:principDelovanja15} in~\ref{ch:prvotnaIzvedba15}. Pri tem smo
+podrobno spoznali vso strojno in programsko
+opremo~\ref{sec:strojnaProgramska15}. Tu je nastal naš prvi večji problem:
+kako sploh vzdrževati umetniško instalacijo, ki temelji na računalniški
+tehnologiji. Kakšni so principi, strategije. Da vemo da novejše ne pomeni
+vedno boljše. Zaradi hitrega napredka računalniške tehnologije je potrebno
+take aplikacije po eni strani prilagajati novi strojni in sistemski programski
+opremi, pa tudi novim funkcionalnim možnostim, ki jih nove tehnologije nudijo.
+Po drugi strani, pa z umetniškega vidika običajno želimo, da se zunanja pojava
+umetniškega dela ne spremeni.Povzetek te raziskave na kratko opisan v
+poglavju~\ref{ch:ohranjanjeDigitalneUmetnosti}.
 
-V magistrski nalogi najprej preučite splošne probleme pri vzdrževanju
-umetniških instalacij, ki temeljijo na računalniški tehnologiji
-\cite{miller1,miller2,digitalartconservation}. Zaradi hitrega napredka
-računalniške tehnologije je potrebno take aplikacije po eni strani prilagajati
-novi strojni in sistemski programski opremi, pa tudi novim funkcionalnim
-možnostim, ki jih nove tehnologije nudijo. Po drugi strani, pa z umetniškega
-vidika običajno želimo, da se zunanja pojava umetniškega dela ne spremeni. V
-konkretnem primeru instalacije ``15 sekund slave'' namesto računalnika in
-digitalnega fotoaparata uporabite mobilni telefon z vgrajeno kamero ter
-možnostjo brezžičnega prenosa podatkov. V enem načinu delovanja nove
-implementacije instalacije, se naj zunanji izgled, način uporabe in generirane
-slike ne razlikujejo od prvotne instalacije. V drugem načinu delovanja nove
-implementacije pa poiščite nove, kreativne načine funkcioniranja, ki jih
-omogoča novejša tehnologija. Tu je mišljena predvsem uporaba videa namesto
-statične slike in povezovanje s socialnimi omrežji.
+Po preučevanju teorije, kako se sploh pravilno lotiti nadgradnje umetniške
+instalacije ``15 sekund slave'' smo začeli razmišljati še iz praktičnega
+vidika. V desetih letih, odkar je bila prvotna instalacija narejena, je
+računalniška tehnologija močno napredovala. Še posebej v razvoju mobilnih
+naprav. Razmišljali smo, kako bi novo tehnologijo lahko prenesli v trenutno
+instalacijo~\ref{ch:nadgradnjaNapravaPripomocki}. Mobilni pametni telefon je
+bila zmagovalna izbira v tem razmisleku~\ref{sec:testnaNapravaSmartPhone}.
+Pametni telefoni so enostavno in prosto dostopni na trgu, in ker se masovno
+izdelujejo tudi niso zelo dragi. Vsebujejo pa vse kar potrebujemo: kamera,
+prikaz slike in programabilnost. Ostale lastnosti so le bonus. Sedaj je bilo
+le še vprašanje po operacijskem sistemu. Zaradi osebnih izkušenj smo se
+odločili za operacijski sistem Android~\ref{sec:android}.
+
+Po izbiri strojne opremo smo začeli z načrtovanjem, kako prenesti vso
+obstoječo programsko funkcionalnost.
+
+Prvi korak je zaznavanje obrazov~\ref{ch:zaznavanjeObrazov}. Načini, kako
+zaznavati obraze na sliki so se v desetih letih močno spreminjali. Obstaja
+tudi že veliko orodij, ki nam pomagajo pri tem. Naša izbira je na koncu
+pristala na dveh orodjih: OpenCV~\ref{sec:zaznavanjeObrazovOpenCV} in
+AndroidSDK~\ref{sec:zaznavanjeObrazovAndroidSDK}. Ta dva orodja temeljita na čisto
+različnih strategijah, zato smo se odločili poskusiti oboje.
+
+Naslednji korak je obdelava slik~\ref{ch:obdelavaSlik}. Že pri prvotni
+instalaciji je bilo izhodišče za vse filtre programsko orodje
+GIMP~\ref{sec:obdelavaSlikGIMP}. V tej instalaciji smo se odločili, da si bomo
+tudi pomagali s tem programskim orodjem, vendar z različico iz današnjega
+časa. Iz programskega orodja GIMP smo si izbrali tri vrste filtrov:
+\begin{itemize}
+    \item uravnovešanje barv~\ref{sec:obdelavaSlikUravnovesanjeBarv}
+    \item posteriziranje~\ref{sec:obdelavaSlikPosteriziranje}
+    \item uravnovešanje barv v HSL prostoru~\ref{sec:obdelavaSlikUravnovesanjeBarvHSL}
+\end{itemize}
+Različni parametri in mešanje teh filtrov med seboj nas je pripeljalo do
+``pop-art'' slik. Različni parametri so opisani v
+poglavju~\ref{sec:obdelavaSlikSestavljanjePopArt}.
+
+S tem je bila prestavitev iz originalnega sistema v mobilni sistem končana.
+Vendar pa smo želeli še več~\ref{ch:novosti}. Najbolj pomembna lastnost, ki je
+pravi hit trenutnega časa je povezava s socialnimi
+omrežji~\ref{ch:socialNetwork}. Mladim in vseskozi tudi starejšim postaja
+pregledovanje socialnega omrežja vsakdanje opravilo. In trenuten trend
+``selfi''-jev je kot nalašč za našo instalacijo.
+
+Veliko je lahko še izboljšav, vendar pa ne bi bilo niti začetka brez pop-art
+umetnika Andyja Warhol~\ref{ch:AndyWarhol_popart}.
+
 
 \chapter{Andy Warhol in pop-art umetnost}
+\label{ch:AndyWarhol_popart}
 Andy Warhol~\cite{wiki:AndyWarhol} se je rodil 6. avgusta 1928 v Pittsburgu v
 Pensilvaniji staršema Slovakoma. Njegovo otroštvo je bilo zelo težko, saj je v
 času velike gospodarske krize oče ostal brez službe. Kljub temu je po osnovnem
@@ -57,6 +89,7 @@ Umrl je zaradi srčne kapi 22. februarja 1987 v spanju, star 58 let.
 
 
 \chapter{Princip delovanja instalacije}
+\label{ch:principDelovanja15}
 ``15 sekund slave'' je interaktivna umetniška instalacija, ki obraz naključno
 izbranega obiskovalca galerije povzdigne v umetniški objekt za petnajst
 sekund. Instalacija je bila navdahnjena s slavnim citatom Andyja Warhola: ``V
@@ -105,6 +138,7 @@ možnosti, da bo kmalu zagledal samega sebe kot ``mojstrovino'' v galeriji.
 
 
 \chapter{Prvotna izvedba: 15 sekund slave}
+\label{ch:prvotnaIzvedba15}
 Kot že omenjeno, je prvotna instalacija nastala pred več kot 10 leti, zato je
 posodobitev več kot zaželena.
 
@@ -116,6 +150,7 @@ posodobitev več kot zaželena.
 \end{figure}
 
 \section{Strojna in programska oprema}
+\label{sec:strojnaProgramska15}
 Prva razstavljena različica je imela bogato okrašen lesen okvir, ki pa ni bil
 prenosen. Za tem okvirjem se je skrival računalniški zaslon LCD, velikosti 17
 palcev, malo nad tem zaslonom pa je bil fiksiran digitalni fotoaparat Olympus
@@ -138,6 +173,7 @@ zajemanje nove slike vsakih petnajst sekund.
 
 
 \chapter{Ohranjanje digitalne umetnosti}
+\label{ch:ohranjanjeDigitalneUmetnosti}
 Ohranjanje digitalne umetnosti je zelo pomembna vrednota v svetu
 umetnosti~\cite{ZKM}. Navezuje se na umetnost, ki je sicer že v digitalni
 obliki, a mora zaradi zelo hitrega razvoja tehnologije vseeno ostati v koraku
@@ -189,6 +225,7 @@ integracija s socialnimi omrežji.
 
 
 \chapter{Nadgradnja: Naprava in pripomočki}
+\label{ch:nadgradnjaNapravaPripomocki}
 Kot prvo nadgradnjo, ki smo si jo zamislili, je čim bolj učinkovito zmanjšati
 porabljen prostor za instalacijo in s tem olajšati njeno prenosljivost in
 povečati enostavnost postavitve.
@@ -207,6 +244,7 @@ predvajamo na večjem ekranu. Zato smo se odločili, da kot testno napravo
 vzamemo pametni telefon Samsung Galaxy S5.
 
 \section{Testna naprava: Samsung Galaxy S5}
+\label{sec:testnaNapravaSmartPhone}
 
 \begin{figure}[!ht]
     \centering
@@ -245,6 +283,7 @@ aplikacija. Vse kar za to potrebujemo, je Android SDK in prevajalnik Java.
 
 
 \section{Android}
+\label{sec:android}
 Android je odprtokodni sistem za pametne telefone, ki ga je leta 2007 izdelal
 Open Handset Alliance pod vodstvom podjetja Google. Projekt se imenuje
 AOSP~\footnote{Celotno ime je Android Open Source Project} in se še danes zelo
@@ -274,6 +313,7 @@ razumljivo, tako da se lahko znajdejo tudi začetniki. S pomočjo Android SDK na
 koncu nastane datoteka .apk.
 
 \chapter{Nadgradnja: Zaznavanje obrazov}
+\label{ch:zaznavanjeObrazov}
 Operacijski sistem Android nam preko vmesnika JNI omogoča vključevanje
 programskega jezika C. Posledično lahko uporabljamo splošne knjižnice in
 programska ogrodja (\textit{angl. framework}).
@@ -282,6 +322,7 @@ Ker smo v naši nadgradnji želeli, da bi se obrazi zaznavali v realnem času,
 smo se odločili za uporabo programskega ogrodja OpenCV.
 
 \section{Zaznavanje obrazov z uporabo OpenCV}
+\label{sec:zaznavanjeObrazovOpenCV}
 OpenCV je programsko ogrodje, ki nam omogoča izvedbo raznih operacij,
 izvedenih nad slikami. Napisana je v programskem jeziku C, za potrebe
 operacijskega sistema Android pa so napisani tudi povezovalni Java razredi
@@ -429,6 +470,7 @@ ne kot digitalni fotoaparat.
 
 
 \section{Zaznavanje obrazov z uporabo Android SDK}
+\label{sec:zaznavanjeObrazovAndroidSDK}
 Android SDK deluje povsem drugače kot OpenCV. Ne omogoča nobene kontrole in
 parametrov, možna je uporaba le v naprej določenega algoritma.
 
@@ -478,6 +520,7 @@ pop-art slike. Filtri so bili izdelani s pomočjo grafičnega programa GIMP.
 
 
 \section{GIMP}
+\label{sec:obdelavaSlikGIMP}
 GIMP je odprto-kodno programsko orodje za obdelavo slik.
 
 
@@ -581,6 +624,7 @@ Cmax = max(R, G, B)
 \end{lstlisting}
 
 \subsection{Uravnovešanje barv}
+\label{sec:obdelavaSlikUravnovesanjeBarv}
 
 \begin{equation}
 clamp_{min}^{max}(x) =
@@ -609,6 +653,7 @@ podobno svetlost. $H$, $S$ in novo pridobljeni $L$ prenesemo nazaj v RGB
 prostor.
 
 \subsection{Posteriziranje}
+\label{sec:obdelavaSlikPosteriziranje}
 
 \begin{equation}
 luts(x, levels) = 255 * \frac{\left \lfloor{\frac{x}{255} * (levels - 1) + 0.5}\right \rfloor}{levels - 1} + 0.5
@@ -617,6 +662,7 @@ luts(x, levels) = 255 * \frac{\left \lfloor{\frac{x}{255} * (levels - 1) + 0.5}\
 Posteriziranje se računa v barvnem prostoru RGB...
 
 \subsection{Uravnovešanje barv v HSL prostoru}
+\label{sec:obdelavaSlikUravnovesanjeBarvHSL}
 
 \begin{align}
 htv(x, x') &= x + 255 * \frac{x'}{360} \nonumber \\
@@ -643,6 +689,7 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
 \end{align}
 
 \subsection{Sestavljanje pop-art filtrov}
+\label{sec:obdelavaSlikSestavljanjePopArt}
 
 \subsubsection*{Filter 1}
 Prvi filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
@@ -1008,12 +1055,13 @@ vidimo na sliki~\ref{fig:lena_filter_17}.
 
 
 \chapter{Nove funkcionalne možnosti}
+\label{ch:novosti}
 Do sedaj smo originalno instalacijo ``15 sekund slave'' predelovali na način,
 da jo ohranjamo kot digitalno umetnost, se pravi brez vidnih sprememb. Vendar
 pa kakšna manjša po tako dolgem času lahko le popestri uporabniško izkušnjo.
 
 Najpomembnejša posodobitev, ki bi to umetniško instalacijo naredilo veliko
-bolj popularno je integracija s socialnimi omrežji~\ref{ch:social_network}. Dan
+bolj popularno je integracija s socialnimi omrežji~\ref{ch:socialNetwork}. Dan
 danes je to medij, preko katerega se srečamo z veliko ustvarjalnimi idejami.
 
 
@@ -1068,7 +1116,7 @@ končni prikaz naše nove instalacije.
 
 
 \chapter{Povezovanje s socialnimi omrežji}
-\label{ch:social_network}
+\label{ch:socialNetwork}
 Ena izmed pomembnejših posodobitev je povezava s socialnimi omrežji, ki so
 vsak dan bolj popularna. Vsak dan se na različnih socialnih omrežjih doda na
 tisoče žargonsko imenovanih ``selfijev''\footnote{Slika, ko oseba fotografira
