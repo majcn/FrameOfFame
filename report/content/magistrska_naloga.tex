@@ -1,42 +1,36 @@
 \chapter{Uvod}
-Kot prvi korak pri novi instalaciji je dobro poznavanje trenutne instalacije
-``15 sekund slave''. Kratek opis le tega je opisan v
-poglavju~\ref{ch:principDelovanja15} in~\ref{ch:prvotnaIzvedba15}. Pri tem smo
-podrobno spoznali vso strojno in programsko
-opremo~\ref{sec:strojnaProgramska15}. Tu je nastal naš prvi večji problem:
-kako sploh vzdrževati umetniško instalacijo, ki temelji na računalniški
-tehnologiji. Kakšni so principi, strategije. Da vemo da novejše ne pomeni
+Magistrska naloga sodi na relativno novo področje vzdrževanja novomedijskih umetniških instalacij, ki za svoje delovanje potrebujejo računalniško tehnologijo. Kot konkreten primer s tega področja bomo posodobili interaktivno umetniško instalacijo ``15 sekund slave''. Najprej se bomo v 2. poglavju seznanili z motivacijo za to instalacijo in spoznali, kako instalacija deluje. V 3. poglavju se seznanimo, kako je bila instalacija prvotno implementirana. DA bi se naloge pravilno lotili, smo v 4. poglavju preučili širšo problematiko vzdrževanja novomedijskih umetniških del.
+Kako sploh vzdrževati umetniško instalacijo, ki temelji na računalniški
+tehnologiji. Kakšni so principi in strategije. Novejše v tem kontekstu ne pomeni
 vedno boljše. Zaradi hitrega napredka računalniške tehnologije je potrebno
 take aplikacije po eni strani prilagajati novi strojni in sistemski programski
 opremi, pa tudi novim funkcionalnim možnostim, ki jih nove tehnologije nudijo.
 Po drugi strani, pa z umetniškega vidika običajno želimo, da se zunanja pojava
-umetniškega dela ne spremeni.Povzetek te raziskave na kratko opisan v
-poglavju~\ref{ch:ohranjanjeDigitalneUmetnosti}.
+umetniškega dela ne spremeni.
 
-Po preučevanju teorije, kako se sploh pravilno lotiti nadgradnje umetniške
-instalacije ``15 sekund slave'' smo začeli razmišljati še iz praktičnega
+V 5.poglavju smo po preučevanju teorije, kako se sploh pravilno lotiti nadgradnje umetniške
+instalacije ``15 sekund slave'', začeli razmišljati še iz praktičnega
 vidika. V desetih letih, odkar je bila prvotna instalacija narejena, je
 računalniška tehnologija močno napredovala. Še posebej v razvoju mobilnih
 naprav. Razmišljali smo, kako bi novo tehnologijo lahko prenesli v trenutno
-instalacijo~\ref{ch:nadgradnjaNapravaPripomocki}. Mobilni pametni telefon je
-bila zmagovalna izbira v tem razmisleku~\ref{sec:testnaNapravaSmartPhone}.
-Pametni telefoni so enostavno in prosto dostopni na trgu, in ker se masovno
-izdelujejo tudi niso zelo dragi. Vsebujejo pa vse kar potrebujemo: kamera,
+instalacijo. Odločili smo se za mobilni telefon.
+Pametni telefoni so enostavno in prosto dostopni na trgu in, ker se masovno
+izdelujejo, tudi niso zelo dragi. Vsebujejo pa vse kar potrebujemo: kamera,
 prikaz slike in programabilnost. Ostale lastnosti so le bonus. Sedaj je bilo
-le še vprašanje po operacijskem sistemu. Zaradi osebnih izkušenj smo se
+potrebno izbrati le še operacijski sistem. Zaradi osebnih izkušenj smo se
 odločili za operacijski sistem Android~\ref{sec:android}.
 
 Po izbiri strojne opremo smo začeli z načrtovanjem, kako prenesti vso
 obstoječo programsko funkcionalnost.
 
-Prvi korak je zaznavanje obrazov~\ref{ch:zaznavanjeObrazov}. Načini, kako
+V 6. poglavju smo se soočili z zaznavanjem obrazov~\ref{ch:zaznavanjeObrazov}. Načini, kako
 zaznavati obraze na sliki so se v desetih letih močno spreminjali. Obstaja
 tudi že veliko orodij, ki nam pomagajo pri tem. Naša izbira je na koncu
 pristala na dveh orodjih: OpenCV~\ref{sec:zaznavanjeObrazovOpenCV} in
-AndroidSDK~\ref{sec:zaznavanjeObrazovAndroidSDK}. Ta dva orodja temeljita na čisto
+AndroidSDK~\ref{sec:zaznavanjeObrazovAndroidSDK}. Ti dve orodji temeljita na popolnoma
 različnih strategijah, zato smo se odločili poskusiti oboje.
 
-Naslednji korak je obdelava slik~\ref{ch:obdelavaSlik}. Že pri prvotni
+V 7. poglavju smo obravnavali obdelavo slik~\ref{ch:obdelavaSlik}. Že pri prvotni
 instalaciji je bilo izhodišče za vse filtre programsko orodje
 GIMP~\ref{sec:obdelavaSlikGIMP}. V tej instalaciji smo se odločili, da si bomo
 tudi pomagali s tem programskim orodjem, vendar z različico iz današnjega
@@ -51,20 +45,22 @@ Različni parametri in mešanje teh filtrov med seboj nas je pripeljalo do
 poglavju~\ref{sec:obdelavaSlikSestavljanjePopArt}.
 
 S tem je bila prestavitev iz originalnega sistema v mobilni sistem končana.
-Vendar pa smo želeli še več~\ref{ch:novosti}. Najbolj pomembna lastnost, ki je
-pravi hit trenutnega časa je povezava s socialnimi
+Vendar pa smo želeli še več~\ref{ch:novosti}. V 8. poglavju opisujemo nove funkcionalne možnosti, ki smo jih dodali za popestritev instalacije.
+
+V 9. poglavju pa smo se ukvarjali z najbolj pomembno lastnostjo, ki je
+pravi hit sedanjega časa in sicer s povezavo s socialnimi
 omrežji~\ref{ch:socialNetwork}. Mladim in vseskozi tudi starejšim postaja
 pregledovanje socialnega omrežja vsakdanje opravilo. In trenuten trend
 ``selfi''-jev je kot nalašč za našo instalacijo.
 
-Veliko je lahko še izboljšav, vendar pa ne bi bilo niti začetka brez pop-art
+Možnih je še veliko izboljšav, vendar pa ne bi bilo začetka brez pop-art
 umetnika Andyja Warhol~\ref{ch:AndyWarhol_popart}.
 
 
-\chapter{Andy Warhol in pop-art umetnost}
+\chapter{Andy Warhol, pop-art umetnost in naša instalacija}
 \label{ch:AndyWarhol_popart}
-Andy Warhol~\cite{wiki:AndyWarhol} se je rodil 6. avgusta 1928 v Pittsburgu v
-Pensilvaniji staršema Slovakoma. Njegovo otroštvo je bilo zelo težko, saj je v
+Andy Warhol se je rodil 6. avgusta 1928 v Pittsburgu v
+Pensilvaniji staršema Slovakoma~\cite{wiki:AndyWarhol}. Njegovo otroštvo je bilo zelo težko, saj je v
 času velike gospodarske krize oče ostal brez službe. Kljub temu je po osnovnem
 šolanju obiskoval tečaj komercialnega oblikovanja na Carnegijevem inštitutu za
 tehnologijo v Pittsburgu. Pri 21-ih letih se je preselil v New York, kjer je
@@ -76,7 +72,7 @@ kariera le še vzpenjala.
 
 Njegove najbolj znane slike so Dick Tracy, Plesna shema (tango), Coca-Cola,
 Pločevinka juhe Campbell, Zvitek bankovcev, Marilyn Monroe (prikazana na
-sliki~\ref{fig:art-marilyn}),...
+sliki~\ref{fig:art-marilyn}) in serijo portretov znanih ljudi kot na primer......
 
 Umrl je zaradi srčne kapi 22. februarja 1987 v spanju, star 58 let.
 
@@ -87,9 +83,8 @@ Umrl je zaradi srčne kapi 22. februarja 1987 v spanju, star 58 let.
     \label{fig:art-marilyn}
 \end{figure}
 
+\section{Princip delovanja instalacije}
 
-\chapter{Princip delovanja instalacije}
-\label{ch:principDelovanja15}
 ``15 sekund slave'' je interaktivna umetniška instalacija, ki obraz naključno
 izbranega obiskovalca galerije povzdigne v umetniški objekt za petnajst
 sekund. Instalacija je bila navdahnjena s slavnim citatom Andyja Warhola: ``V
@@ -118,11 +113,9 @@ iskanje obrazov. Če je le teh več, enega izberemo po principu naključnega
 izbora. Ta obraz izrežemo iz fotografije in ga pošljemo kot vhod
 naslednjemu algoritmu.
 
-Izbran obraz se obdela z enim izmed v naprej določenih barvnih filtrov. Ti
+Izbran obraz se obdela z enim izmed vnaprej določenih barvnih filtrov. Ti
 filtri so sestavljeni iz različnih barvnih transformacij, da preoblikujejo
-fotografijo v slogu pop-art. Pop-art filtri so bolj podrobno opisani v
-poglavju~\ref{ch:obdelavaSlik}, primer pop-art transformacije pa lahko vidimo
-tudi na sliki~\ref{fig:lena_filter_5}.
+fotografijo v slogu pop-art. 
 
 Slika obraza v slogu pop-art je končni rezultat, ki je prikazan takoj, ko
 prejšnjemu obrazu poteče njegovih petnajst sekund. In kako je prikazan? Pod
@@ -156,8 +149,8 @@ prenosen. Za tem okvirjem se je skrival računalniški zaslon LCD, velikosti 17
 palcev, malo nad tem zaslonom pa je bil fiksiran digitalni fotoaparat Olympus
 C3020 ZOOM (objektiv tipa 32–96mm, maksimalna resolucija je 2048x1536).
 
-Ob selitvi instalacije se je pripetila prva nadgradnja. Lesen okvir se je
-zamenjal za malo manj kompaktnega in prenosljivega. V tem času je tudi
+Ob selitvi instalacije se je pripetila prva nadgradnja. Fiksen lesen okvir se je
+zamenjal z razstavljivem in prenosljivem. V tem času je tudi
 tehnologija naredila korak naprej. Naprave so postajale vse manjše in
 močnejše. 17 palčni računalniški zaslon je nadomestil 19 palčni, kljub temu pa
 se sama velikost naprave ni povečala. Zamenjal se je tudi digitalni
@@ -174,12 +167,12 @@ zajemanje nove slike vsakih petnajst sekund.
 
 \chapter{Ohranjanje digitalne umetnosti}
 \label{ch:ohranjanjeDigitalneUmetnosti}
-Ohranjanje digitalne umetnosti je zelo pomembna vrednota v svetu
+Ohranjanje digitalne umetnosti je zelo pomembna vrednota v svetsu
 umetnosti~\cite{ZKM}. Navezuje se na umetnost, ki je sicer že v digitalni
 obliki, a mora zaradi zelo hitrega razvoja tehnologije vseeno ostati v koraku
 s časom. Novejša tehnologija nam omogoča močnejše in hitrejše naprave, manjšo
 porabo energije, bolj točne algoritme in še veliko drugih pomembnih izboljšav.
-Vendar pa umetnost ni le tehnologija, umetnost je nekaj, kar se ohranja skozi
+Vendar pa umetnost ni le tehnologija, umetnost je nekaj, kar naj bi se ohranjalo skozi
 leta, desetletja, stoletja in še dlje.
 
 Pri digitalni umetnosti se pojavi kar nekaj težav, ki jih pri ohranjanju
@@ -226,7 +219,7 @@ integracija s socialnimi omrežji.
 
 \chapter{Nadgradnja: Naprava in pripomočki}
 \label{ch:nadgradnjaNapravaPripomocki}
-Kot prvo nadgradnjo, ki smo si jo zamislili, je čim bolj učinkovito zmanjšati
+Kot prvi motiv za nadgradnjo, ki smo si jo zamislili, je čim bolj učinkovito zmanjšati
 porabljen prostor za instalacijo in s tem olajšati njeno prenosljivost in
 povečati enostavnost postavitve.
 
@@ -314,6 +307,8 @@ koncu nastane datoteka .apk.
 
 \chapter{Nadgradnja: Zaznavanje obrazov}
 \label{ch:zaznavanjeObrazov}
+Eden od pomembnih funkcionalnih elementov v instalaciji je avtomatska detekcija  obrazov na slikah. V prvotni verziji instalacije je bila detekcija obrazov izvedena s pomočjo barve kože. Od takrat pa je razvoj na področju računalniškega vida prinesel veliko novosti in boljših metod.
+
 Operacijski sistem Android nam preko vmesnika JNI omogoča vključevanje
 programskega jezika C. Posledično lahko uporabljamo splošne knjižnice in
 programska ogrodja (\textit{angl. framework}).
@@ -515,8 +510,8 @@ velikosti končne aplikacije in kompleksnosti celotnega programa.
 \chapter{Nadgradnja: Obdelava slik}
 \label{ch:obdelavaSlik}
 Instalacija ``15 sekund slave'' vsebuje 17 različnih
-filtrov~\cite[Poglavje~5]{thesisSamoJuvan} za obdelavo prejetih slik v
-pop-art slike. Filtri so bili izdelani s pomočjo grafičnega programa GIMP.
+filtrov~\cite[Poglavje~5]{thesisSamoJuvan} za predelavo slik obrazov v
+pop-art portrete. Filtri so bili izdelani s pomočjo grafičnega programa GIMP.
 
 
 \section{GIMP}
@@ -524,7 +519,6 @@ pop-art slike. Filtri so bili izdelani s pomočjo grafičnega programa GIMP.
 GIMP je odprto-kodno programsko orodje za obdelavo slik.
 
 
-\subsection{Zgodovina}
 Začetek projekta sega v leto 1995, kjer se je vse skupaj začelo kot
 semestrski projekt na Univerzi Kalifornije, Berkeley. Avtorja Spencer Kimball
 in Peter Mattis sta projekt poimenovala \textit{angl. General Image
@@ -1061,20 +1055,17 @@ da jo ohranjamo kot digitalno umetnost, se pravi brez vidnih sprememb. Vendar
 pa kakšna manjša po tako dolgem času lahko le popestri uporabniško izkušnjo.
 
 Najpomembnejša posodobitev, ki bi to umetniško instalacijo naredilo veliko
-bolj popularno je integracija s socialnimi omrežji~\ref{ch:socialNetwork}. Dan
-danes je to medij, preko katerega se srečamo z veliko ustvarjalnimi idejami.
+bolj popularno je integracija s socialnimi omrežji~\ref{ch:socialNetwork}. Dandanes se za izmenjavo slikovnih informacij uporabljajo predvsem socialna omrežja, ki pred 10 leti sploh še niso obstajala.
 
 
 \section{Dve sliki}
 Naslednja posodobitev, ki prvotno niti ni bila v načrtu, je zamenjava zaslona
 LCD. Ta posodobitev se je zgodila zaradi nekompatibilnosti mobilnega telefona
-s starim zaslonom LCD. Ko pa je to že bila nujna posodobitev, smo razmišljali
-še širše. Večina današnjih zaslonov LCD je formata 16:9 ali pa še več v
-širino, starega formata 4:3 skorajda ni več. Naš cilj pa je kvadratna slika.
-Najprej smo želeli najti čim bolj kvadraten zaslon. Vendar pa se je kmalu
+s starim zaslonom LCD. Večina današnjih zaslonov LCD je formata 16:9 ali pa še več v
+širino, starega formata 4:3 skorajda ni več. Naš cilj pa je kvadratna slika, zato smo najprej želeli najti čim bolj kvadraten zaslon. Vendar pa se je kmalu
 rodila ideja o še širšem zaslon-u in sicer da je širina malo več kot enkrat
 daljša od višine~\ref{fig:frame2}. S tem smo si omogočili možnost prikazovanja
-dveh slik. Kot da bi naenkrat imeli razstavljeni dve različici instalacije.
+dveh slik vzporedno. Kot da bi naenkrat imeli razstavljeni dve različici istega portreta. Na podoben način je svoje pop-art portrete razstavljal tudi Andy Warhol.
 Seveda ima vsaka slika drug obraz, če le ta obstaja.
 
 Zaradi prejšnjega razloga o zamenjavi zaslona je bilo potrebno zamenjati tudi
@@ -1096,7 +1087,7 @@ okrašen, le na sredini bo združen, kot je prikazano na sliki~\ref{fig:frame2}.
 \end{figure}
 
 
-\section{Več obrazov}
+\section{Obraz kot mozaik iz majhnih obrazov}
 Prvotna instalacija ``15 sekund slave'' me je najbolj prepričala s sliko
 Marilyn Monroe~\ref{fig:15sec-marilyn}, ki je sestavljena iz več obrazov. Ker
 tukaj nimamo tako velike baze obrazov, smo vse skupaj malo poenostavili in
@@ -1156,14 +1147,14 @@ slik.
 
 
 \section{Omejitve}
-Ena izmed največjih omejitev je nenadzorovano pošiljanje slik na socialno
+Ena izmed največjih nevarnosti uporabe socialnih omrežij je nenadzorovano pošiljanje slik na socialno
 omrežje. Na slikah so lahko osebe, ki si ne želijo biti objavljene na
 socialnem omrežju, saj je javno. Še več, na slikah so lahko otroci, katerih
 objavljanje slik na socialnem omrežju je brez dovoljenja staršev prepovedano.
 Res je, da smo želeli slike izbrisati petnajst sekund po objavi, vendar pa
 večina socialnih omrežjih te slike še vedno hrani, čeprav jih ne vidimo več.
 In če se podamo še v najhujšo skrajnost, nekdo bi lahko napisal program, ki
-vse slike shranjuje na nek strežnik in nato z njimi razpolagal po svoji volji.
+vse slike shranjuje na nek strežnik in bi nato z njimi razpolagal po svoji volji.
 
 
 % \chapter{TODO}
