@@ -1,37 +1,46 @@
 \chapter{Uvod}
-Magistrska naloga sodi na relativno novo področje vzdrževanja novomedijskih umetniških instalacij, ki za svoje delovanje potrebujejo računalniško tehnologijo. Kot konkreten primer s tega področja bomo posodobili interaktivno umetniško instalacijo ``15 sekund slave''. Najprej se bomo v 2. poglavju seznanili z motivacijo za to instalacijo in spoznali, kako instalacija deluje. V 3. poglavju se seznanimo, kako je bila instalacija prvotno implementirana. DA bi se naloge pravilno lotili, smo v 4. poglavju preučili širšo problematiko vzdrževanja novomedijskih umetniških del.
-Kako sploh vzdrževati umetniško instalacijo, ki temelji na računalniški
-tehnologiji. Kakšni so principi in strategije. Novejše v tem kontekstu ne pomeni
-vedno boljše. Zaradi hitrega napredka računalniške tehnologije je potrebno
-take aplikacije po eni strani prilagajati novi strojni in sistemski programski
-opremi, pa tudi novim funkcionalnim možnostim, ki jih nove tehnologije nudijo.
-Po drugi strani, pa z umetniškega vidika običajno želimo, da se zunanja pojava
-umetniškega dela ne spremeni.
+Magistrska naloga sodi na relativno novo področje vzdrževanja novomedijskih
+umetniških instalacij, ki za svoje delovanje potrebujejo računalniško
+tehnologijo. Kot konkreten primer s tega področja bomo posodobili interaktivno
+umetniško instalacijo ``15 sekund slave''. Najprej se bomo v 2. poglavju
+seznanili z motivacijo za to instalacijo in spoznali, kako instalacija deluje.
+V 3. poglavju se seznanimo, kako je bila instalacija prvotno implementirana.
+DA bi se naloge pravilno lotili, smo v 4. poglavju preučili širšo problematiko
+vzdrževanja novomedijskih umetniških del.
 
-V 5.poglavju smo po preučevanju teorije, kako se sploh pravilno lotiti nadgradnje umetniške
-instalacije ``15 sekund slave'', začeli razmišljati še iz praktičnega
-vidika. V desetih letih, odkar je bila prvotna instalacija narejena, je
-računalniška tehnologija močno napredovala. Še posebej v razvoju mobilnih
-naprav. Razmišljali smo, kako bi novo tehnologijo lahko prenesli v trenutno
-instalacijo. Odločili smo se za mobilni telefon.
-Pametni telefoni so enostavno in prosto dostopni na trgu in, ker se masovno
-izdelujejo, tudi niso zelo dragi. Vsebujejo pa vse kar potrebujemo: kamera,
-prikaz slike in programabilnost. Ostale lastnosti so le bonus. Sedaj je bilo
-potrebno izbrati le še operacijski sistem. Zaradi osebnih izkušenj smo se
-odločili za operacijski sistem Android~\ref{sec:android}.
+Kako sploh vzdrževati umetniško instalacijo, ki temelji na računalniški
+tehnologiji. Kakšni so principi in strategije. Novejše v tem kontekstu ne
+pomeni vedno boljše. Zaradi hitrega napredka računalniške tehnologije je
+potrebno take aplikacije po eni strani prilagajati novi strojni in sistemski
+programski opremi, pa tudi novim funkcionalnim možnostim, ki jih nove
+tehnologije nudijo. Po drugi strani, pa z umetniškega vidika običajno želimo,
+da se zunanja pojava umetniškega dela ne spremeni.
+
+V 5.poglavju smo po preučevanju teorije, kako se sploh pravilno lotiti
+nadgradnje umetniške instalacije ``15 sekund slave'', začeli razmišljati še iz
+praktičnega vidika. V desetih letih, odkar je bila prvotna instalacija
+narejena, je računalniška tehnologija močno napredovala. Še posebej v razvoju
+mobilnih naprav. Razmišljali smo, kako bi novo tehnologijo lahko prenesli v
+trenutno instalacijo. Odločili smo se za mobilni telefon. Pametni telefoni so
+enostavno in prosto dostopni na trgu in, ker se masovno izdelujejo, tudi niso
+zelo dragi. Vsebujejo pa vse kar potrebujemo: kamera, prikaz slike in
+programabilnost. Ostale lastnosti so le bonus. Sedaj je bilo potrebno izbrati
+le še operacijski sistem. Zaradi osebnih izkušenj smo se odločili za
+operacijski sistem Android~\ref{sec:android}.
 
 Po izbiri strojne opremo smo začeli z načrtovanjem, kako prenesti vso
 obstoječo programsko funkcionalnost.
 
-V 6. poglavju smo se soočili z zaznavanjem obrazov~\ref{ch:zaznavanjeObrazov}. Načini, kako
-zaznavati obraze na sliki so se v desetih letih močno spreminjali. Obstaja
-tudi že veliko orodij, ki nam pomagajo pri tem. Naša izbira je na koncu
-pristala na dveh orodjih: OpenCV~\ref{sec:zaznavanjeObrazovOpenCV} in
-AndroidSDK~\ref{sec:zaznavanjeObrazovAndroidSDK}. Ti dve orodji temeljita na popolnoma
-različnih strategijah, zato smo se odločili poskusiti oboje.
+V 6. poglavju smo se soočili z zaznavanjem obrazov~\ref{ch:zaznavanjeObrazov}.
+Načini, kako zaznavati obraze na sliki so se v desetih letih močno
+spreminjali. Obstaja tudi že veliko orodij, ki nam pomagajo pri tem. Naša
+izbira je na koncu pristala na dveh orodjih:
+OpenCV~\ref{sec:zaznavanjeObrazovOpenCV} in
+AndroidSDK~\ref{sec:zaznavanjeObrazovAndroidSDK}. Ti dve orodji temeljita na
+popolnoma različnih strategijah, zato smo se odločili poskusiti oboje.
 
-V 7. poglavju smo obravnavali obdelavo slik~\ref{ch:obdelavaSlik}. Že pri prvotni
-instalaciji je bilo izhodišče za vse filtre programsko orodje
+V 7. poglavju smo obravnavali obdelavo slik~\ref{ch:obdelavaSlik}. Že pri
+prvotni instalaciji je bilo izhodišče za vse filtre programsko orodje
 GIMP~\ref{sec:obdelavaSlikGIMP}. V tej instalaciji smo se odločili, da si bomo
 tudi pomagali s tem programskim orodjem, vendar z različico iz današnjega
 časa. Iz programskega orodja GIMP smo si izbrali tri vrste filtrov:
@@ -45,10 +54,11 @@ Različni parametri in mešanje teh filtrov med seboj nas je pripeljalo do
 poglavju~\ref{sec:obdelavaSlikSestavljanjePopArt}.
 
 S tem je bila prestavitev iz originalnega sistema v mobilni sistem končana.
-Vendar pa smo želeli še več~\ref{ch:novosti}. V 8. poglavju opisujemo nove funkcionalne možnosti, ki smo jih dodali za popestritev instalacije.
+Vendar pa smo želeli še več~\ref{ch:novosti}. V 8. poglavju opisujemo nove
+funkcionalne možnosti, ki smo jih dodali za popestritev instalacije.
 
-V 9. poglavju pa smo se ukvarjali z najbolj pomembno lastnostjo, ki je
-pravi hit sedanjega časa in sicer s povezavo s socialnimi
+V 9. poglavju pa smo se ukvarjali z najbolj pomembno lastnostjo, ki je pravi
+hit sedanjega časa in sicer s povezavo s socialnimi
 omrežji~\ref{ch:socialNetwork}. Mladim in vseskozi tudi starejšim postaja
 pregledovanje socialnega omrežja vsakdanje opravilo. In trenuten trend
 ``selfi''-jev je kot nalašč za našo instalacijo.
