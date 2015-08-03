@@ -2,13 +2,13 @@
 Magistrska naloga sodi na relativno novo področje vzdrževanja novomedijskih
 umetniških instalacij, ki za svoje delovanje potrebujejo računalniško
 tehnologijo. Kot konkreten primer s tega področja bomo posodobili interaktivno
-umetniško instalacijo ``15 sekund slave''. Najprej se bomo v 2. poglavju
+umetniško instalacijo ``15 sekund slave''. Najprej se bomo v \ref{ch:AndyWarhol_popart}.~poglavju
 seznanili z motivacijo za to instalacijo in spoznali, kako instalacija deluje.
-V 3. poglavju se seznanimo, kako je bila instalacija prvotno implementirana.
-DA bi se naloge pravilno lotili, smo v 4. poglavju preučili širšo problematiko
-vzdrževanja novomedijskih umetniških del.
 
-Kako sploh vzdrževati umetniško instalacijo, ki temelji na računalniški
+V \ref{ch:prvotnaIzvedba15}.~poglavju se seznanimo, kako je bila instalacija prvotno implementirana.
+
+Da bi se naloge pravilno lotili, smo v \ref{ch:ohranjanjeDigitalneUmetnosti}.~poglavju preučili širšo problematiko
+vzdrževanja novomedijskih umetniških del. Kako sploh vzdrževati umetniško instalacijo, ki temelji na računalniški
 tehnologiji. Kakšni so principi in strategije. Novejše v tem kontekstu ne
 pomeni vedno boljše. Zaradi hitrega napredka računalniške tehnologije je
 potrebno take aplikacije po eni strani prilagajati novi strojni in sistemski
@@ -16,7 +16,7 @@ programski opremi, pa tudi novim funkcionalnim možnostim, ki jih nove
 tehnologije nudijo. Po drugi strani, pa z umetniškega vidika običajno želimo,
 da se zunanja pojava umetniškega dela ne spremeni.
 
-V 5.poglavju smo po preučevanju teorije, kako se sploh pravilno lotiti
+V \ref{ch:nadgradnjaNapravaPripomocki}.~poglavju smo po preučevanju teorije, kako se sploh pravilno lotiti
 nadgradnje umetniške instalacije ``15 sekund slave'', začeli razmišljati še iz
 praktičnega vidika. V desetih letih, odkar je bila prvotna instalacija
 narejena, je računalniška tehnologija močno napredovala. Še posebej v razvoju
@@ -26,45 +26,39 @@ enostavno in prosto dostopni na trgu in, ker se masovno izdelujejo, tudi niso
 zelo dragi. Vsebujejo pa vse kar potrebujemo: kamera, prikaz slike in
 programabilnost. Ostale lastnosti so le bonus. Sedaj je bilo potrebno izbrati
 le še operacijski sistem. Zaradi osebnih izkušenj smo se odločili za
-operacijski sistem Android~\ref{sec:android}.
-
-Po izbiri strojne opremo smo začeli z načrtovanjem, kako prenesti vso
+operacijski sistem Android~(\ref{sec:android}). Po izbiri strojne opremo smo začeli z načrtovanjem, kako prenesti vso
 obstoječo programsko funkcionalnost.
 
-V 6. poglavju smo se soočili z zaznavanjem obrazov~\ref{ch:zaznavanjeObrazov}.
+V \ref{ch:zaznavanjeObrazov}.~poglavju smo se soočili z zaznavanjem obrazov.
 Načini, kako zaznavati obraze na sliki so se v desetih letih močno
 spreminjali. Obstaja tudi že veliko orodij, ki nam pomagajo pri tem. Naša
 izbira je na koncu pristala na dveh orodjih:
-OpenCV~\ref{sec:zaznavanjeObrazovOpenCV} in
-AndroidSDK~\ref{sec:zaznavanjeObrazovAndroidSDK}. Ti dve orodji temeljita na
+OpenCV~(\ref{sec:zaznavanjeObrazovOpenCV}) in
+AndroidSDK~(\ref{sec:zaznavanjeObrazovAndroidSDK}). Ti dve orodji temeljita na
 popolnoma različnih strategijah, zato smo se odločili poskusiti oboje.
 
-V 7. poglavju smo obravnavali obdelavo slik~\ref{ch:obdelavaSlik}. Že pri
+V \ref{ch:obdelavaSlik}.~poglavju smo obravnavali obdelavo slik. Že pri
 prvotni instalaciji je bilo izhodišče za vse filtre programsko orodje
-GIMP~\ref{sec:obdelavaSlikGIMP}. V tej instalaciji smo se odločili, da si bomo
+GIMP~(\ref{sec:obdelavaSlikGIMP}). V tej instalaciji smo se odločili, da si bomo
 tudi pomagali s tem programskim orodjem, vendar z različico iz današnjega
 časa. Iz programskega orodja GIMP smo si izbrali tri vrste filtrov:
 \begin{itemize}
-    \item uravnovešanje barv~\ref{sec:obdelavaSlikUravnovesanjeBarv}
-    \item posteriziranje~\ref{sec:obdelavaSlikPosteriziranje}
-    \item uravnovešanje barv v HSL prostoru~\ref{sec:obdelavaSlikUravnovesanjeBarvHSL}
+    \item uravnovešanje barv~(\ref{sec:obdelavaSlikUravnovesanjeBarv})
+    \item posteriziranje~(\ref{sec:obdelavaSlikPosteriziranje})
+    \item uravnovešanje barv v HSL prostoru~(\ref{sec:obdelavaSlikUravnovesanjeBarvHSL})
 \end{itemize}
 Različni parametri in mešanje teh filtrov med seboj nas je pripeljalo do
-``pop-art'' slik. Različni parametri so opisani v
-poglavju~\ref{sec:obdelavaSlikSestavljanjePopArt}.
+``pop-art'' slik~(\ref{sec:obdelavaSlikSestavljanjePopArt}).
 
 S tem je bila prestavitev iz originalnega sistema v mobilni sistem končana.
-Vendar pa smo želeli še več~\ref{ch:novosti}. V 8. poglavju opisujemo nove
+Vendar pa smo želeli še več. V \ref{ch:novosti}.~poglavju opisujemo nove
 funkcionalne možnosti, ki smo jih dodali za popestritev instalacije.
 
-V 9. poglavju pa smo se ukvarjali z najbolj pomembno lastnostjo, ki je pravi
+V \ref{ch:socialNetwork}.~poglavju pa smo se ukvarjali z najbolj pomembno lastnostjo, ki je pravi
 hit sedanjega časa in sicer s povezavo s socialnimi
-omrežji~\ref{ch:socialNetwork}. Mladim in vseskozi tudi starejšim postaja
+omrežji. Mladim in vseskozi tudi starejšim postaja
 pregledovanje socialnega omrežja vsakdanje opravilo. In trenuten trend
 ``selfi''-jev je kot nalašč za našo instalacijo.
-
-Možnih je še veliko izboljšav, vendar pa ne bi bilo začetka brez pop-art
-umetnika Andyja Warhol~\ref{ch:AndyWarhol_popart}.
 
 
 \chapter{Andy Warhol, pop-art umetnost in naša instalacija}
