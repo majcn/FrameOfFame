@@ -567,7 +567,7 @@ bolj kompleksni, kot bi bilo potrebno za naš projekt. Zato smo se odločili, da
 filtre ponovno implementiramo in zavržemo vse funkcionalnosti, ki za nas niso
 pomembne. Naredili smo tri različne implementacije in jih med seboj primerjali.
 
-Prva implementacija je napisana v programskem jeziku java. Izkazala se je za
+Prva implementacija je napisana v programskem jeziku Java. Izkazala se je za
 zelo počasno. Orodje za sproščanje pomnilnika GC \textit{(angl. garbage
 collector)} se je klicalo prepogosto, kar je posledično porabilo več kot nekaj
 sekund za filter. Tega si nismo mogli privoščiti, zato smo iskali alternative.
@@ -585,8 +585,48 @@ počasnejša kot prejšnja, vendar pa za to nismo potrebovali grafične kartice 
 telefonu. Porabljen čas je bil manj kot sekundo za filter.
 
 
-\subsection{HSL barvni prostor}
-\label{sec:hsl}
+\subsection{Barvni prostor}
+Ko govorimo o filtrih, govorimo predvsem o spreminjanju barv. Tukaj nastane
+vprašanje: ``Kako te barve matematično zapisati?''. Poznamo več barvnih
+prostorov, s katerimi lahko določeni barvi priredimo določeno številko.
+
+
+\subsubsection*{Barvni prostor RGB}
+Najbolj znani in za nas osnovni barvni prostor je RGB. Sestavljen je iz treh
+osnovnih barv, to so rdeča (R), zelena (G) in modra (B). Vsaka barva se lahko
+pojavi v 256 odtenkih, kar na koncu znaša $16777216$ barv ($256^3$).
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{rgb}
+    \caption{Grafični prikaz barvnega prostora RGB}
+    \label{fig:rgb}
+\end{figure}
+
+
+\subsubsection*{Barvni prostor HSL}
+Drugi, malo manj znani, je barvni prostor HSL. Sestavljen je iz treh
+komponent: barvni odtenek (H), intenzivnost (S) in svetlost (L). Če primerjamo
+sliki~\ref{fig:rgb}~in~\ref{fig:hsl} vidimo, da HSL nima treh enakih
+komponent, ampak je zgrajen v obliki cilindra. Barvni odtenek je zapisan kot
+kot, in sicer pri 0$^{\circ}$ se začne rdeča, 120$^{\circ}$ zelena in
+240$^{\circ}$ modra. Drugi dve komponenti, to sta intenzivnost in svetlost sta
+zapisani s procenti in sicer od 0\% do 100\%.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{hsl}
+    \caption{Grafični prikaz barvnega prostora HSL}
+    \label{fig:hsl}
+\end{figure}
+
+Obstaja še veliko barvnih prostorov, vendar za našo instalacijo sta
+zadostovala ta dva. Pomembnost pri barvnih modelih je tudi, da je enostavno
+preračunljiv iz enega prostora v drugega.
+
+
+\subsection{Pretvorba iz RGB v HSL barvni model}
+\label{sec:hslconvert}
 
 \begin{align}
 R, G, B &\in [0,255] \nonumber \\
@@ -656,7 +696,7 @@ originalni barvi, $x'$ pa barvi, s katero želimo uravnovesiti originalno barvo
 $x$. $x$ in $x'$ sta pozitivni celi števili med 0 in 255.
 
 Po izračunanih vrednostih dane rezultate iz RGB prostora prenesemo v HSL
-prostor s pomočjo enačb, napisnih v poglavju~\ref{sec:hsl}. Tako dobimo $H$,
+prostor s pomočjo enačb, napisnih v poglavju~\ref{sec:hslconvert}. Tako dobimo $H$,
 $S$ in $L$. Iz originalnih vrednosti, to je vrednost barve na sliki,
 izračunamo $L$~\ref{eq:hsl_l} in ga nadomestimo s prejšnjim, zato da ohranimo
 podobno svetlost. $H$, $S$ in novo pridobljeni $L$ prenesemo nazaj v RGB
