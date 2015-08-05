@@ -702,10 +702,13 @@ prostor.
 \label{sec:obdelavaSlikPosteriziranje}
 
 \begin{equation}
-luts(x, levels) = 255 * \frac{\left \lfloor{\frac{x}{255} * (levels - 1) + 0.5}\right \rfloor}{levels - 1} + 0.5
+luts(x, levels) = 255 * \frac{\left \lfloor{\frac{x}{255} * (levels - 1) + 0.5}\right \rfloor}{levels - 1} + 0.5 \label{eq:posterize}
 \end{equation}
 
-Posteriziranje se računa v barvnem prostoru RGB...
+Posteriziranje se računa v barvnem prostoru RGB. Računamo jo za vsako barvo
+posebej, in sicer z enačbo~\eqref{eq:posterize}, kjer je $x$ enak
+originalni barvi, $levels$ pa stopnja, koliko sploh želimo posterizirati. $x$
+in $levels$ sta pozitivni celi števili med 0 in 255.
 
 
 \subsection{Uravnovešanje barv v HSL prostoru}
