@@ -685,7 +685,7 @@ shadows(x) &= clamp_{0}^{1}(\frac{117 - x}{64}) * 1.785 \\
 color\_balance(x, x') &= clamp_{0}^{255}(x + x' * shadows(x)) \label{eq:color_balance}
 \end{align}
 
-Uravnovešanje barv se računa v barvnem prostoru RGB. Računamo jo za vsako
+Uravnovešanje barv se računa v barvnem prostoru RGB. Računamo za vsako
 barvo posebej, in sicer z enačbo~\eqref{eq:color_balance}, kjer je $x$ enak
 originalni barvi, $x'$ pa barvi, s katero želimo uravnovesiti originalno barvo
 $x$. $x$ in $x'$ sta pozitivni celi števili med 0 in 255.
@@ -705,7 +705,7 @@ prostor.
 luts(x, levels) = 255 * \frac{\left \lfloor{\frac{x}{255} * (levels - 1) + 0.5}\right \rfloor}{levels - 1} + 0.5 \label{eq:posterize}
 \end{equation}
 
-Posteriziranje se računa v barvnem prostoru RGB. Računamo jo za vsako barvo
+Posteriziranje se računa v barvnem prostoru RGB. Računamo za vsako barvo
 posebej, in sicer z enačbo~\eqref{eq:posterize}, kjer je $x$ enak
 originalni barvi, $levels$ pa stopnja, koliko sploh želimo posterizirati. $x$
 in $levels$ sta pozitivni celi števili med 0 in 255.
@@ -721,7 +721,7 @@ hue\_transfer(x, x') &=
     htv(x, x') + 255 \text{,}& htv(x, x') < 0 \\
     htv(x, x') - 255 \text{,}& htv(x, x') > 255 \\
     htv(x, x') \text{,}& \text{ostalo}
-\end{cases}
+\end{cases} \label{eq:hue_transfer}
 \end{align}
 
 \begin{align}
@@ -730,13 +730,24 @@ lightness\_transfer(x, x') &=
 \begin{cases}
     x * \frac{255 + ltv(x, x')}{255} \text{,}& ltv(x, x') < 0 \\
     x + \frac{(255 - x) * ltv(x, x')}{255} \text{,}& ltv(x, x') \geq 0
-\end{cases}
+\end{cases} \label{eq:lightness_transfer}
 \end{align}
 
 \begin{align}
 stv(x, x') &= clamp_{-255}^{255}(2.25 * x') \nonumber \\
-saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255})
+saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255}) \label{eq:saturation_transfer}
 \end{align}
+
+Uravnovešanje barv v HSL prostoru se računa v barvnem prostoru HSL. Ker pa so
+prvotno barve zapisane v barvnem prostoru RGB je potrebno to pretvoriti v
+barvni prostor HSL. To naredimo s pomočjo enačb, napisnih v
+poglavju~\ref{sec:hslconvert}. Tako dobimo $H$, $S$ in $L$.
+
+Zdaj lahko vsako komponento uravnovesimo. Vsaka komponenta se izračuna po
+svoji enačbi. Za $H$ uporabimo~\eqref{eq:hue_transfer}, za
+$L$~\eqref{eq:lightness_transfer} in za $S$~\eqref{eq:saturation_transfer}.
+
+Dobljene vrednosti pretvorimo nazaj v RGB prostor, kar je tudi naš rezultat.
 
 
 \subsection{Sestavljanje pop-art filtrov}
