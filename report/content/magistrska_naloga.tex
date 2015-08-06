@@ -143,11 +143,10 @@ možnosti, da bo kmalu zagledal samega sebe kot ``mojstrovino'' v galeriji.
 
 \chapter{Prvotna izvedba: 15 sekund slave}
 \label{ch:prvotnaIzvedba15}
-Kot že omenjeno, je prvotna instalacija nastala pred več kot deset leti. 
-
-Težko je nadomestiti le posamezne dele elementov v sistemu, ker pa je
-tehnologija v teh letih močno napredovala, se je pokazala potreba po
-prilagoditvi aplikacije novemu stanju tehnologije~\cite{trifonova}.
+Kot že omenjeno, je prvotna instalacija nastala pred več kot deset leti. Ker
+je težko nadomestiti le posamezne dele v sistemu in ker je tehnologija v teh
+letih močno napredovala, se je pokazala potreba po prilagoditvi aplikacije
+novemu stanju tehnologije~\cite{trifonova}.
 
 \begin{figure}[!ht]
     \centering
@@ -203,7 +202,7 @@ celo ni mogoče. Stara programska oprema ne deluje vedno na novejših sistemih.
 V tem primeru smo prisiljeno ponovno implementirati algoritme, tako da so
 kompatibilni s strojno opremo. Tukaj obstaja več možnosti. Vedno lahko
 uporabljamo to staro kodo z manjšimi, ali pa tudi večjimi popravki, tako, da
-se prevede tudi na novejših sistemih. Vendar pa je tukaj treba biti pazljiv na
+se prevede tudi na novejših sistemih. Vendar pa je tukaj treba biti pozoren na
 to, da si s tem ne povzročimo še več dela, kot če bi vse skupaj ponovno
 implementirali.
 
@@ -600,13 +599,13 @@ telefonu. Porabljen čas je bil manj kot sekundo za filter.
 
 
 \subsection{Barvni prostor}
-Ko govorimo o filtrih, govorimo predvsem o spreminjanju barv. Tukaj nastane
+Ko govorimo o filtrih, govorimo predvsem o spreminjanju barv. Tukaj se pojavi
 vprašanje: ``Kako te barve matematično zapisati?''. Poznamo več barvnih
 prostorov, s katerimi lahko določeni barvi priredimo določeno številko.
 
 
 \subsubsection*{Barvni prostor RGB}
-Najbolj znani in za nas osnovni barvni prostor je RGB. Sestavljen je iz treh
+Najbolj znan in osnoven barvni prostor je RGB. Sestavljen je iz treh
 osnovnih barv, to so rdeča (R), zelena (G) in modra (B). Vsaka barva se lahko
 pojavi v 256 odtenkih, kar na koncu znaša $16777216$ barv ($256^3$).
 
@@ -619,12 +618,12 @@ pojavi v 256 odtenkih, kar na koncu znaša $16777216$ barv ($256^3$).
 
 
 \subsubsection*{Barvni prostor HSL}
-Drugi, malo manj znani, je barvni prostor HSL. Sestavljen je iz treh
+Drugi, malo manj znan, je barvni prostor HSL. Sestavljen je iz treh
 komponent: barvni odtenek (H), intenzivnost (S) in svetlost (L). Če primerjamo
 sliki~\ref{fig:rgb}~in~\ref{fig:hsl} vidimo, da HSL nima treh enakih
 komponent, ampak je zgrajen v obliki cilindra. Barvni odtenek je zapisan kot
 kot, in sicer pri 0$^{\circ}$ se začne rdeča, 120$^{\circ}$ zelena in
-240$^{\circ}$ modra. Drugi dve komponenti, to sta intenzivnost in svetlost sta
+240$^{\circ}$ modra. Drugi dve komponenti, to sta intenzivnost in svetlost, sta
 zapisani s procenti in sicer od 0\% do 100\%.
 
 \begin{figure}[!ht]
@@ -634,9 +633,9 @@ zapisani s procenti in sicer od 0\% do 100\%.
     \label{fig:hsl}
 \end{figure}
 
-Obstaja še veliko barvnih prostorov, vendar za našo instalacijo sta
-zadostovala ta dva. Pomembnost pri barvnih modelih je tudi, da je enostavno
-preračunljiv iz enega prostora v drugega.
+Obstaja še veliko barvnih prostorov, vendar sta za našo instalacijo 
+zadostovala ta dva. Pomembno pri barvnih modelih je tudi to, da so enostavno
+preračunljivi iz enega prostora v drugega.
 
 
 \subsection{Pretvorba iz RGB v HSL barvni model}
@@ -706,8 +705,8 @@ $x$. $x$ in $x'$ sta pozitivni celi števili med 0 in 255.
 
 Po izračunanih vrednostih dane rezultate iz RGB prostora prenesemo v HSL
 prostor s pomočjo enačb, napisnih v poglavju~\ref{sec:hslconvert}. Tako dobimo $H$,
-$S$ in $L$. Iz originalnih vrednosti, to je vrednost barve na sliki,
-izračunamo $L$~\ref{eq:hsl_l} in ga nadomestimo s prejšnjim, zato da ohranimo
+$S$ in $L$. Iz originalne vrednosti, to je vrednost barve na sliki,
+izračunamo $L$~\eqref{eq:hsl_l} in ga nadomestimo s prejšnjim, zato da ohranimo
 podobno svetlost. $H$, $S$ in novo pridobljeni $L$ prenesemo nazaj v RGB
 prostor.
 
@@ -753,7 +752,7 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255}) \
 \end{align}
 
 Uravnovešanje barv v HSL prostoru se računa v barvnem prostoru HSL. Ker pa so
-prvotno barve zapisane v barvnem prostoru RGB je potrebno to pretvoriti v
+prvotno barve zapisane v barvnem prostoru RGB, je potrebno to pretvoriti v
 barvni prostor HSL. To naredimo s pomočjo enačb, napisnih v
 poglavju~\ref{sec:hslconvert}. Tako dobimo $H$, $S$ in $L$.
 
@@ -1149,11 +1148,11 @@ s starim zaslonom LCD. Večina današnjih zaslonov LCD je formata 16:9 ali pa š
 več v širino, starega formata 4:3 skorajda ni več. Naš cilj pa je kvadratna
 slika, zato smo najprej želeli najti čim bolj kvadraten zaslon. Vendar pa se
 je kmalu rodila ideja o še širšem zaslon-u in sicer da je širina malo več kot
-enkrat daljša od višine~\ref{fig:frame2}. S tem smo si omogočili možnost
-prikazovanja dveh slik vzporedno. Kot da bi naenkrat imeli razstavljeni dve
-različici istega portreta. Na podoben način je svoje pop-art portrete
-razstavljal tudi Andy Warhol. Seveda ima vsaka slika drug obraz, če le ta
-obstaja.
+enkrat daljša od višine, kot je prikazano na sliki~\ref{fig:frame2}. S tem smo
+si omogočili možnost prikazovanja dveh slik vzporedno. Kot da bi naenkrat
+imeli razstavljeni dve različici istega portreta. Na podoben način je svoje
+pop-art portrete razstavljal tudi Andy Warhol. Seveda ima vsaka slika drug
+obraz, če le ta obstaja.
 
 Zaradi prejšnjega razloga o zamenjavi zaslona je bilo potrebno zamenjati tudi
 okvir. Kot že pri prejšnji posodobitvi okvirja bo tudi tokrat ostal bogato
