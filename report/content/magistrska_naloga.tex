@@ -172,8 +172,8 @@ C3020 ZOOM (objektiv tipa 32--96mm, maksimalna resolucija je
 2048$\times$1536)~\cite{preservationComputerBasedArt}.
 
 Ob selitvi instalacije se je pripetila prva nadgradnja. Fiksen lesen okvir se
-je zamenjal z razstavljivem in prenosljivem. V tem času je tudi tehnologija
-naredila korak naprej. Naprave so postajale vse manjše in močnejše. 17 palčni
+je zamenjal z razstavljivim in prenosljivim. V tem času je tudi tehnologija
+naredila korak naprej. Naprave so postajale vse manjše in zmogljivejše. 17 palčni
 računalniški zaslon je nadomestil 19 palčni, kljub temu pa se sama velikost
 naprave ni povečala. Zamenjal se je tudi digitalni fotoaparat. Zaradi
 programske opreme je bil najprimernejši kar Olympus, in ker je bil še vedno
@@ -191,7 +191,7 @@ Modul za detekcijo obrazov je bil napisan v programskem jeziku C++. Sprva je
 algoritem iskal obraze na podlagi barve kože. Zaradi hitrega in učinkovitega
 delovanja je bila sama slika pomanjšana na resolucijo 160$\times$120 pikslov.
 Najmanjši obraz, ki je bil lahko najden je velikosti 11$\times$12 pikslov, največji
-pa 96$\times$106 pikslov. Sama zaznava je bila zelo občutljiva na svetlobo, še
+pa 96$\times$106 pikslov. Samo zaznavanje je bilo zelo občutljivo na svetlobo, še
 posebej ob večjih spremembah med samim delovanjem. Za zmanjšanje tega problema
 so se uporabljale različne metode za kompozicijo
 osvetlitve~\cite{kovac2003illumination}. Kasneje se je celoten algoritem za
@@ -214,13 +214,13 @@ testirana na operacijskem sistemu Windows~XP~\cite{preservationComputerBasedArt}
 Ohranjanje digitalne umetnosti je zelo pomembna vrednota v svetu
 umetnosti~\cite{ZKM,preservationComputerBasedArt}. Navezuje se na umetnost, ki je sicer že v digitalni
 obliki, a mora zaradi zelo hitrega razvoja tehnologije vseeno ostati v koraku
-s časom. Novejša tehnologija nam omogoča močnejše in hitrejše naprave, manjšo
+s časom. Novejša tehnologija nam omogoča zmogljivejše in hitrejše naprave, manjšo
 porabo energije, bolj točne algoritme in še veliko drugih pomembnih izboljšav.
 Vendar pa umetnost ni le tehnologija, umetnost je nekaj, kar naj bi se ohranjalo skozi
 leta, desetletja, stoletja in še dlje.
 
 Pri digitalni umetnosti se pojavi kar nekaj težav, ki jih pri ohranjanju
-običajnih umetniških produktov ni. Če nismo v koraku s časom, je možnost, da
+običajnih umetniških izdelkov ni. Če nismo v koraku s časom, je možnost, da
 strojna oprema, ki jo potrebujemo za instalacijo, ni več dobavljiva na trgu,
 ali pa je že dovolj stara, da ima zgodovinsko vrednost. Nova strojna oprema
 doprinese še programske posodobitve, nove principe, standarde in različna
@@ -232,7 +232,7 @@ Pa četudi želimo zamenjati le strojno opremo, to v zelo starih instalacijah
 celo ni mogoče. Stara programska oprema ne deluje vedno na novejših sistemih.
 V tem primeru smo prisiljeno ponovno implementirati algoritme, tako da so
 kompatibilni s strojno opremo. Tukaj obstaja več možnosti. Vedno lahko
-uporabljamo to staro kodo z manjšimi, ali pa tudi večjimi popravki, tako, da
+uporabljamo staro kodo z manjšimi, ali pa tudi večjimi popravki, tako, da
 se prevede tudi na novejših sistemih. Vendar pa je tukaj treba biti pozoren na
 to, da si s tem ne povzročimo še več dela, kot če bi vse skupaj ponovno
 implementirali.
@@ -254,7 +254,7 @@ opremo dokler je  to le mogoče. S tem zagotovimo, da je uporabniška izkušnja
 ves čas ista. Tukaj bi se večina lahko vprašala, zakaj ne bi strojne opreme s
 časom nadgrajevali. Vzemimo primer računalniški zaslon. Res je, tehnologija
 LCD je zelo napredovala, slika je v primerjavi s sliko na zaslonih s katodno
-cevjo kar nekajkrat bolj ostra in čista. Vendar pa ravno ta ostrina lahko
+cevjo precej bolj ostra in čista. Vendar pa ravno ta ostrina lahko
 popolnoma spremeni končni produkt, saj je bil morda nekdo nad umetnino
 navdušen ravno zaradi teh zabrisanih robov, ki so ji dajali nekoliko starinski
 pridih.
@@ -285,7 +285,7 @@ fotoaparat, dostop do interneta preko kartice SIM ter operacijski sistem, ki
 omogoča izdelavo programske opreme s katero lahko dostopamo do prej naštetih
 funkcij.
 
-Pametni telefoni dražje stopnje omogočajo tudi, da lahko sliko v živo
+Pametni telefoni višjega cenovnega razreda omogočajo tudi, da lahko sliko v živo
 predvajamo na večjem ekranu. Zato smo se odločili, da kot testno napravo
 vzamemo pametni telefon Samsung Galaxy S5.
 
@@ -367,7 +367,7 @@ obrazov izvedena s pomočjo barve kože~\cite{mirage03,kovac2003illumination}. O
 na področju računalniškega vida prinesel veliko novosti in boljših metod.
 
 Operacijski sistem Android nam preko vmesnika JNI omogoča vključevanje
-programskega jezika C. Posledično lahko uporabljamo splošne knjižnice in
+kode napisane v programskem jeziku C ali C++. Posledično lahko uporabljamo splošne knjižnice in
 programska ogrodja (\textit{angl. framework}).
 
 Ker smo v naši nadgradnji želeli, da bi se obrazi zaznavali v realnem času,
@@ -377,7 +377,7 @@ smo se odločili za uporabo programskega ogrodja OpenCV.
 \section{Zaznavanje obrazov z uporabo OpenCV}
 \label{sec:zaznavanjeObrazovOpenCV}
 OpenCV je programsko ogrodje, ki nam omogoča izvedbo raznih operacij,
-izvedenih nad slikami. Napisana je v programskem jeziku C, za potrebe
+izvedenih nad slikami. Napisano je v programskem jeziku C, za potrebe
 operacijskega sistema Android pa so napisani tudi povezovalni Java razredi
 (\textit{angl. class}), ki nam omogočajo uporabo OpenCV operacij kar preko
 programskega jezika Java.
@@ -388,8 +388,7 @@ klasificiranja (\textit{angl. cascade classifier}), ki nam omogoča
 klasifikacijo različnih lastnosti.
 
 Lastnosti so zapisane v datoteki XML. Ta datoteka vsebuje več sto ali tisoč
-različnih lastnosti, ki opisujejo določen predmet, kar v našem primeru pomeni
-obliko obraza.
+različnih lastnosti, ki opisujejo določen predmet, v našem primeru obliko obraza.
 
 Obstaja več različnih tipov, preko katerih so te lastnosti opisane. Za
 zaznavanje obrazov sta najpomembnejša tipa ``HAAR'' in ``LBP''. Tipa se
@@ -401,7 +400,7 @@ razlikujeta po točnosti in hitrosti.
 
 ``LBP'' pa je, čeprav z nekaj več napakami pri klasifikaciji kot HAAR'', za
 naše potrebe še vedno dovolj točen. Njegova glavna prednost pred prej
-opisanim je  njegova hitrost, kar je pri detekciji obrazov v živo zelo
+opisanim je njegova hitrost, kar je pri detekciji obrazov v živo zelo
 pomembno, če želimo doseči zadovoljstvo uporabnika.
 
 Ker so si obrazi med seboj zelo različni, je nemogoče, da bi bil najden prav
@@ -413,7 +412,7 @@ primer nek predmet v okolici, ki ga zaznamo in obdelamo kot obraz.
 Testirali smo oba tipa z različnimi tipi lastnosti. Pri tem smo uporabili le
 lastnosti, ki opisujejo sprednji del obraza. Vendar pa se je pri uporabi
 ``LBP'' opisov še vedno pokazalo preveč lažnih obrazov. Zato smo se odločili
-za uporabo lastnosti tipa ``HAAR''. Veliko bolj se nam zdi namreč pomembno, da
+za uporabo lastnosti tipa ``HAAR''. Veliko bolj se nam namreč zdi pomembno, da
 ima petnajst sekund slave obraz uporabnika, in ne kakšen predmet v okolici, pa
 čeprav je za to potrebno nekoliko več časa.
 
@@ -509,13 +508,13 @@ večino testiranih primerov.
 
 Detekcija obrazov s programskim ogrodjem OpenCV je le ena izmed možnosti, ki
 smo si jih podrobneje ogledali. Kot prva implementacija je bila izbrana zaradi
-velike kontrole nad vsakim korakom, kot so: detekcija
-obraza~\ref{fig:lena_opencv_face}, določitev regije kje je potrebno iskati,
+velike stopnje nadzora nad vsakim korakom, kot so: detekcija
+obraza~\ref{fig:lena_opencv_face}, določitev regije kjer je potrebno iskati,
 detekcija oči v določeni regiji~\ref{fig:lena_opencv_face_eye} in še bi lahko
 naštevali.
 
 Kljub zadovoljivim rezultatom iskanja obrazov se je izkazalo, da slike
-velikokrat niso ostre. Prej smo omenili, da imamo veliko kontrolo nad
+velikokrat niso ostre. Prej smo omenili, da imamo veliko nadzora nad
 različnimi algoritmi za detekcijo, kar pa ne vključuje uporabe kamere, ki je v
 pametnem telefonu. OpenCV uporablja sliko iz kamere tako kot je, brez
 predhodne izostritve. Povedano z drugimi besedami, uporablja jo kot kamero in
@@ -524,10 +523,10 @@ ne kot digitalni fotoaparat.
 
 \section{Zaznavanje obrazov z uporabo Android SDK}
 \label{sec:zaznavanjeObrazovAndroidSDK}
-Android SDK deluje povsem drugače kot OpenCV. Ne omogoča nobene kontrole in
+Android SDK deluje povsem drugače kot OpenCV. Ne omogoča nobenega nazdora in
 parametrov, možna je uporaba le v naprej določenega algoritma.
 
-Ta algoritem bazira na algoritmu NV1-NORM~\cite{nevenFaceRecognition}, ki ga
+Ta algoritem temelje na algoritmu NV1-NORM~\cite{nevenFaceRecognition}, ki ga
 je izdelalo podjetje Neven Vision~\ref{fig:neven_vision}. Leta 2006 je Neven
 Vision postalo last podjetja Google in od takrat se uporablja za zaznavo
 obrazov v mnogih programih, ki jih je izdelalo podjetje Google. Lep  primer je
@@ -552,7 +551,7 @@ FaceDetector fc = new FaceDetector(
 \end{lstlisting}
 
 Vendar pa kljub zaprtosti in nezmožnosti prilagajanja detektorja prinaša zelo
-dobre rezultate. Ker so vse funkcije že vključeno v operacijski sistem, tudi
+dobre rezultate. Ker so vse funkcije že vključene v operacijski sistem, tudi
 ne potrebujemo dodatnih programskih ogrodij. S tem smo si prihranili kar nekaj
 časa in prostora.
 
@@ -597,8 +596,8 @@ naslednji filtri:
         Prekrije celotno sliko z barvo v izbranem odtenku.
     \item \textbf{posteriziranje} \textit{angl. posterize} \hfill \\
         Zmanjšuje število barv na sliki.
-    \item \textbf{uravnovešanje barv v HSL prostoru} \textit{angl. hue saturation balance} \hfill \\
-        Spreminja odtenke barv, svetlost in intenzivnost na sliki.
+    \item \textbf{uravnovešanje barv v HSL prostoru} \textit{angl. hue saturation lightness} \hfill \\
+        Spreminja odtenek, svetlost in nasičenost barv na sliki.
 \end{itemize}
 
 
@@ -617,7 +616,7 @@ collector)} se je klicalo prepogosto, kar je posledično porabilo več kot nekaj
 sekund za filter. Tega si nismo mogli privoščiti, zato smo iskali alternative.
 
 Naslednja implementacija je napisana s pomočjo grafične kartice in sicer z
-orodjem OPENGL ES, verzije 2.0. Čas porabe pri izvajanju se je občutno
+ogrodjem OpenGL ES, verzije 2.0. Čas porabe pri izvajanju se je občutno
 zmanjšal. Ko so bile teksture zapisane na grafični kartici, so se filtri
 izvajali v manj kot sekundi. Ta rešitev je bila že dovolj dobra, vendar pa se
 nam je zdelo, da je uporaba grafične kartice za tako lahke operacije potrata
@@ -652,10 +651,10 @@ pojavi v 256 odtenkih, kar na koncu znaša $16777216$ barv ($256^3$).
 Drugi, malo manj znan, je barvni prostor HSL. Sestavljen je iz treh
 komponent: barvni odtenek (H), intenzivnost (S) in svetlost (L). Če primerjamo
 sliki~\ref{fig:rgb}~in~\ref{fig:hsl} vidimo, da HSL nima treh enakih
-komponent, ampak je zgrajen v obliki cilindra. Barvni odtenek je zapisan kot
-kot, in sicer pri 0$^{\circ}$ se začne rdeča, 120$^{\circ}$ zelena in
-240$^{\circ}$ modra. Drugi dve komponenti, to sta intenzivnost in svetlost, sta
-zapisani s procenti in sicer od 0\% do 100\%.
+komponent, ampak je zgrajen v obliki valja. Barvni odtenek je zapisan s
+kotom, in sicer pri 0$^{\circ}$ se začne rdeča, 120$^{\circ}$ zelena in
+240$^{\circ}$ modra. Drugi dve komponenti, nasičenost in svetlost, sta
+zapisani z odstotki in sicer od 0\% do 100\%.
 
 \begin{figure}[!ht]
     \centering
@@ -734,12 +733,11 @@ barvo posebej, in sicer z enačbo~\eqref{eq:color_balance}, kjer je $x$ enak
 originalni barvi, $x'$ pa barvi, s katero želimo uravnovesiti originalno barvo
 $x$. $x$ in $x'$ sta pozitivni celi števili med 0 in 255.
 
-Po izračunanih vrednostih dane rezultate iz RGB prostora prenesemo v HSL
-prostor s pomočjo enačb, napisnih v poglavju~\ref{sec:hslconvert}. Tako dobimo $H$,
+Po izračunanih vrednostih dane rezultate iz prostora RGB prenesemo v prostor HSL
+s pomočjo enačb, napisanih v poglavju~\ref{sec:hslconvert}. Tako dobimo $H$,
 $S$ in $L$. Iz originalne vrednosti, to je vrednost barve na sliki,
 izračunamo $L$~\eqref{eq:hsl_l} in ga nadomestimo s prejšnjim, zato da ohranimo
-podobno svetlost. $H$, $S$ in novo pridobljeni $L$ prenesemo nazaj v RGB
-prostor.
+podobno svetlost. $H$, $S$ in novo pridobljeni $L$ prenesemo nazaj v prostor RGB.
 
 
 \subsection{Posteriziranje}
@@ -783,15 +781,15 @@ saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255}) \
 \end{align}
 
 Uravnovešanje barv v HSL prostoru se računa v barvnem prostoru HSL. Ker pa so
-prvotno barve zapisane v barvnem prostoru RGB, je potrebno to pretvoriti v
-barvni prostor HSL. To naredimo s pomočjo enačb, napisnih v
+prvotno barve zapisane v barvnem prostoru RGB, je potrebno te pretvoriti v
+barvni prostor HSL. To naredimo s pomočjo enačb, napisanih v
 poglavju~\ref{sec:hslconvert}. Tako dobimo $H$, $S$ in $L$.
 
 Zdaj lahko vsako komponento uravnovesimo. Vsaka komponenta se izračuna po
 svoji enačbi. Za $H$ uporabimo~\eqref{eq:hue_transfer}, za
 $L$~\eqref{eq:lightness_transfer} in za $S$~\eqref{eq:saturation_transfer}.
 
-Dobljene vrednosti pretvorimo nazaj v RGB prostor, kar je tudi naš rezultat.
+Dobljene vrednosti pretvorimo nazaj v prostor RGB, kar je tudi naš rezultat.
 
 
 \subsection{Sestavljanje pop-art filtrov}
@@ -1227,9 +1225,9 @@ vidimo na sliki~\ref{fig:FoF-marilyn}) je končni prikaz naše nove instalacije.
 \label{ch:socialNetwork}
 Ena izmed pomembnejših posodobitev je povezava s socialnimi omrežji, ki so
 vsak dan bolj popularna. Vsak dan se na različnih socialnih omrežjih doda na
-tisoče žargonsko imenovanih ``selfijev''\footnote{Slika, ko oseba fotografira
-samega sebe pri različnih dejavnostih.}. Da pa ta ``selfi'' še bolj pade v
-oči, se jim lahko doda kakšen že vnaprej določen filter. Ti so pri pametnih
+tisoče ``selfijev''\footnote{Slika, ko oseba fotografira
+samo sebe pri različnih dejavnostih.}. Da pa ta ``selfi'' še bolj pade v
+oči, se jim lahko doda kakšen vnaprej določen filter. Ti so pri pametnih
 telefonih, ki so danes ena izmed najpogostejših naprav za fotografiranje
 ``selfijev'', na voljo samo en dotik stran. Obstajajo pa tudi socialna
 omrežja, ki ponujajo osnovne filtre že pri nalaganju slike.
@@ -1296,14 +1294,14 @@ S posodobitvijo programske opreme smo omogočili, da instalacija deluje na eni
 napravi in dodali nove funkcionalnosti:
 \begin{itemize}
 	\item povezovanje s socialnimi omrežji, kar je predvsem za mlajše uporabnike zaželena prednost
-	\item sestavljenost končnega obraza iz več obrazov, ki so obdelani z različnimi filtri. Idejo za to smo pridobili na podlagi oglaševanja prve implementacije
+	\item sestavljanje končnega obraza iz večih obrazov, ki so obdelani z različnimi filtri. Idejo za to smo dobili na podlagi oglasa prve implementacije
 	\item posodobitev in optimizacija algoritmov za filtriranje slik
 	\item posodobitev in optimizacija algoritmov za zaznavanje obrazov
 \end{itemize}
 
 V prihodnosti obstaja možnost, da se filtri uporabijo tudi v drugih
 aplikacijah, saj so filtri napisani kot knjižnica, uporaba le te pa je
-enostavna. Predstavljajmo si aplikacijo, kot je Instagram in da ima tudi
+enostavna. Predstavljajmo si aplikacijo, kot je Instagram, ki ima tudi
 možnost pop-art filtrov, napisanih v tej magistrski nalogi.
 
 Poleg tega bo potrebno redno vzdrževanje instalacije, tako na
