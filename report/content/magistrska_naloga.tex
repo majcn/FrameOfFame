@@ -164,26 +164,71 @@ novemu stanju tehnologije~\cite{trifonova}.
 \end{figure}
 
 \section{Strojna in programska oprema}
-\label{sec:strojnaProgramska15}
+\paragraph{Strojna Oprema.}
 Prva razstavljena različica je imela bogato okrašen lesen okvir, ki pa ni bil
 prenosen. Za tem okvirjem se je skrival računalniški zaslon LCD, velikosti 17
 palcev, malo nad tem zaslonom pa je bil fiksiran digitalni fotoaparat Olympus
-C3020 ZOOM (objektiv tipa 32–96mm, maksimalna resolucija je 2048x1536)~\cite{preservationComputerBasedArt}.
+C3020 ZOOM (objektiv tipa 32–96mm, maksimalna resolucija je
+2048x1536)~\cite{preservationComputerBasedArt}.
 
-Ob selitvi instalacije se je pripetila prva nadgradnja. Fiksen lesen okvir se je
-zamenjal z razstavljivem in prenosljivem. V tem času je tudi
-tehnologija naredila korak naprej. Naprave so postajale vse manjše in
-močnejše. 17 palčni računalniški zaslon je nadomestil 19 palčni, kljub temu pa
-se sama velikost naprave ni povečala. Zamenjal se je tudi digitalni
-fotoaparat. Zaradi programske opreme je bil najprimernejši kar Olympus, in ker
-je bil še vedno željen široki kot objektiva, je to napravo nadomestil Olympus
-C40 ZOOM (objektiv tipa 35-98mm, maksimalna resolucija 2272x1704).
+Ob selitvi instalacije se je pripetila prva nadgradnja. Fiksen lesen okvir se
+je zamenjal z razstavljivem in prenosljivem. V tem času je tudi tehnologija
+naredila korak naprej. Naprave so postajale vse manjše in močnejše. 17 palčni
+računalniški zaslon je nadomestil 19 palčni, kljub temu pa se sama velikost
+naprave ni povečala. Zamenjal se je tudi digitalni fotoaparat. Zaradi
+programske opreme je bil najprimernejši kar Olympus, in ker je bil še vedno
+željen široki kot objektiva, je to napravo nadomestil Olympus C40 ZOOM
+(objektiv tipa 35-98mm, maksimalna resolucija 2272x1704).
 
 Omenjeno je bilo, da je bil Olympus primeren zaradi programske opreme. Ta
 digitalni fotoaparat je omogočal upravljanje same naprave programsko preko
 računalnika. Orodje SDK omogoča nastavljanje ISO, odprtosti zaslonke, hitrosti
 slikanja, fokusa, možnosti zajemanja slike,... S tem je o\-mo\-go\-če\-no
 avtomatsko zajemanje nove slike vsakih petnajst sekund.
+
+\paragraph{Software.}
+The module for face detection was written in C++. Initially, a method of face
+detection based on skin color was used [10]. Before face detection the input
+image was reduced to 160x120 pixels. The smallest face that could be detected
+was 11x12 pixels and the largest 96x106. This detection method was very
+sensitive to changes in illumination although this problem was somewhat
+alleviated by using different methods of illumination compensation [3]. Later
+the new Viola-Jones method of face detection [14] which is not color dependent
+was used instead. A module for this method exists in the OpenCV library. The
+smallest face that could be detected was 24x24 pixels.
+
+The module for color transformations which simulate the pop-art effects was
+also written in C++. The three color filters or transformations emulate
+filters for color balance, hue saturation and posterization from the open
+source program Gimp. Before the face image was subjected to color
+transformations, it was enlarged to the size 400x400 pixels.
+
+The main communication module between the hardware and other software modules
+was written in Pascal/Delphi. The whole application was running under Windows
+XP and later modified and tested to run under Win 7. The entire system had
+about 4500 lines of code (Delphi, C++, C, C#).
+
+\paragraph{Programska oprema.}
+Modul za detekcijo obrazov je bil napisan v programskem jeziku C++. Sprva je
+algoritem iskal obraze na podlagi barve kože. Zaradi hitrega in učinkovitega
+delovanja je bila sama slika pomanjšana na resolucijo 160x120 pikslov.
+Najmanjši obraz, ki je bil lahko najden je velikosti 11x12 pikslov, največji
+pa 96x106 pikslov. Sama zaznava je bila zelo občutljiva na svetlobo, še
+posebej ob večjih spremembah med samim delovanjem. Za zmanjšanje tega problema
+so se uporabljale različne metode za kompozicijo
+osvetlitve~\cite{kovac2003illumination}. Kasneje se je celoten algoritem za
+detekcijo obrazov zamenjal z algoritmom Viola-Jones~\cite{viola2004robust}, ki
+pa ni bil več odvisen na barvo kože. Najmanjši obraz pri algoritmu Viola-Jones
+je bil velikosti 24x24 pikslov.
+
+Modul za filtre, s katerimi so se ustvarjali pop-art efekti, je bil tudi
+napisan v programskem jeziku C++. Slika obraza, oziroma vhod, ki ga je
+algoritem dobil je bila slika, velikosti 400x400 pikslov. V kolikor je bil
+rezultat detekcije obraza manjši, se je slika povečala na to velikost.
+
+Komunikacija samo strojno opremo in vsemi moduli je bila napisana v
+programskem jeziku Pascal/Delphi. Celostna instalacija je bila narejena in
+testirana na operacijskem sistemu Windows~XP~cite{preservationComputerBasedArt}.
 
 
 \chapter{Ohranjanje digitalne umetnosti}
