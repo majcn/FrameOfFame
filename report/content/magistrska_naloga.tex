@@ -1,5 +1,3 @@
-%poglej se vse TODO (po navadi samo page break)
-
 \chapter{Uvod}
 \newcommand{\refPoglavju}[1]{\ref{#1}.~poglavju}
 
@@ -425,7 +423,6 @@ s katerimi smo dobili rezultate obrazov. Ker se je že za samo klasifikacijo
 obraza porabilo kar nekaj časa, smo se odločili, da iskanje prekinemo takoj po
 najdenem prvem obrazu, ki je velik vsaj eno desetino celotne slike.
 
-\pagebreak % TODO: zbriši
 \begin{lstlisting}[label=lst:haar_frontal_face, caption=Izsek iz datoteke harrcascade\_frontalface\_default.xml]
 <maxWeakCount>9</maxWeakCount>
 <stageThreshold>-5.0425500869750977e+00</stageThreshold>
@@ -526,7 +523,7 @@ ne kot digitalni fotoaparat.
 Android SDK deluje povsem drugače kot OpenCV. Ne omogoča nobenega nazdora in
 parametrov, možna je uporaba le v naprej določenega algoritma.
 
-Ta algoritem temelje na algoritmu NV1-NORM~\cite{nevenFaceRecognition}, ki ga
+Ta algoritem temelji na algoritmu NV1-NORM~\cite{nevenFaceRecognition}, ki ga
 je izdelalo podjetje Neven Vision~\ref{fig:neven_vision}. Leta 2006 je Neven
 Vision postalo last podjetja Google in od takrat se uporablja za zaznavo
 obrazov v mnogih programih, ki jih je izdelalo podjetje Google. Lep  primer je
@@ -541,7 +538,6 @@ program za prikaz slik Google Picassa.
 
 Natančnejša implementacija algoritma za zaznavo obraza je zapr%to-kodna. Če si
 ogledamo dokumentacijo Android SDK-ja, je opisan samo primer uporabe:
-\pagebreak % TODO: zbriši
 \begin{lstlisting}[caption="Primer uporabe zaznavanja obraza z orodjem Android SDK"]
 FaceDetector fc = new FaceDetector(
     sirina_slike,
@@ -596,7 +592,7 @@ naslednji filtri:
         Prekrije celotno sliko z barvo v izbranem odtenku.
     \item \textbf{posteriziranje} \textit{angl. posterize} \hfill \\
         Zmanjšuje število barv na sliki.
-    \item \textbf{uravnovešanje barv v HSL prostoru} \textit{angl. hue saturation lightness} \hfill \\
+    \item \textbf{uravnovešanje barv v HSL prostoru} \textit{angl. hue saturation balance} \hfill \\
         Spreminja odtenek, svetlost in nasičenost barv na sliki.
 \end{itemize}
 
@@ -1293,10 +1289,10 @@ napravi.
 S posodobitvijo programske opreme smo omogočili, da instalacija deluje na eni
 napravi in dodali nove funkcionalnosti:
 \begin{itemize}
-	\item povezovanje s socialnimi omrežji, kar je predvsem za mlajše uporabnike zaželena prednost
-	\item sestavljanje končnega obraza iz večih obrazov, ki so obdelani z različnimi filtri. Idejo za to smo dobili na podlagi oglasa prve implementacije
-	\item posodobitev in optimizacija algoritmov za filtriranje slik
-	\item posodobitev in optimizacija algoritmov za zaznavanje obrazov
+    \item povezovanje s socialnimi omrežji, kar je predvsem za mlajše uporabnike zaželena prednost
+    \item sestavljanje končnega obraza iz večih obrazov, ki so obdelani z različnimi filtri. Idejo za to smo dobili na podlagi oglasa prve implementacije
+    \item posodobitev in optimizacija algoritmov za filtriranje slik
+    \item posodobitev in optimizacija algoritmov za zaznavanje obrazov
 \end{itemize}
 
 V prihodnosti obstaja možnost, da se filtri uporabijo tudi v drugih
