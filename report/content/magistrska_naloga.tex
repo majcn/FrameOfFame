@@ -186,28 +186,6 @@ računalnika. Orodje SDK omogoča nastavljanje ISO, odprtosti zaslonke, hitrosti
 slikanja, fokusa, možnosti zajemanja slike,... S tem je o\-mo\-go\-če\-no
 avtomatsko zajemanje nove slike vsakih petnajst sekund.
 
-\paragraph{Software.}
-The module for face detection was written in C++. Initially, a method of face
-detection based on skin color was used [10]. Before face detection the input
-image was reduced to 160$\times$120 pixels. The smallest face that could be detected
-was 11$\times$12 pixels and the largest 96$\times$106. This detection method was very
-sensitive to changes in illumination although this problem was somewhat
-alleviated by using different methods of illumination compensation [3]. Later
-the new Viola-Jones method of face detection [14] which is not color dependent
-was used instead. A module for this method exists in the OpenCV library. The
-smallest face that could be detected was 24$\times$24 pixels.
-
-The module for color transformations which simulate the pop-art effects was
-also written in C++. The three color filters or transformations emulate
-filters for color balance, hue saturation and posterization from the open
-source program Gimp. Before the face image was subjected to color
-transformations, it was enlarged to the size 400$\times$400 pixels.
-
-The main communication module between the hardware and other software modules
-was written in Pascal/Delphi. The whole application was running under Windows
-XP and later modified and tested to run under Win 7. The entire system had
-about 4500 lines of code (Delphi, C++, C, C\#).
-
 \paragraph{Programska oprema.}
 Modul za detekcijo obrazov je bil napisan v programskem jeziku C++. Sprva je
 algoritem iskal obraze na podlagi barve kože. Zaradi hitrega in učinkovitega
@@ -218,17 +196,17 @@ posebej ob večjih spremembah med samim delovanjem. Za zmanjšanje tega problema
 so se uporabljale različne metode za kompozicijo
 osvetlitve~\cite{kovac2003illumination}. Kasneje se je celoten algoritem za
 detekcijo obrazov zamenjal z algoritmom Viola-Jones~\cite{viola2004robust}, ki
-pa ni bil več odvisen na barvo kože. Najmanjši obraz pri algoritmu Viola-Jones
-je bil velikosti 24$\times$24 pikslov.
+pa ni bil več odvisen od barve kože. Najmanjši obraz pri algoritmu Viola-Jones
+je bil velikosti 24$\times$224 pikslov.
 
 Modul za filtre, s katerimi so se ustvarjali pop-art efekti, je bil tudi
 napisan v programskem jeziku C++. Slika obraza, oziroma vhod, ki ga je
-algoritem dobil je bila slika, velikosti 400$\times$400 pikslov. V kolikor je bil
+algoritem dobil, je bila slika, velikosti 400$\times$2400 pikslov. V kolikor je bil
 rezultat detekcije obraza manjši, se je slika povečala na to velikost.
 
-Komunikacija samo strojno opremo in vsemi moduli je bila napisana v
-programskem jeziku Pascal/Delphi. Celostna instalacija je bila narejena in
-testirana na operacijskem sistemu Windows~XP~cite{preservationComputerBasedArt}.
+Komunikacija s samo strojno opremo in vsemi moduli je bila napisana v
+programskem jeziku Pascal/Delphi. Celotna instalacija je bila narejena in
+testirana na operacijskem sistemu Windows~XP~\cite{preservationComputerBasedArt}.
 
 
 \chapter{Ohranjanje digitalne umetnosti}
