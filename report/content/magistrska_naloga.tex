@@ -57,10 +57,10 @@ bomo tudi pomagali s tem programskim orodjem, vendar z različico iz današnjega
 \begin{itemize}
     \item uravnovešanje barv~(\ref{sec:obdelavaSlikUravnovesanjeBarv}),
     \item posteriziranje~(\ref{sec:obdelavaSlikPosteriziranje}),
-    \item uravnovešanje barv v HSL prostoru~(\ref{sec:obdelavaSlikUravnovesanjeBarvHSL}).
+    \item uravnovešanje barv v prostoru HSL~(\ref{sec:obdelavaSlikUravnovesanjeBarvHSL}).
 \end{itemize}
 Različni parametri in mešanje teh filtrov med seboj so nas pripeljali do
-``popart'' slik~(\ref{sec:obdelavaSlikSestavljanjePopArt}).
+popart slik~(\ref{sec:obdelavaSlikSestavljanjePopArt}).
 
 S tem je bila prestavitev iz originalnega sistema v mobilni sistem končana.
 Vendar pa smo želeli še več. V \refPoglavju{ch:novosti} opisujemo nove
@@ -88,7 +88,7 @@ se je njegova kariera le še vzpenjala.
 
 Njegove najbolj znane slike so Dick Tracy, Plesna shema (tango),
 Pločevinka juhe Campbell, Zvitek bankovcev in serija portretov znanih
-ljudi, kot na primer Elvis Presley in Marilyn Monroe. popart
+ljudi, kot sta Elvis Presley in Marilyn Monroe. Popart
 portret Marilyn Monroe lahko vidimo na sliki~\ref{fig:art-marilyn}).
 
 Andy Warhol je umrl v spanju zaradi srčne kapi 22. februarja 1987, star 58 let.
@@ -96,7 +96,7 @@ Andy Warhol je umrl v spanju zaradi srčne kapi 22. februarja 1987, star 58 let.
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.68\textwidth]{art-marilyn}
-    \caption{popart slika umetnika Andyja Warhola~\ref{andyExhibitionMonroe}}
+    \caption{Popart slika umetnika Andyja Warhola~\ref{andyExhibitionMonroe}}
     \label{fig:art-marilyn}
 \end{figure}
 
@@ -149,7 +149,7 @@ galeriji~\cite{lieser2010world}.
 
 \chapter{Prvotna izvedba: 15 sekund slave}
 \label{ch:prvotnaIzvedba15}
-Kot že omenjeno, je prvotna instalacija nastala pred več kot deset leti. Ker
+Kot že omenjeno, je prvotna instalacija nastala pred več kot desetimi leti. Ker
 je težko nadomestiti le posamezne dele v sistemu in ker je tehnologija v teh
 letih močno napredovala, se je pokazala potreba po prilagoditvi aplikacije
 novemu stanju tehnologije~\cite{trifonova}.
@@ -166,7 +166,7 @@ novemu stanju tehnologije~\cite{trifonova}.
 Prva razstavljena različica je imela bogato okrašen lesen okvir, ki pa ni bil
 prenosen. Za tem okvirjem se je skrival računalniški zaslon LCD velikosti 17
 palcev, malo nad tem zaslonom pa je bil fiksiran digitalni fotoaparat Olympus
-C3020 ZOOM (objektiv tipa 32--96mm, maksimalna resolucija je
+C3020 ZOOM (objektiv tipa 32--96mm, maksimalna ločljivost je
 2048$\times$1536)~\cite{preservationComputerBasedArt}.
 
 Ob selitvi instalacije se je pripetila prva nadgradnja. Fiksen lesen okvir se
@@ -176,7 +176,7 @@ računalniški zaslon je nadomestil 19-palčni, kljub temu pa se sama velikost
 naprave ni povečala. Zamenjal se je tudi digitalni fotoaparat. Zaradi
 programske opreme je bil najprimernejši kar Olympus, in ker je bil še vedno
 željen široki kot objektiva, je to napravo nadomestil Olympus C40 ZOOM
-(objektiv tipa 35--98mm, maksimalna resolucija 2272$\times$1704).
+(objektiv tipa 35--98mm, maksimalna ločljivost 2272$\times$1704).
 
 Omenjeno je bilo, da je bil Olympus primeren zaradi programske opreme. Ta
 digitalni fotoaparat je omogočal upravljanje same naprave programsko preko
@@ -276,7 +276,7 @@ povečati enostavnost postavitve.
 Prvotna instalacija potrebuje osebni ali prenosni računalnik, zaslon LCD,
 digitalni fotoaparat, mrežno opremo in dostop do interneta.
 
-Kot najboljša zamenjava se je izkazala naprava ``pametni telefon'', saj ima
+Kot najboljša zamenjava se je izkazala naprava `pametni telefon', saj ima
 vse prej naštete naprave združene v eno. Ima vgrajeno kamero, ki služi kot
 fotoaparat, dostop do interneta preko kartice SIM ter operacijski sistem, ki
 omogoča izdelavo programske opreme, s katero lahko dostopamo do prej naštetih
@@ -523,10 +523,10 @@ Android SDK deluje povsem drugače kot OpenCV. Ne omogoča nobenega nazdora in
 parametrov, možna je uporaba le vnaprej določenega algoritma.
 
 Ta algoritem temelji na algoritmu NV1-NORM~\cite{nevenFaceRecognition}, ki ga
-je izdelalo podjetje Neven Vision~\ref{fig:neven_vision}. Leta 2006 je Neven
+je razvilo podjetje Neven Vision~\ref{fig:neven_vision}. Leta 2006 je Neven
 Vision postalo last podjetja Google in od takrat se uporablja za zaznavo
 obrazov v mnogih programih, ki jih je izdelalo podjetje Google. Lep  primer je
-program za prikaz slik Google Picassa.
+program za prikaz slik Google Picasa.
 
 \begin{figure}[!ht]
     \centering
@@ -535,7 +535,7 @@ program za prikaz slik Google Picassa.
     \label{fig:neven_vision}
 \end{figure}
 
-Natančnejša implementacija algoritma za zaznavo obraza je zapr%to-kodna. Če si
+Natančnejša implementacija algoritma za zaznavo obraza je zaprtokodna. Če si
 ogledamo dokumentacijo Android SDK-ja, je opisan samo primer uporabe:
 \begin{lstlisting}[caption="Primer uporabe zaznavanja obraza z orodjem Android SDK"]
 FaceDetector fc = new FaceDetector(
@@ -568,7 +568,7 @@ popart portrete. Filtri so bili izdelani s pomočjo grafičnega programa GIMP.
 
 \section{GIMP}
 \label{sec:obdelavaSlikGIMP}
-GIMP je odprto-kodno programsko orodje za obdelavo slik.
+GIMP je odprtokodno programsko orodje za obdelavo slik.
 
 
 Začetek projekta sega v leto 1995, kjer se je vse skupaj začelo kot
@@ -576,31 +576,31 @@ semestrski projekt na Univerzi Kalifornije, Berkeley. Avtorja Spencer Kimball
 in Peter Mattis sta projekt poimenovala \textit{angl. General Image
 Manipulation Program}, čez nekaj časa pa sta si premislila in Richarda
 Stallmana, ki je ravno takrat obiskal univerzo, prosila, če lahko spremenita
-besedo ``General'' v ``GNU''. Od takrat naprej se program imenuje
+``General'' v ``GNU''. Od takrat naprej se program imenuje
 \textit{angl. GNU Image Manipulation Program} ali na kratko še vedno
 GIMP~\cite{wiki:GIMP}.
 
 
 \section{Izbira filtrov}
 Že naša prvotna izbira filtrov je izhajala iz programskega orodja za predelavo
-slik GIMP. Zaradi lažjega dela se je najprej, s pomočjo grafičnega vmesnika,
-izbralo zaporedje različnih filtrov in njihove parametre.  Izbrani so bili
+slik GIMP. Zaradi lažjega dela se je najprej s pomočjo grafičnega vmesnika
+izbralo zaporedje različnih filtrov in njihove parametre. Izbrani so bili
 naslednji filtri:
 \begin{itemize}
     \item \textbf{uravnovešanje barv} \textit{angl. color balance} \hfill \\
         Prekrije celotno sliko z barvo v izbranem odtenku.
     \item \textbf{posteriziranje} \textit{angl. posterize} \hfill \\
         Zmanjšuje število barv na sliki.
-    \item \textbf{uravnovešanje barv v HSL prostoru} \textit{angl. hue saturation balance} \hfill \\
+    \item \textbf{uravnovešanje barv v prostoru HSL} \textit{angl. hue saturation balance} \hfill \\
         Spreminja odtenek, svetlost in nasičenost barv na sliki.
 \end{itemize}
 
 
 \section{Implementacija filtrov}
-Ker je GIMP odprto-koden smo imeli tudi dostop do implementacije filtrov.
-Implementacije filtrov so napisane v programskem jeziku C. Na prvi pogled kot
-nalašč za enostaven prenos na Android platformo preko JNI. Vendar pa so se
-pokazale težave, saj so bili filtri močno povezani z GIMP objekti in nekoliko
+Ker je GIMP odprtokoden, smo imeli dostop tudi do implementacij filtrov.
+Te so napisane v programskem jeziku C -- na prvi pogled kot
+nalašč za enostaven prenos na platformo Android preko JNI. Vendar pa so se
+pokazale težave, saj so bili filtri močno povezani z GIMP-objekti in nekoliko
 bolj kompleksni, kot bi bilo potrebno za naš projekt. Zato smo se odločili, da
 filtre ponovno implementiramo in zavržemo vse funkcionalnosti, ki za nas niso
 pomembne. Naredili smo tri različne implementacije in jih med seboj primerjali.
@@ -610,8 +610,8 @@ zelo počasno. Orodje za sproščanje pomnilnika GC \textit{(angl. garbage
 collector)} se je klicalo prepogosto, kar je posledično porabilo več kot nekaj
 sekund za filter. Tega si nismo mogli privoščiti, zato smo iskali alternative.
 
-Naslednja implementacija je napisana s pomočjo grafične kartice in sicer z
-ogrodjem OpenGL ES, verzije 2.0. Čas porabe pri izvajanju se je občutno
+Naslednja implementacija je napisana s pomočjo grafične kartice, in sicer z
+ogrodjem OpenGL ES verzije 2.0. Čas izvajanja se je občutno
 zmanjšal. Ko so bile teksture zapisane na grafični kartici, so se filtri
 izvajali v manj kot sekundi. Ta rešitev je bila že dovolj dobra, vendar pa se
 nam je zdelo, da je uporaba grafične kartice za tako lahke operacije potrata
@@ -625,7 +625,7 @@ telefonu. Porabljen čas je bil manj kot sekundo za filter.
 
 \subsection{Barvni prostor}
 Ko govorimo o filtrih, govorimo predvsem o spreminjanju barv. Tukaj se pojavi
-vprašanje: ``Kako te barve matematično zapisati?''. Poznamo več barvnih
+vprašanje: kako te barve matematično zapisati? Poznamo več barvnih
 prostorov, s katerimi lahko določeni barvi priredimo določeno številko.
 
 
@@ -645,11 +645,11 @@ pojavi v 256 odtenkih, kar na koncu znaša $16777216$ barv ($256^3$).
 \subsubsection*{Barvni prostor HSL}
 Drugi, malo manj znan, je barvni prostor HSL. Sestavljen je iz treh
 komponent: barvni odtenek (H), intenzivnost (S) in svetlost (L). Če primerjamo
-sliki~\ref{fig:rgb}~in~\ref{fig:hsl} vidimo, da HSL nima treh enakih
+sliki~\ref{fig:rgb}~in~\ref{fig:hsl}, vidimo, da HSL nima treh enakih
 komponent, ampak je zgrajen v obliki valja. Barvni odtenek je zapisan s
-kotom, in sicer pri 0$^{\circ}$ se začne rdeča, 120$^{\circ}$ zelena in
+kotom, in sicer pri 0$^{\circ}$ se začne rdeča, pri 120$^{\circ}$ zelena in pri
 240$^{\circ}$ modra. Drugi dve komponenti, nasičenost in svetlost, sta
-zapisani z odstotki in sicer od 0\% do 100\%.
+zapisani z odstotki, in sicer od 0\% do 100\%.
 
 \begin{figure}[!ht]
     \centering
@@ -663,7 +663,7 @@ zadostovala ta dva. Pomembno pri barvnih modelih je tudi to, da so enostavno
 preračunljivi iz enega prostora v drugega.
 
 
-\subsection{Pretvorba iz RGB v HSL barvni model}
+\subsection{Pretvorba iz barvnega modela RGB v HSL}
 \label{sec:hslconvert}
 
 \begin{align}
@@ -744,11 +744,11 @@ luts(x, levels) = 255 * \frac{\left \lfloor{\frac{x}{255} * (levels - 1) + 0.5}\
 
 Posteriziranje se računa v barvnem prostoru RGB. Računamo za vsako barvo
 posebej, in sicer z enačbo~\eqref{eq:posterize}, kjer je $x$ enak
-originalni barvi, $levels$ pa stopnja, koliko sploh želimo posterizirati. $x$
+originalni barvi, $levels$ pa je stopnja posteriziranja. $x$
 in $levels$ sta pozitivni celi števili med 0 in 255.
 
 
-\subsection{Uravnovešanje barv v HSL prostoru}
+\subsection{Uravnovešanje barv v prostoru HSL}
 \label{sec:obdelavaSlikUravnovesanjeBarvHSL}
 
 \begin{align}
@@ -775,7 +775,7 @@ stv(x, x') &= clamp_{-255}^{255}(2.25 * x') \nonumber \\
 saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255}) \label{eq:saturation_transfer}
 \end{align}
 
-Uravnovešanje barv v HSL prostoru se računa v barvnem prostoru HSL. Ker pa so
+Uravnovešanje barv v prostoru HSL se računa v barvnem prostoru HSL. Ker pa so
 prvotno barve zapisane v barvnem prostoru RGB, je potrebno te pretvoriti v
 barvni prostor HSL. To naredimo s pomočjo enačb, napisanih v
 poglavju~\ref{sec:hslconvert}. Tako dobimo $H$, $S$ in $L$.
@@ -792,7 +792,7 @@ Dobljene vrednosti pretvorimo nazaj v prostor RGB, kar je tudi naš rezultat.
 
 \subsubsection*{Filter 1}
 Prvi filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv'' in sicer s parametri $R = 30$, $G = -32$ in
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 30$, $G = -32$ in
 $B = 16$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
 $ST =4$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_1}.
 
@@ -813,7 +813,7 @@ $ST =4$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_1}.
 
 \subsubsection*{Filter 2}
 Drugi filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv'' in sicer s parametri $R = -36$, $G = -37$ in
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = -36$, $G = -37$ in
 $B = 39$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
 $ST = 4$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_2}.
 
@@ -833,7 +833,7 @@ $ST = 4$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_2}.
 
 
 \subsubsection*{Filter 3}
-Tretji filter vsebuje le osnovni filter ``posteriziranje'' in sicer s parametrom
+Tretji filter vsebuje le osnovni filter ``posteriziranje'', in sicer s parametrom
 $ST = 2$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_3}.
 
 \begin{figure}[!ht]
@@ -853,7 +853,7 @@ $ST = 2$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_3}.
 
 \subsubsection*{Filter 4}
 Četrti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv'' in sicer s parametri $R = 100$, $G = -100$ in
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 100$, $G = -100$ in
 $B = -100$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
 $ST = 3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_4}.
 
@@ -874,7 +874,7 @@ $ST = 3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_4}.
 
 \subsubsection*{Filter 5}
 Peti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv'' in sicer s parametri $R = -100$, $G = -100$ in
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = -100$, $G = -100$ in
 $B = 100$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
 $ST = 3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_5}.
 
@@ -895,7 +895,7 @@ $ST = 3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_5}.
 
 \subsubsection*{Filter 6}
 Šesti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv'' in sicer s parametri $R = -100$, $G = 100$ in
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = -100$, $G = 100$ in
 $B = -100$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
 $ST = 3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_6}.
 
@@ -916,8 +916,8 @@ $ST = 3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_6}.
 
 \subsubsection*{Filter 7}
 Sedmi filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``posteriziranje'' in sicer s parametrom $ST = 5$. Rezultat obdelamo
-še s filtrom ``uravnovešanje barv v HSL prostoru'' s parametri $H = -41$,
+filtrom ``posteriziranje'', in sicer s parametrom $ST = 5$. Rezultat obdelamo
+še s filtrom ``uravnovešanje barv v prostoru HSL'' s parametri $H = -41$,
 $L = -15$ in $S = 6$. Rezultat testne slike lahko vidimo na
 sliki~\ref{fig:lena_filter_7}.
 
@@ -938,7 +938,7 @@ sliki~\ref{fig:lena_filter_7}.
 
 \subsubsection*{Filter 8}
 Osmi filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``posteriziranje'' in sicer s parametrom $ST = 6$. Rezultat obdelamo
+filtrom ``posteriziranje'', in sicer s parametrom $ST = 6$. Rezultat obdelamo
 še s filtrom ``uravnovešanje barv'' s parametri $R = -29$, $G = 40$ in $B = 100$.
 Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_8}.
 
@@ -959,7 +959,7 @@ Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_8}.
 
 \subsubsection*{Filter 9}
 Deveti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv v HSL prostoru'' in sicer s parametri $H = -41$,
+filtrom ``uravnovešanje barv v prostoru HSL'', in sicer s parametri $H = -41$,
 $L = -20$ in $S = 25$. Rezultat obdelamo še s filtrom ``posteriziranje'' s
 parametrom $ST = 4$. Rezultat testne slike lahko vidimo na
 sliki~\ref{fig:lena_filter_9}.
@@ -981,9 +981,9 @@ sliki~\ref{fig:lena_filter_9}.
 
 \subsubsection*{Filter 10}
 Deseti filter je sestavljen iz treh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv'' in sicer s parametri $R = 100$, $G = -100$ in
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 100$, $G = -100$ in
 $B = -100$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
-$ST= 3$ in nazadnje še s filtrom ``uravnovešanje barv v HSL prostoru'' s
+$ST= 3$ in nazadnje še s filtrom ``uravnovešanje barv v prostoru HSL'' s
 parametri $H = -41$, $L = -10$ in $S = 20$. Rezultat testne slike lahko
 vidimo na sliki~\ref{fig:lena_filter_10}.
 
@@ -1004,9 +1004,9 @@ vidimo na sliki~\ref{fig:lena_filter_10}.
 
 \subsubsection*{Filter 11}
 Enajsti filter je sestavljen iz treh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv'' in sicer s parametri $R = 34$, $G = -38$ in
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 34$, $G = -38$ in
 $B = 24$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
-$ST= 4$ in nazadnje še s filtrom ``uravnovešanje barv v HSL prostoru'' s
+$ST= 4$ in nazadnje še s filtrom ``uravnovešanje barv v prostoru HSL'' s
 parametri $H = -65$, $L = 0$ in $S = 0$. Rezultat testne slike lahko
 vidimo na sliki~\ref{fig:lena_filter_11}.
 
@@ -1027,9 +1027,9 @@ vidimo na sliki~\ref{fig:lena_filter_11}.
 
 \subsubsection*{Filter 12}
 Dvanajsti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv'' in sicer s parametri $R = 40$, $G = -40$ in
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 40$, $G = -40$ in
 $B = 28$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
-$ST= 4$ in nazadnje še enkrat s filtrom ``uravnovešanje barv'' vendar s
+$ST= 4$ in nazadnje še enkrat s filtrom ``uravnovešanje barv'', vendar s
 parametri $R = -100$, $G = -42$ in $B = 100$. Rezultat testne slike lahko
 vidimo na sliki~\ref{fig:lena_filter_12}.
 
@@ -1050,7 +1050,7 @@ vidimo na sliki~\ref{fig:lena_filter_12}.
 
 \subsubsection*{Filter 13}
 Trinajsti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv'' in sicer s parametri $R = 45$, $G = -45$ in
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 45$, $G = -45$ in
 $B = 35$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
 $ST =4$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_13}.
 
@@ -1071,7 +1071,7 @@ $ST =4$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_13}.
 
 \subsubsection*{Filter 14}
 Štirinajsti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv'' in sicer s parametri $R = -45$, $G = -55$ in
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = -45$, $G = -55$ in
 $B = 30$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
 $ST =4$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_14}.
 
@@ -1091,7 +1091,7 @@ $ST =4$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_14}.
 
 
 \subsubsection*{Filter 15}
-Petnajsti filter vsebuje le osnovni filter ``posteriziranje'' in sicer s parametrom
+Petnajsti filter vsebuje le osnovni filter ``posteriziranje'', in sicer s parametrom
 $ST = 3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_15}.
 
 \begin{figure}[!ht]
@@ -1111,7 +1111,7 @@ $ST = 3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_15}.
 
 \subsubsection*{Filter 16}
 Šestnajsti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv'' in sicer s parametri $R = 30$, $G = -40$ in
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 30$, $G = -40$ in
 $B = 16$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
 $ST =3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_16}.
 
@@ -1132,9 +1132,9 @@ $ST =3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_16}.
 
 \subsubsection*{Filter 17}
 Sedemnajsti filter je sestavljen iz treh osnovnih filtrov. Najprej sliko obdelamo s
-filtrom ``uravnovešanje barv'' in sicer s parametri $R = 20$, $G = -30$ in
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 20$, $G = -30$ in
 $B = 20$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
-$ST= 4$ in nazadnje še s filtrom ``uravnovešanje barv v HSL prostoru'' s
+$ST= 4$ in nazadnje še s filtrom ``uravnovešanje barv v prostoru HSL'' s
 parametri $H = -30$, $L = -10$ in $S = 12$. Rezultat testne slike lahko
 vidimo na sliki~\ref{fig:lena_filter_17}.
 
@@ -1157,10 +1157,10 @@ vidimo na sliki~\ref{fig:lena_filter_17}.
 \label{ch:novosti}
 Do sedaj smo originalno instalacijo ``15 sekund slave'' predelovali na način,
 da jo ohranjamo kot digitalno umetnost, se pravi brez vidnih sprememb. Vendar
-pa kakšna manjša po tako dolgem času lahko le popestri uporabniško izkušnjo.
+pa kakšna manjša po tako dolgem času lahko uporabniško izkušnjo le popestri.
 
-Najpomembnejša posodobitev, ki bi to umetniško instalacijo naredilo veliko
-bolj popularno je integracija s socialnimi omrežji~(\ref{ch:socialNetwork}).
+Najpomembnejša posodobitev, ki bi to umetniško instalacijo naredila veliko
+bolj popularno, je integracija s socialnimi omrežji~(\ref{ch:socialNetwork}).
 Dandanes se za izmenjavo slikovnih informacij uporabljajo predvsem socialna
 omrežja, ki pred 10 leti sploh še niso obstajala.
 
@@ -1171,12 +1171,12 @@ LCD. Ta posodobitev se je zgodila zaradi nekompatibilnosti mobilnega telefona
 s starim zaslonom LCD. Večina današnjih zaslonov LCD je formata 16:9 ali pa še
 več v širino, starega formata 4:3 skorajda ni več. Naš cilj pa je kvadratna
 slika, zato smo najprej želeli najti čim bolj kvadraten zaslon. Vendar pa se
-je kmalu rodila ideja o še širšem zaslon-u in sicer da je širina malo več kot
+je kmalu rodila ideja o še širšem zaslonu, takem, pri katerem je širina malo več kot
 enkrat daljša od višine, kot je prikazano na sliki~\ref{fig:frame2}. S tem smo
-si omogočili možnost prikazovanja dveh slik vzporedno. Kot da bi naenkrat
+omogočili možnost prikazovanja dveh slik vzporedno -- kot da bi naenkrat
 imeli razstavljeni dve različici istega portreta. Na podoben način je svoje
 popart portrete razstavljal tudi Andy Warhol. Seveda ima vsaka slika drug
-obraz, če le ta obstaja.
+obraz, če le-ta obstaja.
 
 Zaradi prejšnjega razloga o zamenjavi zaslona je bilo potrebno zamenjati tudi
 okvir. Kot že pri prejšnji posodobitvi okvirja bo tudi tokrat ostal bogato
@@ -1201,10 +1201,10 @@ okrašen, le na sredini bo združen, kot je prikazano na sliki~\ref{fig:frame2}.
 Prvotna instalacija ``15 sekund slave'' me je najbolj prepričala s sliko
 Marilyn Monroe~\ref{fig:15sec-marilyn}, ki je sestavljena iz več
 obrazov~\cite{thesisSasoStulac}. Ker tukaj nimamo tako velike baze obrazov,
-smo vse skupaj malo poenostavili in uporabljali kar iste obraze, vendar
+smo vse skupaj malo poenostavili in uporabili kar iste obraze, vendar
 obdelane z drugimi filtri. Da pa je bila slika od daleč razločna, smo obrazu,
 ki je prikazan kot ``piksel'', prilili originalno barvo\footnote{Prejšnji
-končni rezultat instalacije obraza smo spremenili v sliko, velikosti
+končni rezultat instalacije obraza smo spremenili v sliko velikosti
 \textit{širina $*$ višina $=$ novo število obrazov}.}. Ta slika (primer lahko
 vidimo na sliki~\ref{fig:FoF-marilyn}) je končni prikaz naše nove instalacije.
 
@@ -1241,11 +1241,11 @@ Trenutno najbolj razširjeno socialno omrežje, ki ga uporabljajo vse
 generacije.
 
 \item[Twitter]
-Socialno omrežje, najbolj namenjeno kratkim sporočilom imenovanimi ``tviti''.
+Socialno omrežje, najbolj namenjeno kratkim sporočilom, imenovanim ``tviti''.
 
 \item[Instagram]
 Socialno omrežje, predvsem namenjeno nalaganju slik. Omogoča tudi veliko
-število filtrov za obdelavo le teh.
+število filtrov za obdelavo le-teh.
 
 \item[Google+]
 Alternativa socialnemu omrežju Facebook podjetja Google.
@@ -1269,33 +1269,33 @@ otroci, katerih objavljanje slik na socialnem omrežju je brez dovoljenja
 staršev prepovedano. Res je, da smo želeli slike izbrisati petnajst sekund po
 objavi, vendar pa večina socialnih omrežjih te slike še vedno hrani, čeprav
 jih ne vidimo več. In če se podamo še v najhujšo skrajnost, nekdo bi lahko
-napisal program, ki vse slike shranjuje na nek strežnik in bi nato z njimi
+napisal program, ki vse slike shranjuje na nek strežnik, in bi nato z njimi
 razpolagal po svoji volji.
 
 
 \chapter{Sklepne ugotovitve}
 V sklopu magistrske naloge smo posodobili strojno in programsko opremo
-instalacije 15 sekund slave. Razvoj novih uporabnih funkcionalnosti nam je
+instalacije ``15 sekund slave''. Razvoj novih uporabnih funkcionalnosti nam je
 omogočil, da smo instalaciji dodali tudi nekaj novih možnosti, ki naredijo
 uporabniško izkušnjo še bolj zanimivo.
 
-Zamenjali smo digitalni fotoaparat in osebni računalnik s pametnim telefonom,
+Digitalni fotoaparat in osebni računalnik smo zamenjali s pametnim telefonom,
 s čimer smo dosegli, da instalacija zavzame manj prostora, saj je uporabljenih
-manj komponent kot jih je bilo prej, poleg tega pa je omogočeno tudi lažje
+manj komponent, kot jih je bilo prej, poleg tega pa je omogočeno tudi lažje
 vzdrževanje in odpravljanje morebitnih napak, saj se vse nahaja na eni
 napravi.
 
 S posodobitvijo programske opreme smo omogočili, da instalacija deluje na eni
 napravi in dodali nove funkcionalnosti:
 \begin{itemize}
-    \item povezovanje s socialnimi omrežji, kar je predvsem za mlajše uporabnike zaželena prednost
-    \item sestavljanje končnega obraza iz večih obrazov, ki so obdelani z različnimi filtri. Idejo za to smo dobili na podlagi oglasa prve implementacije
-    \item posodobitev in optimizacija algoritmov za filtriranje slik
-    \item posodobitev in optimizacija algoritmov za zaznavanje obrazov
+    \item povezovanje s socialnimi omrežji, kar je predvsem za mlajše uporabnike zaželena prednost;
+    \item sestavljanje končnega obraza iz več obrazov, ki so obdelani z različnimi filtri. Idejo za to smo dobili na podlagi oglasa prve implementacije;
+    \item posodobitev in optimizacija algoritmov za filtriranje slik;
+    \item posodobitev in optimizacija algoritmov za zaznavanje obrazov.
 \end{itemize}
 
 V prihodnosti obstaja možnost, da se filtri uporabijo tudi v drugih
-aplikacijah, saj so filtri napisani kot knjižnica, uporaba le te pa je
+aplikacijah, saj so filtri napisani kot knjižnica, uporaba te pa je
 enostavna. Predstavljajmo si aplikacijo, kot je Instagram, ki ima tudi
 možnost popart filtrov, napisanih v tej magistrski nalogi.
 
@@ -1303,10 +1303,10 @@ Poleg tega bo potrebno redno vzdrževanje instalacije, tako na
 nivoju strojne opreme kot tudi na nivoju programske opreme, saj želimo ostati
 v koraku s časom.
 
-Tekom izvedbe naloge smo se večkrat soočili z vprašanjem do kakšne mere
+Med izvedbo naloge smo se večkrat soočili z vprašanjem, do kakšne mere
 instalacijo še lahko spreminjamo, da umetnina še vedno ostane ista in ne nekaj
 povsem novega. Na tem področju se je tudi pojavilo največ težav. Čeprav je na
 prvi pogled le enostavna ponovna implementacija že narejene instalacije, pa
 vendar pri umetniškem delu ni vse samo v programu. Zelo veliko pozornosti
-moramo namreč nameniti temu, da umetnina za opazovalca ostane enaka kot je
+moramo namreč nameniti temu, da umetnina za opazovalca ostane taka, kot je
 bila.
