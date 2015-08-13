@@ -229,7 +229,7 @@ prvotna instalacija.
 Četudi želimo zamenjati le strojno opremo, to v zelo starih instalacijah
 ni mogoče. Stara programska oprema ne deluje vedno na novejših sistemih.
 V tem primeru smo prisiljeni ponovno implementirati algoritme, tako da so
-kompatibilni s strojno opremo. Tukaj obstaja več možnosti. Vedno lahko
+združljivi s strojno opremo. Tukaj obstaja več možnosti. Vedno lahko
 uporabljamo staro kodo z manjšimi ali pa tudi večjimi popravki, tako da
 se ta prevede tudi na novejših sistemih. Vendar pa je tu treba biti pozoren na
 to, da si s tem ne povzročimo še več dela, kot če bi vse skupaj ponovno
@@ -1174,10 +1174,10 @@ niso obstajala.
 
 \section{Dve sliki}
 Naslednja posodobitev, ki prvotno niti ni bila v načrtu, je zamenjava zaslona
-LCD. Ta posodobitev se je zgodila zaradi nekompatibilnosti mobilnega telefona
+LCD. Ta posodobitev se je zgodila zaradi nezdružljivosti mobilnega telefona
 s starim zaslonom LCD. Zopet se je pojavil problem, omenjen
 v~\refPoglavju{ch:ohranjanjeDigitalneUmetnosti}, da je težko nadgraditi le eno
-komponento, saj obstaja možnost, da ni kompatibilna z ostalo opremo. Ker stari
+komponento, saj obstaja možnost, da ni združljiva z ostalo opremo. Ker stari
 zaslon nima priključka HDMI, smo poskusili s pretvornikom HDMI v DVI, a brez
 uspeha. Isti pretvornik smo poskusili uporabiti na novejšem zaslonu. Tu je bil
 prenos slike iz telefona na zaslon uspešen.
@@ -1288,20 +1288,21 @@ večino akcij, ki so na voljo uporabniku preko spletnega brskalnika.
 
 Da pa je poskrbljeno za varnost in zasebnost, je za dovoljenje uporabe Graph
 API-ja potrebno narediti novo aplikacijo (\textit{angl. app}). Tu določimo,
-katere pravice želimo, da jih naša aplikacija uporablja. Več pravic, ki jih
-bomo zahtevali, manj zaupljiva bo naša aplikacija. Zato je priporočljivo, da
-se zahtevajo le pravice, ki jih nujno potrebujemo za delovanje naše
-aplikacije. V našem primeru potrebujemo pravico, da lahko pišemo in objavljamo
-slike na zid uporabnika.
+katere pravice želimo, da jih naša aplikacija uporablja. Več pravic kot bomo
+zahtevali, manj zaupanja vredna bo naša aplikacija, če ni uporabniku očitno,
+zakaj te pravice aplikacija potrebuje. Zato je priporočljivo, da se zahtevajo
+le pravice, ki jih nujno potrebujemo za delovanje naše aplikacije. V našem
+primeru potrebujemo pravico, da lahko pišemo in objavljamo slike na zid
+uporabnika.
 
 Ko pripravimo našo aplikacijo, je tudi potrebno, da jo uslužbenci pri podjetju
 Facebook potrdijo. To je varnostni postopek, brez katerega naše aplikacije ne
 moremo javno uporabljati.
 
 Ko je aplikacija narejena in potrjena, dobimo poseben ključ, ki je potreben za
-povezavo z Graph API-jem. Z Graph API-jem lahko uporabljamo na več načinov.
+povezavo z Graph API-jem. Graph API lahko uporabljamo na več načinov.
 Najbolj osnoven je preko HTTP protokola, a hkrati najbolj zahteven za
-implementacijo. Drugi način je preko knjižnice, prilagojeno za Android
+implementacijo. Drugi način je preko knjižnice, prilagojene za Android
 naprave. S to knjižico lahko na enostaven način opravimo vse osnovne akcije,
 kot so prijava v sistem in objavljanje slike.
 
