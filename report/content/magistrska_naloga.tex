@@ -87,16 +87,16 @@ Ta razstava je bila ena izmed prvih, ki je javnost seznanila s pop artom. Nato
 se je njegova kariera le še vzpenjala.
 
 Njegove najbolj znane slike so Dick Tracy, Plesna shema (tango),
-Pločevinka juhe Campbell, Zvitek bankovcev in serija portretov znanih
+Plo\-če\-vin\-ka juhe Campbell, Zvitek bankovcev in serija portretov znanih
 ljudi, kot sta Elvis Presley in Marilyn Monroe. Popart
-portret Marilyn Monroe lahko vidimo na sliki~\ref{fig:art-marilyn}).
+portret Marilyn Monroe lahko vidimo na sliki~\ref{fig:art-marilyn}.
 
 Andy Warhol je umrl v spanju zaradi srčne kapi 22. februarja 1987, star 58 let.
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.68\textwidth]{art-marilyn}
-    \caption{Popart slika umetnika Andyja Warhola~\ref{andyExhibitionMonroe}}
+    \caption{Popart slika umetnika Andyja Warhola~\cite{andyExhibitionMonroe}}
     \label{fig:art-marilyn}
 \end{figure}
 
@@ -157,7 +157,7 @@ novemu stanju tehnologije~\cite{trifonova}.
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.68\textwidth]{15sec-marilyn}
-    \caption{15 sekund slave slike umetnika Andy Warhol}
+    \caption{15 sekund slave slike umetnika Andy Warhol~\cite{katalog_solina}}
     \label{fig:15sec-marilyn}
 \end{figure}
 
@@ -181,7 +181,7 @@ programske opreme je bil najprimernejši kar Olympus, in ker je bil še vedno
 Omenjeno je bilo, da je bil Olympus primeren zaradi programske opreme. Ta
 digitalni fotoaparat je omogočal upravljanje same naprave programsko preko
 računalnika. Orodje SDK omogoča nastavljanje ISO, odprtosti zaslonke, hitrosti
-slikanja, fokusa, možnosti zajemanja slike ... S tem je o\-mo\-go\-če\-no
+slikanja, fokusa, možnosti zajemanja slike ... S tem je omo\-go\-če\-no
 avtomatsko zajemanje nove slike vsakih petnajst sekund.
 
 \paragraph{Programska oprema.}
@@ -195,11 +195,11 @@ so se uporabljale različne metode za kompozicijo
 osvetlitve~\cite{kovac2003illumination}. Kasneje se je celoten algoritem za
 detekcijo obrazov zamenjal z algoritmom Viola-Jones~\cite{viola2004robust}, ki
 pa ni bil več odvisen od barve kože. Najmanjši obraz pri algoritmu Viola-Jones
-je bil velikosti 24$\times$224 pikslov.
+je bil velikosti 24$\times$24 pikslov.
 
 Modul za filtre, s katerimi so se ustvarjali popart efekti, je bil prav tako
 napisan v programskem jeziku C++. Slika obraza oziroma vhod, ki ga je
-algoritem dobil, je bila slika velikosti 400$\times$2400 pikslov. V kolikor je bil
+algoritem dobil, je bila slika velikosti 400$\times$400 pikslov. V kolikor je bil
 rezultat detekcije obraza manjši, se je slika povečala na to velikost.
 
 Komunikacija s samo strojno opremo in vsemi moduli je bila napisana v
@@ -237,13 +237,13 @@ implementirali.
 
 Ko že govorimo o novi strojni in programski opremi, omenimo še drugo
 težavo. Zaposleni v muzejih in galerijah običajno niso izobraženi za
-vzdrževanje digitalne umetnosti, saj ti ljudje načeloma niso strokovnjaki
+vzdr\-že\-va\-nje digitalne umetnosti, saj ti ljudje načeloma niso strokovnjaki
 računalniške stroke. Posledično so možne težave pri rokovanju s tako umetnino,
 zato bi bilo priporočljivo, če bi bila instalacija podrobno dokumentirana in
 bi bilo tako pojasnjeno, kako jo postaviti, kako jo vzdrževati in kaj storiti v
 primeru težav.
 
-Splošno gledano obstajata dve strategiji za ohranjanje digitalne umetnosti:
+Splošno gledano obstajata dve strategiji za ohranjanje digitalne umetnosti~\cite{ZKM}:
 \begin{itemize}
 \item
 Ohraniti želimo vso strojno in programsko
@@ -307,16 +307,16 @@ operacijskim sistemom Android verzije 4.4.4, imenovanim tudi Android KitKat.
 Trenutno najnovejša obstoječa verzija operacijskega sistema Android je 5.0,
 poimenovan Lizika (\textit{angl. Lolipop}).
 
-Samsnug Galaxy S5 se ponaša s štirijedrnim procesorjem 2.5GHz Krait 400 na
+Samsung Galaxy S5 se ponaša s štirijedrnim procesorjem 2.5GHz Krait 400 na
 čipu Qualcomm MSM8974AC Snapdragon 801. Ta procesor je dovolj zmogljiv za
 preračunavanje vseh filtrov v zadovoljivem času.
 
 Grafična enota, Adreno 330, omogoča prikazovanje v ločljivosti
-1080~x~1920 pikslov. Ena izmed pomembnih lastnosti je tudi možnost povezave
+1080$\times$1920 pikslov. Ena izmed pomembnih lastnosti je tudi možnost povezave
 zunanje naprave preko priključka HDMI.
 
 Tudi kamera je izjemno kvalitetna, je namreč tipa 1/2.6''. Svetlobno tipalo
-ima šestnajst megapikslov in lahko torej naredi sliko v velikosti 5312~x~2988
+ima 16 megapikslov in lahko torej naredi sliko v velikosti 5312$\times$2988
 pikslov. Velikost in obliko kamere lahko vidimo kot majhen črn kvadrat, viden
 na desni sliki~\ref{fig:sgs5}.
 
@@ -363,7 +363,7 @@ detekcija  obrazov na slikah. V prvotni verziji instalacije je bila detekcija
 obrazov izvedena s pomočjo barve kože~\cite{mirage03,kovac2003illumination}, od takrat pa je razvoj
 na področju računalniškega vida prinesel veliko novosti in boljših metod.
 
-Operacijski sistem Android nam preko vmesnika JNI omogoča vključevanje
+Operacijski sistem Android nam preko vmesnika JNI omogoča vklju\-če\-va\-nje
 kode, napisane v programskem jeziku C ali C++. Posledično lahko uporabljamo splošne knjižnice in
 programska ogrodja (\textit{angl. framework}).
 
@@ -414,7 +414,7 @@ ima petnajst sekund slave obraz uporabnika, in ne kakšen predmet v okolici, pa
 čeprav je za to potrebno nekoliko več časa.
 
 Vendar pa tudi opisi obrazov tipa HAAR niso vedno dosegli našega
-pričakovanja. Zato smo se odločili, da naredimo dvojno klasifikacijo.
+pri\-ča\-ko\-va\-nja. Zato smo se odločili, da naredimo dvojno klasifikacijo.
 
 Najprej smo klasificirali z lastnostmi sprednjega dela obraza, opisanimi v
 datoteki \textit{harrcascade\_frontalface\_default.xml}~\ref{lst:haar_frontal_face},
@@ -783,7 +783,7 @@ prvotno barve zapisane v barvnem prostoru RGB, je potrebno te pretvoriti v
 barvni prostor HSL. To naredimo s pomočjo enačb, napisanih v
 poglavju~\ref{sec:hslconvert}. Tako dobimo $H$, $S$ in $L$.
 
-Zdaj lahko vsako komponento uravnovesimo. Vsaka komponenta se izračuna po
+Zdaj lahko vsako komponento uravnovesimo. Vsaka komponenta se izra\-ču\-na po
 svoji enačbi. Za $H$ uporabimo~\eqref{eq:hue_transfer}, za
 $L$~\eqref{eq:lightness_transfer} in za $S$~\eqref{eq:saturation_transfer}.
 
@@ -1247,7 +1247,7 @@ generacije.
 Socialno omrežje, najbolj namenjeno kratkim sporočilom, imenovanim ``tviti''.
 
 \item[Instagram]
-Socialno omrežje, predvsem namenjeno nalaganju slik. Omogoča tudi veliko
+Socialno omrežje, predvsem namenjeno nalaganju slik. Omo\-go\-ča tudi veliko
 število filtrov za obdelavo le-teh.
 
 \item[Google+]
