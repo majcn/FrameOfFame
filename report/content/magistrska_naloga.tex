@@ -504,11 +504,11 @@ večino testiranih primerov.
 
 Detekcija obrazov s programskim ogrodjem OpenCV je le ena izmed možnosti, ki
 smo si jih podrobneje ogledali. Kot prva implementacija je bila izbrana zaradi
-velike stopnje nadzora nad vsakim korakom, kot so: detekcija obraza, prikazano
-kot zelen pravokotnik okrog obraza na sliki~\ref{fig:lena_opencv_face};
-določitev regije, kjer je potrebno iskati; detekcija oči v določeni regiji,
-prikazano kot dva modra kroga okrog oči na
-sliki~\ref{fig:lena_opencv_face_eye} in še bi lahko naštevali.
+velike stopnje nadzora nad vsakim korakom, kot so: detekcija obraza,
+prikazano kot zelen pravokotnik okrog obraza na
+sliki~\ref{fig:lena_opencv_face}; določitev regije, kjer je potrebno iskati;
+detekcija oči v določeni regiji, prikazano kot dva modra kroga okrog oči
+na sliki~\ref{fig:lena_opencv_face_eye} in še bi lahko naštevali.
 
 Kljub zadovoljivim rezultatom iskanja obrazov se je izkazalo, da slike
 velikokrat niso ostre. Prej smo omenili, da imamo veliko nadzora nad
@@ -1175,16 +1175,22 @@ niso obstajala.
 \section{Dve sliki}
 Naslednja posodobitev, ki prvotno niti ni bila v načrtu, je zamenjava zaslona
 LCD. Ta posodobitev se je zgodila zaradi nekompatibilnosti mobilnega telefona
-s starim zaslonom LCD, poleg tega pa je tak format uporabljal tudi Andy
-Warhol. Večina današnjih zaslonov LCD je formata 16:9 ali pa še več v širino,
-starega formata 4:3 skorajda ni več. Naš cilj pa je kvadratna slika, zato smo
-najprej želeli najti čim bolj kvadraten zaslon. Vendar pa se je kmalu rodila
-ideja o še širšem zaslonu, takem, pri katerem je širina malo več kot enkrat
-daljša od višine, kot je prikazano na sliki~\ref{fig:frame2}. S tem smo
-omogočili možnost prikazovanja dveh slik vzporedno -- kot da bi naenkrat imeli
-razstavljeni dve različici istega portreta. Na podoben način je svoje popart
-portrete razstavljal tudi Andy Warhol. Seveda ima vsaka slika drug obraz, če
-le-ta obstaja.
+s starim zaslonom LCD. Zopet se je pojavil problem, omenjen
+v~\refPoglavju{ch:ohranjanjeDigitalneUmetnosti}, da je težko nadgraditi le eno
+komponento, saj obstaja možnost, da ni kompatibilna z ostalo opremo. Ker stari
+zaslon nima priključka HDMI, smo poskusili s pretvornikom HDMI v DVI, a brez
+uspeha. Isti pretvornik smo poskusili uporabiti na novejšem zaslonu. Tu je bil
+prenos slike iz telefona na zaslon uspešen.
+
+Večina današnjih zaslonov LCD je formata 16:9 ali pa še več v širino, starega
+formata 4:3 skorajda ni več. Naš cilj pa je kvadratna slika, saj je tudi sam
+Andy Warhol uporabljal tak format, zato smo najprej želeli najti čim bolj
+kvadraten zaslon. Vendar pa se je kmalu rodila ideja o še širšem zaslonu,
+takem, pri katerem je širina malo več kot enkrat daljša od višine, kot je
+prikazano na sliki~\ref{fig:frame2}. S tem smo omogočili možnost prikazovanja
+dveh slik vzporedno -- kot da bi naenkrat imeli razstavljeni dve različici
+istega portreta. Na podoben način je svoje popart portrete razstavljal tudi
+Andy Warhol. Seveda ima vsaka slika drug obraz, če le-ta obstaja.
 
 Zaradi prejšnjega razloga o zamenjavi zaslona je bilo potrebno zamenjati tudi
 okvir. Kot že pri prejšnji posodobitvi okvirja bo tudi tokrat ostal bogato
