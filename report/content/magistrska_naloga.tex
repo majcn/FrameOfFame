@@ -1281,6 +1281,34 @@ več na voljo.
 \end{description}
 
 
+\section{Implementacija z socialnim omrežjem Facebook}
+Skoraj vsa socialna omrežja imajo omogočene javne API-je in Facebook ni nobena
+izjema. Preko vmesnika API, imenovanega Graph, lahko programsko naredimo
+večino akcij, ki so na voljo uporabniku preko spletnega brskalnika.
+
+Da pa je poskrbljeno za varnost in zasebnost, je za dovoljenje uporabe Graph
+API-ja potrebno narediti novo aplikacijo (angl. app). Tu določimo, katere
+pravice želimo, da naša aplikacija uporablja. Več pravic, ki jih bomo
+zahtevali, manj zaupljiva bo naša aplikacija. Zato je priporočljivo, da se
+zahtevajo le pravice, ki jih nujno potrebujemo za delovanje naše aplikacije. V
+našem primeru potrebujemo pravico, da lahko pišemo in objavljamo slike na zid
+uporabnika.
+
+Ko pripravimo našo aplikacijo, je tudi potrebno, da jo uslužbenci pri podjetju
+Facebook potrdijo. To je varnostni postopek, brez katerega naše aplikacije ne
+moremo javno uporabljati.
+
+Ko imamo narejeno in potrjeno aplikacijo, se lahko preko nje povežemo na Graph
+API. Od tukaj naprej imamo več možnosti, a za nas primerne le dve. Prva
+možnost je najbolj splošna, in sicer da uporabljamo kar zahteve preko HTTP
+protokola. A ker je naša celotna instalacija napisana za operacijski sistem
+Android, lahko namesto tega uporabimo Facebook Android SDK.
+
+S pomočjo Facebook Android SDK je sama integracija na operacijskem sistemu
+Android enostavnejša, saj vsa komunikacija z Graph API-jem poteka preko
+programskega jezika java.
+
+
 \section{Omejitve}
 Ena izmed največjih nevarnosti uporabe socialnih omrežij je nenadzorovano
 pošiljanje slik na socialno omrežje. Na slikah so lahko osebe, ki si ne želijo
