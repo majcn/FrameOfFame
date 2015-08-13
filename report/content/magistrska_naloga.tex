@@ -504,10 +504,11 @@ večino testiranih primerov.
 
 Detekcija obrazov s programskim ogrodjem OpenCV je le ena izmed možnosti, ki
 smo si jih podrobneje ogledali. Kot prva implementacija je bila izbrana zaradi
-velike stopnje nadzora nad vsakim korakom, kot so: detekcija
-obraza~\ref{fig:lena_opencv_face}; določitev regije, kjer je potrebno iskati;
-detekcija oči v določeni regiji~\ref{fig:lena_opencv_face_eye} in še bi lahko
-naštevali.
+velike stopnje nadzora nad vsakim korakom, kot so: detekcija obraza, prikazano
+kot zelen pravokotnik okrog obraza na sliki~\ref{fig:lena_opencv_face};
+določitev regije, kjer je potrebno iskati; detekcija oči v določeni regiji,
+prikazano kot dva modra kroga okrog oči na
+sliki~\ref{fig:lena_opencv_face_eye} in še bi lahko naštevali.
 
 Kljub zadovoljivim rezultatom iskanja obrazov se je izkazalo, da slike
 velikokrat niso ostre. Prej smo omenili, da imamo veliko nadzora nad
@@ -1207,13 +1208,14 @@ okrašen, le na sredini bo združen, kot je prikazano na sliki~\ref{fig:frame2}.
 \section{Obraz kot mozaik iz majhnih obrazov}
 Prvotna instalacija ``15 sekund slave'' me je najbolj prepričala s sliko
 Marilyn Monroe~\ref{fig:15sec-marilyn}, ki je sestavljena iz več
-obrazov~\cite{thesisSasoStulac}. Ker tukaj nimamo tako velike baze obrazov,
-smo vse skupaj malo poenostavili in uporabili kar iste obraze, vendar
-obdelane z drugimi filtri. Da pa je bila slika od daleč razločna, smo obrazu,
-ki je prikazan kot ``piksel'', prilili originalno barvo\footnote{Prejšnji
-končni rezultat instalacije obraza smo spremenili v sliko velikosti
-\textit{širina $*$ višina $=$ novo število obrazov}.}. Ta slika (primer lahko
-vidimo na sliki~\ref{fig:FoF-marilyn}) je končni prikaz naše nove instalacije.
+obrazov~\cite{katalog_solina}, da izgleda kot mozaik~\cite{thesisSasoStulac}.
+Ker tukaj nimamo tako velike baze obrazov, smo vse skupaj malo poenostavili in
+uporabili kar iste obraze, vendar obdelane z drugimi filtri. Da pa je bila
+slika od daleč razločna, smo obrazu, ki je prikazan kot ``piksel'', prilili
+originalno barvo\footnote{Prejšnji končni rezultat instalacije obraza smo
+spremenili v sliko velikosti \textit{širina $*$ višina $=$ novo število
+obrazov}.}. Ta slika (primer lahko vidimo na sliki~\ref{fig:FoF-marilyn}) je
+končni prikaz naše nove instalacije.
 
 \begin{figure}[!ht]
     \centering
@@ -1240,6 +1242,9 @@ pokazala popart slika, ki je njen umetniški ``selfi'', in če želi, je ta
 popart slika lahko kmalu javno objavljena na enem izmed socialnih omrežij, kar
 lahko naredi tako,  da se na primer dotakne ikone in tako odloči, da se njegov
 portret prenese na želeno socialno omrežje.
+
+%TODO: poglej ce je potrebno
+\pagebreak
 
 
 \section{Možnosti}
