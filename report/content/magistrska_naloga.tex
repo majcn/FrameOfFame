@@ -77,7 +77,7 @@ našo instalacijo.
 \label{ch:AndyWarhol_popart}
 Andy Warhol se je rodil 6. avgusta 1928 v Pittsburgu v Pensilvaniji staršema
 Slovakoma~\cite{wiki:AndyWarhol}. Njegovo otroštvo je bilo zelo težko, saj je
-v času velike gospodarske krize oče ostal brez službe. Kljub temu je po
+v času velike gospodarske krize oče ostal brez službe. Kljub temu je Andy po
 osnovnem šolanju obiskoval tečaj komercialnega oblikovanja na Carnegijevem
 inštitutu za tehnologijo v Pittsburgu. Pri 21 letih se je preselil v New
 York, kjer je izdal serijo ilustracij za čevlje. Kmalu je postal uspešen in
@@ -157,7 +157,7 @@ novemu stanju tehnologije~\cite{trifonova}.
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.68\textwidth]{15sec-marilyn}
-    \caption{15 sekund slave slike umetnika Andy Warhol~\cite{katalog_solina}}
+    \caption{15 sekund slave slike umetnika Andyja Warhola~\cite{katalog_solina}}
     \label{fig:15sec-marilyn}
 \end{figure}
 
@@ -505,9 +505,9 @@ večino testiranih primerov.
 Detekcija obrazov s programskim ogrodjem OpenCV je le ena izmed možnosti, ki
 smo si jih podrobneje ogledali. Kot prva implementacija je bila izbrana zaradi
 velike stopnje nadzora nad vsakim korakom, kot so: detekcija obraza,
-prikazano kot zelen pravokotnik okrog obraza na
+prikazana kot zelen pravokotnik okrog obraza na
 sliki~\ref{fig:lena_opencv_face}; določitev regije, kjer je potrebno iskati;
-detekcija oči v določeni regiji, prikazano kot dva modra kroga okrog oči
+detekcija oči v določeni regiji, prikazana kot dva modra kroga okrog oči
 na sliki~\ref{fig:lena_opencv_face_eye} in še bi lahko naštevali.
 
 Kljub zadovoljivim rezultatom iskanja obrazov se je izkazalo, da slike
@@ -1174,13 +1174,13 @@ niso obstajala.
 
 \section{Dve sliki}
 Naslednja posodobitev, ki prvotno niti ni bila v načrtu, je zamenjava zaslona
-LCD. Ta posodobitev se je zgodila zaradi nezdružljivosti mobilnega telefona
+LCD. Ta posodobitev se je izvedla zaradi nezdružljivosti mobilnega telefona
 s starim zaslonom LCD. Zopet se je pojavil problem, omenjen
-v~\refPoglavju{ch:ohranjanjeDigitalneUmetnosti}, da je težko nadgraditi le eno
+v~\refPoglavju{ch:ohranjanjeDigitalneUmetnosti}; težko je nadgraditi le eno
 komponento, saj obstaja možnost, da ni združljiva z ostalo opremo. Ker stari
 zaslon nima priključka HDMI, smo poskusili s pretvornikom HDMI v DVI, a brez
 uspeha. Isti pretvornik smo poskusili uporabiti na novejšem zaslonu. Tu je bil
-prenos slike iz telefona na zaslon uspešen.
+prenos slike s telefona na zaslon uspešen.
 
 Večina današnjih zaslonov LCD je formata 16:9 ali pa še več v širino, starega
 formata 4:3 skorajda ni več. Naš cilj pa je kvadratna slika, saj je tudi sam
@@ -1245,9 +1245,9 @@ omrežja, ki ponujajo osnovne filtre že pri nalaganju slike.
 Naša instalacija se lahko interpretira kot generator ``selfijev''. Oseba, ki
 stoji pred instalacijo, ve, da bo kmalu njenih petnajst sekund. Pred njo se bo
 pokazala popart slika, ki je njen umetniški ``selfi'', in če želi, je ta
-popart slika lahko kmalu javno objavljena na enem izmed socialnih omrežij, kar
-lahko naredi tako,  da se na primer dotakne ikone in tako odloči, da se njegov
-portret prenese na želeno socialno omrežje.
+popart slika lahko kmalu javno objavljena na enem izmed socialnih omrežij; lahko
+se na primer dotakne ikone in tako odloči, da se njen portret prenese na želeno
+socialno omrežje.
 
 %TODO: poglej ce je potrebno
 \pagebreak
@@ -1281,30 +1281,30 @@ več na voljo.
 \end{description}
 
 
-\section{Implementacija z socialnim omrežjem Facebook}
+\section{Implementacija s socialnim omrežjem Facebook}
 Skoraj vsa socialna omrežja imajo omogočene javne API-je in Facebook ni nobena
 izjema. Preko vmesnika API, imenovanega Graph, lahko programsko naredimo
 večino akcij, ki so na voljo uporabniku preko spletnega brskalnika.
 
 Da pa je poskrbljeno za varnost in zasebnost, je za dovoljenje uporabe Graph
 API-ja potrebno narediti novo aplikacijo (\textit{angl. app}). Tu določimo,
-katere pravice želimo, da jih naša aplikacija uporablja. Več pravic kot bomo
+katere pravice želimo naši aplikaciji dodeliti. Več pravic kot bomo
 zahtevali, manj zaupanja vredna bo naša aplikacija, če ni uporabniku očitno,
-zakaj te pravice aplikacija potrebuje. Zato je priporočljivo, da se zahtevajo
+zakaj aplikacija te pravice potrebuje. Zato je priporočljivo, da se zahtevajo
 le pravice, ki jih nujno potrebujemo za delovanje naše aplikacije. V našem
 primeru potrebujemo pravico, da lahko pišemo in objavljamo slike na zid
 uporabnika.
 
-Ko pripravimo našo aplikacijo, je tudi potrebno, da jo uslužbenci pri podjetju
-Facebook potrdijo. To je varnostni postopek, brez katerega naše aplikacije ne
+Ko aplikacijo pripravimo, jo morajo uslužbenci pri podjetju Facebook
+potrditi. To je varnostni postopek, brez katerega naše aplikacije ne
 moremo javno uporabljati.
 
 Ko je aplikacija narejena in potrjena, dobimo poseben ključ, ki je potreben za
 povezavo z Graph API-jem. Graph API lahko uporabljamo na več načinov.
-Najbolj osnoven je preko HTTP protokola, a hkrati najbolj zahteven za
-implementacijo. Drugi način je preko knjižnice, prilagojene za Android
-naprave. S to knjižico lahko na enostaven način opravimo vse osnovne akcije,
-kot so prijava v sistem in objavljanje slike.
+Najbolj osnoven je preko protokola HTTP, a je hkrati najbolj zahteven za
+implementacijo. Drugi način je preko knjižnice, prilagojene za naprave
+Android. S to knjižnico lahko na enostaven način opravimo vse osnovne akcije,
+kot sta prijava v sistem in objavljanje slike.
 
 
 \section{Omejitve}
