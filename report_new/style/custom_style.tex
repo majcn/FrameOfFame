@@ -1,0 +1,32 @@
+\usepackage{listings}
+
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+\definecolor{forestgreen}{RGB}{34,139,34}
+\definecolor{orangered}{RGB}{239,134,64}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+
+\lstdefinestyle{XML} {
+    language=XML,
+    extendedchars=true, 
+    breaklines=true,
+    breakatwhitespace=true,
+    emph={},
+    emphstyle=\color{red},
+    basicstyle=\ttfamily,
+    columns=fullflexible,
+    commentstyle=\color{gray}\upshape,
+    morestring=[b]",
+    morecomment=[s]{<?}{?>},
+    morecomment=[s][\color{forestgreen}]{<!--}{-->},
+    keywordstyle=\color{orangered},
+    stringstyle=\ttfamily\color{black}\normalfont,
+    tagstyle=\color{black}\bf,
+    morekeywords={attribute,xmlns,version,type,release},
+    otherkeywords={attribute=, xmlns=},
+}
+
+\usepackage{subcaption}

@@ -73,6 +73,7 @@
 % ENG: include design and packages
 %================================================================
 \input{style/thesis_style}
+\input{style/custom_style}
 
 %================================================================
 % SLO: razno
@@ -681,7 +682,7 @@ s katerimi smo dobili rezultate obrazov. Ker se je že za samo klasifikacijo
 obraza porabilo kar nekaj časa, smo se odločili, da iskanje prekinemo takoj po
 najdenem prvem obrazu, ki je velik vsaj eno desetino celotne slike.
 
-\begin{lstlisting}[label=lst:haar_frontal_face, caption=Izsek iz datoteke harrcascade\_frontalface\_default.xml]
+\begin{lstlisting}[style=XML, label=lst:haar_frontal_face, caption=Izsek iz datoteke harrcascade\_frontalface\_default.xml]
 <maxWeakCount>9</maxWeakCount>
 <stageThreshold>-5.0425500869750977e+00</stageThreshold>
 <weakClassifiers>
@@ -711,7 +712,7 @@ uporabili lastnosti, zapisane v datoteki \textit{harrcascade\_eye.xml}~\ref{lst:
 V primeru, da smo našli točno dva rezultata, smo vrnili prejšnji rezultat,
 v nasprotnem primeru pa javili, da obraz ni najden.
 
-\begin{lstlisting}[label=lst:haar_eye, caption=Izsek iz datoteke harrcascade\_eye.xml]
+\begin{lstlisting}[style=XML, label=lst:haar_eye, caption=Izsek iz datoteke harrcascade\_eye.xml]
 <maxWeakCount>6</maxWeakCount>
 <stageThreshold>-1.4562760591506958e+00</stageThreshold>
 <weakClassifiers>
