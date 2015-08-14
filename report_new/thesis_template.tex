@@ -1,31 +1,31 @@
 %================================================================
 % SLO
 %----------------------------------------------------------------
-% datoteka: 	thesis_template.tex
+% datoteka:     thesis_template.tex
 %
-% opis: 		predloga za pisanje diplomskega dela v formatu LaTeX na
-% 				Univerza v Ljubljani, Fakulteti za računalništvo in informatiko
+% opis:         predloga za pisanje diplomskega dela v formatu LaTeX na
+%               Univerza v Ljubljani, Fakulteti za računalništvo in informatiko
 %
-% pripravili: 	Matej Kristan, Zoran Bosnić, Andrej Čopar, 
-%			  	po začetni predlogi Gašperja Fijavža
+% pripravili:   Matej Kristan, Zoran Bosnić, Andrej Čopar,
+%               po začetni predlogi Gašperja Fijavža
 %
-% popravil: 	Domen Rački
+% popravil:     Domen Rački
 %
-% verzija: 		1. april 2015
+% verzija:      1. april 2015
 %================================================================
 % ENG
 %----------------------------------------------------------------
-% file: 		thesis_template.tex
+% file:         thesis_template.tex
 %
-% description:	template file for writing the diploma thesis in LaTeX format at
-% 				University of Ljubljana, Faculty of Computer and Information Science
+% description:  template file for writing the diploma thesis in LaTeX format at
+%               University of Ljubljana, Faculty of Computer and Information Science
 %
-% prepared by: 	Matej Kristan, Zoran Bosnić, Andrej Čopar, 
-%				after the initial template from Gašper Fijavž
+% prepared by:  Matej Kristan, Zoran Bosnić, Andrej Čopar,
+%               after the initial template from Gašper Fijavž
 %
-% edited by:	Domen Rački
+% edited by:    Domen Rački
 %
-% version: 		1. april 2015
+% version:      1. april 2015
 %================================================================
 
 
@@ -47,19 +47,19 @@
 %----------------------------------------------------------------
 \usepackage{filecontents}
 \begin{filecontents*}{\jobname.xmpdata}
-	\Author{Gregor Majcen}
-	\Title{Interaktivne računalniške umetniške instalacije v času hitrega tehnološkega razvoja} 
-	\Keywords{
-		računalnik\sep
-		umetnost\sep 
-		pametni telefon\sep 
-		android\sep 
-		filter\sep 
-		digitalna umetnost\sep 
-		ohranjanje\sep 
-		vzdrževanje programske opreme\sep 
-	} 
-	\Org{Univerza v Ljubljani, Fakulteta za računalništvo in informatiko}
+    \Author{Gregor Majcen}
+    \Title{Interaktivne računalniške umetniške instalacije v času hitrega tehnološkega razvoja}
+    \Keywords{
+        računalnik\sep
+        umetnost\sep
+        pametni telefon\sep
+        android\sep
+        filter\sep
+        digitalna umetnost\sep
+        ohranjanje\sep
+        vzdrževanje programske opreme\sep
+    }
+    \Org{Univerza v Ljubljani, Fakulteta za računalništvo in informatiko}
 \end{filecontents*}
 % NOTE: the command \Subject is avoided in the given example since there are persisting problems with it
 % NOTE: if you have errors conserning ICC profiles, read the pdfx package description file pdfx.pdf, section 'Color profiles'
@@ -83,10 +83,10 @@
 % ENG: hyper referencing setup
 \definecolor{black}{rgb}{0,0,0}
 \hypersetup{
-	colorlinks = true,
-	linkcolor = black,
-	citecolor = black,
-	urlcolor = black
+    colorlinks = true,
+    linkcolor = black,
+    citecolor = black,
+    urlcolor = black
 }
 %----------------------------------------------------------------
 % |||||||||||||||||||||| USTREZNO POPRAVI |||||||||||||||||||||||
@@ -101,8 +101,8 @@
 % ENG: add paths to files containing figures, tables, ...
 %----------------------------------------------------------------
 \graphicspath{
-	{./figures/}
-	{./tables/}
+    {./figures/}
+    {./tables/}
 }
 %----------------------------------------------------------------
 % SLO: moji paketi
@@ -144,7 +144,7 @@
 % SLO: naslovnica (vstavi naslovnico (LaTeX kodo) iz datoteke pages/title.tex)
 % ENG: title page (insert the title page (LaTeX code) from the file pages/title.tex)
 %----------------------------------------------------------------
-\input{front_pages/slo/naslovnica} \clearemptydoublepage 
+\input{front_pages/slo/naslovnica} \clearemptydoublepage
 %\input{front_pages/eng/title_page} \clearemptydoublepage
 
 %----------------------------------------------------------------
@@ -173,10 +173,10 @@
 % ENG: contents
 %----------------------------------------------------------------
 \begingroup
-	\hypersetup{colorlinks=true,linkcolor=black}
-	\def\thepage{}
-	\tableofcontents{}
-	\clearemptydoublepage
+    \hypersetup{colorlinks=true,linkcolor=black}
+    \def\thepage{}
+    \tableofcontents{}
+    \clearemptydoublepage
 \endgroup
 
 %----------------------------------------------------------------
@@ -194,11 +194,11 @@
 %================================================================
 % SLO: izklopi številčenje poglavji in uporabi rimskime številkami za številke strani
 % ENG: turns off chapter numbering and uses roman numerals for page numbers
-\frontmatter 
+\frontmatter
 \pagestyle{frontmatter}
 
 
-	
+
 %---------------------------------------------------------------
 % SLO: slovenski povzetek
 % ENG: slovenian abstract
@@ -265,7 +265,7 @@ maintaining new media art installations in general.
 %================================================================
 % SLO: vklopi številčenje poglavji, ponastavi številčenje strani in uporabi arabske številkami za številčenje strani
 % ENG: turns on chapter numbering, resets page numbering and uses arabic numerals for page numbers
-\mainmatter 
+\mainmatter
 \pagestyle{mainmatter}
 
 
@@ -405,7 +405,7 @@ naslednjemu algoritmu.
 
 Izbran obraz se obdela z enim izmed vnaprej določenih barvnih filtrov. Ti
 filtri so sestavljeni iz različnih barvnih transformacij, da preoblikujejo
-fotografijo v slogu popart. 
+fotografijo v slogu popart.
 
 Slika obraza v slogu popart je končni rezultat, ki je prikazan takoj, ko
 prejšnjemu obrazu poteče njegovih petnajst sekund. In kako je prikazan? Pod
@@ -936,7 +936,7 @@ zapisani z odstotki, in sicer od 0\% do 100\%.
     \label{fig:hsl}
 \end{figure}
 
-Obstaja še veliko barvnih prostorov, vendar sta za našo instalacijo 
+Obstaja še veliko barvnih prostorov, vendar sta za našo instalacijo
 zadostovala ta dva. Pomembno pri barvnih modelih je tudi to, da so enostavno
 preračunljivi iz enega prostora v drugega.
 
