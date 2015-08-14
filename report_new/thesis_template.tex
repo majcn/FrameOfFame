@@ -193,10 +193,25 @@
 \selectlanguage{slovene} % Preklopi na slovenski jezik
 \chapter{Povzetek}
 
-V vzorcu je predstavljen postopek priprave magistrskega dela z uporabo okolja \LaTeX. Vaš povzetek mora sicer vsebovati približno 100 besed, ta tukaj je odločno prekratek. Dober povzetek vključuje: (1) kratek opis obravnavanega problema, (2) kratek opis vašega pristopa za reševanje tega problema in (3) (najbolj uspešen) rezultat ali prispevek magistrske naloge.
+V okviru magistrske naloge je bila ponovno implementirana in nadgrajena
+interaktivna umetniška instalacija ``15 sekund slave''. Motivacija za
+instalacijo je umetniško delovanje ameriškega popart umetnika Andyja Warhola.
+``15 sekund slave'' izgleda kot klasična slika, a je dejansko računalniški
+zaslon, okvirjen kot umetniška slika. Nad zaslonom je v okviru vgrajen
+digitalni fotoaparat, ki je povezan z računalnikom v ozadju. Vsakih petnajst
+sekund fotoaparat slika obiskovalce galerije, ki stojijo pred sliko. Na sliki
+računalniški program poišče vse obraze in nato naključno izbere enega izmed
+njih. Ta obraz nato z grafičnimi filtri program obdela tako, da pridobi tako
+imenovani popart videz z manjšim številom živih barv, ki spominjajo na
+slike slavnih osebnosti, ki jih je iz fotografij delal Andy Warhol. Ker je
+prvotna instalacija nastala pred več kot desetimi leti in se je strojna oprema v
+tem času že zelo spremenila, se je pokazala potreba po prilagoditvi aplikacije
+novemu stanju tehnologije. V nalogi so opisani problemi pri vzdrževanju
+novomedijskih umetniških instalacij in kako smo le-te rešili v primeru opisane
+instalacije.
 
 \subsection*{Ključne besede}
-\textit{beseda1, beseda2, beseda3}
+\textit{računalnik, umetnost, pametni telefon, android, filter, digitalna umetnost, ohranjanje, vzdrževanje programske opreme}
 \clearemptydoublepage
 
 
@@ -208,10 +223,24 @@ V vzorcu je predstavljen postopek priprave magistrskega dela z uporabo okolja \L
 \selectlanguage{english} % Preklopi na angleški jezik
 \chapter{Abstract}
 
-This sample document presents an approach to typesetting your BSc thesis using \LaTeX. A proper abstract should contain around 100 words which makes this one way too short. A good abstract contains: (1) a short description of the tackled problem, (2) a short description of your approach to solving the problem, and (3) (the most successful) result or contribution in your thesis.
+This thesis describes the reimplementation of the interactive art installation
+entitled ``15 seconds of fame''. The motivation for the installation was the
+famous American artist Andy Warhol. He modified simple photograph portraits
+into pop-art pieces. The production of such portraits is the goal of the
+installation ``15 seconds of fame''. The installation looks like a picture on
+a wall, but it is in fact a computer monitor framed as a picture. On the top
+of the frame there is a small camera which is connected to a computer hidden
+behind the scene. Every fifteen seconds, the camera takes a picture of the
+scene in front of it and sends it to the computer, where all the magic happens. It
+searches for human faces in the picture, picks one face randomly and applies a
+combination of image filters which converts the face into a pop-art
+portrait. The idea is still great, even ten years later, but the original
+technology is outdated and increasingly difficult to maintain. We reimplemented
+the installation with new hardware and software and we discuss the problems of
+maintaining new media art installations in general.
 
 \subsection*{Keywords}
-\textit{word1, word2, word3}
+\textit{computer, art, smartphone, android, filter, digital art, conservation, software maintenance}
 \clearemptydoublepage
 
 
@@ -228,164 +257,1364 @@ This sample document presents an approach to typesetting your BSc thesis using \
 
 
 
-%----------------------------------------------------------------
-% Poglavje 1
-%----------------------------------------------------------------
 \chapter{Uvod}
-\label{ch:uvod}
+\newcommand{\refPoglavju}[1]{\ref{#1}.~poglavju}
 
-Datoteka {\tt magistrska\_naloga.tex} na kratko opisuje, kako se pisanja magistrskega dela lotimo z uporabo programskega pateka \LaTeX. V tem dokumentu bomo predstavili nekaj njegovih prednosti in hib. Kar se slednjih tiče, mi pride na misel ena sama. Ko se srečamo z njim, nam izgleda kot kislo jabolko, nismo prepričani, da bi želeli vanj ugrizniti. Lahko pa z njim pripravimo odličen zavitek ali pa pridemo na okus.
+Magistrska naloga sodi na relativno novo področje vzdrževanja novomedijskih
+umetniških instalacij, ki za svoje delovanje potrebujejo računalniško
+tehnologijo~\cite{firstdecade}. Umetniki so se za ta način ustvarjanja
+odločili že kmalu po pojavu prvih računalnikov, vendar niso bili zadovoljni z
+osnovnimi aplikacijami, saj so želeli pri svojih umetninah prikazati nekaj
+več~\cite{miller2}. Tu pa se je pričelo sodelovanje z računalniškimi
+strokovnjaki~\cite{miller1}.
 
-Česa od tega dokumenta ne pričakujte? Izkušeni uporabniki \LaTeX{}a bi vse skupaj zastavili
-drugače. Morda bi napisali posebno razredno datoteko (\emph{class file}) --- v resnici priredili katero od obstoječih ---, v datoteki {\tt magistrska\_naloga.tex} ohranili samo najbolj grobo strukturo in vanjo vključevali  posamezna po\-glav\-ja. Hkrati s pisanjem teksta bi poskrbeli tudi za stvarno kazalo ({\tt makeindex}), literaturo pa bi citirali z uporabo {\BibTeX}{a}. Tega, skratka, v tem dokumentu ne boste našli.
+V magistrski nalogi bomo posodobili interaktivno umetniško instalacijo ``15
+sekund slave''. Najprej se bomo v \refPoglavju{ch:AndyWarhol_popart} seznanili
+z motivacijo za to instalacijo in spoznali, kako instalacija deluje.
 
-Kaj vseeno najdemo. V Poglavju~\ref{ch:uvod} bomo na hitro spoznali besedilne konstrukte kot so izreki, enačbe in dokazi. Naučili se bomo, kako se na njih sklicujemo. V Poglavju~\ref{ch:sklicevanje} se bomo srečali s sklicevanjem na besedilne konstrukte. Poglavje~\ref{ch:plovke} bo predstavilo vključevanje plovk: slik in tabel.
-Razni drugi napotki so dani v Poglavju~\ref{ch:razno}.
+V \refPoglavju{ch:prvotnaIzvedba15} se seznanimo, kako je bila instalacija
+prvotno implementirana.
 
-\chapter{Sklicevanje na besedilne konstrukte}
-\label{ch:sklicevanje}
+Da bi se naloge pravilno lotili, smo v
+\refPoglavju{ch:ohranjanjeDigitalneUmetnosti} preučili širšo problematiko
+vzdrževanja novomedijskih umetniških del. Kako sploh vzdrževati umetniško
+instalacijo, ki temelji na računalniški tehnologiji. Kakšni so principi in
+strategije. Novejše v tem kontekstu ne pomeni vedno boljše. Zaradi hitrega
+napredka računalniške tehnologije je potrebno take aplikacije po eni strani
+prilagajati novi strojni in sistemski programski opremi, pa tudi novim
+funkcionalnim možnostim, ki jih nove tehnologije nudijo. Po drugi strani pa z
+umetniškega vidika običajno želimo, da se zunanja pojava umetniškega dela ne
+spremeni.
 
-Matematična ali popolna indukcija je eno prvih orodij, ki jih spoznamo za dokazovanje trditev pri matematičnih predmetih.
-\begin{izrek}
-\label{iz:1}
-Za vsako naravno število $n$ velja
-\begin{equation}
-n < 2^n.
-\label{eq:1}
-\end{equation}
-\end{izrek}
-\begin{dokaz}
-Dokazovanje z indukcijo zahteva, da neenakost~\eqref{eq:1} najprej preverimo za najmanjše naravno število --- $0$. Res, ker je $0 < 1 = 2^0$, je neenačba~\eqref{eq:1} za $n=0$ izpolnjena.
+V \refPoglavju{ch:nadgradnjaNapravaPripomocki} smo po preučevanju teorije,
+kako se sploh pravilno lotiti nadgradnje umetniške instalacije ``15 sekund
+slave'', začeli razmišljati še s praktičnega vidika. V desetih letih, odkar
+je bila prvotna instalacija narejena, je računalniška tehnologija močno
+napredovala, še posebej v razvoju mobilnih naprav. Razmišljali smo, kako bi
+novo tehnologijo lahko prenesli v trenutno instalacijo. Odločili smo se za
+mobilni telefon. Pametni telefoni so enostavno in prosto dostopni na trgu in
+ker se masovno izdelujejo, tudi niso zelo dragi. Vsebujejo pa vse, kar
+potrebujemo: kamero, prikaz slike in programabilnost. Ostale lastnosti so le
+bonus. Sedaj je bilo potrebno izbrati le še operacijski sistem. Zaradi osebnih
+izkušenj smo se odločili za operacijski sistem Android~(\ref{sec:android}). Po
+izbiri strojne opremo smo začeli z načrtovanjem, kako prenesti vso obstoječo
+programsko funkcionalnost.
 
-Sledi indukcijski korak. S predpostavko, da je neenakost~\eqref{eq:1} veljavna pri nekem naravnem številu $n$, je potrebno pokazati, da je ista neenakost v veljavi tudi pri njegovem nasledniku --- naravnem številu $n+1$. Računajmo.
+V \refPoglavju{ch:zaznavanjeObrazov} smo se soočili z zaznavanjem obrazov.
+Načini, kako zaznavati obraze na sliki, so se v desetih letih močno
+spreminjali. Obstaja tudi že veliko orodij, ki nam pomagajo pri tem. Naša
+izbira je na koncu pristala na dveh orodjih:
+OpenCV~(\ref{sec:zaznavanjeObrazovOpenCV}) in
+AndroidSDK~(\ref{sec:zaznavanjeObrazovAndroidSDK}). Ti dve orodji temeljita na
+popolnoma različnih strategijah, zato smo se odločili poskusiti obe.
+
+V \refPoglavju{ch:obdelavaSlik} smo obravnavali obdelavo slik. Že pri prvotni
+instalaciji je bilo izhodišče za vse filtre programsko orodje
+GIMP~(\ref{sec:obdelavaSlikGIMP}). V tej instalaciji smo se odločili, da si
+bomo tudi pomagali s tem programskim orodjem, vendar z različico iz današnjega
+časa. Iz programskega orodja GIMP smo si izbrali tri vrste filtrov:
+\begin{itemize}
+    \item uravnovešanje barv~(\ref{sec:obdelavaSlikUravnovesanjeBarv}),
+    \item posteriziranje~(\ref{sec:obdelavaSlikPosteriziranje}),
+    \item uravnovešanje barv v prostoru HSL~(\ref{sec:obdelavaSlikUravnovesanjeBarvHSL}).
+\end{itemize}
+Različni parametri in mešanje teh filtrov med seboj so nas pripeljali do
+popart slik~(\ref{sec:obdelavaSlikSestavljanjePopArt}).
+
+S tem je bila prestavitev iz originalnega sistema v mobilni sistem končana.
+Vendar pa smo želeli še več. V \refPoglavju{ch:novosti} opisujemo nove
+funkcionalne možnosti, ki smo jih dodali za popestritev instalacije.
+
+V \refPoglavju{ch:socialNetwork} pa smo se ukvarjali z najbolj pomembno
+lastnostjo, ki je pravi hit sedanjega časa, in sicer s povezavo s socialnimi
+omrežji. Mladim in vse bolj tudi starejšim postaja pregledovanje socialnega
+omrežja vsakdanje opravilo. In trenuten trend ``selfijev'' je kot nalašč za
+našo instalacijo.
+
+
+\chapter{Andy Warhol, popart umetnost in naša instalacija}
+\label{ch:AndyWarhol_popart}
+Andy Warhol se je rodil 6. avgusta 1928 v Pittsburgu v Pensilvaniji staršema
+Slovakoma~\cite{wiki:AndyWarhol}. Njegovo otroštvo je bilo zelo težko, saj je
+v času velike gospodarske krize oče ostal brez službe. Kljub temu je Andy po
+osnovnem šolanju obiskoval tečaj komercialnega oblikovanja na Carnegijevem
+inštitutu za tehnologijo v Pittsburgu. Pri 21 letih se je preselil v New
+York, kjer je izdal serijo ilustracij za čevlje. Kmalu je postal uspešen in
+dobro plačan slikar, vendar pa je hrepenel po umetniški slavi. Po številnih
+neuspehih se mu je leta 1964 pri razstavi Ameriški supermarket le posrečilo.
+Ta razstava je bila ena izmed prvih, ki je javnost seznanila s pop artom. Nato
+se je njegova kariera le še vzpenjala.
+
+Njegove najbolj znane slike so Dick Tracy, Plesna shema (tango),
+Plo\-če\-vin\-ka juhe Campbell, Zvitek bankovcev in serija portretov znanih
+ljudi, kot sta Elvis Presley in Marilyn Monroe. Popart
+portret Marilyn Monroe lahko vidimo na sliki~\ref{fig:art-marilyn}.
+
+Andy Warhol je umrl v spanju zaradi srčne kapi 22. februarja 1987, star 58 let.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.68\textwidth]{art-marilyn}
+    \caption{Popart slika umetnika Andyja Warhola~\cite{andyExhibitionMonroe}}
+    \label{fig:art-marilyn}
+\end{figure}
+
+\section{Princip delovanja instalacije}
+``15 sekund slave'' je interaktivna umetniška instalacija, ki obraz naključno
+izbranega obiskovalca galerije povzdigne v umetniški objekt za petnajst
+sekund~\cite{leonardo}. Instalacija je bila navdahnjena s slavnim citatom
+Andyja Warhola: ``V prihodnosti bodo vsi ljudje doživeli svojih petnajst minut
+slave.''\footnote{Originalno v angleščini: \textit{``In the future everybody
+will be world-famous for fifteen minutes.''}\cite{andyExhibition,AW}.} pa tudi z
+njegovim načinom predelave obrazov v slogu popart~\cite{solina200215}.
+
+
+
+Če pogledamo sliko~\ref{fig:15sec}, vidimo le ``mojstrovino'', uokvirjeno v
+dragocen okvir. V resnici pa se za to podobo skriva še mnogo več.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{15sec}
+    \caption{Prikaz delovanja instalacije}
+    \label{fig:15sec}
+\end{figure}
+
+Nad sliko obraza vidimo črno luknjo, to je prostor za digitalni fotoaparat, ki
+enkrat na vsakih petnajst sekund fotografira okolico in fotografijo pošlje
+računalniku, ki je skrit v ozadju. Fotoaparat ima širokokoten objektiv, da
+lahko zajame čim širšo okolico.
+
+Vsako novo fotografijo nato pošljemo računalniku, ki izvede algoritem za
+iskanje obrazov. Če je teh več, enega izberemo po principu naključnega
+izbora. Ta obraz izrežemo iz fotografije in ga pošljemo kot vhod
+naslednjemu algoritmu.
+
+Izbran obraz se obdela z enim izmed vnaprej določenih barvnih filtrov. Ti
+filtri so sestavljeni iz različnih barvnih transformacij, da preoblikujejo
+fotografijo v slogu popart. 
+
+Slika obraza v slogu popart je končni rezultat, ki je prikazan takoj, ko
+prejšnjemu obrazu poteče njegovih petnajst sekund. In kako je prikazan? Pod
+luknjo za fotoaparat je izrezan še večji pravokotnik, za katerim se skriva
+računalniški zaslon LCD, povezan z računalnikom, ki je opravil
+transformacijo fotografije.
+
+Ta postopek se ponavlja v neskončnost, posebnost instalacije pa je, da se vse
+dogaja v živo. Če bo torej nekdo dovolj dolgo gledal v okvir, ima veliko
+možnosti, da bo kmalu zagledal samega sebe kot ``mojstrovino'' v
+galeriji~\cite{lieser2010world}.
+
+
+\chapter{Prvotna izvedba: 15 sekund slave}
+\label{ch:prvotnaIzvedba15}
+Kot že omenjeno, je prvotna instalacija nastala pred več kot desetimi leti. Ker
+je težko nadomestiti le posamezne dele v sistemu in ker je tehnologija v teh
+letih močno napredovala, se je pokazala potreba po prilagoditvi aplikacije
+novemu stanju tehnologije~\cite{trifonova}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.68\textwidth]{15sec-marilyn}
+    \caption{15 sekund slave slike umetnika Andyja Warhola~\cite{katalog_solina}}
+    \label{fig:15sec-marilyn}
+\end{figure}
+
+\section{Strojna in programska oprema}
+\paragraph{Strojna oprema.}
+Prva razstavljena različica je imela bogato okrašen lesen okvir, ki pa ni bil
+prenosen. Za tem okvirjem se je skrival računalniški zaslon LCD velikosti 17
+palcev, malo nad tem zaslonom pa je bil fiksiran digitalni fotoaparat Olympus
+C3020 ZOOM (objektiv tipa 32--96mm, maksimalna ločljivost je
+2048$\times$1536)~\cite{preservationComputerBasedArt}.
+
+Ob selitvi instalacije se je pripetila prva nadgradnja. Fiksen lesen okvir se
+je zamenjal z razstavljivim in prenosljivim. V tem času je tudi tehnologija
+naredila korak naprej. Naprave so postajale vse manjše in zmogljivejše. 17-palčni
+računalniški zaslon je nadomestil 19-palčni, kljub temu pa se sama velikost
+naprave ni povečala. Zamenjal se je tudi digitalni fotoaparat. Zaradi
+programske opreme je bil najprimernejši kar Olympus, in ker je bil še vedno
+željen široki kot objektiva, je to napravo nadomestil Olympus C40 ZOOM
+(objektiv tipa 35--98mm, maksimalna ločljivost 2272$\times$1704).
+
+Omenjeno je bilo, da je bil Olympus primeren zaradi programske opreme. Ta
+digitalni fotoaparat je omogočal upravljanje same naprave programsko preko
+računalnika. Orodje SDK omogoča nastavljanje ISO, odprtosti zaslonke, hitrosti
+slikanja, fokusa, možnosti zajemanja slike ... S tem je omo\-go\-če\-no
+avtomatsko zajemanje nove slike vsakih petnajst sekund.
+
+\paragraph{Programska oprema.}
+Modul za detekcijo obrazov je bil napisan v programskem jeziku C++. Sprva je
+algoritem iskal obraze na podlagi barve kože. Zaradi hitrega in učinkovitega
+delovanja je bila sama slika pomanjšana na resolucijo 160$\times$120 pikslov.
+Najmanjši obraz, ki je bil lahko najden, je velikosti 11$\times$12 pikslov, največji
+pa 96$\times$106 pikslov. Zaznavanje je bilo zelo občutljivo na svetlobo, še
+posebej ob večjih spremembah med samim delovanjem. Za zmanjšanje tega problema
+so se uporabljale različne metode za kompozicijo
+osvetlitve~\cite{kovac2003illumination}. Kasneje se je celoten algoritem za
+detekcijo obrazov zamenjal z algoritmom Viola-Jones~\cite{viola2004robust}, ki
+pa ni bil več odvisen od barve kože. Najmanjši obraz pri algoritmu Viola-Jones
+je bil velikosti 24$\times$24 pikslov.
+
+Modul za filtre, s katerimi so se ustvarjali popart efekti, je bil prav tako
+napisan v programskem jeziku C++. Slika obraza oziroma vhod, ki ga je
+algoritem dobil, je bila slika velikosti 400$\times$400 pikslov. V kolikor je bil
+rezultat detekcije obraza manjši, se je slika povečala na to velikost.
+
+Komunikacija s samo strojno opremo in vsemi moduli je bila napisana v
+programskem jeziku Pascal/Delphi. Celotna instalacija je bila narejena in
+testirana na operacijskem sistemu Windows~XP~\cite{preservationComputerBasedArt}.
+
+
+\chapter{Ohranjanje digitalne umetnosti}
+\label{ch:ohranjanjeDigitalneUmetnosti}
+Ohranjanje digitalne umetnosti je zelo pomembna vrednota v svetu
+umetnosti~\cite{ZKM,preservationComputerBasedArt}. Navezuje se na umetnost, ki je sicer že v digitalni
+obliki, a mora zaradi zelo hitrega razvoja tehnologije vseeno ostati v koraku
+s časom. Novejša tehnologija nam omogoča zmogljivejše in hitrejše naprave, manjšo
+porabo energije, bolj točne algoritme in še veliko drugih pomembnih izboljšav.
+Vendar pa umetnost ni le tehnologija, umetnost je nekaj, kar naj bi se ohranjalo skozi
+leta, desetletja, stoletja in še dlje.
+
+Pri digitalni umetnosti se pojavi kar nekaj težav, ki jih pri ohranjanju
+običajnih umetniških izdelkov ni. Če nismo v koraku s časom, je možnost, da
+strojna oprema, ki jo potrebujemo za instalacijo, ni več dobavljiva na trgu
+ali pa je že dovolj stara, da ima zgodovinsko vrednost. Nova strojna oprema
+doprinese še programske posodobitve, nove principe, standarde in različna
+delovanja. Zato je res pomembno, da sledimo razvoju, obenem pa se še vedno
+trudimo, da zunanji obiskovalec kljub novi tehnologiji misli, da je to ista,
+prvotna instalacija.
+
+Četudi želimo zamenjati le strojno opremo, to v zelo starih instalacijah
+ni mogoče. Stara programska oprema ne deluje vedno na novejših sistemih.
+V tem primeru smo prisiljeni ponovno implementirati algoritme, tako da so
+združljivi s strojno opremo. Tukaj obstaja več možnosti. Vedno lahko
+uporabljamo staro kodo z manjšimi ali pa tudi večjimi popravki, tako da
+se ta prevede tudi na novejših sistemih. Vendar pa je tu treba biti pozoren na
+to, da si s tem ne povzročimo še več dela, kot če bi vse skupaj ponovno
+implementirali.
+
+Ko že govorimo o novi strojni in programski opremi, omenimo še drugo
+težavo. Zaposleni v muzejih in galerijah običajno niso izobraženi za
+vzdr\-že\-va\-nje digitalne umetnosti, saj ti ljudje načeloma niso strokovnjaki
+računalniške stroke. Posledično so možne težave pri rokovanju s tako umetnino,
+zato bi bilo priporočljivo, če bi bila instalacija podrobno dokumentirana in
+bi bilo tako pojasnjeno, kako jo postaviti, kako jo vzdrževati in kaj storiti v
+primeru težav.
+
+Splošno gledano obstajata dve strategiji za ohranjanje digitalne umetnosti~\cite{ZKM}:
+\begin{itemize}
+\item
+Ohraniti želimo vso strojno in programsko
+opremo, dokler je to le mogoče. S tem zagotovimo, da je uporabniška izkušnja
+ves čas enaka. Tukaj bi se večina lahko vprašala, zakaj ne bi strojne opreme s
+časom nadgrajevali. Vzemimo za primer računalniški zaslon. Res je, tehnologija
+LCD je zelo napredovala, slika je v primerjavi s sliko na zaslonih s katodno
+cevjo precej bolj ostra in čista. Vendar pa ravno ta ostrina lahko
+popolnoma spremeni končni produkt, saj je bil morda nekdo nad umetnino
+navdušen ravno zaradi teh zabrisanih robov, ki so ji dajali nekoliko starinski
+pridih.
+
+\item
+Nadgradimo strojno in programsko opremo. Pri tem
+moramo biti zelo pazljivi, da uporabnik še vedno dobi tisto, kar je dobil pred
+nadgradnjo. Umetniška instalacija mora ostati kar se da podobna prejšnji,
+vključno z vsemi funkcionalnostmi. Vendar pa se pogosto zgodi, da avtor skozi
+čas pridobi nove ideje za posodobitve, velikokrat gre tako za nekaj, kar prej
+s staro tehnologijo sploh še ni bilo mogoče. Lep primer take ideje je
+integracija s socialnimi omrežji.
+\end{itemize}
+
+
+\chapter{Nadgradnja: Naprava in pripomočki}
+\label{ch:nadgradnjaNapravaPripomocki}
+Prvi motiv za nadgradnjo, ki smo si jo zamislili, je čim bolj učinkovito zmanjšati
+porabljen prostor za instalacijo in s tem olajšati njeno prenosljivost in
+povečati enostavnost postavitve.
+
+Prvotna instalacija potrebuje osebni ali prenosni računalnik, zaslon LCD,
+digitalni fotoaparat, mrežno opremo in dostop do interneta.
+
+Kot najboljša zamenjava se je izkazala naprava `pametni telefon', saj ima
+vse prej naštete naprave združene v eno. Ima vgrajeno kamero, ki služi kot
+fotoaparat, dostop do interneta preko kartice SIM ter operacijski sistem, ki
+omogoča izdelavo programske opreme, s katero lahko dostopamo do prej naštetih
+funkcij.
+
+Pametni telefoni višjega cenovnega razreda omogočajo tudi, da lahko sliko v živo
+predvajamo na večjem ekranu. Zato smo se odločili, da kot testno napravo
+vzamemo pametni telefon Samsung Galaxy S5.
+
+\section{Testna naprava: Samsung Galaxy S5}
+\label{sec:testnaNapravaSmartPhone}
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{sgs5full}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{sgs5camera}
+        \caption{Kamera z bliskavico}
+    \end{subfigure}
+    \caption{Testna naprava: Samsung Galaxy S5}
+    \label{fig:sgs5}
+\end{figure}
+
+Samsung Galaxy S5 je pametni telefon, narejen v podjetju Samsung. Deluje z
+operacijskim sistemom Android verzije 4.4.4, imenovanim tudi Android KitKat.
+Trenutno najnovejša obstoječa verzija operacijskega sistema Android je 5.0,
+poimenovan Lizika (\textit{angl. Lolipop}).
+
+Samsung Galaxy S5 se ponaša s štirijedrnim procesorjem 2.5GHz Krait 400 na
+čipu Qualcomm MSM8974AC Snapdragon 801. Ta procesor je dovolj zmogljiv za
+preračunavanje vseh filtrov v zadovoljivem času.
+
+Grafična enota, Adreno 330, omogoča prikazovanje v ločljivosti
+1080$\times$1920 pikslov. Ena izmed pomembnih lastnosti je tudi možnost povezave
+zunanje naprave preko priključka HDMI.
+
+Tudi kamera je izjemno kvalitetna, je namreč tipa 1/2.6''. Svetlobno tipalo
+ima 16 megapikslov in lahko torej naredi sliko v velikosti 5312$\times$2988
+pikslov. Velikost in obliko kamere lahko vidimo kot majhen črn kvadrat, viden
+na desni sliki~\ref{fig:sgs5}.
+
+Pomembna lastnost je tudi operacijski sistem Android, za katerega je v
+programskem jeziku Java mogoče napisati programsko opremo, imenovano
+aplikacija. Vse, kar za to potrebujemo, je Android SDK in prevajalnik Java.
+
+
+\section{Android}
+\label{sec:android}
+Android je odprtokodni sistem za pametne telefone, ki ga je leta 2007 izdelal
+Open Handset Alliance pod vodstvom podjetja Google. Projekt se imenuje
+AOSP~\footnote{Celotno ime je Android Open Source Project} in se še danes zelo
+hitro razvija.
+
+Temelji na jedru Linux, najbolj bistven del arhitekture pa je navidezni stroj
+(\textit{angl. virtual machine}). Bolj podrobna zgradba sistema je prikazana
+na sliki~\ref{picAndroid}. Navidezni stroj, imenovan Dalvik,
+vsebuje prevajalnik JIT, ki je zadolžen za zaganjanje že prevedene programske
+kode v javi. Prevedena koda je zapakirana v datoteke s končnico .apk. Tem
+datotekam pravimo aplikacije, izdelane za sistem Android.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{android}
+    \caption{Struktura operacijskega sistema Android~\cite{wiki:Android}}
+    \label{picAndroid}
+\end{figure}
+
+Za izdelavo aplikacije Android potrebujemo znanje programskega jezika Java,
+Android SDK, ki je brezplačno na voljo na uradni spletni
+strani\footnote{Uradna spletna stran je dostopna na {\tt
+http://developer.android.com/}}. Priporočljivo je tudi branje dokumentacije
+SDK, ki je na voljo na spletu\footnote{Dokumentacija SDK je dostopna na {\tt
+http://developer.android.com/sdk/}}. Dokumentacija je napisana zelo
+razumljivo, tako da se lahko znajdejo tudi začetniki. S pomočjo Android SDK na
+koncu nastane datoteka .apk.
+
+
+\chapter{Nadgradnja: Zaznavanje obrazov}
+\label{ch:zaznavanjeObrazov}
+Eden od pomembnih funkcionalnih elementov v instalaciji je avtomatska
+detekcija  obrazov na slikah. V prvotni verziji instalacije je bila detekcija
+obrazov izvedena s pomočjo barve kože~\cite{mirage03,kovac2003illumination}, od takrat pa je razvoj
+na področju računalniškega vida prinesel veliko novosti in boljših metod.
+
+Operacijski sistem Android nam preko vmesnika JNI omogoča vklju\-če\-va\-nje
+kode, napisane v programskem jeziku C ali C++. Posledično lahko uporabljamo splošne knjižnice in
+programska ogrodja (\textit{angl. framework}).
+
+Ker smo v naši nadgradnji želeli, da bi se obrazi zaznavali v realnem času,
+smo se odločili za uporabo programskega ogrodja OpenCV.
+
+
+\section{Zaznavanje obrazov z uporabo OpenCV}
+\label{sec:zaznavanjeObrazovOpenCV}
+OpenCV je programsko ogrodje, ki nam omogoča izvedbo raznih operacij,
+izvedenih nad slikami. Napisano je v programskem jeziku C, za potrebe
+operacijskega sistema Android pa so napisani tudi povezovalni javanski razredi
+(\textit{angl. class}), ki nam omogočajo uporabo operacij OpenCV kar v
+programskem jeziku Java.
+
+Najpomembnejša funkcionalnost programskega ogrodja OpenCV za nas je bila
+implementacija zaznavanja obrazov. Ta uporablja algoritem kaskadnega
+klasificiranja (\textit{angl. cascade classifier}), ki nam omogoča
+klasifikacijo različnih lastnosti.
+
+Lastnosti so zapisane v datoteki XML. Ta datoteka vsebuje več sto ali tisoč
+različnih lastnosti, ki opisujejo določen predmet, v našem primeru obliko obraza.
+
+Obstaja več različnih tipov, preko katerih so te lastnosti opisane. Za
+zaznavanje obrazov sta najpomembnejša tipa HAAR in LBP. Tipa se
+razlikujeta po točnosti in hitrosti.
+
+Opisi HAAR so procesorsko bolj potratni in potrebujejo relativno veliko
+časa za prepoznavo obraza, vendar pa je zato veliko manj napačnih detekcij
+(\textit{angl. false positive}).
+
+LBP pa je, čeprav z nekaj več napakami pri klasifikaciji kot HAAR, za
+naše potrebe še vedno dovolj točen. Njegova glavna prednost pred prej
+opisanim je njegova hitrost, kar je pri detekciji obrazov v živo zelo
+pomembno, če želimo doseči zadovoljstvo uporabnika.
+
+Ker so si obrazi med seboj zelo različni, je nemogoče, da bi bil najden prav
+vsak obraz, vseeno pa želimo, da je število zgrešenih obrazov čim manjše.
+Vendar pa zgrešen obraz ni največja težava, saj uporabnik tega najbrž ne bi
+opazil. Veliko bolj neprijetna težava je, če najdemo obraz tam, kjer ga ni, na
+primer nek predmet v okolici, ki ga zaznamo in obdelamo kot obraz.
+
+Testirali smo oba tipa z različnimi tipi lastnosti. Pri tem smo uporabili le
+lastnosti, ki opisujejo sprednji del obraza. Vendar pa se je pri uporabi
+opisov LBP še vedno pokazalo preveč lažnih obrazov. Zato smo se odločili
+za uporabo lastnosti tipa HAAR. Veliko bolj se nam namreč zdi pomembno, da
+ima petnajst sekund slave obraz uporabnika, in ne kakšen predmet v okolici, pa
+čeprav je za to potrebno nekoliko več časa.
+
+Vendar pa tudi opisi obrazov tipa HAAR niso vedno dosegli našega
+pri\-ča\-ko\-va\-nja. Zato smo se odločili, da naredimo dvojno klasifikacijo.
+
+Najprej smo klasificirali z lastnostmi sprednjega dela obraza, opisanimi v
+datoteki \textit{harrcascade\_frontalface\_default.xml}~\ref{lst:haar_frontal_face},
+s katerimi smo dobili rezultate obrazov. Ker se je že za samo klasifikacijo
+obraza porabilo kar nekaj časa, smo se odločili, da iskanje prekinemo takoj po
+najdenem prvem obrazu, ki je velik vsaj eno desetino celotne slike.
+
+\begin{lstlisting}[label=lst:haar_frontal_face, caption=Izsek iz datoteke harrcascade\_frontalface\_default.xml]
+<maxWeakCount>9</maxWeakCount>
+<stageThreshold>-5.0425500869750977e+00</stageThreshold>
+<weakClassifiers>
+  <_>
+    <internalNodes>
+      0 -1 0 -3.1511999666690826e-02
+    </internalNodes>
+    <leafValues>
+      2.0875380039215088e+00 -2.2172100543975830e+00
+    </leafValues>
+  </_>
+  <_>
+    <internalNodes>
+      0 -1 1 1.2396000325679779e-02
+    </internalNodes>
+    <leafValues>
+      -1.8633940219879150e+00 1.3272049427032471e+00
+    </leafValues>
+  </_>
+  ...
+\end{lstlisting}
+
+Kandidata obraza smo testirali še s klasifikacijo očesa. Vsak obraz ima dve
+očesi. Zavedali smo se, da v primeru očal tega ne bomo našli, vendar pa se je
+izkazalo, da težave nastopijo le pri zasenčenih očalih. Za to klasifikacijo smo
+uporabili lastnosti, zapisane v datoteki \textit{harrcascade\_eye.xml}~\ref{lst:haar_eye}.
+V primeru, da smo našli točno dva rezultata, smo vrnili prejšnji rezultat,
+v nasprotnem primeru pa javili, da obraz ni najden.
+
+\begin{lstlisting}[label=lst:haar_eye, caption=Izsek iz datoteke harrcascade\_eye.xml]
+<maxWeakCount>6</maxWeakCount>
+<stageThreshold>-1.4562760591506958e+00</stageThreshold>
+<weakClassifiers>
+  <_>
+    <internalNodes>
+      0 -1 0 1.2963959574699402e-01
+    </internalNodes>
+    <leafValues>
+      -7.7304208278656006e-01 6.8350148200988770e-01
+    </leafValues>
+  </_>
+  <_>
+    <internalNodes>
+      0 -1 1 -4.6326808631420135e-02
+    </internalNodes>
+    <leafValues>
+      5.7352751493453979e-01 -4.9097689986228943e-01
+    </leafValues>
+  </_>
+  ...
+\end{lstlisting}
+
+S temi nastavitvami in omejitvami smo dosegli pričakovane rezultate. Polje z
+najdenim rezultatom smo povečali še za približno eno tretjino, tako da je
+končni produkt zajemal nekoliko večji predel osnovne slike in je bil kvadratne
+oblike. Zakaj ravno eno tretjino? Iskali smo prednji del obraza in ga tudi
+našli. Vendar si v okvirju želimo videti sliko celotne glave in ne samo
+obraza. Povečava polja za eno tretjino se je izkazala kot ravno pravšnja za
+večino testiranih primerov.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{lena_opencv_face}
+        \caption{Zaznavanje obraza}
+        \label{fig:lena_opencv_face}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{lena_opencv_face_eye}
+        \caption{Zaznavanje oči}
+        \label{fig:lena_opencv_face_eye}
+    \end{subfigure}
+    \caption{Prikaz zaznavanja obraza in oči s programskim ogrodjem OpenCV}
+\end{figure}
+
+Detekcija obrazov s programskim ogrodjem OpenCV je le ena izmed možnosti, ki
+smo si jih podrobneje ogledali. Kot prva implementacija je bila izbrana zaradi
+velike stopnje nadzora nad vsakim korakom, kot so: detekcija obraza,
+prikazana kot zelen pravokotnik okrog obraza na
+sliki~\ref{fig:lena_opencv_face}; določitev regije, kjer je potrebno iskati;
+detekcija oči v določeni regiji, prikazana kot dva modra kroga okrog oči
+na sliki~\ref{fig:lena_opencv_face_eye} in še bi lahko naštevali.
+
+Kljub zadovoljivim rezultatom iskanja obrazov se je izkazalo, da slike
+velikokrat niso ostre. Prej smo omenili, da imamo veliko nadzora nad
+različnimi algoritmi za detekcijo, kar pa ne vključuje uporabe kamere, ki je v
+pametnem telefonu. OpenCV uporablja sliko iz kamere tako, kot je, brez
+predhodne izostritve. Povedano z drugimi besedami, uporablja jo kot kamero in
+ne kot digitalni fotoaparat.
+
+
+\section{Zaznavanje obrazov z uporabo Android SDK}
+\label{sec:zaznavanjeObrazovAndroidSDK}
+Android SDK deluje povsem drugače kot OpenCV. Ne omogoča nobenega nazdora in
+parametrov, možna je uporaba le vnaprej določenega algoritma.
+
+Ta algoritem temelji na algoritmu NV1-NORM~\cite{nevenFaceRecognition}, ki ga
+je razvilo podjetje Neven Vision~\ref{fig:neven_vision}. Leta 2006 je Neven
+Vision postalo last podjetja Google in od takrat se uporablja za zaznavo
+obrazov v mnogih programih, ki jih je izdelalo podjetje Google. Lep  primer je
+program za prikaz slik Google Picasa.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.3\textwidth]{neven_vision}
+    \caption{Vizualizacija zaznavanja obraza, Neven Vision}
+    \label{fig:neven_vision}
+\end{figure}
+
+Natančnejša implementacija algoritma za zaznavo obraza je zaprtokodna. Če si
+ogledamo dokumentacijo Android SDK-ja, je opisan samo primer uporabe:
+\begin{lstlisting}[caption="Primer uporabe zaznavanja obraza z orodjem Android SDK"]
+FaceDetector fc = new FaceDetector(
+    sirina_slike,
+    visina_slike,
+    maksimalno_stevilo_obrazov
+).findFaces(slika, obrazi);
+\end{lstlisting}
+
+Vendar pa kljub zaprtosti in nezmožnosti prilagajanja detektorja prinaša zelo
+dobre rezultate. Ker so vse funkcije že vključene v operacijski sistem, tudi
+ne potrebujemo dodatnih programskih ogrodij. S tem smo si prihranili kar nekaj
+časa in prostora.
+
+Rezultat zaznavanja obraza pa tokrat ni obraz sam. Kot rezultat dobimo
+razdaljo med očmi, rotacijo obraza ter točko med očmi. Na podlagi teh podatkov
+lahko določimo regijo, na kateri je obraz na sliki.
+
+Testirali smo razlike med rezultati obeh algoritmov in se na koncu odločili za
+uporabo Android SDK. Kot že opisano, poleg dobrih rezultatov pridobimo še na
+velikosti končne aplikacije in kompleksnosti celotnega programa.
+
+
+\chapter{Nadgradnja: Obdelava slik}
+\label{ch:obdelavaSlik}
+Instalacija ``15 sekund slave'' vsebuje 17 različnih
+filtrov~\cite[Poglavje~5]{thesisSamoJuvan} za predelavo slik obrazov v
+popart portrete. Filtri so bili izdelani s pomočjo grafičnega programa GIMP.
+
+
+\section{GIMP}
+\label{sec:obdelavaSlikGIMP}
+GIMP je odprtokodno programsko orodje za obdelavo slik.
+
+
+Začetek projekta sega v leto 1995, kjer se je vse skupaj začelo kot
+semestrski projekt na Univerzi Kalifornije, Berkeley. Avtorja Spencer Kimball
+in Peter Mattis sta projekt poimenovala \textit{angl. General Image
+Manipulation Program}, čez nekaj časa pa sta si premislila in Richarda
+Stallmana, ki je ravno takrat obiskal univerzo, prosila, če lahko spremenita
+``General'' v ``GNU''. Od takrat naprej se program imenuje
+\textit{angl. GNU Image Manipulation Program} ali na kratko še vedno
+GIMP~\cite{wiki:GIMP}.
+
+
+\section{Izbira filtrov}
+Že naša prvotna izbira filtrov je izhajala iz programskega orodja za predelavo
+slik GIMP. Zaradi lažjega dela se je najprej s pomočjo grafičnega vmesnika
+izbralo zaporedje različnih filtrov in njihove parametre. Izbrani so bili
+naslednji filtri:
+\begin{itemize}
+    \item \textbf{uravnovešanje barv} \textit{angl. color balance} \hfill \\
+        Prekrije celotno sliko z barvo v izbranem odtenku.
+    \item \textbf{posteriziranje} \textit{angl. posterize} \hfill \\
+        Zmanjšuje število barv na sliki.
+    \item \textbf{uravnovešanje barv v prostoru HSL} \textit{angl. hue saturation balance} \hfill \\
+        Spreminja odtenek, svetlost in nasičenost barv na sliki.
+\end{itemize}
+
+Iz teh treh filtrov je bilo narejenih mnogo kombinacij, v končni fazi pa
+izbranih le 17 tistih, ki so bile najprimernejše. Ostale so bile izločene, ker
+rezultati niso bili dovolj dobri, pri nekaterih pa je bila prevelika časovna
+zahtevnost~\cite{thesisSamoJuvan}.
+
+
+\section{Implementacija filtrov}
+Ker je GIMP odprtokoden, smo imeli dostop tudi do implementacij filtrov.
+Te so napisane v programskem jeziku C -- na prvi pogled kot
+nalašč za enostaven prenos na platformo Android preko JNI. Vendar pa so se
+pokazale težave, saj so bili filtri močno povezani z GIMP-objekti in nekoliko
+bolj kompleksni, kot bi bilo potrebno za naš projekt. Zato smo se odločili, da
+filtre ponovno implementiramo in zavržemo vse funkcionalnosti, ki za nas niso
+pomembne. Naredili smo tri različne implementacije in jih med seboj primerjali.
+
+Prva implementacija je napisana v programskem jeziku Java. Izkazala se je za
+zelo počasno. Orodje za sproščanje pomnilnika GC \textit{(angl. garbage
+collector)} se je klicalo prepogosto, kar je posledično porabilo več kot nekaj
+sekund za filter. Tega si nismo mogli privoščiti, zato smo iskali alternative.
+
+Naslednja implementacija je napisana s pomočjo grafične kartice, in sicer z
+ogrodjem OpenGL ES verzije 2.0. Čas izvajanja se je občutno
+zmanjšal. Ko so bile teksture zapisane na grafični kartici, so se filtri
+izvajali v manj kot sekundi. Ta rešitev je bila že dovolj dobra, vendar pa se
+nam je zdelo, da je uporaba grafične kartice za tako lahke operacije potrata
+energije.
+
+Čeprav so bili rezultati že dovolj dobri, smo se odločili še za implementacijo
+v programskem jeziku C. Rezultati so pokazali, da je ta rešitev nekoliko
+počasnejša kot prejšnja, vendar pa za to nismo potrebovali grafične kartice na
+telefonu. Porabljen čas je bil manj kot sekundo za filter.
+
+
+\subsection{Barvni prostor}
+Ko govorimo o filtrih, govorimo predvsem o spreminjanju barv. Tukaj se pojavi
+vprašanje: kako te barve matematično zapisati? Poznamo več barvnih
+prostorov, s katerimi lahko določeni barvi priredimo določeno številko.
+
+
+\subsubsection*{Barvni prostor RGB}
+Najbolj znan in osnoven barvni prostor je RGB. Sestavljen je iz treh
+osnovnih barv, to so rdeča (R), zelena (G) in modra (B). Vsaka barva se lahko
+pojavi v 256 odtenkih, kar na koncu znaša $16777216$ barv ($256^3$).
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{rgb}
+    \caption{Grafični prikaz barvnega prostora RGB}
+    \label{fig:rgb}
+\end{figure}
+
+
+\subsubsection*{Barvni prostor HSL}
+Drugi, malo manj znan, je barvni prostor HSL. Sestavljen je iz treh
+komponent: barvni odtenek (H), intenzivnost (S) in svetlost (L). Če primerjamo
+sliki~\ref{fig:rgb}~in~\ref{fig:hsl}, vidimo, da HSL nima treh enakih
+komponent, ampak je zgrajen v obliki valja. Barvni odtenek je zapisan s
+kotom, in sicer pri 0$^{\circ}$ se začne rdeča, pri 120$^{\circ}$ zelena in pri
+240$^{\circ}$ modra. Drugi dve komponenti, nasičenost in svetlost, sta
+zapisani z odstotki, in sicer od 0\% do 100\%.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{hsl}
+    \caption{Grafični prikaz barvnega prostora HSL}
+    \label{fig:hsl}
+\end{figure}
+
+Obstaja še veliko barvnih prostorov, vendar sta za našo instalacijo 
+zadostovala ta dva. Pomembno pri barvnih modelih je tudi to, da so enostavno
+preračunljivi iz enega prostora v drugega.
+
+
+\subsection{Pretvorba iz barvnega modela RGB v HSL}
+\label{sec:hslconvert}
+
 \begin{align}
-n+1 &< 2^n + 1  \label{eq:2}\\
-    &\le 2^n + 2^n \label{eq:3}\\
-    &= 2^{n+1} \nonumber
+R, G, B &\in [0,255] \nonumber \\
+Cmax &= max(R, G, B) \\
+Cmin &= min(R, G, B) \\
+\Delta &= (Cmax - Cmin)
 \end{align}
-Neenakost~\eqref{eq:2} je posledica indukcijske predpostavke, neenakost~\eqref{eq:3} pa enostavno dejstvo, da je za vsako naravno število $n$ izraz $2^n$ vsaj tako velik kot 1. S tem je dokaz Izreka~\ref{iz:1} zaključen.
-\end{dokaz}
 
-Opazimo, da je \LaTeX\ številko izreka podredil številki poglavja.
-
-
-
-%----------------------------------------------------------------
-% Poglavje 2
-%----------------------------------------------------------------
-\chapter{Plovke: slike in tabele}
-\label{ch:plovke}
-
-Slike in daljše tabele praviloma vključujemo v dokument kot plovke. Pozicija plovke v končnem izdelku ni pogojena s tekom besedila, temveč z izgledom strani. \LaTeX\ bo skušal plovko postaviti samostojno, praviloma na vrh strani, na kateri se na takšno plovko prvič sklicujemo. Pri tem pa bo na vsako stran končnega izdelka želel postaviti tudi sorazmerno velik del besedila. V skrajnem primeru, če imamo res preveč plovk, se bo odločil za stran popolnoma zapolnjeno s plovkami.
-
-\section{Formati slik}
-Bitne slike, vektorske slike, kakršnekoli slike, z \LaTeX{}om lahko vključimo vse.
-Slika~\ref{pic1} je v {\tt .pdf} formatu.
-\begin{figure}
-    \begin{center}
-        \includegraphics[width=10cm]{pic1.pdf}
-    \end{center}
-\caption{Herschelov graf, vektorska grafika.}
-\label{pic1}
-\end{figure}
-Pa res lahko vključimo slike katerihkoli formatov? Žal ne. Programski paket \LaTeX\ lahko uporabljamo v več dialektih. Ukaz {\tt latex} ne mara vključenih slik v formatu Portable Document Format {\tt .pdf}, ukaz {\tt pdflatex} pa ne prebavi slik v Encapsulated Postscript Formatu {\tt .eps}.
-Strnjeno v Tabeli~\ref{tbl:1}.
-
-\begin{table}
-\caption{}
-    \begin{center}
-        \begin{tabular}{l|ccc}
-            ukaz/format & {\tt .pdf} & {\tt .eps} & ostali formati \\ \hline
-                        {\tt pdflatex} & da & ne & da \\
-                        {\tt latex}   & ne & da  & da
-        \end{tabular}
-    \end{center}
-\label{tbl:1}
-\end{table}
-
-Nasvet? Odločite se za uporabo ukaza {\tt pdflatex}. Vaš izdelek bo brez vmesnih stopenj na voljo v {.pdf} formatu in ga lahko odnesete v vsako tiskarno. Če morate na vsak način vključiti sliko, ki jo imate v {\tt .eps} formatu, jo vnaprej pretvorite v alternativni format, denimo {\tt .pdf}.
-
-Včasih se da v okolju za uporabo programskega paketa \LaTeX\ nastaviti na kakšen način bomo prebavljali vhodne dokumente. Spustni meni na Sliki~\ref{pic2} odkriva uporabo \LaTeX{}a v njegovi pdf inkarnaciji --- {\tt pdflatex}.
-\begin{figure}
-\begin{center}
-\includegraphics[width=10cm]{pic2.png}
-\end{center}
-\caption{Kateri dialekt uporabljati?}
-\label{pic2}
-\end{figure}
-Vključena Slika~\ref{pic2} je seveda bitna.
-
-
-
-%----------------------------------------------------------------
-% Poglavje 3
-%----------------------------------------------------------------
-\chapter{Razno}
-\label{ch:razno}
-
-Primer sklicevanja na literaturo v datoteki {\tt bibliography.bib}. Scale-Invariant Feature Transform (SIFT)~\cite{Lowe}. In kako se sklicujem na več referenc hkrati? Takole:~\cite{Fortnow,Knuth,Lamport,licence}. V~\cite{ubi} pa najdemo podrobnejši opis ter primere uporabe \BibTeX{}a.
-
-\section{Notacije}
-\label{sec:notacije}
-
-Za notacijo spremenljivk ter skalarjev uporabimo običajno notacijo, t.j., spremenljivka $x$ in skalar $a$. Pri notaciji matrik ter vektorjev pa se poslužujemo krepega fonta. Torej, matrika $\boldsymbol{A}$ ter vektor $\boldsymbol{v}$,
 \begin{equation}
-\boldsymbol{A} = \begin{bmatrix}
-       a_{11} & a_{12} & \dots & a_{1q}  \\
-       a_{21} & a_{22} & \dots & a_{2q}  \\
-       \vdots  \\
-       a_{p1} & a_{p2} & \dots & a_{pq}  \\
-     \end{bmatrix}, \quad
-     \boldsymbol{v} = \begin{bmatrix}
-       x_1  \\
-       x_2  \\
-       \vdots  \\
-       x_q  \\
-     \end{bmatrix}. \nonumber
+L = (max + min) / 2 \label{eq:hsl_l}
 \end{equation}
 
-%----------------------------------------------------------------
-\section{Lepe tabele in psevdokoda}
-\label{sec:psevdokoda}
+\begin{equation}
+S =
+\begin{cases}
+    0 \text{,}& \Delta = 0 \\
+    255 * \Delta / (Cmax + Cmin) \text{,}& L < 128 \\
+    255 * \Delta / (511 - Cmax - Cmin) \text{,}& \text{ostalo}
+\end{cases}
+\end{equation}
 
-Psevdokoda~\ref{alg:primer} prikazuje primer delovanja genetskega algoritma, medtem ko Tabela~\ref{tab:params} prikazuje primer lepe tabele brez vertikalnih črt. V Dodatku~\ref{ch:dodatek} lahko najdemo primer vstavljanja velike tabele ter primer rotacije lista.
+\begin{equation}
+H' =
+\begin{cases}
+    0 \text{,}& \Delta = 0 \\
+    0 + 42.5 * (G - B) / \Delta \text{,}& R = Cmax \\
+    85 + 42.5 * (B - R) / \Delta \text{,}& G = Cmax \\
+    170 + 42.5 * (R - G) / \Delta \text{,}& B = Cmax
+\end{cases}
+\end{equation}
 
-\begin{algorithm}
-\caption{Psevdokoda genetskega algoritma}
-\label{alg:primer}
-\begin{algorithmic}[1]
-\footnotesize
-\STATE $t \gets 0$
-\STATE $InitPopulation[P(t)] \gets$ inicializiraj populacijo
-\STATE $EvalPopulation[P(t)] \gets$ evaluiraj populacijo
-\REPEAT
-\STATE $P'(t) \gets Variation[P(t)] \gets $ generiraj novo populacijo
-\STATE $EvalPopulation[P'(t)] \gets$ evaluiraj novo populacijo
-\STATE $P(t+1) \gets ApplyGeneticOperators[P'(t) \in Q]$
-\STATE $t \gets t+1$
-\UNTIL{prekinitev}
-\IF{rezultat dovolj dober} 
-\STATE shrani rezultat
-\ENDIF
-\end{algorithmic}
-\end{algorithm}
+\begin{equation}
+H =
+\begin{cases}
+    H' + 255 \text{,}& H' < 0 \\
+    H' - 255 \text{,}& H' > 255 \\
+    H' \text{,}& \text{ostalo}
+\end{cases}
+\end{equation}
 
-%---------------------------------------------------------------
-\begin{table}
-\caption{Primer enostavne tabele.}
-\centering
-\scalebox{0.82}{
-\begin{tabular}{c c c}
- \toprule
- Ime & Vrednost & Opis \\
- \midrule
- \textit{ $a$ } & 0.03 &  skalar \\
- \textit{ $x$ } & -1 & spremenljivka \\
- \bottomrule
-\end{tabular}
-}
-\label{tab:params}
-\end{table}
+
+\subsection{Uravnovešanje barv}
+\label{sec:obdelavaSlikUravnovesanjeBarv}
+
+\begin{equation}
+clamp_{min}^{max}(x) =
+\begin{cases}
+    min \text{,}& x < min \\
+    max \text{,}& x > max \\
+    x \text{,}& \text{ostalo}
+\end{cases}
+\end{equation}
+
+\begin{align}
+shadows(x) &= clamp_{0}^{1}(\frac{117 - x}{64}) * 1.785 \\
+color\_balance(x, x') &= clamp_{0}^{255}(x + x' * shadows(x)) \label{eq:color_balance}
+\end{align}
+
+Uravnovešanje barv se računa v barvnem prostoru RGB. Računamo za vsako
+barvo posebej, in sicer z enačbo~\eqref{eq:color_balance}, kjer je $x$ enak
+originalni barvi, $x'$ pa barvi, s katero želimo uravnovesiti originalno barvo
+$x$. $x$ in $x'$ sta pozitivni celi števili med 0 in 255.
+
+Po izračunanih vrednostih dane rezultate iz prostora RGB prenesemo v prostor HSL
+s pomočjo enačb, napisanih v poglavju~\ref{sec:hslconvert}. Tako dobimo $H$,
+$S$ in $L$. Iz originalne vrednosti, to je vrednost barve na sliki,
+izračunamo $L$~\eqref{eq:hsl_l} in ga nadomestimo s prejšnjim, zato da ohranimo
+podobno svetlost. $H$, $S$ in novo pridobljeni $L$ prenesemo nazaj v prostor RGB.
+
+
+\subsection{Posteriziranje}
+\label{sec:obdelavaSlikPosteriziranje}
+
+\begin{equation}
+luts(x, levels) = 255 * \frac{\left \lfloor{\frac{x}{255} * (levels - 1) + 0.5}\right \rfloor}{levels - 1} + 0.5 \label{eq:posterize}
+\end{equation}
+
+Posteriziranje se računa v barvnem prostoru RGB. Računamo za vsako barvo
+posebej, in sicer z enačbo~\eqref{eq:posterize}, kjer je $x$ enak
+originalni barvi, $levels$ pa je stopnja posteriziranja. $x$
+in $levels$ sta pozitivni celi števili med 0 in 255.
+
+
+\subsection{Uravnovešanje barv v prostoru HSL}
+\label{sec:obdelavaSlikUravnovesanjeBarvHSL}
+
+\begin{align}
+htv(x, x') &= x + 255 * \frac{x'}{360} \nonumber \\
+hue\_transfer(x, x') &=
+\begin{cases}
+    htv(x, x') + 255 \text{,}& htv(x, x') < 0 \\
+    htv(x, x') - 255 \text{,}& htv(x, x') > 255 \\
+    htv(x, x') \text{,}& \text{ostalo}
+\end{cases} \label{eq:hue_transfer}
+\end{align}
+
+\begin{align}
+ltv(x, x') &= clamp_{-255}^{255}(1.27 * x') \nonumber \\
+lightness\_transfer(x, x') &=
+\begin{cases}
+    x * \frac{255 + ltv(x, x')}{255} \text{,}& ltv(x, x') < 0 \\
+    x + \frac{(255 - x) * ltv(x, x')}{255} \text{,}& ltv(x, x') \geq 0
+\end{cases} \label{eq:lightness_transfer}
+\end{align}
+
+\begin{align}
+stv(x, x') &= clamp_{-255}^{255}(2.25 * x') \nonumber \\
+saturation\_transfer(x, x') &= clamp_{0}^{255}(x + x * \frac{stv(x, x')}{255}) \label{eq:saturation_transfer}
+\end{align}
+
+Uravnovešanje barv v prostoru HSL se računa v barvnem prostoru HSL. Ker pa so
+prvotno barve zapisane v barvnem prostoru RGB, je potrebno te pretvoriti v
+barvni prostor HSL. To naredimo s pomočjo enačb, napisanih v
+poglavju~\ref{sec:hslconvert}. Tako dobimo $H$, $S$ in $L$.
+
+Zdaj lahko vsako komponento uravnovesimo. Vsaka komponenta se izra\-ču\-na po
+svoji enačbi. Za $H$ uporabimo~\eqref{eq:hue_transfer}, za
+$L$~\eqref{eq:lightness_transfer} in za $S$~\eqref{eq:saturation_transfer}.
+
+Dobljene vrednosti pretvorimo nazaj v prostor RGB, kar je tudi naš rezultat.
+
+
+\subsection{Sestavljanje popart filtrov}
+\label{sec:obdelavaSlikSestavljanjePopArt}
+
+\subsubsection*{Filter 1}
+Prvi filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 30$, $G = -32$ in
+$B = 16$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
+$ST =4$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_1}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_1}
+        \caption{Prvi filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 1}
+    \label{fig:lena_filter_1}
+\end{figure}
+
+
+\subsubsection*{Filter 2}
+Drugi filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = -36$, $G = -37$ in
+$B = 39$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
+$ST = 4$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_2}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_2}
+        \caption{Drugi filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 2}
+    \label{fig:lena_filter_2}
+\end{figure}
+
+
+\subsubsection*{Filter 3}
+Tretji filter vsebuje le osnovni filter ``posteriziranje'', in sicer s parametrom
+$ST = 2$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_3}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_3}
+        \caption{Tretji filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 3}
+    \label{fig:lena_filter_3}
+\end{figure}
+
+
+\subsubsection*{Filter 4}
+Četrti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 100$, $G = -100$ in
+$B = -100$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
+$ST = 3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_4}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_4}
+        \caption{Četrti filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 4}
+    \label{fig:lena_filter_4}
+\end{figure}
+
+
+\subsubsection*{Filter 5}
+Peti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = -100$, $G = -100$ in
+$B = 100$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
+$ST = 3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_5}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_5}
+        \caption{Peti filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 5}
+    \label{fig:lena_filter_5}
+\end{figure}
+
+
+\subsubsection*{Filter 6}
+Šesti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = -100$, $G = 100$ in
+$B = -100$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
+$ST = 3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_6}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_6}
+        \caption{Šesti filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 6}
+    \label{fig:lena_filter_6}
+\end{figure}
+
+
+\subsubsection*{Filter 7}
+Sedmi filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``posteriziranje'', in sicer s parametrom $ST = 5$. Rezultat obdelamo
+še s filtrom ``uravnovešanje barv v prostoru HSL'' s parametri $H = -41$,
+$L = -15$ in $S = 6$. Rezultat testne slike lahko vidimo na
+sliki~\ref{fig:lena_filter_7}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_7}
+        \caption{Sedmi filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 7}
+    \label{fig:lena_filter_7}
+\end{figure}
+
+
+\subsubsection*{Filter 8}
+Osmi filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``posteriziranje'', in sicer s parametrom $ST = 6$. Rezultat obdelamo
+še s filtrom ``uravnovešanje barv'' s parametri $R = -29$, $G = 40$ in $B = 100$.
+Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_8}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_8}
+        \caption{Osmi filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 8}
+    \label{fig:lena_filter_8}
+\end{figure}
+
+
+\subsubsection*{Filter 9}
+Deveti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv v prostoru HSL'', in sicer s parametri $H = -41$,
+$L = -20$ in $S = 25$. Rezultat obdelamo še s filtrom ``posteriziranje'' s
+parametrom $ST = 4$. Rezultat testne slike lahko vidimo na
+sliki~\ref{fig:lena_filter_9}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_9}
+        \caption{Deveti filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 9}
+    \label{fig:lena_filter_9}
+\end{figure}
+
+
+\subsubsection*{Filter 10}
+Deseti filter je sestavljen iz treh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 100$, $G = -100$ in
+$B = -100$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
+$ST= 3$ in nazadnje še s filtrom ``uravnovešanje barv v prostoru HSL'' s
+parametri $H = -41$, $L = -10$ in $S = 20$. Rezultat testne slike lahko
+vidimo na sliki~\ref{fig:lena_filter_10}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_10}
+        \caption{Deseti filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 10}
+    \label{fig:lena_filter_10}
+\end{figure}
+
+
+\subsubsection*{Filter 11}
+Enajsti filter je sestavljen iz treh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 34$, $G = -38$ in
+$B = 24$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
+$ST= 4$ in nazadnje še s filtrom ``uravnovešanje barv v prostoru HSL'' s
+parametri $H = -65$, $L = 0$ in $S = 0$. Rezultat testne slike lahko
+vidimo na sliki~\ref{fig:lena_filter_11}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_11}
+        \caption{Enajsti filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 11}
+    \label{fig:lena_filter_11}
+\end{figure}
+
+
+\subsubsection*{Filter 12}
+Dvanajsti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 40$, $G = -40$ in
+$B = 28$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
+$ST= 4$ in nazadnje še enkrat s filtrom ``uravnovešanje barv'', vendar s
+parametri $R = -100$, $G = -42$ in $B = 100$. Rezultat testne slike lahko
+vidimo na sliki~\ref{fig:lena_filter_12}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_12}
+        \caption{Dvanajsti filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 12}
+    \label{fig:lena_filter_12}
+\end{figure}
+
+
+\subsubsection*{Filter 13}
+Trinajsti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 45$, $G = -45$ in
+$B = 35$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
+$ST =4$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_13}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_13}
+        \caption{Trinajsti filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 13}
+    \label{fig:lena_filter_13}
+\end{figure}
+
+
+\subsubsection*{Filter 14}
+Štirinajsti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = -45$, $G = -55$ in
+$B = 30$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
+$ST =4$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_14}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_14}
+        \caption{Štirinajsti filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 14}
+    \label{fig:lena_filter_14}
+\end{figure}
+
+
+\subsubsection*{Filter 15}
+Petnajsti filter vsebuje le osnovni filter ``posteriziranje'', in sicer s parametrom
+$ST = 3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_15}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_15}
+        \caption{Petnajsti filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 15}
+    \label{fig:lena_filter_15}
+\end{figure}
+
+
+\subsubsection*{Filter 16}
+Šestnajsti filter je sestavljen iz dveh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 30$, $G = -40$ in
+$B = 16$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
+$ST =3$. Rezultat testne slike lahko vidimo na sliki~\ref{fig:lena_filter_16}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_16}
+        \caption{Šestnajsti filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 16}
+    \label{fig:lena_filter_16}
+\end{figure}
+
+
+\subsubsection*{Filter 17}
+Sedemnajsti filter je sestavljen iz treh osnovnih filtrov. Najprej sliko obdelamo s
+filtrom ``uravnovešanje barv'', in sicer s parametri $R = 20$, $G = -30$ in
+$B = 20$. Rezultat obdelamo še s filtrom ``posteriziranje'' s parametrom
+$ST= 4$ in nazadnje še s filtrom ``uravnovešanje barv v prostoru HSL'' s
+parametri $H = -30$, $L = -10$ in $S = 12$. Rezultat testne slike lahko
+vidimo na sliki~\ref{fig:lena_filter_17}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena}
+        \caption{Original}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{lena_filter_17}
+        \caption{Sedemnajsti filter}
+    \end{subfigure}
+    \caption{Primerjava originalne slike s sliko, obdelano s filtrom št. 17}
+    \label{fig:lena_filter_17}
+\end{figure}
+
+
+\chapter{Nove funkcionalne možnosti}
+\label{ch:novosti}
+Do sedaj smo originalno instalacijo ``15 sekund slave'' predelovali na način,
+da jo ohranjamo kot digitalno umetnost, se pravi brez vidnih sprememb. Vendar
+pa kakšna manjša po tako dolgem času lahko uporabniško izkušnjo le popestri.
+
+Najpomembnejša posodobitev, ki bi to umetniško instalacijo naredila veliko
+bolj popularno, je integracija s socialnimi omrežji, kar je podrobneje opisano
+v~\ref{ch:socialNetwork}. poglavju. Dandanes se za izmenjavo slikovnih
+informacij uporabljajo predvsem socialna omrežja, ki pred 10 leti sploh še
+niso obstajala.
+
+
+\section{Dve sliki}
+Naslednja posodobitev, ki prvotno niti ni bila v načrtu, je zamenjava zaslona
+LCD. Ta posodobitev se je izvedla zaradi nezdružljivosti mobilnega telefona
+s starim zaslonom LCD. Zopet se je pojavil problem, omenjen
+v~\refPoglavju{ch:ohranjanjeDigitalneUmetnosti}; težko je nadgraditi le eno
+komponento, saj obstaja možnost, da ni združljiva z ostalo opremo. Ker stari
+zaslon nima priključka HDMI, smo poskusili s pretvornikom HDMI v DVI, a brez
+uspeha. Isti pretvornik smo poskusili uporabiti na novejšem zaslonu. Tu je bil
+prenos slike s telefona na zaslon uspešen.
+
+Večina današnjih zaslonov LCD je formata 16:9 ali pa še več v širino, starega
+formata 4:3 skorajda ni več. Naš cilj pa je kvadratna slika, saj je tudi sam
+Andy Warhol uporabljal tak format, zato smo najprej želeli najti čim bolj
+kvadraten zaslon. Vendar pa se je kmalu rodila ideja o še širšem zaslonu,
+takem, pri katerem je širina malo več kot enkrat daljša od višine, kot je
+prikazano na sliki~\ref{fig:frame2}. S tem smo omogočili možnost prikazovanja
+dveh slik vzporedno -- kot da bi naenkrat imeli razstavljeni dve različici
+istega portreta. Na podoben način je svoje popart portrete razstavljal tudi
+Andy Warhol. Seveda ima vsaka slika drug obraz, če le-ta obstaja.
+
+Zaradi prejšnjega razloga o zamenjavi zaslona je bilo potrebno zamenjati tudi
+okvir. Kot že pri prejšnji posodobitvi okvirja bo tudi tokrat ostal bogato
+okrašen, le na sredini bo združen, kot je prikazano na sliki~\ref{fig:frame2}.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{0.33\textwidth}
+        \includegraphics[width=\textwidth]{frame1}
+        \caption{Originalni okvir}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.6\textwidth}
+        \includegraphics[width=\textwidth]{frame2}
+        \caption{Novi razširjeni okvir}
+        \label{fig:frame2}
+    \end{subfigure}
+    \caption{Prikaz razširitve okvirja zaradi menjave širšega zaslona LCD}
+\end{figure}
+
+
+\section{Obraz kot mozaik iz majhnih obrazov}
+Prvotna instalacija ``15 sekund slave'' me je najbolj prepričala s sliko
+Marilyn Monroe~\ref{fig:15sec-marilyn}, ki je sestavljena iz več
+obrazov~\cite{katalog_solina}, da izgleda kot mozaik~\cite{thesisSasoStulac}.
+Ker tukaj nimamo tako velike baze obrazov, smo vse skupaj malo poenostavili in
+uporabili kar iste obraze, vendar obdelane z drugimi filtri. Da pa je bila
+slika od daleč razločna, smo obrazu, ki je prikazan kot ``piksel'', prilili
+originalno barvo\footnote{Prejšnji končni rezultat instalacije obraza smo
+spremenili v sliko velikosti \textit{širina $*$ višina $=$ novo število
+obrazov}.}. Ta slika (primer lahko vidimo na sliki~\ref{fig:FoF-marilyn}) je
+končni prikaz naše nove instalacije.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{FoF-marilyn}
+    \caption{Prikaz 1000 slik Lene, prikazanih na podoben način kot slika~\ref{fig:15sec-marilyn}.}
+    \label{fig:FoF-marilyn}
+\end{figure}
+
+
+\chapter{Povezovanje s socialnimi omrežji}
+\label{ch:socialNetwork}
+Ena izmed pomembnejših posodobitev je povezava s socialnimi omrežji, ki so
+vsak dan bolj popularna. Vsak dan se na različnih socialnih omrežjih doda na
+tisoče ``selfijev''\footnote{Slika, ko oseba fotografira
+samo sebe pri različnih dejavnostih.}. Da pa ta ``selfi'' še bolj pade v
+oči, se jim lahko doda kakšen vnaprej določen filter. Ti so pri pametnih
+telefonih, ki so danes ena izmed najpogostejših naprav za fotografiranje
+``selfijev'', na voljo samo en dotik stran. Obstajajo pa tudi socialna
+omrežja, ki ponujajo osnovne filtre že pri nalaganju slike.
+
+Naša instalacija se lahko interpretira kot generator ``selfijev''. Oseba, ki
+stoji pred instalacijo, ve, da bo kmalu njenih petnajst sekund. Pred njo se bo
+pokazala popart slika, ki je njen umetniški ``selfi'', in če želi, je ta
+popart slika lahko kmalu javno objavljena na enem izmed socialnih omrežij; lahko
+se na primer dotakne ikone in tako odloči, da se njen portret prenese na želeno
+socialno omrežje.
+
+%TODO: poglej ce je potrebno
+\pagebreak
+
+
+\section{Možnosti}
+Najpogosteje so uporabljena naslednja socialna omrežja:
+\begin{description}
+\item[Facebook]
+Trenutno najbolj razširjeno socialno omrežje, ki ga uporabljajo vse
+generacije.
+
+\item[Twitter]
+Socialno omrežje, najbolj namenjeno kratkim sporočilom, imenovanim ``tviti''.
+
+\item[Instagram]
+Socialno omrežje, predvsem namenjeno nalaganju slik. Omo\-go\-ča tudi veliko
+število filtrov za obdelavo le-teh.
+
+\item[Google+]
+Alternativa socialnemu omrežju Facebook podjetja Google.
+
+\item[Pinterest]
+Socialno omrežje, predvsem namenjeno ustvarjalnostim, ki so prikazane v obliki
+slik.
+
+\item[SnapChat]
+Aplikacija, ki omogoča pošiljanje slik, ki so vidne le nekaj sekund. Po
+pretečenem času, to je maksimalno deset sekund~\cite{wiki:SnapChat}, slika ni
+več na voljo.
+\end{description}
+
+
+\section{Implementacija s socialnim omrežjem Facebook}
+Skoraj vsa socialna omrežja imajo omogočene javne API-je in Facebook ni nobena
+izjema. Preko vmesnika API, imenovanega Graph, lahko programsko naredimo
+večino akcij, ki so na voljo uporabniku preko spletnega brskalnika.
+
+Da pa je poskrbljeno za varnost in zasebnost, je za dovoljenje uporabe Graph
+API-ja potrebno narediti novo aplikacijo (\textit{angl. app}). Tu določimo,
+katere pravice želimo naši aplikaciji dodeliti. Več pravic kot bomo
+zahtevali, manj zaupanja vredna bo naša aplikacija, če ni uporabniku očitno,
+zakaj aplikacija te pravice potrebuje. Zato je priporočljivo, da se zahtevajo
+le pravice, ki jih nujno potrebujemo za delovanje naše aplikacije. V našem
+primeru potrebujemo pravico, da lahko pišemo in objavljamo slike na zid
+uporabnika.
+
+Ko aplikacijo pripravimo, jo morajo uslužbenci pri podjetju Facebook
+potrditi. To je varnostni postopek, brez katerega naše aplikacije ne
+moremo javno uporabljati.
+
+Ko je aplikacija narejena in potrjena, dobimo poseben ključ, ki je potreben za
+povezavo z Graph API-jem. Graph API lahko uporabljamo na več načinov.
+Najbolj osnoven je preko protokola HTTP, a je hkrati najbolj zahteven za
+implementacijo. Drugi način je preko knjižnice, prilagojene za naprave
+Android. S to knjižnico lahko na enostaven način opravimo vse osnovne akcije,
+kot sta prijava v sistem in objavljanje slike.
+
+
+\section{Omejitve}
+Ena izmed največjih nevarnosti uporabe socialnih omrežij je nenadzorovano
+pošiljanje slik na socialno omrežje. Na slikah so lahko osebe, ki si ne želijo
+biti objavljene na socialnem omrežju, saj je javno. Še več, na slikah so lahko
+otroci, katerih objavljanje slik na socialnem omrežju je brez dovoljenja
+staršev prepovedano. Res je, da smo želeli slike izbrisati petnajst sekund po
+objavi, vendar pa večina socialnih omrežjih te slike še vedno hrani, čeprav
+jih ne vidimo več. In če se podamo še v najhujšo skrajnost, nekdo bi lahko
+napisal program, ki vse slike shranjuje na nek strežnik, in bi nato z njimi
+razpolagal po svoji volji.
+
+
+\chapter{Sklepne ugotovitve}
+V sklopu magistrske naloge smo posodobili strojno in programsko opremo
+instalacije ``15 sekund slave''. Razvoj novih uporabnih funkcionalnosti nam je
+omogočil, da smo instalaciji dodali tudi nekaj novih možnosti, ki naredijo
+uporabniško izkušnjo še bolj zanimivo.
+
+Digitalni fotoaparat in osebni računalnik smo zamenjali s pametnim telefonom,
+s čimer smo dosegli, da instalacija zavzame manj prostora, saj je uporabljenih
+manj komponent, kot jih je bilo prej, poleg tega pa je omogočeno tudi lažje
+vzdrževanje in odpravljanje morebitnih napak, saj se vse nahaja na eni
+napravi.
+
+S posodobitvijo programske opreme smo omogočili, da instalacija deluje na eni
+napravi in dodali nove funkcionalnosti:
+\begin{itemize}
+    \item povezovanje s socialnimi omrežji, kar je predvsem za mlajše uporabnike zaželena prednost;
+    \item sestavljanje končnega obraza iz več obrazov, ki so obdelani z različnimi filtri;
+    \item posodobitev in optimizacija algoritmov za filtriranje slik;
+    \item posodobitev in optimizacija algoritmov za zaznavanje obrazov.
+\end{itemize}
+
+V prihodnosti obstaja možnost, da se filtri uporabijo tudi v drugih
+aplikacijah, saj so filtri napisani kot knjižnica, uporaba te pa je
+enostavna. Predstavljajmo si aplikacijo, kot je Instagram, ki ima tudi
+možnost popart filtrov, napisanih v tej magistrski nalogi.
+
+Poleg tega bo potrebno redno vzdrževanje instalacije, tako na
+nivoju strojne opreme kot tudi na nivoju programske opreme, saj želimo ostati
+v koraku s časom.
+
+Med izvedbo naloge smo se večkrat soočili z vprašanjem, do kakšne mere
+instalacijo še lahko spreminjamo, da umetnina še vedno ostane ista in ne nekaj
+povsem novega. Na tem področju se je tudi pojavilo največ težav. Čeprav je na
+prvi pogled le enostavna ponovna implementacija že narejene instalacije, pa
+vendar pri umetniškem delu ni vse samo v programu. Zelo veliko pozornosti
+moramo namreč nameniti temu, da umetnina za opazovalca ostane taka, kot je
+bila.
 
 
 
@@ -397,18 +1626,6 @@ Psevdokoda~\ref{alg:primer} prikazuje primer delovanja genetskega algoritma, med
 %----------------------------------------------------------------
 \bibliographystyle{elsarticle-num}
 \bibliography{bibliography}
-
-\begin{comment}
-\begin{thebibliography}{99}
-\bibitem{lf} L.\ Fortnow, ``Viewpoint: Time for computer science to grow up'',
-{\it Communications of the ACM}, št.\ 52, zv.\ 8, str.\ 33--35, 2009.
-\bibitem{dk1} D.\ E.\ Knuth, P. Bendix. ``Simple word problems in universal algebras'', v zborniku: Computational Problems in Abstract Algebra (ur. J. Leech), 1970, str. 263--297.
-\bibitem{lat} L.\ Lamport. {\it LaTEX: A Document Preparation System}. Addison-Wesley, 1986.
-\bibitem{bib} O.\ Patashnik (1998) \BibTeX{}ing.
-Dostopno na: \url{http://ftp.univie.ac.at/packages/tex/biblio/bibtex/contrib/doc/btxdoc.pdf}
-\bibitem{licence} licence-cc.pdf. Dostopno na: \url{https://ucilnica.fri.uni-lj.si/course/view.php?id=274}
-\end{thebibliography}
-\end{comment}
 
 
 
