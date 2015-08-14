@@ -1635,35 +1635,5 @@ bila.
 
 
 
-%----------------------------------------------------------------
-% SLO: priloge
-% ENG: appendix
-%----------------------------------------------------------------
-\appendix
-\chapter{Primer vstavljanja velike tabele}
-\label{ch:dodatek}
-
-\begin{landscape}
-\definecolor{LightGray}{rgb}{0.9412,0.9412,0.9412}
-\newcolumntype{a}{>{\columncolor{LightGray}}c}
-
-\begin{table}[ht]
-\caption{Primer vključevanja večje tabele v \LaTeX{}.}
-\centering
-\scalebox{0.48}{
-\begin{tabular}{l@{\hspace{4em}}  a c a c a c@{\hspace{4em}}    a c a c a c}
-\toprule
- & \multicolumn{6}{c}{$H_{total}$}{\hspace{4em}} & \multicolumn{6}{c}{$H_{\tau_{GHT}}$}\\
- & $\mathcal{B}$ & $\mathcal{B}_\tau$ & $\mathcal{C}^{E}$ & $\mathcal{C}_\tau^{E}$ & $\mathcal{C}^{N}$ & $\mathcal{C}_\tau^{N}$ & $\mathcal{B}$ & $\mathcal{B}_\tau$ & $\mathcal{C}^{E}$ & $\mathcal{C}_\tau^{E}$ & $\mathcal{C}^{N}$ & $\mathcal{C}_\tau^{N}$ \\
-\midrule
-\input{tables/table_1.txt}
-\bottomrule
-\end{tabular}
-}
-\label{tab:tab1}
-\end{table}
-\end{landscape}
-
-
 \backmatter
 \end{document}
