@@ -1,0 +1,9 @@
+pdfa-1b.xmpi
+*.aux
+*.log
+*.bbl
+*.blg
+*.out
+*.pdf
+*.toc
+*.xmpdata
