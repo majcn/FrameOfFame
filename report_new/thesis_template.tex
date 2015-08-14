@@ -694,7 +694,7 @@ s katerimi smo dobili rezultate obrazov. Ker se je že za samo klasifikacijo
 obraza porabilo kar nekaj časa, smo se odločili, da iskanje prekinemo takoj po
 najdenem prvem obrazu, ki je velik vsaj eno desetino celotne slike.
 
-\begin{lstlisting}[style=XML, label=lst:haar_frontal_face, caption=Izsek iz datoteke harrcascade\_frontalface\_default.xml]
+\begin{lstlisting}[style=XML, label=lst:haar_frontal_face, caption=Nekaj vrstic datoteke harrcascade\_frontalface\_default.xml]
 <maxWeakCount>9</maxWeakCount>
 <stageThreshold>-5.0425500869750977e+00</stageThreshold>
 <weakClassifiers>
@@ -724,7 +724,7 @@ uporabili lastnosti, zapisane v datoteki \textit{harrcascade\_eye.xml}~\ref{lst:
 V primeru, da smo našli točno dva rezultata, smo vrnili prejšnji rezultat,
 v nasprotnem primeru pa javili, da obraz ni najden.
 
-\begin{lstlisting}[style=XML, label=lst:haar_eye, caption=Izsek iz datoteke harrcascade\_eye.xml]
+\begin{lstlisting}[style=XML, label=lst:haar_eye, caption=Nekaj vrstic iz datoteke harrcascade\_eye.xml]
 <maxWeakCount>6</maxWeakCount>
 <stageThreshold>-1.4562760591506958e+00</stageThreshold>
 <weakClassifiers>
@@ -810,12 +810,12 @@ program za prikaz slik Google Picasa.
 
 Natančnejša implementacija algoritma za zaznavo obraza je zaprtokodna. Če si
 ogledamo dokumentacijo Android SDK-ja, je opisan samo primer uporabe:
-\begin{lstlisting}[caption="Primer uporabe zaznavanja obraza z orodjem Android SDK"]
-FaceDetector fc = new FaceDetector(
-    sirina_slike,
-    visina_slike,
-    maksimalno_stevilo_obrazov
-).findFaces(slika, obrazi);
+\begin{lstlisting}[style=java, caption=Primer uporabe zaznavanja obraza z orodjem Android SDK]
+  FaceDetector fc = new FaceDetector(
+      sirina_slike,
+      visina_slike,
+      maksimalno_stevilo_obrazov
+  ).findFaces(slika, obrazi);
 \end{lstlisting}
 
 Vendar pa kljub zaprtosti in nezmožnosti prilagajanja detektorja prinaša zelo
@@ -1498,7 +1498,7 @@ končni prikaz naše nove instalacije.
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth]{FoF-marilyn}
-    \caption{Prikaz 1000 slik Lene, prikazanih na podoben način kot slika~\ref{fig:15sec-marilyn}.}
+    \caption{Prikaz 1024 slik Lene, prikazanih na podoben način kot slika~\ref{fig:15sec-marilyn}.}
     \label{fig:FoF-marilyn}
 \end{figure}
 
