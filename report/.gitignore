@@ -1,13 +1,9 @@
-# pdflatex
+*.xmpi
 *.aux
 *.log
-*.out
-*.toc
-*.pdf
-*.synctex.gz
-
-# biblatex
 *.bbl
 *.blg
-*.run.xml
-*-blx.bib
+*.out
+*.pdf
+*.toc
+*.xmpdata
