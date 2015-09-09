@@ -32,8 +32,8 @@
 
 #ifndef MAKE_RGBA
 #define RGBA_A(p) (((p) & 0xFF000000) >> 24)
-#define RGBA_R(p) (((p) & 0x00FF0000) >> 16)
+#define RGBA_B(p) (((p) & 0x00FF0000) >> 16)
 #define RGBA_G(p) (((p) & 0x0000FF00) >>  8)
-#define RGBA_B(p)  ((p) & 0x000000FF)
-#define MAKE_RGBA(r,g,b,a) (((a) << 24) | ((r) << 16) | ((g) << 8) | (b))
+#define RGBA_R(p)  ((p) & 0x000000FF)
+#define MAKE_RGBA(r,g,b,a) (((a) << 24) | ((b) << 16) | ((g) << 8) | (r))
 #endif /* MAKE_RGBA */
