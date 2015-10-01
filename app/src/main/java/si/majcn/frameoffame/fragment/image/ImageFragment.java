@@ -40,17 +40,16 @@ public class ImageFragment extends Fragment {
         View w = inflater.inflate(R.layout.image_frag, container, false);
 
         mGridView = (ImageGridView) w.findViewById(R.id.gridview);
+        mGridView.setNumColumns(NUM_IMAGES);
+        mGridView.setAdapter(getGridViewAdapter());
         return w;
     }
 
     @Override
-    public void onAttach(final Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
 
-        mContext = activity;
-
-        mGridView.setNumColumns(NUM_IMAGES);
-        mGridView.setAdapter(getGridViewAdapter());
+        mContext = context;
     }
 
     @Override
