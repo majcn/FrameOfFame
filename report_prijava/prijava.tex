@@ -1,0 +1,82 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{a4wide}
+\usepackage{fullpage}
+\usepackage[utf8x]{inputenc}
+\usepackage[slovene]{babel}
+\selectlanguage{slovene}
+\usepackage{setspace}
+\usepackage{hyperref}
+
+\usepackage{calc}
+\newlength{\remaining}
+\newcommand{\titleline}[2]{%
+\setlength{\remaining}{\textwidth-\widthof{#2}-\widthof{#1}-0.5cm}
+\noindent #1\underline{\hspace{0.5cm}#2\hspace*{\remaining}}\par}
+\newcommand{\titlelinee}[2]{%
+\setlength{\remaining}{2\textwidth-\widthof{#2}-\widthof{#1}}
+\noindent #1\underline{\hspace{0.5cm}#2\hspace*{\remaining}}\par}
+
+\usepackage{datetime}
+\newdate{PredstavitevDate}{25}{11}{2013}
+
+\begin{document}
+
+\noindent\textbf{Komisija za študijske zadeve} \\
+Fakulteta za računalništvo in informatiko \\
+Univerza v Ljubljani \\
+
+\doublespacing
+\titleline{\textbf{Kandidat (ime in priimek): }}{Gregor Majcen}
+\titleline{Naslov: }{}
+\titleline{Telefonska štev., GSM: }{}
+\titleline{E-mail: }{}
+\titleline{Vpisna številka: }{63070199}
+\titleline{Datum: }{\today}
+\singlespacing
+
+\vspace*{2\baselineskip}
+\section*{\centering Vloga za odobritev teme magistrskega dela}
+\doublespacing
+\textbf{Naslov (SLO): }\\
+\titleline{}{Interaktivne računalniške umetniške instalacije v času hitrega tehnološkega razvoja}
+\noindent\textbf{Naslov (EN): }\\
+\titleline{}{ Interactive computer-based art installations in times of rapid technological advances}
+\vspace*{\baselineskip}
+\titleline{\textbf{Mentor: }}{prof. dr. Franc Solina}
+\titleline{\textbf{Somentor: }}{}
+\vspace*{\baselineskip}
+\titlelinee{\textbf{Tema magistrskega dela je bila predstavljena in pozitivno ocenjena na magistrskem seminarju dne: }}{\displaydate{PredstavitevDate}}
+\singlespacing
+
+\pagebreak
+
+\section*{Tema magistrskega dela}
+\input{opis}
+
+\subsection*{Podpis mentorja:}
+\vspace*{2\baselineskip}
+\singlespacing
+
+\pagebreak
+
+\section*{Utemeljitev teme}
+\input{utemeljitev}
+
+\pagebreak
+
+\bibliography{literatura}
+\bibliographystyle{IEEEtran}
+
+\subsection*{Podpis kandidata:}
+\vspace*{2\baselineskip}
+\singlespacing
+
+\vfill
+\noindent\makebox[\linewidth]{\rule{\textwidth}{0.4pt}}
+Skladno z 10. členom Pravilnika o magistrskem delu drugostopenjskih študijev Fakultete za računalništvo in informatiko Univerze v Ljubljani, je rok za oddajo magistrskega dela 12 mesecev od potrditve teme in se lahko podaljša za največ 6 mesecev na podlagi utemeljene prošnje kandidata. Po poteku roka tema zapade.
+\\\\
+Kandidat obrazec odda pisno v Študentski referat in po elektorski pošti na elektorski naslov: \href{mailto:zdenka.velikonja@fri.uni-lj.si}{zdenka.velikonja@fri.uni-lj.si}
+.
+
+
+\end{document}
