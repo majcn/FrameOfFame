@@ -1,0 +1,62 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{a4wide}
+\usepackage{fullpage}
+\usepackage[utf8x]{inputenc}
+\usepackage[slovene]{babel}
+\selectlanguage{slovene}
+\usepackage{setspace}
+
+\usepackage{calc}
+\newlength{\remaining}
+\newcommand{\titleline}[2]{%
+\setlength{\remaining}{\textwidth-\widthof{#2}-\widthof{#1}-0.5cm}
+\noindent #1\underline{\hspace{0.5cm}#2\hspace*{\remaining}}\par}
+\newcommand{\titlelinee}[2]{%
+\setlength{\remaining}{2\textwidth-\widthof{#2}-\widthof{#1}}
+\noindent #1\underline{\hspace{0.5cm}#2\hspace*{\remaining}}\par}
+
+\usepackage{datetime}
+\newdate{PredstavitevDate}{25}{11}{2013}
+
+\begin{document}
+
+\noindent\textbf{Komisija za študijske zadeve} \\
+Fakulteta za računalništvo in informatiko \\
+Univerza v Ljubljani \\
+
+\doublespacing
+\titleline{\textbf{Kandidat (ime in priimek): }}{Gregor Majcen}
+\titleline{Naslov: }{}
+\titleline{Telefonska štev., GSM: }{}
+\titleline{E-mail: }{majcn.faks@gmail.com}
+\titleline{Vpisna številka: }{63070199}
+\titleline{Datum: }{\today}
+\singlespacing
+
+\vspace*{2\baselineskip}
+\section*{\centering Vloga za odobritev teme magistrskega dela}
+\doublespacing
+\titleline{\textbf{Naslov (SLO): }}{Nadgradnja 15 sekund slave}
+\titleline{\textbf{Naslov (EN): }}{Frame of Fame}
+\vspace*{\baselineskip}
+\titleline{\textbf{Mentor: }}{prof. dr. Franc Solina}
+\titleline{\textbf{Somentor: }}{viš. pred. dr. Borut Batagelj}
+\vspace*{\baselineskip}
+\titlelinee{\textbf{Tema magistrskega dela je bila predstavljena in pozitivno ocenjena na magistrskem seminarju dne: }}{\displaydate{PredstavitevDate}}
+\singlespacing
+
+\pagebreak
+
+\section*{Tema magistrskega dela}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce condimentum erat elementum, eleifend nisi sit amet, dignissim libero. Maecenas eget nisi non libero fermentum interdum eget nec augue. Quisque a quam quam. Sed justo magna, ultrices ac porttitor vitae, viverra et velit. Maecenas venenatis lobortis purus quis placerat. Nam auctor sem interdum, venenatis tortor at, tempor risus. Nam et vehicula urna. Aliquam vestibulum ante eu dui blandit, eu dapibus nisl lacinia.
+
+Nunc fermentum tortor semper, lobortis sem non, blandit risus. Donec non consectetur mi. Morbi porttitor enim vel commodo molestie. Donec sagittis dapibus consectetur. Maecenas sed elit justo. Vestibulum pharetra scelerisque magna ut vulputate. Cras blandit diam tellus, ac viverra velit lobortis vel.
+
+Praesent iaculis ante dignissim, blandit lectus suscipit, gravida lorem. Phasellus ultricies laoreet metus in vehicula. Nulla in auctor nibh. Praesent in magna et mi iaculis dignissim. Nulla nec lacus id lorem suscipit ornare. Praesent sit amet bibendum dolor. Nulla sed rutrum odio. Donec varius porttitor felis, eu rhoncus odio interdum at. Nam sem nulla, eleifend id tristique sed, semper et sapien. Nullam sed condimentum nunc, at dapibus orci. Cras in ante non metus semper scelerisque ac vitae sem. Nullam laoreet non eros id feugiat.
+
+\section*{Utemeljitev teme}
+Proin vel mauris arcu. Aliquam odio nulla, elementum vitae tellus nec, rhoncus porttitor enim. Donec eget tempus mi, sed porta justo. Etiam eget vehicula augue. Aenean at congue sem, tincidunt aliquam orci. Nulla eu ultricies justo. Cras id lobortis massa. Phasellus consequat ipsum et augue tempor, id ultrices massa sollicitudin. Curabitur euismod tempus urna. Praesent posuere pharetra lacinia. Duis tristique convallis neque, vel convallis nisl accumsan vel. Vestibulum quis nibh feugiat, gravida lorem nec, gravida tortor. Nunc eget massa condimentum, faucibus massa non, eleifend est. In ac dignissim dui.
+
+Sed elementum imperdiet consequat. Maecenas id sodales purus. Integer gravida nec mauris nec gravida. Curabitur sem ipsum, ullamcorper quis suscipit sed, sollicitudin auctor quam. Pellentesque nulla nibh, rutrum vitae ligula porta, bibendum porttitor odio. Praesent bibendum viverra eros ac congue. Morbi porta risus felis, eget volutpat lorem scelerisque sed. Nam non risus sit amet sapien aliquet interdum in sollicitudin lorem. Mauris ante magna, hendrerit sit amet vulputate eu, ultrices in mauris. Phasellus tellus nibh, pellentesque eget placerat sed, fermentum sed libero. Donec quis justo vulputate, pretium tellus a, blandit velit. Etiam varius ligula semper, volutpat dolor id, dapibus odio.
+
+\end{document}
